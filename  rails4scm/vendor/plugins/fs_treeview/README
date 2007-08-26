@@ -1,0 +1,12 @@
+FsTreeview 使用说明
+
+1 在rhtml 中使用 <%=js_treeview_tag(@treeview) %> 即可输出基于xtree20.js的树
+  其中@treeview 是在controller中构造的FsTreeModel::Treeview型变量
+
+2 在 rhtml 中使用 <%=js_treeview_tag(@treeviewModel,@callBack) %>即可输出纯HTML的树
+  其中 @treeviewModel是controller中构造的 TreeviewModel型变量，@callBackObj可以是任意对象，
+  但必须但必须接受回调方法: onTreeStateChanged(TreeviewEvent) 否则不产生回调动作
+  
+  如果 @callBackObj 不指定，或者=nil 则不产生回调动作
+
+3 其他说明待补充
