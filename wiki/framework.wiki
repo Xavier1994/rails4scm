@@ -1,10 +1,9 @@
 #labels Phase-Requirements,Phase-Implementation,Featured
-#关于应用主框架的讨论
+#  关于应用主框架的讨论
 
 = Introduction =
 
 怎样实现程序的全局控制，这是程序框架涉及的问题。
-
 
 = Details =
 
@@ -14,7 +13,7 @@
 
 2 通过frameset方式组建主界面。主工作区target叫做main
 
-3 功能树通过 xtree20.js以js类构建，URL统一导向到后台open_func然后定向到指定网页
+3 功能树通过xtree20.js以js类(如WebFXTreeItem)构建，URL统一导向到后台open_func然后定向到指定网页
 
 4 功能网页存贮在数据库中。暂时不控制权限（权限控制作为后续issue)
 
