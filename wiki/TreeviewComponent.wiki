@@ -14,7 +14,7 @@
 
  3 代码一般写在lib目录，一般使用module也就是mixin方式编程。 
 
- 4 在组件根目录下的init.rb中增加 ActionView::Base.send :include, FsTreeview代码，就可以保证在应用启动的时候，自动将FsTreeview模块扩展到ActionView::Base类中了！类似还可以扩展ActiveRecode和ActionContorller  
+ 4 在组件根目录下的init.rb中增加 ActionView: :Base.send(:include, FsTreeview)代码，就可以保证在应用启动的时候，自动将FsTreeview模块扩展到ActionView: :Base类中了！类似还可以扩展ActiveRecode和ActionContorller  
    
 如此看来，实际上和在应用中直接编程没有什么两样，只是换了一个地方、独立性更强而已。
 
@@ -23,7 +23,6 @@
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
-
 
 
 
