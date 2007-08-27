@@ -1,0 +1,2396 @@
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 21:45:40) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/logcheck/login" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 21:45:46) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/logcheck/" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 21:46:10) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+ERROR: compiling _run_rhtml_47app47views47framework47logcheck47index46rhtml RAISED compile error
+./script/../config/../app/views/framework/logcheck/index.rhtml:105: syntax error, unexpected '>'
+./script/../config/../app/views/framework/logcheck/index.rhtml:107: unknown regexp options - td
+./script/../config/../app/views/framework/logcheck/index.rhtml:108: syntax error, unexpected '<'
+                      </tr>
+                       ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:110: unknown regexp options - tabl
+./script/../config/../app/views/framework/logcheck/index.rhtml:110: unmatched ): /tr>
+                    <% end ).to_s); _erbout.concat "\n"
+_erbout.concat "                  </
+./script/../config/../app/views/framework/logcheck/index.rhtml:110: syntax error, unexpected $undefined
+_erbout.concat "                  </table>\n"
+                                           ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:112: unknown regexp options - tr
+./script/../config/../app/views/framework/logcheck/index.rhtml:112: syntax error, unexpected $undefined
+_erbout.concat "              </tr>\n"
+                                    ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:114: unknown regexp options - td
+./script/../config/../app/views/framework/logcheck/index.rhtml:114: syntax error, unexpected $undefined
+_erbout.concat "          </td>\n"
+                                ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:116: unknown regexp options - tabl
+./script/../config/../app/views/framework/logcheck/index.rhtml:116: syntax error, unexpected $undefined
+_erbout.concat "      </table>\n"
+                               ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:117: syntax error, unexpected tIDENTIFIER, expecting kDO or '{' or '('
+_erbout.concat "      <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n"
+                                  ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:137: syntax error, unexpected kEND, expecting ')'
+Function body: def _run_rhtml_47app47views47framework47logcheck47index46rhtml(local_assigns)
+_erbout = ''; _erbout.concat "<html>\n"
+_erbout.concat "<head>\n"
+_erbout.concat "<title>\305\344\326\303\271\334\300\355\320\305\317\242\317\265\315\263</title>\n"
+_erbout.concat "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gbk\">\n"
+_erbout.concat "<link rel=\"stylesheet\" href=\"/stylesheets/common_style.css\" type=\"text/css\">\n"
+_erbout.concat "\n"
+_erbout.concat "<script language=\"Javascript\">\n"
+_erbout.concat "   /*\n"
+_erbout.concat "    window.resizeTo(400,360);\n"
+_erbout.concat "    window.moveTo(300,100);\n"
+_erbout.concat "    */\n"
+_erbout.concat "    \n"
+_erbout.concat "    function  exeClick()\n"
+_erbout.concat "    {\n"
+_erbout.concat "    \tif(document.forms[0].elements[\"executeApp\"].checked)\n"
+_erbout.concat "    \t{\n"
+_erbout.concat "\t\t\tpara = \"0?\"+document.forms[0].elements[\"userName\"].value+\"?\"+document.forms[0].elements[\"passWord\"].value;\n"
+_erbout.concat "\t\t\tocx1.Execute(\"yd_main_prog.exe\",para);\n"
+_erbout.concat "\t\t\tdocument.close();\n"
+_erbout.concat "    \t}\n"
+_erbout.concat "    \telse\n"
+_erbout.concat "    \t{\n"
+_erbout.concat "    \t\tdocument.forms[0].submit();\n"
+_erbout.concat "    \t}\n"
+_erbout.concat "    }\n"
+_erbout.concat "\n"
+_erbout.concat "    function keyDown()\n"
+_erbout.concat "    {\n"
+_erbout.concat "        k = window.event.keyCode;\n"
+_erbout.concat "        if (k == 13) // enter key\n"
+_erbout.concat "        {\n"
+_erbout.concat "        \tdocument.focus();\n"
+_erbout.concat "     \t\tnextfield=document.forms[0].elements[\"userName\"];\n"
+_erbout.concat "            nextfield=document.activeElement;  //if not found,then nextfield remains \"userName\"\n"
+_erbout.concat "        \n"
+_erbout.concat "            if (nextfield == document.forms[0].elements[\"userName\"])\n"
+_erbout.concat "            {\n"
+_erbout.concat "                document.forms[0].passWord.focus();\n"
+_erbout.concat "            }\n"
+_erbout.concat "            else if(nextfield == document.forms[0].elements[\"passWord\"])\n"
+_erbout.concat "            {\n"
+_erbout.concat "                exeClick();\n"
+_erbout.concat "            }\n"
+_erbout.concat "        }\n"
+_erbout.concat "    }\n"
+_erbout.concat "    document.onkeydown = keyDown; // work together to analyze keystrokes\n"
+_erbout.concat "    \n"
+_erbout.concat "</script>\n"
+_erbout.concat "\n"
+_erbout.concat "\n"
+_erbout.concat "</head>\n"
+_erbout.concat "\n"
+_erbout.concat "<body text=\"#000000\" leftmargin=\"0\" topmargin=\"0\" marginwidth=\"0\" marginheight=\"0\" background=\"/images/framework/l0.gif\" bgcolor=\"#000081\">\n"
+_erbout.concat "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" height=\"100%\">\n"
+_erbout.concat "  <tr>\n"
+_erbout.concat "    <td align=\"center\" valign=\"middle\"> \n"
+_erbout.concat "      <table width=\"778\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n"
+_erbout.concat "        <tr> \n"
+_erbout.concat "          <td width=\"494\"><img src=\"/images/framework/logo.gif\" width=\"494\" height=\"63\"></td>\n"
+_erbout.concat "          <td class=\"version\" >&nbsp;&nbsp;VERSION 3.0</td>\n"
+_erbout.concat "        </tr>\n"
+_erbout.concat "        <tr>\n"
+_erbout.concat "          <td height=\"30\"></td>\n"
+_erbout.concat "          <td></td>\n"
+_erbout.concat "        </tr>\n"
+_erbout.concat "      </table>\n"
+_erbout.concat "      <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" height=\"236\">\n"
+_erbout.concat "        <tr> \n"
+_erbout.concat "          <td align=\"right\" valign=\"middle\" background=\"/images/framework/l2.gif\" width=\"50%\"><img src=\"/images/framework/l1.gif\" width=\"389\" height=\"236\"></td>\n"
+_erbout.concat "          <td align=\"left\" valign=\"middle\" background=\"/images/framework/l4.gif\" width=\"50%\"> \n"
+_erbout.concat "            <table width=\"389\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" height=\"236\">\n"
+_erbout.concat "              <tr>\n"
+_erbout.concat "                <td background=\"/images/framework/l3.gif\" height=\"236\"> \n"
+_erbout.concat "                  <table width=\"388\" border=\"0\" cellspacing=\"1\" cellpadding=\"1\">\n"
+_erbout.concat "                    ";  form_tag :action => 'login' do ; _erbout.concat "\n"
+_erbout.concat "                      <tr> \n"
+_erbout.concat "                        <td width=\"126\">&nbsp;</td>\n"
+_erbout.concat "                        <td height=\"125\">&nbsp;</td>\n"
+_erbout.concat "                        <td>&nbsp;</td>\n"
+_erbout.concat "                      </tr>\n"
+_erbout.concat "                      <tr> \n"
+_erbout.concat "                        <td width=\"126\">&nbsp;</td>\n"
+_erbout.concat "                        <td height=\"28\">&nbsp;</td>\n"
+_erbout.concat "                        <td height=\"28\">&nbsp;</td>\n"
+_erbout.concat "                      </tr>\n"
+_erbout.concat "                      <tr> \n"
+_erbout.concat "                        <td align=\"right\" height=\"28\" width=\"126\"><span class=\"style2\">\323\303\273\247\325\312\272\305</span>\243\272</td>\n"
+_erbout.concat "                        <td height=\"28\" width=\"107\"> \n"
+_erbout.concat "                          "; _erbout.concat(( text_field 'operator', 'userName', :size=>10  ).to_s); _erbout.concat "\n"
+_erbout.concat "                        </td>\n"
+_erbout.concat "                        <td height=\"28\">&nbsp;</td>\n"
+_erbout.concat "                      </tr>\n"
+_erbout.concat "                      <tr> \n"
+_erbout.concat "                        <td align=\"right\" width=\"126\"><span class=\"style2\">\265\307\302\274\303\334\302\353</span>\243\272</td>\n"
+_erbout.concat "                        <td> \n"
+_erbout.concat "                          "; _erbout.concat(( password_field 'operator', 'passWord', {:size=>10,:onkeydown=>'javascript:keyDown()' }).to_s); _erbout.concat "\n"
+_erbout.concat "                        </td>\n"
+_erbout.concat "                        <td nowrap>\n"
+_erbout.concat "                          <input type=\"checkbox\" name=\"highSecu\" value=\"ON\"><span class=\"style4\">\307\277\273\257\260\262\310\253</span>\n"
+_erbout.concat "                        </td>\n"
+_erbout.concat "                      </tr>\n"
+_erbout.concat "                      <tr> \n"
+_erbout.concat "                        <td width=\"126\">&nbsp;</td>\n"
+_erbout.concat "                        <td align=\"center\"> \n"
+_erbout.concat "                          "; _erbout.concat((image_tag "/images/framework/login_bt.gif" , {:onkeydown => "javascript:keyDown();", :onclick=>"javascript:exeClick();"} />
+                        </td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    <% end ).to_s); _erbout.concat "\n"
+_erbout.concat "                  </table>\n"
+_erbout.concat "                </td>\n"
+_erbout.concat "              </tr>\n"
+_erbout.concat "            </table>\n"
+_erbout.concat "          </td>\n"
+_erbout.concat "        </tr>\n"
+_erbout.concat "      </table>\n"
+_erbout.concat "      <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n"
+_erbout.concat "        <tr>\n"
+_erbout.concat "          <td height=\"15\"></td>\n"
+_erbout.concat "          <td></td>\n"
+_erbout.concat "        </tr>\n"
+_erbout.concat "        <tr>\n"
+_erbout.concat "          <td align=\"right\" class=\"white\">\261\276\310\355\274\376\323\311<a href=\"http://rails4scm.googlecode.com\">http://rails4scm.googlecode.com</a>\270\272\324\360\314\341\271\251\311\375\274\266\272\315\274\274\312\365\326\247\263\326</td>\n"
+_erbout.concat "          <td></td>\n"
+_erbout.concat "        </tr>\n"
+_erbout.concat "      </table>\n"
+_erbout.concat "    </td>\n"
+_erbout.concat "  </tr>\n"
+_erbout.concat "</table>\n"
+_erbout.concat "<script language=\"Javascript\">\n"
+_erbout.concat "    document.forms[0].elements[\"userName\"].focus();\n"
+_erbout.concat "</script>\n"
+_erbout.concat "\n"
+_erbout.concat "</body>\n"
+_erbout.concat "</html>\n"
+_erbout
+end
+Backtrace: ./script/../config/../app/views/framework/logcheck/index.rhtml:137:in `compile_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render_without_active_scaffold'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render_without_active_scaffold'
+./script/../config/../vendor/plugins/active_scaffold/lib/extensions/action_controller.rb:13:in `render'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+script/server:3
+
+
+ActionView::TemplateError (compile error
+./script/../config/../app/views/framework/logcheck/index.rhtml:105: syntax error, unexpected '>'
+./script/../config/../app/views/framework/logcheck/index.rhtml:107: unknown regexp options - td
+./script/../config/../app/views/framework/logcheck/index.rhtml:108: syntax error, unexpected '<'
+                      </tr>
+                       ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:110: unknown regexp options - tabl
+./script/../config/../app/views/framework/logcheck/index.rhtml:110: unmatched ): /tr>
+                    <% end ).to_s); _erbout.concat "\n"
+_erbout.concat "                  </
+./script/../config/../app/views/framework/logcheck/index.rhtml:110: syntax error, unexpected $undefined
+_erbout.concat "                  </table>\n"
+                                           ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:112: unknown regexp options - tr
+./script/../config/../app/views/framework/logcheck/index.rhtml:112: syntax error, unexpected $undefined
+_erbout.concat "              </tr>\n"
+                                    ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:114: unknown regexp options - td
+./script/../config/../app/views/framework/logcheck/index.rhtml:114: syntax error, unexpected $undefined
+_erbout.concat "          </td>\n"
+                                ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:116: unknown regexp options - tabl
+./script/../config/../app/views/framework/logcheck/index.rhtml:116: syntax error, unexpected $undefined
+_erbout.concat "      </table>\n"
+                               ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:117: syntax error, unexpected tIDENTIFIER, expecting kDO or '{' or '('
+_erbout.concat "      <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n"
+                                  ^
+./script/../config/../app/views/framework/logcheck/index.rhtml:137: syntax error, unexpected kEND, expecting ')') on line #105 of app/views/framework/logcheck/index.rhtml:
+102:                       <tr> 
+103:                         <td width="126">&nbsp;</td>
+104:                         <td align="center"> 
+105:                           <%=image_tag "/images/framework/login_bt.gif" , {:onkeydown => "javascript:keyDown();", :onclick=>"javascript:exeClick();"} />
+106:                         </td>
+107:                         <td>&nbsp;</td>
+108:                       </tr>
+
+    #{RAILS_ROOT}/app/views/framework/logcheck/index.rhtml:137:in `compile_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render_without_active_scaffold'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render_without_active_scaffold'
+    #{RAILS_ROOT}/vendor/plugins/active_scaffold/lib/extensions/action_controller.rb:13:in `render'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 21:47:30) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+
+
+ActionView::TemplateError (undefined method `userName' for {:passWord=>"none", :userName=>"super"}:Hash) on line #89 of app/views/framework/logcheck/index.rhtml:
+86:                       <tr> 
+87:                         <td align="right" height="28" width="126"><span class="style2">”√ªß’ ∫≈</span>£∫</td>
+88:                         <td height="28" width="107"> 
+89:                           <%= text_field 'operator', 'userName', :size=>10  %>
+90:                         </td>
+91:                         <td height="28">&nbsp;</td>
+92:                       </tr>
+
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/helpers/form_helper.rb:356:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/helpers/form_helper.rb:356:in `value_before_type_cast'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/helpers/form_helper.rb:344:in `value_before_type_cast'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/helpers/form_helper.rb:259:in `to_input_field_tag'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/helpers/form_helper.rb:162:in `text_field'
+    #{RAILS_ROOT}/app/views/framework/logcheck/index.rhtml:89:in `_run_rhtml_47app47views47framework47logcheck47index46rhtml'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/helpers/capture_helper.rb:108:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/helpers/capture_helper.rb:108:in `capture_erb_with_buffer'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/helpers/capture_helper.rb:67:in `capture'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/helpers/form_tag_helper.rb:51:in `form_tag'
+    #{RAILS_ROOT}/app/views/framework/logcheck/index.rhtml:75:in `_run_rhtml_47app47views47framework47logcheck47index46rhtml'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:326:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:326:in `compile_and_render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render_without_active_scaffold'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render_without_active_scaffold'
+    #{RAILS_ROOT}/vendor/plugins/active_scaffold/lib/extensions/action_controller.rb:13:in `render'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 21:54:40) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+
+
+SyntaxError (./script/../config/../app/controllers/framework/logcheck_controller.rb:6: syntax error, unexpected tEQ
+          if ==nil then
+               ^
+./script/../config/../app/controllers/framework/logcheck_controller.rb:26: syntax error, unexpected kEND, expecting $end):
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:203:in `load_without_new_constant_marking'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:203:in `load_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:202:in `load_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:94:in `require_or_load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:248:in `load_missing_constant'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:452:in `const_missing'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/inflector.rb:250:in `constantize'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/core_ext/string/inflections.rb:148:in `constantize'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1284:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 21:55:14) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+
+
+NoMethodError (undefined method `serName=' for #<Operator:0x4c4b018>):
+    /app/controllers/framework/logcheck_controller.rb:10:in `index'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 21:55:49) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 21:57:43) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.02000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 21:59:50) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.02000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:00:28) [POST]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+
+
+ArgumentError (wrong number of arguments (1 for 0)):
+    /app/controllers/framework/logcheck_controller.rb:15:in `params'
+    /app/controllers/framework/logcheck_controller.rb:15:in `login'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:00:45) [POST]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+
+
+ArgumentError (wrong number of arguments (1 for 0)):
+    /app/controllers/framework/logcheck_controller.rb:15:in `params'
+    /app/controllers/framework/logcheck_controller.rb:15:in `login'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:03:28) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.01000 (50%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:03:31) [POST]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+Redirected to http://localhost:3000/framework/logcheck/openHome
+
+
+ArgumentError (wrong number of arguments (1 for 0)):
+    /app/controllers/framework/logcheck_controller.rb:16:in `params'
+    /app/controllers/framework/logcheck_controller.rb:16:in `login'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:05:24) [POST]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+
+
+ArgumentError (wrong number of arguments (1 for 0)):
+    /app/controllers/framework/logcheck_controller.rb:15:in `params'
+    /app/controllers/framework/logcheck_controller.rb:15:in `login'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:06:03) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/logcheck/" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:06:11) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:06:13) [POST]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+
+
+ArgumentError (wrong number of arguments (1 for 0)):
+    /app/controllers/framework/logcheck_controller.rb:15:in `params'
+    /app/controllers/framework/logcheck_controller.rb:15:in `login'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:17:06) [POST]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+Redirected to http://localhost:3000/framework/logcheck/openHome
+Completed in 0.01000 (100 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#openHome (for 127.0.0.1 at 2007-08-27 22:17:07) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"openHome", "controller"=>"framework/logcheck"}
+
+
+ActionController::MissingTemplate (Missing template ./script/../config/../app/views/framework/logcheck/openHome.rhtml):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1205:in `assert_existence_of_template_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:804:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render_without_active_scaffold'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render_without_active_scaffold'
+    /vendor/plugins/active_scaffold/lib/extensions/action_controller.rb:13:in `render'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#openHome (for 127.0.0.1 at 2007-08-27 22:17:50) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"openHome", "controller"=>"framework/logcheck"}
+
+
+ActionController::UnknownAction (No action responded to openHome):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:18:00) [POST]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:18:00) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:21:47) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/logcheck]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:22:04) [POST]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:22:04) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:22:46) [GET]
+  Session ID: 5c5ab0720af8a7500b0c589e069cb6d8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:22:56) [GET]
+  Session ID: ac1386a29534fbcfff0453a229c068e8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:23:04) [GET]
+  Session ID: ac1386a29534fbcfff0453a229c068e8
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.01000 (99 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:23:23) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:24:09) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.02000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:24:15) [POST]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:24:15) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:25:00) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+Rendering framework/logcheck/index
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.02000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:25:55) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+
+
+Errno::EBADF (Bad file descriptor - connect(2)):
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:111:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:111:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:111:in `real_connect'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:389:in `connect'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:152:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `mysql_connection'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `connection_without_query_cache='
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/query_cache.rb:54:in `connection='
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:230:in `retrieve_connection'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:78:in `connection'
+    /app/controllers/application.rb:13:in `configure_charsets'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/core_ext/kernel/reporting.rb:46:in `suppress'
+    /app/controllers/application.rb:12:in `configure_charsets'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:435:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:26:22) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+
+
+Errno::EBADF (Bad file descriptor - connect(2)):
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:111:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:111:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:111:in `real_connect'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:389:in `connect'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:152:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `mysql_connection'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `connection_without_query_cache='
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/query_cache.rb:54:in `connection='
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:230:in `retrieve_connection'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:78:in `connection'
+    /app/controllers/application.rb:13:in `configure_charsets'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/core_ext/kernel/reporting.rb:46:in `suppress'
+    /app/controllers/application.rb:12:in `configure_charsets'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:435:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:27:14) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/index
+Completed in 0.16100 (6 reqs/sec) | Rendering: 0.15100 (93%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:27:20) [POST]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:27:20) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:34:16) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:34:58) [POST]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:34:59) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:35:00) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+
+
+NoMethodError (undefined method `get_tree' for #<Framework::ShowFuncTreeController:0x4c6bb88>):
+    /app/controllers/framework/show_func_tree_controller.rb:25:in `index'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:35:06) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+
+
+NoMethodError (undefined method `get_tree' for #<Framework::ShowFuncTreeController:0x4b39d8c>):
+    /app/controllers/framework/show_func_tree_controller.rb:25:in `index'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:638:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:438:in `call'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:35:51) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:35:52) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/stylesheets/xtree20.css" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:35:52) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/javascripts/xtree20.js" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:36:21) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:36:21) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/stylesheets/xtree20.css" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:36:21) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/javascripts/xtree20.js" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:36:28) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:36:28) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/stylesheets/xtree20.css" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:36:28) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/javascripts/xtree20.js" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:37:45) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:37:45) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/stylesheets/xtree20.css" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:37:51) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/framework/www.sina.com.cn" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:38:37) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/framework/www.sina.com.cn" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:38:40) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:38:40) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/stylesheets/xtree20.css" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:38:44) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:38:44) [GET]
+  Session ID: 6ab160cac24cd15da6ea342b673af48b
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/stylesheets/xtree20.css" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:39:18) [POST]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:39:18) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:39:19) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:39:30) [GET]
+  Session ID: 2dc7e183be0403433072bfccbb8c9105
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:42:29) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:42:31) [POST]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:42:31) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:42:32) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:42:39) [GET]
+  Session ID: 7363fb9fc21b4bf739874e5355f2db12
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.08000 (12 reqs/sec) | Rendering: 0.02000 (25%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 22:43:23) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/index
+Completed in 0.03000 (33 reqs/sec) | Rendering: 0.02000 (66%) | 200 OK [http://localhost/framework/logcheck]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 22:43:25) [POST]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:43:25) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:43:26) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:44:08) [GET]
+  Session ID: 7363fb9fc21b4bf739874e5355f2db12
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.08000 (12 reqs/sec) | Rendering: 0.02000 (25%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:44:08) [GET]
+  Session ID: 7363fb9fc21b4bf739874e5355f2db12
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/stylesheets/xtree20.css" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:55:46) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:55:47) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:55:52) [GET]
+  Session ID: 7363fb9fc21b4bf739874e5355f2db12
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.09000 (11 reqs/sec) | Rendering: 0.03000 (33%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 22:55:52) [GET]
+  Session ID: 7363fb9fc21b4bf739874e5355f2db12
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/stylesheets/xtree20.css" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 22:57:23) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:57:24) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:57:35) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 22:57:39) [GET]
+  Session ID: 276225495de56a7c89c816a26d776aef
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 23:05:33) [GET]
+  Session ID: 89d31766e90be22835dc11e33b0bb375
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/index
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.02000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 23:05:34) [POST]
+  Session ID: 89d31766e90be22835dc11e33b0bb375
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 23:05:34) [GET]
+  Session ID: 89d31766e90be22835dc11e33b0bb375
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:05:35) [GET]
+  Session ID: 89d31766e90be22835dc11e33b0bb375
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 23:07:59) [GET]
+  Session ID: 89d31766e90be22835dc11e33b0bb375
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/index
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.02000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 23:14:50) [GET]
+  Session ID: 89d31766e90be22835dc11e33b0bb375
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 23:16:29) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/index
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.02000 (100%) | 200 OK [http://localhost/framework/logcheck/]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 23:16:31) [POST]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 23:16:31) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:16:32) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:16:43) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:16:45) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 23:17:52) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:17:53) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 23:18:29) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:18:30) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.01000 (100%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:18:34) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2007-08-27 23:18:45) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {}
+
+
+ActionController::RoutingError (no route found to match "/pages/framework" with {:method=>:get}):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1292:in `recognize_path'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/routing.rb:1282:in `recognize'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:40:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 23:19:25) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:19:25) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:19:28) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:19:36) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing LogcheckController#index (for 127.0.0.1 at 2007-08-27 23:24:17) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/index
+Completed in 0.01100 (90 reqs/sec) | Rendering: 0.01100 (100%) | 200 OK [http://localhost/framework/logcheck]
+
+
+Processing LogcheckController#login (for 127.0.0.1 at 2007-08-27 23:24:23) [POST]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"operator"=>{"userName"=>"super", "passWord"=>"none"}, "action"=>"login", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Redirected to http://localhost:3000/framework/logcheck/open_home
+Completed in 0.01000 (99 reqs/sec) | 302 Found [http://localhost/framework/logcheck/login]
+
+
+Processing LogcheckController#open_home (for 127.0.0.1 at 2007-08-27 23:24:23) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"open_home", "controller"=>"framework/logcheck"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/logcheck/open_home
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/logcheck/open_home]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:24:23) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.01000 (100 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
+
+
+Processing ShowFuncTreeController#index (for 127.0.0.1 at 2007-08-27 23:24:28) [GET]
+  Session ID: da295eb9e9c937eccaff6150482228fc
+  Parameters: {"action"=>"index", "controller"=>"framework/show_func_tree"}
+DEPRECATION WARNING: @response is deprecated! Call response.headers instead of @response.headers. Args: []  See http://www.rubyonrails.org/deprecation for details. (called from configure_charsets at ./script/../config/../app/controllers/application.rb:11)
+Rendering framework/show_func_tree/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/framework/show_func_tree]
