@@ -1,0 +1,2 @@
+module Framework::LogcheckHelper
+end

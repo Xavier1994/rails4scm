@@ -1,0 +1,69 @@
+<html>
+<head>
+<META content="text/html; charset=GBK" http-equiv="Content-Type">
+<title>分割条</title>
+<script>
+function chgTreeView()
+{
+	if(img_mid.title != "隐藏工具栏")
+	{
+		frameshow.src="/images/framework/scol_r.gif";
+		img_mid.title="隐藏工具栏"
+		window.parent.mainframe.cols="20%,8,*";
+	}
+	else
+	{
+		frameshow.src="/images/framework/scol_l.gif";
+		img_mid.title="显示工具栏"
+		window.parent.mainframe.cols="0,8,*";
+	}
+}
+
+function onMouseMove()
+{
+   if(flag.title=="TRUE")
+   {
+	   var width="";
+	   width+= event.screenX - window.parent.screenLeft;
+	   width+=",8,*"
+	   window.parent.mainframe.cols=width; 
+   }
+   // window.status ="move" ;
+}
+
+function onMouseUp()
+{ 
+   flag.title="FALSE"
+   img_resize.releaseCapture();
+   //window.status ="up" ;
+}
+
+function onMouseDown()
+{
+   img_resize.setCapture();
+   flag.title="TRUE"
+   //window.status ="down" ;
+}
+
+</script>
+
+</head>
+<body text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onmouseup="img_resize.releaseCapture();">
+<table width="8" border="0" height="100%" cellpadding="0" cellspacing="0" align="left">
+  <tr>
+    <td width="8" bgcolor="#317D6B">
+      <div id=img_mid onclick="chgTreeView();img_resize.releaseCapture();" title=隐藏工具栏>
+      	<img src="/images/framework/scol_r.gif" width="8"  id=frameshow style="cursor:hand" >
+      </div>
+      <br>
+      <div id=img_resize title=调整工具栏
+            onmousedown ="onMouseDown()" onmouseup="onMouseUp()" onmousemove="onMouseMove()">
+      	<img src="/images/framework/move.gif" width="8" id=frameresize style="cursor:E-resize" >
+      </div>
+      <br>
+      <div id="flag" title="FALSE"> </div>  
+   </td>
+  </tr>
+</table>
+</body>
+</html>
