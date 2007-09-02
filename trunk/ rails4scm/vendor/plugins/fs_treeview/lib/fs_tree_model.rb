@@ -8,7 +8,7 @@ module FsTreeModel
             @id=id
             @label = lbl ;            @value = value;            @url = url 
             @target=target;       @icon=icon;                  @openIcon=openIcon
-            @parent=nil;            @children =[]
+            @parent=nil;            @children =[]    #约定根结点的parent＝nil
           end  
           
           def parent=(parent)
@@ -35,11 +35,26 @@ module FsTreeModel
           def each
             @children.each{|child| yield child}
           end 
-        end
+          
+#判定是否本级别的最后一节点         
+          def lastNodeThisLevel?()
+             if @parent==nil then return true end
+             return self==@parent.children.last()
+          end
+          
+ #getNodeById         
+          def [](nodeId)
+             if nodeId==@id then
+                return self
+            else
+                @children.each{|child| if(nodeId==child.id) then return  child end }
+            end
+          end   # of operator [] 
+       end # of class Treeview
  
 # treeview 对象的状态，展开，被选中，当前节点等 
        class  TreeviewState
-           attr_accessor  :currentNodeId
+           attr_accessor  :currentNodeId,:model
            attr_reader  :expandedIds, :checkedIds
            
            def resetState()
@@ -49,15 +64,15 @@ module FsTreeModel
            end
 
            def initialize()   
-              resetState();
+              resetState()
            end      
  
            def nodeExpanded?(id)
-              nodeId==nil ? false : @expandedIds.include?(id);
+              id==nil ? false : @expandedIds.include?(id);
            end
 
            def nodeChecked?(id)
-              nodeId==nil ? false : @checkedIds.include?(id);
+              id==nil ? false : @checkedIds.include?(id);
            end
             
            def expand(id)
@@ -83,34 +98,8 @@ module FsTreeModel
                 if @checkedIds.include?(id) then @checkedIds.delete(id)  end
                 @currentNodeId=id
             end
-        end
+        end # of class  TreeviewState
         
- # treeview对象及其状态的组合对象
-       class  TreeviewModel
- # 构造函数，  如果treeState参数为空，则自动创建 TreeSate对象
-          def initialize(treeview,treeState=nil)
-             if (treeview==nil) or (not treeview.is_a?(Treeview))  then
-                raise 'must use a Treeview object to initilize a TreeViewModel'
-             else
-                @tree=treeview
-                if treeState==nil
-                   @state=TreeSate.new()
-                else
-                  @state=treeState
-                end
-            end
-          end
-            
-          def getTree()
-             if @tree==nil then @tree=new Treeview("root") end
-             return @tree
-           end
-           
-          def getState()
-            return @state
-          end
-        end
-
 # treview 相关的事件，如选中，双击等
         class TreeviewEvent   
 #预定义的事件          
@@ -134,6 +123,31 @@ module FsTreeModel
                  allEvent=SELECTION_CHANGED|NODE_EXPANDED|NODE_COLLAPSED|NODE_CHECKED|NODE_UNCHECKED|SELECT_AGAIN
                  return (allEvent & event) > 0
              end
-           end
+      end # of class  TreeviewEvent
+end # of FsTreeModel
+
+ #~ # treeview对象及其状态的组合对象
+       #~ class  TreeviewModel
+ #~ # 构造函数，  如果treeState参数为空，则自动创建 TreeSate对象
+          #~ def initialize(treeview,treeState=nil)
+             #~ if (treeview==nil) or (not treeview.is_a?(Treeview))  then
+                #~ raise 'must use a Treeview object to initilize a TreeViewModel'
+             #~ else
+                #~ @tree=treeview
+                #~ if treeState==nil
+                   #~ @state=TreeSate.new()
+                #~ else
+                  #~ @state=treeState
+                #~ end
+            #~ end
+          #~ end
+            
+          #~ def getTree()
+             #~ if @tree==nil then @tree=new Treeview("root") end
+             #~ return @tree
+           #~ end
            
-end
+          #~ def getState()
+            #~ return @state
+          #~ end
+        #~ end

@@ -50,11 +50,5 @@ class FsTreeModelTest < Test::Unit::TestCase
      p TreeviewEvent.new(TreeviewEvent::NODE_CHECKED,1,2,Treeview.new(:root)).sourceTreeviewModel
      
   end
-  
-  def test_treeviewModel
-     p 'now test composited odel----'
-     tree=Treeview.new(:root)
-     state=TreeviewState.new(); state.expand(2); state.check(3)
-     p TreeviewModel.new(tree,state).getState
-  end
+
 end
