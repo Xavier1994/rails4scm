@@ -1,0 +1,277 @@
+/*\u4ee5\u4e0b\u90e8\u5206\u662f\u6807\u51c6\u6807\u7b7e\u7684\u6837\u5f0f*/
+BODY{ SCROLLBAR-FACE-COLOR: #317D6B; SCROLLBAR-TRACK-COLOR: #e6f2f9; BACKGROUND-COLOR: #FFFFFF;font-family: "\u5b8b\u4f53";font-size: 12px;}
+
+/*\u6240\u6709\u5355\u5143\u683c*/
+td {font-family: "\u5b8b\u4f53"; font-size: 12px;color: #000000;}
+
+/*\u6240\u6709\u94fe\u63a5\u9ed8\u8ba4\u60c5\u51b5\u4e0b*/
+a:link {  font-family: "\u5b8b\u4f53";  font-size: 12px; color: #3333FF; text-decoration: underline}
+a:visited{  font-family: "\u5b8b\u4f53"; font-size: 12px;  color: #3333FF;  text-decoration: underline}
+a:hover {  font-family: "\u5b8b\u4f53"; font-size: 12px;  color: #3333FF; text-decoration: none}
+
+/*\u9876\u7aef\u83dc\u5355\u94fe\u63a5*/
+a.top_menu:link {  font-family: "\u5b8b\u4f53"; font-size: 12px; color: #FFFFFF; text-decoration: none}
+a.top_menu:visited {  font-family: "\u5b8b\u4f53"; font-size: 12px; color: #FFFFFF; text-decoration: none}
+a.top_menu:hover {  font-family: "\u5b8b\u4f53"; font-size: 12px; color: #FFFFFF; text-decoration: underline}
+
+/*\u5c0f\u683c\u683c\u6807\u9898\u6309\u94ae\u5904*/
+a.l_title:link {  font-family: "\u5b8b\u4f53";line-height: 16px; padding-top: 3px; font-size: 12px; text-decoration: none; margin-top: 3px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+a.l_title:visited {  font-family: "\u5b8b\u4f53";line-height: 16px; padding-top: 3px; font-size: 12px; text-decoration: none; margin-top: 3px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+a.l_title:hover {  font-family: "\u5b8b\u4f53";line-height: 16px; padding-top: 3px; font-size: 12px; text-decoration: none; margin-top: 3px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+
+/*\u6807\u9898\u5206\u7c7b\u94fe\u63a5*/
+a.title_menu:link {	font-family: "\u5b8b\u4f53"; font-weight: bold;	font-size: 12px; color: #005077; text-decoration: none;}
+a.title_menu:visited {  font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px; color: #005077; text-decoration: none;}
+a.title_menu:hover {  font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px; color: #000000; text-decoration: underline;}
+
+/*\u6807\u9898\u5206\u7c7b\u94fe\u63a5\u975e\u5f53\u524d\u72b6\u6001*/
+a.title_menu_uncur:link {  font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px; color: #FFFFFF; text-decoration: none; }
+a.title_menu_uncur:visited {  font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px; color: #FFFFFF; text-decoration: none;}
+a.title_menu_uncur:hover {	font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px;color: #DCE8F2;	text-decoration: underline;}
+
+/*\u6807\u9898\u5206\u7c7b\u94fe\u63a5*/
+a.title_menu:link {	font-family: "\u5b8b\u4f53"; font-weight: bold;	font-size: 12px; color: #005077; text-decoration: none;}
+a.title_menu:visited {  font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px; color: #005077; text-decoration: none;}
+a.title_menu:hover {  font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px; color: #000000; text-decoration: none;}
+
+/*\u6807\u9898\u5206\u7c7b\u94fe\u63a5\u975e\u5f53\u524d\u72b6\u6001*/
+a.title_menu_uncur:link {  font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px; color: #FFFFFF; text-decoration: none; }
+a.title_menu_uncur:visited {  font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px; color: #FFFFFF; text-decoration: none;}
+a.title_menu_uncur:hover {	font-family: "\u5b8b\u4f53"; font-weight: bold; font-size: 12px;color: #DCE8F2;	text-decoration: none;}
+
+BUTTON{BORDER-RIGHT: #000000 1px solid;BORDER-TOP: #000000 1px solid;FONT-SIZE: 12px;    BORDER-LEFT: #000000 1px solid;    CURSOR: hand;    BORDER-BOTTOM: #000000 1px solid}
+P{ SCROLLBAR-FACE-COLOR: #3399cc; FONT-SIZE: 9pt;SCROLLBAR-SHADOW-COLOR: #ffffff;    SCROLLBAR-3DLIGHT-COLOR: #ffffff;    LINE-HEIGHT: 130%;    SCROLLBAR-ARROW-COLOR: #ffffff;    SCROLLBAR-TRACK-COLOR: #ffffff;    FONT-FAMILY: "\u5b8b\u4f53";    SCROLLBAR-DARKSHADOW-COLOR: #ffffff}
+input.SmallButton{ BORDER-RIGHT: #104a7b 1px solid;    BORDER-TOP: #afc4d5 1px solid;    BACKGROUND: #d6e7ef;    BORDER-LEFT: #afc4d5 1px solid;    CURSOR: hand;    COLOR: #000066;    BORDER-BOTTOM: #104a7b 1px solid;    HEIGHT: 19px;    FONT-SIZE: 9pt;    TEXT-DECORATION: none}
+input.BigButton  { BORDER-RIGHT: #104a7b 1px solid;    BORDER-TOP: #afc4d5 1px solid;    BACKGROUND: #d6e7ef;    BORDER-LEFT: #afc4d5 1px solid;    CURSOR: hand;    COLOR: #000066;    BORDER-BOTTOM: #104a7b 1px solid;    HEIGHT: 24px;    FONT-SIZE: 12pt;    TEXT-DECORATION: none}
+
+input.SmallInput {COLOR: #000066;BACKGROUND: #d6e7ef;border:1 solid black;FONT-SIZE: 9pt;	FONT-STYLE: normal;	FONT-VARIANT: normal;	FONT-WEIGHT: normal;	HEIGHT: 18px;	LINE-HEIGHT: normal;	font-family: "\u5b8b\u4f53";}
+input.SmallInput1{ 
+	COLOR: #000066;
+	BACKGROUND: #d6e7ef;
+	border:1 solid black;
+	BORDER-RIGHT:0;
+	FONT-SIZE: 9pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	HEIGHT: 18px;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+input.BigInput   {
+	COLOR: #000066;
+	BACKGROUND: #d6e7ef;
+	border:1 solid black;
+	BORDER-BOTTOM:1px double;
+	FONT-SIZE: 12pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	HEIGHT: 22px;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+input.BigInputMoney {
+	text-align: RIGHT;
+	COLOR: #000066;
+	BACKGROUND: #d6e7ef;
+	border:1 solid black;
+	BORDER-BOTTOM:1px double;
+	FONT-SIZE: 12pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	HEIGHT: 22px;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+input.SmallStatic{ 
+	COLOR: #000066;
+	BACKGROUND: #E0E0E0;
+	border:1 solid black;
+	FONT-SIZE: 9pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	HEIGHT: 18px;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+input.BigStatic  {
+	COLOR: #000066;
+	BACKGROUND: #E0E0E0;
+	border:1 solid black;
+	BORDER-BOTTOM:1px double;
+	FONT-SIZE: 12pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	HEIGHT: 22px;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+
+
+select.BigSelect  { 
+	COLOR: #000066;
+	BACKGROUND: #d6e7ef;
+	border:1 solid black;
+	BORDER-BOTTOM:1px double;
+	FONT-SIZE: 12pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	HEIGHT: 22px;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+select.SmallSelect{
+	COLOR: #000066;
+	BACKGROUND: #d6e7ef;
+	border:1 solid black;
+	BORDER-BOTTOM:1px double;
+	FONT-SIZE: 9pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	HEIGHT: 18px;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+select.BigStatic  {
+	COLOR: #000066;
+	BACKGROUND: #E0E0E0;
+	border:1 solid black;
+	BORDER-BOTTOM:1px double;
+	FONT-SIZE: 12pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	HEIGHT: 22px;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+select.SmallStatic{
+	COLOR: #000066;
+	BACKGROUND: #E0E0E0;
+	border:1 solid black;
+	FONT-SIZE: 9pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	HEIGHT: 18px;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+
+textarea.BigInput {
+	COLOR: #000066;
+	BACKGROUND: #d6e7ef;
+	border:1 solid black;
+	BORDER-BOTTOM:1px double;
+	FONT-SIZE: 10pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+textarea.BigStatic{ 
+	COLOR: #000066;
+	BACKGROUND: #E0E0E0;
+	border:1 solid black;
+	BORDER-BOTTOM:1px double;
+	FONT-SIZE: 10pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	FONT-WEIGHT: normal;
+	LINE-HEIGHT: normal;
+	font-family: "\u5b8b\u4f53";
+}
+
+/*\u4ee5\u4e0a\u90e8\u5206\u662f\u6807\u51c6\u6807\u7b7e\u7684\u6837\u5f0f*/
+
+/*\u7eff\u8272\u5b57\u4f53*/
+.green{font-family: "\u5b8b\u4f53";	font-size: 12px; color: #1A5918; text-decoration: none}
+
+/*\u767d\u8272\u5b57\u4f53*/
+.white{font-family: "\u5b8b\u4f53"; font-size: 12px;  color: #FFFFFF; text-decoration: none; clip:rect(   )}
+
+/*\u63d0\u4ea4\u7c7b\u6309\u94ae\u5904*/
+.btn{cursor: hand;border-top-style: none;border-right-style: none;border-left-style: none;	background-color: transparent;	border-bottom-style: none; }
+
+/*\u6309\u94ae\u5b57\u4f53*/
+.btfont {  font-family: "\u5b8b\u4f53";font-size:12px; color: #000000; padding-top: 2px}
+
+/*\u7248\u6743\u4fdd\u62a4\u90e8\u5206*/
+.copyright {font-family: "\u5b8b\u4f53";font-size: 12px;color: #FFFFFF;	line-height: 14px;}
+
+/*\u6570\u5b57\u7248\u672c\u53f7\u90e8\u5206*/
+.version {  font-family: "Verdana"; font-size: 16px; font-weight: bolder; color: #FFFFFF; text-decoration: none}
+
+/*\u8868\u683c\u6807\u6807\u8bc6\u884c*/
+.table_title {  font-family: "\u5b8b\u4f53"; height: 20px; font-size: 13px; font-weight: bold;	color: #993300; text-decoration: none; text-align: center; background-color: #F4FEE9}
+
+/*\u5b57\u4f53*/
+.small  { font-size: 9pt;}
+.big    { font-size: 12pt;}
+.big1   { font-size: 12pt;COLOR: #FFFFFF;}
+.big2   { font-size: 18pt}
+.verybig{ font-size: 24pt}
+
+.TableControl{ BACKGROUND: #EFF7FF;}
+.TableHeader { BACKGROUND: #D3E5FA;}
+.TableContent{ BACKGROUND: #E2E8FA;}
+.TableData   { BACKGROUND: #FFFFFF;}
+.TableLine1  { BACKGROUND: #F3F3F3;}
+.TableLine2  { BACKGROUND: #FFFFFF;}
+
+a.tablink:link{text-decoration:none;color:black}
+a.tablink:hover{text-decoration:underline;color:blue}
+
+/*\u6240\u6709\u94fe\u63a5\u9ed8\u8ba4\u60c5\u51b5\u4e0b*/
+a:link {  font-family: "\u5b8b\u4f53"; font-size: 12px; color: #3333FF; text-decoration: underline}
+a:visited {  font-family: "\u5b8b\u4f53"; font-size: 12px; color: #3333FF; text-decoration: underline}
+a:hover {  font-family: "\u5b8b\u4f53"; font-size: 12px; color: #3333FF; text-decoration: none}
+
+/*\u9876\u7aef\u83dc\u5355\u94fe\u63a5*/
+a.top_menu:link {  font-family: "\u5b8b\u4f53"; font-size: 12px; color:#FFFFFF; text-decoration: none}
+a.top_menu:visited {  font-family: "\u5b8b\u4f53"; font-size: 12px; color:#FFFFFF; text-decoration: none}
+a.top_menu:hover {  font-family: "\u5b8b\u4f53"; font-size: 12px; color:#FFFFFF; text-decoration: underline}
+
+a.station:link {  color: #FFFFFF; text-decoration: none}
+a.station:visited {  color: #FFFFFF; text-decoration: none}
+a.station:hover {  color: #FFFFFF; text-decoration: underline}
+
+/*\u84dd\u8272\u94fe\u63a5*/
+a.lan:link {  font-family: "\u5b8b\u4f53"; font-size: 12px; color: #3333FF; text-decoration: underline}
+a.lan:visited {  font-family: "\u5b8b\u4f53"; font-size: 12px; color: #3333FF; text-decoration: underline}
+a.lan:hover {  font-family: "\u5b8b\u4f53"; font-size: 12px; color: #3333FF; text-decoration: none}
+
+/*begin \u4ee5\u4e0b\u90e8\u5206\u662ftabPanel\u9875\u7684\u6837\u5f0f*/
+A.tabpanel:link    { color: #0000FF; TEXT-DECORATION: none;}
+A.tabpanel:visited { COLOR: #0000FF; TEXT-DECORATION: none}
+A.tabpanel:active  { COLOR: #3333ff; TEXT-DECORATION: none}
+A.tabpanel:hover   { COLOR: #ff0000; TEXT-DECORATION: none}
+/*end \u4ee5\u4e0a\u90e8\u5206\u662ftabPanel\u9875\u7684\u6837\u5f0f*/
+
+/*table\u7ec4\u4ef6\u4e2d\u8868\u5934\u6837\u5f0f*/
+.tHeadTd {font-family: "\u5b8b\u4f53"; font-size: 12px;color: #000000; text-decoration: none}
+
+/*\u8868\u683c\u6807\u6807\u8bc6\u5217*/
+.table_title_list {  font-family: "\u5b8b\u4f53"; font-size: 12px; font-weight: normal; color: #993300; text-decoration: none; text-align: center; background-color: #F4FEE9}
+
+/*\u590d\u6742\u8868\u683c\u5de6\u5927\u6807\u9898*/
+.title_bold { font-family: "\u5b8b\u4f53";font-size: 12px;	font-weight: bold;	text-decoration: none;}
+
+/*\u590d\u6742\u591a\u884c\u8868\u683c\u7684\u84dd\u8272\u6807\u9898\u6587\u5b57*/
+.blue {	color: #0000FF;	text-decoration: none;font-family: "\u5b8b\u4f53"; font-size: 12px;}
+
+/*\u8868\u683c\u4e2d\u7684\u9ed1\u8272\u5185\u5bb9\u6587\u5b57\uff0c\u8fd9\u662f\u4e3a\u4e86\u8ff7\u8865\u9ed8\u8ba4\u7684td\u6ca1\u6709\u5e94\u7528\u4e0a\u800c\u5199\u7684*/
+.black { color: #000000; text-decoration: none;font-family: "\u5b8b\u4f53"; font-size: 12px;}
+
+/*\u8868\u683c\u6807\u6807\u8bc6\u884c\u7eff\u8272\u6807\u9898*/
+.table_title_2 {  font-family: "\u5b8b\u4f53"; font-size: 12px; font-weight: normal; color: #006666; text-decoration: none; text-align: center; background-color: #FFFFFF}
+
+/*\u5e95\u7aef\u8fb9\u6846*/
+.bottom_border { BORDER-BOTTOM: 1px solid #FFFFFF; BORDER-TOP: 1px solid #1A594D; BORDER-left: 1px solid #1A594D; BORDER-right: 1px solid #FFFFFF; background-color: #317D6B} 

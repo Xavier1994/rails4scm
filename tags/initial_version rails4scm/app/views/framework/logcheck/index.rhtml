@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>配置管理信息系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<link rel="stylesheet" href="/stylesheets/common_style.css" type="text/css">
+
+<script language="Javascript">
+   /*
+    window.resizeTo(400,360);
+    window.moveTo(300,100);
+    */
+    
+    function  exeClick()
+    {
+    	if(document.forms[0].elements["highSecu"].checked)
+    	{
+		document.close();
+    	}
+    	else
+    	{
+    		document.forms[0].submit();
+    	}
+    }
+
+    function keyDown()
+    {
+        k = window.event.keyCode;
+        if (k == 13) // enter key
+        {
+        	document.focus();
+     		nextfield=document.forms[0].elements["userName"];
+            nextfield=document.activeElement;  //if not found,then nextfield remains "userName"
+        
+            if (nextfield == document.forms[0].elements["userName"])
+            {
+                document.forms[0].passWord.focus();
+            }
+            else if(nextfield == document.forms[0].elements["passWord"])
+            {
+                exeClick();
+            }
+        }
+    }
+    document.onkeydown = keyDown; // work together to analyze keystrokes
+    
+</script>
+
+
+</head>
+
+<body text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="/images/framework/l0.gif" bgcolor="#000081">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+  <tr>
+    <td align="center" valign="middle"> 
+      <table width="778" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="494"><img src="/images/framework/logo.gif" width="494" height="63"></td>
+          <td class="version" >&nbsp;&nbsp;VERSION 3.0</td>
+        </tr>
+        <tr>
+          <td height="30"></td>
+          <td></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" height="236">
+        <tr> 
+          <td align="right" valign="middle" background="/images/framework/l2.gif" width="50%"><img src="/images/framework/l1.gif" width="389" height="236"></td>
+          <td align="left" valign="middle" background="/images/framework/l4.gif" width="50%"> 
+            <table width="389" border="0" cellspacing="0" cellpadding="0" height="236">
+              <tr>
+                <td background="/images/framework/l3.gif" height="236"> 
+                  <table width="388" border="0" cellspacing="1" cellpadding="1">
+                    <% form_tag :action =>'login' do %>
+                      <tr> 
+                        <td width="126">&nbsp;</td>
+                        <td height="125">&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr> 
+                        <td width="126">&nbsp;</td>
+                        <td height="28">&nbsp;</td>
+                        <td height="28">&nbsp;</td>
+                      </tr>
+                      <tr> 
+                        <td align="right" height="28" width="126"><span class="style2">用户帐号</span>：</td>
+                        <td height="28" width="107"> 
+                          <%= text_field 'operator', 'userName', :size=>10  %>
+                        </td>
+                        <td height="28">&nbsp;</td>
+                      </tr>
+                      <tr> 
+                        <td align="right" width="126"><span class="style2">登录密码</span>：</td>
+                        <td> 
+                          <%= password_field 'operator', 'passWord', {:size=>10,:onkeydown=>'javascript:keyDown()' }%>
+                        </td>
+                        <td nowrap>
+                          <input type="checkbox" name="highSecu" value="ON"><span class="style4">强化安全</span>
+                        </td>
+                      </tr>
+                      <tr> 
+                        <td width="126">&nbsp;</td>
+                        <td align="center"> 
+                          <%=image_tag "/images/framework/login_bt.gif" , {:onkeydown => "javascript:keyDown();", :onclick=>"javascript:exeClick();"} %>
+                        </td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td height="15"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td align="right" class="white">本软件由<a href="http://rails4scm.googlecode.com" target="_blank">http://rails4scm.googlecode.com</a>负责提供升级和技术支持</td>
+          <td></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<script language="Javascript">
+    document.forms[0].elements["userName"].focus();
+</script>
+
+</body>
+</html>
