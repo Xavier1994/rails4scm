@@ -1,2 +1,0 @@
-module Framework::ShowFuncTreeHelper
-end
