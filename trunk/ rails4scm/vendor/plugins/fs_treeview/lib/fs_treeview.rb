@@ -213,7 +213,7 @@ module FsTreeview
         html+="</td></tr>\r\n"   
 #处理下级节点
         if isOpen then   # /*!kids.isEmpty()*/) //kids 肯定不为空！ 否则是util.tree类库错了
-            html+="<tr id=\'#{theNode.id}-icon\' class='webfx-tree-container' style=\'display:#{isOpen ? 'block':'none'}\'>"  #tr2
+            html+="<tr id=\'#{theNode.id}-cont\' class='webfx-tree-container' style=\'display:#{isOpen ? 'block':'none'}\'>"  #tr2
             html+="<td> <table border=0 cellspacing=0 cellpadding=0 >"    #td3 and table3
             theNode.each do |childNode|
                 html+="<tr><td> \r\n"
