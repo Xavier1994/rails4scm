@@ -1,4 +1,4 @@
-#labels Phase-Requirements,Phase-Implementation,Featured
+#labels Phase-Requirements,应用主框架要求,Featured
 #  关于应用主框架的讨论
 
 = Introduction =
