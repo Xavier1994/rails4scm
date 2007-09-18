@@ -31,7 +31,8 @@ public
   end
     
   def tree()
-     if session[:tree] ==nil or session[:tree_state]==nil then
+     #~ p params
+     if session[:tree] ==nil then
         session[:tree] =get_tree()
         session[:tree_state]=FsTreeModel::TreeviewState.new()
       end  
@@ -39,7 +40,7 @@ public
      @tree=session[:tree] 
      @tree_sate=session[:tree_state]
      
-     p @tree
-     p @tree_sate
+     #~ p @tree
+     #~ p @tree_sate
   end
 end
