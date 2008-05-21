@@ -49,6 +49,7 @@ module FsTreeModel
             else
                 @children.each{|child| if(nodeId==child.id) then return  child end }
             end
+            return nil  
           end   # of operator [] 
        end # of class Treeview
  
@@ -102,14 +103,14 @@ module FsTreeModel
         
 # treview 相关的事件，如选中，双击等
         class TreeviewEvent   
-#预定义的事件          
+#预定义的事件 
             SELECTION_CHANGED     = 1;
             NODE_EXPANDED           = 2;
             NODE_COLLAPSED          = 4;
             NODE_CHECKED             = 8;
             NODE_UNCHECKED          = 16;
             SELECT_AGAIN              =32;
-             
+
             attr_accessor  :sourceTreeviewModel
             attr_reader  :eventType, :nodeId, :nodeValue
           
