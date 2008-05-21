@@ -2,7 +2,43 @@ require 'fs_tree_model'
 require 'log4r'
 
 module FsTreeview
+
+public
+
+     def js_treeview_tag(treeview)
+        if not treeview.is_a?(FsTreeModel::Treeview)
+            return "tree generation not support for type #{treeview.class}"
+        end
+        return TreeViewJsHelper.gen_tree(treeview)
+      end
+      
+# 输出HTML树。 约定callBackObj 可以是任何类型的对象，但必须接受回调方法: onTreeViewEvent(TreeviewEvent) 否则不产生回调动作
+
+     def treeview_tag(treeview, treeviewState, callBackObj=nil)
+#        p '---debug: now in tag routine'
+#        p treeview
+#        p treeviewState
+        
+        if not treeview.is_a?(FsTreeModel::Treeview)
+            return "tree generation not support for type #{treeview.class}"
+        end
+          
+        if not treeviewState.is_a?(FsTreeModel::TreeviewState)
+            return "tree generation parameter state expects type FsTreeModel::TreeviewState, but got type #{treeviewState.class}"
+        end 
+
+        helper=session[:fs_treeview_helper]
+        if helper==nil 
+            helper=TreeViewHelper.new(treeview, treeviewState, callBackObj)
+            session[:fs_treeview_helper]=helper
+        end
+        return helper.renderComponent(self)
+    end
+
+protected
+
    include Log4r 
+   
    class Log4r::Logger   # 不知为什么不支持[]了，只好根据源码再重新定义一遍
      def self.[](_fullname)
         return RootLogger.instance if _fullname=='root' or _fullname=='global'
@@ -143,7 +179,7 @@ module FsTreeview
          return nodeId==@treeviewState.currentNodeId()        
       end
       
-      def renderNode(theNode,parent,depth)
+      def renderNode(theNode,parent,depth,view)
         treeLogger=Log4r::Logger['treelog']
         if not theNode.is_a?(FsTreeModel::Treeview)
             treeLogger.fatal("ERROR: renderNode parameter 'theNode' type should be Treeview, but got #{treeview.class}")
@@ -188,9 +224,13 @@ module FsTreeview
         else #folder
             if isLast then signIcon=@lImage else signIcon=@tImage end
         end #folder
+        
+        callback_url="/#{view.controller.controller_path()}/fs_tree_callback?old_url=#{view.request.path()}"
+#        p '-----debug--- redirect old url='
+#        p view.request.path()
 #处理前导位图              
         if isFolder then
-           url="/leading?id=#{theNode.id}"
+           url="#{callback_url}&item=leadingImg&id=#{theNode.id}"
         else
            url="#"   # 页节点不产生展开节点的连接! 只有folder才有连接
         end
@@ -198,15 +238,15 @@ module FsTreeview
         html+="<img src=\'#{signIcon}\' border=0 class=\"webfx-tree-icon\" /> </a> </td>\r\n"  #td1
 #处理check框        
         if self.selectable?() then
-            html+="<td width=18> <a href=\'/check?id=#{theNode.id}\' class=\"webfx-tree-icon\"> \r\n"  #td1.5
+            html+="<td width=18> <a href=\'#{callback_url}&item=checkImg&id=#{theNode.id}\' class=\"webfx-tree-icon\"> \r\n"  #td1.5
             html+="<img src=\'#{getCheckImage(nodeChecked?(theNode.id))}\' border=0 /> </a> </td> \r\n"  #td1.5
         end    
 #处理节点位图           
-        html+="<td width=18>  <a href=\'/node?id=#{theNode.id}\' class=\"webfx-tree-icon\"> \r\n"  #td2
+        html+="<td width=18>  <a href=\'#{callback_url}&item=nodeImg&id=#{theNode.id}\' class=\"webfx-tree-icon\"> \r\n"  #td2
         html+="<img src=\'#{getNodeImage(theNode,isOpen,isFolder,currentNode?(theNode))}\' border=0 /> </a></td>\r\n"  #td2
 #处理节点标签
         html+="<td nowrap> <div class=\"webfx-tree-icon\">";
-        html+="<a href=\'/label?id=#{theNode.id}\' class=\"webfx-tree-icon\"> #{theNode.label.empty?() ? '&nbsp' : theNode.label} </a>"
+        html+="<a href=\'#{callback_url}&item=label&id=#{theNode.id}\' class=\"webfx-tree-icon\"> #{theNode.label.empty?() ? '&nbsp' : theNode.label} </a>"
         html+="</div></td>\r\n"
 
         html+="</tr> </table>\r\n"  # tr1  and table2
@@ -217,7 +257,7 @@ module FsTreeview
             html+="<td> <table border=0 cellspacing=0 cellpadding=0 >"    #td3 and table3
             theNode.each do |childNode|
                 html+="<tr><td> \r\n"
-                html+=renderNode(childNode,theNode,depth+1);   #输出子树
+                html+=renderNode(childNode,theNode,depth+1,view);   #输出子树
                 html+="</td></tr>\r\n"
             end  
         end # of if  如果没有打开，就不必输出子树
@@ -236,7 +276,7 @@ module FsTreeview
        
       def getLinkRelatedInfo(nodeId)
          state=@treeviewState
-         tag = @treeViewModel[nodeId].value();
+         tag = @treeViewModel[nodeId]==nil ? '' : @treeViewModel[nodeId].value;
          return LinkRelatedInfo.new(state,nodeId,tag);
        end
        
@@ -248,10 +288,12 @@ module FsTreeview
            @listenerObj.onTreeViewEvent(objEvent)
            Log4r::Logger['treelog'].info 'event triggered: event='+objEvent.to_s
         end
-     end
-       
+      end
+# 变换类名，防止书写罗唆      
+      class TreeviewEvent <FsTreeModel::TreeviewEvent
+      end
   public  
-      def renderTreeviewItem(treeviewItem)
+      def renderTreeviewItem(treeviewItem,view)
         treeLogger=Log4r::Logger['treelog']
         if not treeviewItem.is_a?(FsTreeModel::Treeview)
             treeLogger.fatal("ERROR: treeviewItem type should be Treeview, but got #{treeview.class}")
@@ -262,7 +304,7 @@ module FsTreeview
             treeLogger.fatal("ERROR:无法获得TreeViewItem组件的父节点(parent),类库已被错误修改?");
             return "#"
         else
-          renderNode(treeviewItem,parent,1);        
+          renderNode(treeviewItem,parent,1,view);        
         end #if          
       end #of renderTreeviewItem
       
@@ -273,10 +315,10 @@ module FsTreeview
         
         if info.state.nodeExpanded?(nodeId) then # 展开、合拢操作不认为是选中
            info.state.collapse(nodeId);
-           onTreeStateChanged(TreeviewEvent.new(TreeviewEvent.NODE_COLLAPSED,nodeId,info.value,@treeViewModel));
+           onTreeStateChanged(TreeviewEvent.new(TreeviewEvent::NODE_COLLAPSED,nodeId,info.value,@treeViewModel));
         else 
            info.state.expand(nodeId);
-           onTreeStateChanged(TreeviewEvent.new(TreeviewEvent.NODE_EXPANDED,nodeId,info.value,@treeViewModel));
+           onTreeStateChanged(TreeviewEvent.new(TreeviewEvent::NODE_EXPANDED,nodeId,info.value,@treeViewModel));
         end 
       end # onLeadingImageClick
       
@@ -286,10 +328,10 @@ module FsTreeview
         if info==nil then return; end
            
         if nodeId==info.state.currentNodeId()  then
-            onTreeStateChanged(TreeviewEvent.new(TreeviewEvent.SELECT_AGAIN,nodeId,info.value,@treeViewModel));
+            onTreeStateChanged(TreeviewEvent.new(TreeviewEvent::SELECT_AGAIN,nodeId,info.value,@treeViewModel));
         else
             info.state.currentNodeId= nodeId
-            onTreeStateChanged(TreeviewEvent.new(TreeviewEvent.SELECTION_CHANGED,nodeId,info.value,@treeViewModel));
+            onTreeStateChanged(TreeviewEvent.new(TreeviewEvent::SELECTION_CHANGED,nodeId,info.value,@treeViewModel));
         end           
       end     # of  onNodeLableClick
  
@@ -301,10 +343,10 @@ module FsTreeview
         
         if info.state.nodeChecked?(nodeId) then 
             info.state.uncheck(nodeId);
-            onTreeStateChanged(TreeviewEvent.new(TreeviewEvent.NODE_UNCHECKED,nodeId,info.value,@treeViewModel));
+            onTreeStateChanged(TreeviewEvent.new(TreeviewEvent::NODE_UNCHECKED,nodeId,info.value,@treeViewModel));
         else
             info.state.check(nodeId);
-            onTreeStateChanged(TreeviewEvent.new(TreeviewEvent.NODE_CHECKED,nodeId,info.value,@treeViewModel));
+            onTreeStateChanged(TreeviewEvent.new(TreeviewEvent::NODE_CHECKED,nodeId,info.value,@treeViewModel));
          end
        end  # of onCheckImageClick
        
@@ -356,7 +398,7 @@ module FsTreeview
        end        
  
   public  
-     def renderComponent()
+     def renderComponent(view)
         if @treeViewModel==nil  then return "empty treeview model!" end
         html="<div valign='top' align='left'>\r\n"; 
         html+="<LINK href='/stylesheets/xtree20.css' rel='stylesheet' type='text/css' >\r\n"
@@ -379,7 +421,7 @@ module FsTreeview
             html+="<td> <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"> \r\n"  #table3
             @treeViewModel.each do |node|
                  html+="<tr><td>\r\n"
-                 html+=renderTreeviewItem(node)   #输出子树
+                 html+=renderTreeviewItem(node,view)   #输出子树
                  html+="</td></tr>\r\n"
             end  #end each    
             html+="</table> </td></tr> \r\n"  #table3
@@ -421,26 +463,4 @@ module FsTreeview
     
   end # of class TreeViewHelper
  
-public
-
-     def js_treeview_tag(treeview)
-        if not treeview.is_a?(FsTreeModel::Treeview)
-            return "tree generation not support for type #{treeview.class}"
-        end
-        return TreeViewJsHelper.gen_tree(treeview)
-      end
-      
-# 输出HTML树。 约定callBackObj 可以是任何类型的对象，但必须接受回调方法: onTreeStateChanged(TreeviewEvent) 否则不产生回调动作
-
-     def treeview_tag(treeview, treeviewState, callBackObj=nil)
-        if not treeview.is_a?(FsTreeModel::Treeview)
-            return "tree generation not support for type #{treeview.class}"
-        end
-          
-        if not treeviewState.is_a?(FsTreeModel::TreeviewState)
-            return "tree generation parameter state expects type FsTreeModel::TreeviewState, but got type #{treeviewState.class}"
-        end 
-
-        return TreeViewHelper.new(treeview, treeviewState, callBackObj).renderComponent()
-     end
 end # of module FsTreeview
