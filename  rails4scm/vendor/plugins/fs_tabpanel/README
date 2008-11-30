@@ -1,0 +1,10 @@
+FsTabpanel
+==========
+
+用RUBY实现的TAB控件，傅新奇20081130
+
+用法：
+ 1 tab_begin和tab_end标签必须配对
+ 2 tabpage_begin和tabpage_end标签必须配对
+ 3 在tab_begin和tab_end标签之间，使用 tabpage_begin和tabpage_end标签依次输出每个tabpage页的内容
+ 4 原理：不同的卡片页 使用div形式（不一定都可见），选中的DIV在一个隐藏字段中保存

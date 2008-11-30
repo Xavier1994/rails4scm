@@ -64,7 +64,7 @@ protected
     
     def self.gen_tree(tree)
       tree_html = "<LINK href='/stylesheets/xtree20.css' rel='stylesheet' type='text/css'>"    
-      tree_html += "<script script type='text/javascript' src='/javascripts/xtree20.js'> </script> "
+      tree_html += "<script type='text/javascript' src='/javascripts/xtree20.js'> </script> "
       
       tree_html += "<script type='text/javascript'>\r\n"
       tree_html += "var root = new WebFXTree('#{tree.label}','#{tree.url}',"\
