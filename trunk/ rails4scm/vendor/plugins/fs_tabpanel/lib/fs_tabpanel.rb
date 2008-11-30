@@ -21,36 +21,36 @@ public
       result_html+=" }\r\n"
       result_html+="</script>\r\n"
 
-      model=TabPanelModel.new(blockNames, selectedTab)  #使用模型类，以便于加工各类信息
+      model=TabPanelModel.new(blocks, selectedTab)  #使用模型类，以便于加工各类信息
       
       result_html+="<input type='hidden', id='selectedTabIndx' value=#{selectedTab}> </input>\r\n"   #使用hidden字段保存选中的卡片
 
-      result_html+="<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"#{style}\"> \r\n"
+      result_html+="<table border='0' cellspacing='0' cellpadding='0' style=\"{style}\"> \r\n"
       result_html+="<tr>"
-			result_html+='<td height="26" colspan="3" bgcolor="#F5F5F5">\r\n'
+			result_html+="<td height='26' colspan='3' bgcolor=\"#F5F5F5\">\r\n"
  #输出卡片标题      
-      model.renderTabHeads()
+      result_html+=model.renderTabHeads();
       
- 			result_html+='</td>\r\n'
-  		result_html+='</tr>\r\n'
+ 			result_html+="</td>\r\n"
+  		result_html+="</tr>\r\n"
 
-      result_html+=' <tr>'
-      result_html+='	   <td height="2" bgcolor="#7CA48F" colspan="3"></td>'
-      result_html+=' <tr>'
-      result_html+=' </tr>'
-      result_html+='	  <td height="3" bgcolor="#7CA48F" colspan="3" ></td>'
-      result_html+=' </tr>\r\n'
+      result_html+=" <tr>"
+      result_html+="	   <td height='2' bgcolor=\"#7CA48F\" colspan='3'></td>"
+      result_html+=" <tr>"
+      result_html+=" </tr>"
+      result_html+="	  <td height='3' bgcolor=\"#7CA48F\" colspan='3' ></td>"
+      result_html+=" </tr>\r\n"
       
 #  DIV块的左侧包围框
-      result_html+='<tr>\r\n'
-      result_html+='	 <td width="5" bgcolor="#7CA48F"></td>\r\n'
-      result_html+='	 <td align="left" id="--leftComposer--" valign="top">\r\n'
+      result_html+="<tr>\r\n"
+      result_html+="	 <td width='5' bgcolor=\"#7CA48F\"></td>\r\n"
+      result_html+="	 <td align=\"left\" id=\"--leftComposer--\" valign=\"top\">\r\n"
     
 #在tab_begin和tab_end标签之间，使用 tabpage_begin和tabpage_end标签依次输出每个tabpage页，使用div形式，不一定都可见。代码类似如下：
 #代码类似如下：
 		# result_html+="		<div id=#{model.lable} style='overflow:auto;vertical-align:top'> "
-		# result_html+='			Page 1 content here'
-		# result_html+='		</div>'
+		# result_html+="			Page 1 content here'
+		# result_html+="		</div>"
       
     return result_html
   end
@@ -58,25 +58,25 @@ public
 #tab标签结束
     def tab_end()
    #  DIV块的右侧包围框
-      result_html+='	</td>\r\n'
-      result_html+='	<td id="--rightComposer--" width="5" bgcolor="#7CA48F"></td>\r\n'
-      result_html+= '</tr>\r\n'   #卡片页内容结束
+      result_html  ="	</td>\r\n"
+      result_html+="	<td id=\"--rightComposer--\" width='5' bgcolor=\"#7CA48F\"></td>\r\n"
+      result_html+="</tr>\r\n"   #卡片页内容结束
    # 输出底线    
-      result_html+='<tr>\r\n'
-      result_html+='	<td colspan="3" height="5" bgcolor="#7CA48F"></td>\r\n'
-      result_html+='</table> \r\n'
+      result_html+="<tr>\r\n"
+      result_html+="	<td colspan='3' height='5' bgcolor=\"#7CA48F\"></td>\r\n"
+      result_html+="</table> \r\n"
     end
 
 #tabpage标签开始，输出div头，blockName将作为此div的ID，如果当前页选中则输出之，否则隐藏起来
-    def tabpage_begin(blockName,selected=false)
-        dispStyle=selected?"block":"none"
+    def tabpage_begin(blockName,isSelected=false)
+        dispStyle=(isSelected ? "block" : "none")
         result_html="		<div id=#{blockName} style='overflow:auto;vertical-align:top;display:#{dispStyle}'> "
-        # result_html+='			Page 1 content here'    这个在rhtml中输出之
+        # result_html+="			Page 1 content here'    这个在rhtml中输出之
         return result_html
     end
 
     def tabpage_end()
-        return '		</div>'
+        return "		</div>"
     end
 
     def getTabPanelCSS()
@@ -87,108 +87,114 @@ public
 protected
 
    include Log4r
+ 
    class TabPanelModel
+     
       attr_accessor :borderColor,:selectedColor,:unselectedColor
-      attr_accessor :blockLabels,:blockNames,:selectedBlockName
+      attr_writer :blockLabels,:blockNames,:selectedBlockName
       
 #构造函数。 selectedTab是卡片的name
      def initialize(blockDefs, selectedTab=nil)  
           setBlocksValue(blockDefs);
           if selectedTab==nil
-             setSelectedBlockName(getBlockNames()[0]);
+             @selectedBlockName =@blockNames[0];
           else
-             setSelectedBlockName(selectedTab);
+             @selectedBlockName =selectedTab;
            end
       end
 
 #依次输出各个卡片的标题
      def renderTabHeads()
-        result_html+='	<table border="0" cellspacing="0" cellpadding="0" class=tablink>\r\n'
-        result_html+='		<tr>\r\n'
-        result_html+='			<td align="left" width="12">\r\n'
+        result_html  ="	<table border='0' cellspacing='0' cellpadding='0' class=tablink>\r\n"
+        result_html+="		<tr>\r\n"
+        result_html+="			<td align='left' width='12'>\r\n"
         result_html+="				<img src=\"#{getBeginImg()}\" height='27' width='12' />\r\n"
         result_html+="   </td>\r\n"
   #依次输出卡片标题 ,每个都有前导和后续位图     
-        for i in(0..blockLabels.size) 
-          result_html="	    <td background='#{getMidImg(i)}' height='27'>"
-          linkstyle= isSelected?(i) ? "title_menu":"title_menu_uncur";
-          result_html+="				<a class='#{linkStyle}'  onclick='javascript:selectTab(#{blockNames[i]})'> "
-          result_html+="				    #{blockLabels[i]}  "
-          result_html+='				</a>'
-          result_html+='			</td>'
+        for i in (0 .. @blockNames.size-1) do
+          result_html+="	    <td background='#{getMidImg(i)}' height='27'>"
+          linkstyle= self.isSelected?(i)  ?  "title_menu":"title_menu_uncur";
+          result_html+="				<a class='#{linkstyle}'  onclick=\"javascript:selectTab('#{@blockNames[i]}')\"> "
+          result_html+="#{@blockLabels[i]}"
+          result_html+="				</a>"
+          result_html+="			</td>"
 
-          result_html+='			<td width="30" align="right">\r\n'
+          result_html+="			<td width='30' align='right'>\r\n"
           result_html+="				<img src='#{getRightImg(i)}' height='27' width='30' />\r\n"
-          result_html+='			</td>\r\n'
-          result_html+='		</tr>\r\n'
-          result_html+='		</table>\r\n'
+          result_html+="			</td>\r\n"
         end      
+         result_html+="		</tr>\r\n"
+         result_html+="		</table>\r\n"
+         return result_html
       end # of renderTabHeads()
 
      def setBlocksValue(blockDefs)
         num = blockDefs.size/3;
         names =[];
         labels = [];
-       for  j in (0..num)
-            label = blockDefs.get(j*3);
-            name = blockDefs.get(j*3+1);
-            visible = blockDefs.get(j*3+2);
-            
-            if downcase(visible)=="true" 
-                setSelectedBlockName(name);
+        for  j in (0 .. num-1) do
+            label = blockDefs[j*3];
+            name = blockDefs[j*3+1];
+            isVisible = blockDefs[j*3+2];
+            if isVisible then
+                @electedBlockName =name;
             end
             names[j]=name
             labels[j]=label
         end
         
-        setBlockNames(names);
-        setBlockLabels(labels);
-        Logger["USER"].trace("++++TabPanel 拆分参数完毕！++++names size=#{names.size},labelsize=#{labels.size}");
+        @blockNames=names;
+        @blockLabels=labels;
+        #~ Log4r::Logger["USER"].debug "++++TabPanel 拆分参数完毕！++++names size=#{names.size} andlabelsize=#{labels.size}"
     end # of fuction setBlocksValue
 
+    def isStringEqual?(str1,str2)
+        if str1==nil then str1='--NULL--'; end
+        if str2==nil then str1='--NULL--'; end
+        return str1.upcase()==str2.upcase();
+    end 
 #判断当前tab是否被选中
      def isSelected?(index)
-        if getBlockLabels()==nil||getBlockNames()==nil
-             Logger["USER"].warn("[tabPanel组件]无法获取卡片页定义in 函数isSelected?(index)");
+        if @blockLabels==nil||@blockNames==nil
+             #~ Log4r::Logger["USER"].warn("[tabPanel组件]无法获取卡片页定义in 函数isSelected?(index)");
             return false;
         end
-        if index<0||index>=getBlockNames().size then
-             Logger["USER"].warn("[tabPanel组件]调用函数isSelected?(index), 数组越界");
+        if index<0||index>=@blockNames.size then
+             #~ Log4r::Logger["USER"].warn("[tabPanel组件]调用函数isSelected?(index), 数组越界");
              return false;
         end
-        if getSelectedBlockName()==nil 
-            setSelectedBlockName(getBlockNames()[0]);
+        if @selectedBlockName==nil 
+            @selectedBlockName=@blockNames[0];
         end
 
-        return upcase(getBlockNames()[index]) ==upcase(getSelectedBlockName());
+        return isStringEqual?(@blockNames[index],@selectedBlockName);
     end # of fcntion isSelected?(blockLabel)
       
 #判断选中的是否是第一个block
     def selectedIsFirstBlock?()
-        if getSelectedBlockName()==nil 
-            setSelectedBlockName(getBlockNames()[0]);
+        if @selectedBlockName==nil 
+            @selectedBlockName= @blockNames[0];
         end
 
-        selectedBlockName = getSelectedBlockName();
-        firstBlockName = getBlockNames()[0];
-        return upcase(selectedBlockName)==upcase(firstBlockName);
+        firstBlockName = @blockNames[0];
+        return isStringEqual?(@selectedBlockName,firstBlockName);
     end
     
 #判断是否是最后一个block
     def isLastBlock?(index)
-         return index == blockLabels.size-1;
+         return index == @blockNames.size-1;
     end 
     
 # 如果不是最后一个block，判断下一个block是否是selected
-     def nextIsSelected(index)
-         if getSelectedBlockName()==nil 
-            setSelectedBlockName(getBlockNames()[0]);
+     def nextIsSelected?(index)
+         if @selectedBlockName==nil 
+            @selectedBlockName=@blockNames[0];
          end
 
-        if index<0||index>getBlockNames.size|| isLastBlock(index) 
+        if index<0||index>@blockNames.size|| isLastBlock?(index) 
             return false;
         else
-            return upcase(getBlockNames()[index+1])==upcase(getSelectedBlockName());
+            return isStringEqual?(@blockNames[index+1],@selectedBlockName);
         end
     end #of fuction nextIsSelected
     
@@ -205,7 +211,7 @@ protected
     #~ <context-asset name="SelectedRightImage" path="/images/tabimage/tab_hlrt_end.gif"/>
 	  #~ <context-asset name="unSelectedRightImage" path="/images/tabimage/tab_dmrt_end.gif"/>
             
-    def getBeginImage()
+    def getBeginImg()
         if selectedIsFirstBlock?()
             return "/images/tabimage0/tab_cur_bg.gif"  # "selectedBeginImage");
         else 
@@ -213,7 +219,7 @@ protected
         end
     end 
    
-    def getMidImage(index)
+    def getMidImg(index)
         if isSelected?(index) 
             return "/images/tabimage0/card_l_m.gif"    # ("selectedMidImage");
         else 
@@ -221,17 +227,17 @@ protected
         end
      end
     
-    def getRightImage(index)
+    def getRightImg(index)
         if isSelected?(index)
-            if isLastBlock(index) 
+            if isLastBlock?(index) 
                 return "/images/tabimage0/tab_hlrt_end.gif"  #("SelectedRightImage");
             else
                 return "/images/tabimage0/tab_hlrt.gif"        #("selectedToUnselectedRightImage");
             end
         else 
-            if isLastBlock(index) 
+            if isLastBlock?(index) 
                   return "/images/tabimage0/tab_dmrt_end.gif"  # ("unSelectedRightImage");
-            elsif  !nextIsSelected(index) #下一个block也是非选中的
+            elsif  !nextIsSelected?(index) #下一个block也是非选中的
                   return "/images/tabimage0/tab_dmrt.gif"    # ("unselectedToUnselectedRightImage");
             else #下一个block是选中的
                    return "/images/tabimage0/tab_hllt.gif"     #("unselectedToSelectedRightImage");
