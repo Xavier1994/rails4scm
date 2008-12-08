@@ -3,7 +3,7 @@ require 'fs_tree_model'
 class Framework::FuncTreeController < ApplicationController
 
 private
-   def get_tree()  
+   def get_tree()
       inst=FsTreeModel::Treeview.new("root","#",0,'mainvalue')
       sub1=FsTreeModel::Treeview.new("HTML方式的功能树","/framework/func_tree/tree",1,'value1')
       sub2=FsTreeModel::Treeview.new("使用JS的功能树","/framework/func_tree",2,'value2')
@@ -20,10 +20,99 @@ private
 
       return inst
    end
+   
+   def getUserTree
+     begin
+       inst=FsTreeModel::Treeview.new("软件配置管理系统","#",0,'mainvalue')
+       
+       #从session中得到用户编号
+       operid = session[:operator].OPER_ID
 
+       #通过用户提取权限
+       rtSystemFunction = RtSystemFunction.new()
+       @rtSystemFunction = rtSystemFunction.findUserSystemFunction(operid)
+       if @rtSystemFunction == nil then
+          return inst
+       end
+       funcGroupIds = ""
+       for systemFunction in @rtSystemFunction
+          func_group_id = systemFunction.func_group_id 
+          funcGroupIds = funcGroupIds + "'" + func_group_id + "',"
+          func_group_id = nil
+       end
+       if funcGroupIds.length>0 then
+         funcGroupIds = funcGroupIds.slice(0, funcGroupIds.length-1)
+       end
+       
+       #通过系统功能提取功能组
+       rtFunctionGroup = RtFunctionGroup.new()
+       @rtFunctionGroup = rtFunctionGroup.findSystemGroup(funcGroupIds)
+       if @rtFunctionGroup == nil then
+          return inst
+       end
+       upGroupIds = ""
+       for functionGroup in @rtFunctionGroup
+          up_group_id = functionGroup.up_group_id
+          upGroupIds = upGroupIds + "'" + up_group_id + "',"
+          up_group_id = nil
+       end
+       if upGroupIds.length>0 then
+         upGroupIds = upGroupIds.slice(0, upGroupIds.length-1)
+       end
+       
+       #通过功能组的上级ID提取功能组
+       @rtFunctionGroupUp = rtFunctionGroup.findSystemGroupUp(upGroupIds)
+       if @rtFunctionGroupUp == nil then
+          return inst
+       end
+       i=1  
+       for functionGroupUp in @rtFunctionGroupUp  
+         functionGroupUpName = Iconv.iconv("GB2312","UTF-8",functionGroupUp.func_group_name) 
+         functionGroupUpUrl  = functionGroupUp.url
+         group_id            = functionGroupUp.func_group_id
+         sub1=FsTreeModel::Treeview.new(functionGroupUpName,functionGroupUpUrl,i,'value1')
+         j=1
+         for functionGroup in @rtFunctionGroup
+            up_group_id = functionGroup.up_group_id
+            if group_id == up_group_id then
+              functionGroupName = Iconv.iconv("GB2312","UTF-8",functionGroup.func_group_name) 
+              functionGroupUrl  = functionGroup.url
+              group_id_up = functionGroup.func_group_id
+              cn = i.to_s + j.to_s 
+              sub2=FsTreeModel::Treeview.new(functionGroupName,functionGroupUrl,cn,'value' + cn)
+              k = 1
+              for systemFunction in @rtSystemFunction
+                func_group_id = systemFunction.func_group_id 
+                if group_id_up == func_group_id then
+                  cnk = cn.to_s + k.to_s 
+                  systemName = Iconv.iconv("GB2312","UTF-8",systemFunction.func_name)
+                  systemUrl  = systemFunction.target
+                  sub3=FsTreeModel::Treeview.new(systemName,systemUrl,cnk,'value' + cnk)
+                  cnk = ""
+                  k = k + 1
+                  sub2<<sub3
+                end
+                func_group_id = nil
+              end 
+              j = j+1
+              cn = ""
+              sub1<<sub2
+              group_id_up = nil
+            end
+            up_group_id = nil
+         end
+         i = i+1
+         inst<<sub1 
+       end
+     rescue Exception => e
+       print e.backtrace.join("\n")
+     end 
+     return inst
+   end
 public 
   def show()
-     @tree=get_tree()
+     #@tree=get_tree()
+     @tree=getUserTree() 
   end 
   
   def index
@@ -40,16 +129,5 @@ public
       @tree=helper.treeViewModel
       @tree_state1=helper.treeviewState
     end   
-=begin      
-      if session[:tree] ==nil then
-        session[:tree] =get_tree()
-        session[:tree_state]=FsTreeModel::TreeviewState.new()
-      end  
-
-     @tree=session[:tree] 
-     @tree_sate=session[:tree_state]
-=end     
-     # p @tree
-     # p @tree_sate
   end
 end

@@ -27,22 +27,21 @@
         k = window.event.keyCode;
         if (k == 13) // enter key
         {
-        	document.focus();
-     		nextfield=document.forms[0].elements["userName"];
+            document.focus();
+            nextfield=document.forms[0].elements["userName"];
             nextfield=document.activeElement;  //if not found,then nextfield remains "userName"
         
             if (nextfield == document.forms[0].elements["userName"])
             {
                 document.forms[0].passWord.focus();
+
             }
             else if(nextfield == document.forms[0].elements["passWord"])
             {
                 exeClick();
             }
         }
-    }
-    document.onkeydown = keyDown; // work together to analyze keystrokes
-    
+    } 
 </script>
 
 
@@ -82,17 +81,17 @@
                         <td height="28">&nbsp;</td>
                       </tr>
                       <tr> 
-                        <td align="right" height="28" width="126"><span class="style2">用户帐号</span>：</td>
+                        <td align="right" height="28" width="126"><span class="style2">用户帐号</span>：</td> 
                         <td height="28" width="107"> 
-                          <%= text_field 'operator', 'userName', :size=>10  %>
+                          <input type="text" name="userName" size="10" value="<%=@userName%>"  onkeydown="keyDown()"> 
                         </td>
                         <td height="28">&nbsp;</td>
                       </tr>
                       <tr> 
                         <td align="right" width="126"><span class="style2">登录密码</span>：</td>
                         <td> 
-                          <%= password_field 'operator', 'passWord', {:size=>10,:onkeydown=>'javascript:keyDown()' }%>
-                        </td>
+                          <input type="password" name="passWord" size="10" value="<%=@passWord%>" onkeydown="keyDown()">
+                        </td> 
                         <td nowrap>
                           <input type="checkbox" name="highSecu" value="ON"><span class="style4">强化安全</span>
                         </td>
@@ -125,6 +124,7 @@
     </td>
   </tr>
 </table>
+
 <script language="Javascript">
     document.forms[0].elements["userName"].focus();
 </script>

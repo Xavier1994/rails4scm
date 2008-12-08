@@ -2,27 +2,49 @@ require 'kernel/operator'
 
 class Framework::LogcheckController < ApplicationController
       def index()
-          @operator=session[:operator]
-          if @operator==nil then
-              @operator=Operator.new()
-              session[:operator]=@operator
-          end
-          @operator.userName='super';
-          @operator.passWord='none'
+          @userName="llr"; 
+          @passWord="111111";
        end
-
+       
        def login()
-          opr=params[:operator]
-          p  opr
-          if opr[:passWord].empty?() then
-             redirect_to :action => 'index'
-          else
-             session[:operator].passWord=opr[:passWord]
-             redirect_to :action => 'open_home'
-          end
+         begin 
+           operid = params[:userName]
+           pswd  = params[:passWord]
+           @userName=operid
+           @passWord=pswd
+           
+           if operid == "" or operid == nil then
+             @login_flag="1"
+           else
+             if pswd == "" or pswd == nil then
+               @login_flag="2"
+             else
+               op=UserInfo.new()
+                @operuser = op.findOne(operid,pswd);
+
+                if @operuser == nil then 
+                  @login_flag="3"
+                  reset_session
+                else
+                  session[:operator]=@operuser
+                  redirect_to :action => 'open_home'
+                end
+             end 
+           end
+         rescue 
+           redirect_to(:action => :index)
+         end
        end
   
        def open_home()
-          # do loging ?
+          if session[:operator] == nil then
+            redirect_to(:action => :index) 
+          end
+       end
+       
+       def loginout()
+         reset_session
+         session[:operator]=nil
+         redirect_to(:action => :index) 
        end
 end
