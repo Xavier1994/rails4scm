@@ -2,8 +2,8 @@ require 'kernel/operator'
 
 class Framework::LogcheckController < ApplicationController
       def index()
-          @userName="llr"; 
-          @passWord="111111";
+          @userName=""; 
+          @passWord=""; 
        end
        
        def login()
