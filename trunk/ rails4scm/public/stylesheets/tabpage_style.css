@@ -1,0 +1,6 @@
+/*begin \u4ee5\u4e0b\u90e8\u5206\u662ftabPanel\u9875\u7684\u6837\u5f0f*/
+A.tabpanel:link    { color: #0000FF; TEXT-DECORATION: none;}
+A.tabpanel:visited { COLOR: #0000FF; TEXT-DECORATION: none}
+A.tabpanel:active  { COLOR: #3333ff; TEXT-DECORATION: none}
+A.tabpanel:hover   { COLOR: #ff0000; TEXT-DECORATION: none}
+/*end \u4ee5\u4e0a\u90e8\u5206\u662ftabPanel\u9875\u7684\u6837\u5f0f*/
