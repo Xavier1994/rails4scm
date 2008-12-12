@@ -3,7 +3,7 @@
 require 'log4r'
 
 module FsTabPanel
-
+ 
 public
 
 #tab 标签，blocks 是一个结构数组，结构单元为以下形式：显示名称，卡片页div名，是否显示(true,false)
@@ -12,62 +12,66 @@ public
 #在tab_begin和tab_end标签之间，使用 tabpage_begin和tabpage_end标签依次输出每个tabpage页，使用div形式，不一定都可见
 
     def tab_begin(blocks,selectedTab=nil,callBackObj=nil, borderColor="#00CC33")
-      result_html = "<LINK href='#{getTabPanelCSS()}' rel='stylesheet' type='text/css'>\r\n"    
-#JAVAscript用于切换各个卡片的可见性
-      result_html+="<script type='text/javascript'>\r\n"
-      result_html+=" function selectTab(tabName)\r\n"
-      result_html+=" {\r\n"
-      result_html+="   alert(tabName); \r\n"     #todo:将tabLabel记录到selectedTabIndx隐藏列中，同时设置各个DIV的可见性
-      result_html+=" }\r\n"
-      result_html+="</script>\r\n"
-
       model=TabPanelModel.new(blocks, selectedTab)  #使用模型类，以便于加工各类信息
       
-      result_html+="<input type='hidden', id='selectedTabIndx' value=#{selectedTab}> </input>\r\n"   #使用hidden字段保存选中的卡片
-
-      result_html+="<table border='0' cellspacing='0' cellpadding='0' style=\"{style}\"> \r\n"
-      result_html+="<tr>"
-			result_html+="<td height='26' colspan='3' bgcolor=\"#F5F5F5\">\r\n"
- #输出卡片标题      
-      result_html+=model.renderTabHeads();
+      #if session[:fs_tabpanel_session_blockNames] == nil then
+      #  session[:fs_tabpanel_session_blockNames] = model::blockNames_R
+      #end
+      #if session[:fs_tabpanel_session_blockLabels] == nil then
+      #  session[:fs_tabpanel_session_blockLabels] = model::blockLabels_R
+      #end 
       
- 			result_html+="</td>\r\n"
-  		result_html+="</tr>\r\n"
+      result_html = "<LINK href='#{getTabPanelCSS()}' rel='stylesheet' type='text/css'>\r\n"
+      #JAVAscript用于切换各个卡片的可见性
+      result_html += model.getJavascript()
 
-      result_html+=" <tr>"
-      result_html+="	   <td height='2' bgcolor=\"#7CA48F\" colspan='3'></td>"
-      result_html+=" <tr>"
-      result_html+=" </tr>"
-      result_html+="	  <td height='3' bgcolor=\"#7CA48F\" colspan='3' ></td>"
-      result_html+=" </tr>\r\n"
+      #最外层table  上左 （right01.gif） 上中 （tb.gif   上面卡片和下面的rightb01.gif）
+      result_html+="<table width='100%' cellpadding='0' cellspacing='0' border='0' height='100%'>\r\n"
+      result_html+="	<tr>\r\n"
+      result_html+="		<td width='14'><img border='0' src='/images/tabimage/right01.gif' width='14' height='40'></td>\r\n"
+      result_html+="		<td height=26 valign='bottom' background='/images/tabimage/tb.gif'>\r\n"
+      result_html+="			<table cellpadding='0'  cellspacing='0'  border='0' width='100%'>\r\n"
+      result_html+="				<tr>\r\n"
+      result_html+="					<td>\r\n"
       
-#  DIV块的左侧包围框
-      result_html+="<tr>\r\n"
-      result_html+="	 <td width='5' bgcolor=\"#7CA48F\"></td>\r\n"
-      result_html+="	 <td align=\"left\" id=\"--leftComposer--\" valign=\"top\">\r\n"
-    
-#在tab_begin和tab_end标签之间，使用 tabpage_begin和tabpage_end标签依次输出每个tabpage页，使用div形式，不一定都可见。代码类似如下：
-#代码类似如下：
-		# result_html+="		<div id=#{model.lable} style='overflow:auto;vertical-align:top'> "
-		# result_html+="			Page 1 content here'
-		# result_html+="		</div>"
+      #加载卡片页标题
+      head = model.renderTabHeads(selectedTab);
+      if(head != nil) then
+        result_html+=head
+      end
       
-    return result_html
-  end
-
-#tab标签结束
-    def tab_end()
-   #  DIV块的右侧包围框
-      result_html  ="	</td>\r\n"
-      result_html+="	<td id=\"--rightComposer--\" width='5' bgcolor=\"#7CA48F\"></td>\r\n"
-      result_html+="</tr>\r\n"   #卡片页内容结束
-   # 输出底线    
-      result_html+="<tr>\r\n"
-      result_html+="	<td colspan='3' height='5' bgcolor=\"#7CA48F\"></td>\r\n"
-      result_html+="</table> \r\n"
+      result_html+="					</td>\r\n"
+      result_html+="				</tr>\r\n"
+      result_html+="				<tr>\r\n"
+      result_html+="					<td background='/images/tabimage/rightb01.gif' height='6'></td>\r\n"
+      result_html+="				</tr>\r\n"
+      result_html+="			</table>\r\n"
+      result_html+="		</td>\r\n"
+      result_html+="		<td width='15'><img border='0' src='/images/tabimage/right02.gif' width='15' height='40'></td>\r\n"
+      result_html+="	</tr>\r\n"
+      result_html+="	<tr>\r\n"
+      result_html+="		<td  width='14' background='/images/tabimage/right01b.gif' height='100%'>&nbsp;</td>\r\n"
+      result_html+="		<td align=left valign=top  height='100%' bgcolor='#ffffff'>\r\n"
+      
+      return result_html
     end
 
-#tabpage标签开始，输出div头，blockName将作为此div的ID，如果当前页选中则输出之，否则隐藏起来
+    #tab标签结束
+    def tab_end()
+      result_html ="		</td>\r\n"
+      result_html+="		<td  width='15' background='/images/tabimage/right02b.gif' height='100%'>&nbsp;</td>\r\n"
+      result_html+="	</tr>\r\n"
+      result_html+="	<tr>\r\n"
+      result_html+="		<td  width='14' background='/images/tabimage/right01d.gif' height='8'></td>\r\n"
+      result_html+="		<td background='/images/tabimage/rightb02.gif' height='8'></td>\r\n"
+      result_html+="		<td  width='15' background='/images/tabimage/right02d.gif' height='8'></td>\r\n"
+      result_html+="	</tr>\r\n"
+      result_html+="</table>\r\n" 
+      
+      return result_html
+    end
+
+    #tabpage标签开始，输出div头，blockName将作为此div的ID，如果当前页选中则输出之，否则隐藏起来
     def tabpage_begin(blockName,isSelected=false)
         dispStyle=(isSelected ? "block" : "none")
         result_html="		<div id=#{blockName} style='overflow:auto;vertical-align:top;display:#{dispStyle}'> "
@@ -79,10 +83,10 @@ public
         return "		</div>"
     end
 
-    def getTabPanelCSS()
-        #context=this.getPage().getRequestCycle().getRequestContext().getRequest().getContextPath();
-        return  "/stylesheets/tabpage_style.css";  
-   end
+    def getTabPanelCSS() 
+      #context=this.getPage().getRequestCycle().getRequestContext().getRequest().getContextPath();
+      return  "/stylesheets/common_style.css"; 
+    end
 
 protected
 
@@ -93,7 +97,7 @@ protected
       attr_accessor :borderColor,:selectedColor,:unselectedColor
       attr_writer :blockLabels,:blockNames,:selectedBlockName
       
-#构造函数。 selectedTab是卡片的name
+     #构造函数。 selectedTab是卡片的name
      def initialize(blockDefs, selectedTab=nil)  
           setBlocksValue(blockDefs);
           if selectedTab==nil
@@ -103,31 +107,180 @@ protected
            end
       end
 
-#依次输出各个卡片的标题
-     def renderTabHeads()
-        result_html  ="	<table border='0' cellspacing='0' cellpadding='0' class=tablink>\r\n"
-        result_html+="		<tr>\r\n"
-        result_html+="			<td align='left' width='12'>\r\n"
-        result_html+="				<img src=\"#{getBeginImg()}\" height='27' width='12' />\r\n"
-        result_html+="   </td>\r\n"
-  #依次输出卡片标题 ,每个都有前导和后续位图     
-        for i in (0 .. @blockNames.size-1) do
-          result_html+="	    <td background='#{getMidImg(i)}' height='27'>"
-          linkstyle= self.isSelected?(i)  ?  "title_menu":"title_menu_uncur";
-          result_html+="				<a class='#{linkstyle}'  onclick=\"javascript:selectTab('#{@blockNames[i]}')\"> "
-          result_html+="#{@blockLabels[i]}"
-          result_html+="				</a>"
-          result_html+="			</td>"
+     #依次输出各个卡片的标题
+     def renderTabHeads(selectedTab)
+       begin
+         result_html="                                        <div id='fs_tabpanel_head_div' align='left'>\r\n"
+         result_html+="						<table cellpadding='0'  cellspacing='0'  border='0'>\r\n" 
+         result_html+="							<tr>\r\n" 
+         #先判断是第几个被选中
+         j = 0;
+         if(selectedTab == nil) then
+           selectedTab = @blockNames[0]
+         end
+         for i in (0 .. @blockNames.size-1) do
+           name = @blockNames[i]
+           if name == selectedTab then
+             j = i
+             break
+           end
+         end
+         
+         for i in (0 .. @blockNames.size-1) do
+            name = @blockNames[i]
+            lbnm = @blockLabels[i]
+            #linkstyle= self.isSelected?(i)  ?  "title_menu":"title_menu_uncur";
+            if i == 0 then
+                if j == i then
+                  result_html+="								<td><img border='0' src='/images/tabimage/card_l_l_01.gif' width='27' height='27'></td>\r\n"
+                else
+                  result_html+="								<td><img border='0' src='/images/tabimage/card_h_l_01.gif' width='27' height='27'></td>\r\n"
+                end
+            end
+                
+            if i == j then
+               result_html+="								<td background='/images/tabimage/card_l_m.gif' nowrap align='center'>\r\n"
+            else
+               result_html+="								<td background='/images/tabimage/card_h_m.gif' nowrap align='center'>\r\n"
+            end
+            result_html+="								   <font color='#7CA48F'><b><a onclick=\"javascript:selectTab('#{name}')\">#{lbnm}</a></b></font>\r\n"
+            if i != @blockNames.size-1 then
+                if j == 0 and i == 0 then
+                   result_html+="								<td><img border='0' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\r\n"
+                else
+                   if (i+1) == j then
+                     result_html+="								<td><img border='0' src='/images/tabimage/card_l_l_02.gif' width='27' height='27'></td>\r\n"
+                   else
+                     if i == j then
+                        result_html+="								<td><img border='0' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\r\n"
+                     else
+                        result_html+="								<td><img border='0' src='/images/tabimage/card_h_l_02.gif' width='27' height='27'></td>\r\n"
+                     end
+                   end
+                end
+            end
 
-          result_html+="			<td width='30' align='right'>\r\n"
-          result_html+="				<img src='#{getRightImg(i)}' height='27' width='30' />\r\n"
-          result_html+="			</td>\r\n"
-        end      
-         result_html+="		</tr>\r\n"
-         result_html+="		</table>\r\n"
+            if i == @blockNames.size-1 then
+                if i == j then
+                  result_html+="								<td><img border='0' src='/images/tabimage/card_l_r_02.gif' width='27' height='27'></td>\r\n"
+                else
+                  result_html+="								<td><img border='0' src='/images/tabimage/card_h_r_02.gif' width='27' height='27'></td>\r\n"
+                end
+            end
+         end
+
+         result_html+="							</tr>\r\n"
+         result_html+="						</table>\r\n"
+         result_html+="                                        </div>"
          return result_html
+       rescue Exception
+         return nil
+       end 
       end # of renderTabHeads()
+      
+     #生成javascript脚本，用于点击卡片页显示还是不显示
+     def getJavascript()
+       result_html="<script language=\"Javascript\">\r\n"
+       
+       result_html+="   blockNames  = new Array();\r\n"
+       result_html+="   blockLabels = new Array();\r\n"
+       result_html+="   selectIndex = 0;\r\n"
+       for i in (0 .. @blockNames.size-1) do
+           result_html+="   blockNames[#{i}]  = \"#{@blockNames[i]}\";\r\n"
+           result_html+="   blockLabels[#{i}] = \"#{@blockLabels[i]}\";\r\n"
+       end
+       
+       result_html+=" function selectTab(tabName)\r\n"
+       result_html+=" {\r\n"
+       result_html+="   for(i=0;i<blockNames.length;i++){ \r\n"
+       result_html+="     tab = document.getElementById(blockNames[i]);\r\n"
+       result_html+="     if(blockNames[i] == tabName){\r\n"
+       result_html+="     selectIndex = i;\r\n"
+       result_html+="       try{\r\n"
+       result_html+="         tab.style.display=\"block\";\r\n"
+       result_html+="       }catch(e) {\r\n"
+       result_html+="         continue;\r\n"
+       result_html+="       }\r\n"
+       result_html+="     }else {\r\n"
+       result_html+="       try{\r\n"
+       result_html+="         tab.style.display=\"none\";\r\n"
+       result_html+="       }catch(e) {\r\n"
+       result_html+="         continue;\r\n"
+       result_html+="       }\r\n"
+       result_html+="     } \r\n"
+       result_html+="   } \r\n"
+       result_html+="   fstabpanelheaddiv = document.getElementById(\"fs_tabpanel_head_div\");\r\n"
+       result_html+="   fstabpanelheaddiv.innerHTML = fs_tabpanel_callback(selectIndex);\r\n" 
+       result_html+=" }\r\n"
+       result_html+=" \r\n"
+       result_html+= fs_tabpanel_callback()
+       result_html+=" \r\n"
+       result_html+="</script>\r\n"
+       
+       return result_html;
+     end
+     
+     #选中某个卡片的时候
+     def fs_tabpanel_callback()
+             result_html="  function fs_tabpanel_callback(selectIndex) {\r\n"
+             result_html+="    text = '';\r\n"
+             result_html+="    text+= \"                                     <div id='fs_tabpanel_head_div' align='left'>\";\r\n"
+             result_html+="    text+= \" 				       <table cellpadding='0'  cellspacing='0'  border='0'>\";\r\n" 
+             result_html+="    text+= \"						<tr>\";\r\n"
+             result_html+="    if (selectIndex == ''){\r\n"
+             result_html+="      selectIndex=0; \r\n"
+             result_html+="    }\r\n"
+             result_html+="    var j = 0;\r\n"              
+             result_html+="    for (i=0;i< blockNames.length;i++){ \r\n"
+             result_html+="       name = blockNames[i];\r\n"
+             result_html+="       lbnm = blockLabels[i];\r\n"
+             #linkstyle= self.isSelected?(i)  ?  "title_menu":"title_menu_uncur";
+             result_html+="       if (i == 0){\r\n"
+             result_html+="          if (selectIndex == i){\r\n"
+             result_html+="    text+= \"								<td><img border='0' src='/images/tabimage/card_l_l_01.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="          }else{\r\n"
+             result_html+="    text+= \"								<td><img border='0' src='/images/tabimage/card_h_l_01.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="          }\r\n"
+             result_html+="        }\r\n"
+             result_html+="       if (i == selectIndex){\r\n"
+             result_html+="    text+= \"								<td background='/images/tabimage/card_l_m.gif' nowrap align='center'>\";\r\n"
+             result_html+="       }else{\r\n"
+             result_html+="    text+= \"								<td background='/images/tabimage/card_h_m.gif' nowrap align='center'>\";\r\n"
+             result_html+="       }\r\n"
+             result_html+="    text+=\" 							   <font color='#7CA48F'><b><a onclick=javascript:selectTab('\" + name + \"')>\" + lbnm + \"</a></b></font>\";\r\n"
+             result_html+="       if (i != blockNames.length-1){\r\n"
+             result_html+="          if (i == 0 && selectIndex == 0){\r\n"
+             result_html+="		text+= \"						<td><img border='0' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="          }else {\r\n"
+             result_html+="             if ((i+1) == selectIndex){\r\n"
+             result_html+="			text+= \"					<td><img border='0' src='/images/tabimage/card_l_l_02.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="             }else{\r\n"
+             result_html+="                if (i == selectIndex){\r\n"
+             result_html+="			text+= \"					<td><img border='0' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="                }else{\r\n"
+             result_html+="			text+= \"					<td><img border='0' src='/images/tabimage/card_h_l_02.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="                }\r\n"
+             result_html+="             }\r\n"
+             result_html+="          }\r\n"
+             result_html+="       }\r\n"
+             result_html+="       if (i == blockNames.length-1){\r\n"
+             result_html+="          if (i == selectIndex){\r\n"
+             result_html+="		text+= \"						<td><img border='0' src='/images/tabimage/card_l_r_02.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="          }else{\r\n"
+             result_html+="		text+= \"						<td><img border='0' src='/images/tabimage/card_h_r_02.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="          }\r\n"
+             result_html+="       }\r\n"
+             result_html+="    }\r\n"
 
+             result_html+="    text += \"							</tr>\";\r\n"
+             result_html+="    text += \"						</table>\";\r\n"
+             result_html+="    text += \"                                        </div>\";\r\n"
+             result_html+="    return text\r\n"
+             result_html+="  }\r\n"
+             
+             return result_html
+     end
+  
      def setBlocksValue(blockDefs)
         num = blockDefs.size/3;
         names =[];
@@ -137,7 +290,7 @@ protected
             name = blockDefs[j*3+1];
             isVisible = blockDefs[j*3+2];
             if isVisible then
-                @electedBlockName =name;
+                @selectedBlockName =name;
             end
             names[j]=name
             labels[j]=label
@@ -153,7 +306,7 @@ protected
         if str2==nil then str1='--NULL--'; end
         return str1.upcase()==str2.upcase();
     end 
-#判断当前tab是否被选中
+    #判断当前tab是否被选中
      def isSelected?(index)
         if @blockLabels==nil||@blockNames==nil
              #~ Log4r::Logger["USER"].warn("[tabPanel组件]无法获取卡片页定义in 函数isSelected?(index)");
