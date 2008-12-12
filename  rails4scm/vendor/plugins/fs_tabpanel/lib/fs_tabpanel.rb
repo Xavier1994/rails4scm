@@ -13,14 +13,7 @@ public
 
     def tab_begin(blocks,selectedTab=nil,callBackObj=nil, borderColor="#00CC33")
       model=TabPanelModel.new(blocks, selectedTab)  #使用模型类，以便于加工各类信息
-      
-      #if session[:fs_tabpanel_session_blockNames] == nil then
-      #  session[:fs_tabpanel_session_blockNames] = model::blockNames_R
-      #end
-      #if session[:fs_tabpanel_session_blockLabels] == nil then
-      #  session[:fs_tabpanel_session_blockLabels] = model::blockLabels_R
-      #end 
-      
+   
       result_html = "<LINK href='#{getTabPanelCSS()}' rel='stylesheet' type='text/css'>\r\n"
       #JAVAscript用于切换各个卡片的可见性
       result_html += model.getJavascript()
@@ -118,7 +111,7 @@ protected
          if(selectedTab == nil) then
            selectedTab = @blockNames[0]
          end
-         for i in (0 .. @blockNames.size-1) do
+         for i in (0 .. @blockNames.size-1) 
            name = @blockNames[i]
            if name == selectedTab then
              j = i
@@ -126,7 +119,7 @@ protected
            end
          end
          
-         for i in (0 .. @blockNames.size-1) do
+         for i in (0 .. @blockNames.size-1) 
             name = @blockNames[i]
             lbnm = @blockLabels[i]
             #linkstyle= self.isSelected?(i)  ?  "title_menu":"title_menu_uncur";
@@ -185,7 +178,7 @@ protected
        result_html+="   blockNames  = new Array();\r\n"
        result_html+="   blockLabels = new Array();\r\n"
        result_html+="   selectIndex = 0;\r\n"
-       for i in (0 .. @blockNames.size-1) do
+       for i in (0 .. @blockNames.size-1) 
            result_html+="   blockNames[#{i}]  = \"#{@blockNames[i]}\";\r\n"
            result_html+="   blockLabels[#{i}] = \"#{@blockLabels[i]}\";\r\n"
        end
@@ -285,7 +278,7 @@ protected
         num = blockDefs.size/3;
         names =[];
         labels = [];
-        for  j in (0 .. num-1) do
+        for  j in (0 .. num-1)
             label = blockDefs[j*3];
             name = blockDefs[j*3+1];
             isVisible = blockDefs[j*3+2];
@@ -298,23 +291,24 @@ protected
         
         @blockNames=names;
         @blockLabels=labels;
-        #~ Log4r::Logger["USER"].debug "++++TabPanel 拆分参数完毕！++++names size=#{names.size} andlabelsize=#{labels.size}"
+        Log4r::Logger["USER"].debug("++++TabPanel 拆分参数完毕！++++names size=#{names.size} andlabelsize=#{labels.size}");
     end # of fuction setBlocksValue
 
     def isStringEqual?(str1,str2)
         if str1==nil then str1='--NULL--'; end
         if str2==nil then str1='--NULL--'; end
         return str1.upcase()==str2.upcase();
-    end 
+      end 
+      
     #判断当前tab是否被选中
      def isSelected?(index)
         if @blockLabels==nil||@blockNames==nil
-             #~ Log4r::Logger["USER"].warn("[tabPanel组件]无法获取卡片页定义in 函数isSelected?(index)");
+            Log4r::Logger["USER"].warn("[tabPanel组件]无法获取卡片页定义in 函数isSelected?(index)");
             return false;
         end
         if index<0||index>=@blockNames.size then
-             #~ Log4r::Logger["USER"].warn("[tabPanel组件]调用函数isSelected?(index), 数组越界");
-             return false;
+             Log4r::Logger["USER"].warn 'erro calling isSelected ()method for tabPanel component: index out of bound!'
+             return false 
         end
         if @selectedBlockName==nil 
             @selectedBlockName=@blockNames[0];
@@ -339,7 +333,7 @@ protected
     end 
     
 # 如果不是最后一个block，判断下一个block是否是selected
-     def nextIsSelected?(index)
+    def nextIsSelected?(index)
          if @selectedBlockName==nil 
             @selectedBlockName=@blockNames[0];
          end
@@ -351,49 +345,37 @@ protected
         end
     end #of fuction nextIsSelected
     
-     #~ <context-asset name="selectedBeginImage" path="/images/tabimage/tab_cur_bg.gif"/>
-     #~ <context-asset name="unSelectedBeginImage" path="/images/tabimage/tab_bg.gif"/>
-    
-    #~ <context-asset name="selectedMidImage" path="/images/tabimage/card_l_m.gif"/>
-    #~ <context-asset name="unSelectedMidImage" path="/images/tabimage/card_h_m.gif"/>
-    
-    #~ <context-asset name="selectedToUnselectedRightImage" path="/images/tabimage/tab_hlrt.gif"/>
-    #~ <context-asset name="unselectedToSelectedRightImage" path="/images/tabimage/tab_hllt.gif"/>
-    #~ <context-asset name="unselectedToUnselectedRightImage" path="/images/tabimage/tab_dmrt.gif"/>
-    
-    #~ <context-asset name="SelectedRightImage" path="/images/tabimage/tab_hlrt_end.gif"/>
-	  #~ <context-asset name="unSelectedRightImage" path="/images/tabimage/tab_dmrt_end.gif"/>
-            
+          
     def getBeginImg()
         if selectedIsFirstBlock?()
-            return "/images/tabimage0/tab_cur_bg.gif"  # "selectedBeginImage");
+            '/images/tabimage0/tab_cur_bg.gif'   # selectedBeginImage;
         else 
-            return "/images/tabimage0/tab_bg.gif"        #"unSelectedBeginImage");
+            '/images/tabimage0/tab_bg.gif'        #unSelectedBeginImage;
         end
     end 
    
     def getMidImg(index)
         if isSelected?(index) 
-            return "/images/tabimage0/card_l_m.gif"    # ("selectedMidImage");
+            '/images/tabimage0/card_l_m.gif'    #selectedMidImage;
         else 
-             return "/images/tabimage0/card_h_m.gif"   #("unSelectedMidImage");
+            '/images/tabimage0/card_h_m.gif'   #unSelectedMidImage;
         end
      end
     
     def getRightImg(index)
         if isSelected?(index)
             if isLastBlock?(index) 
-                return "/images/tabimage0/tab_hlrt_end.gif"  #("SelectedRightImage");
+                return '/images/tabimage0/tab_hlrt_end.gif'  #SelectedRightImage;
             else
-                return "/images/tabimage0/tab_hlrt.gif"        #("selectedToUnselectedRightImage");
+                return '/images/tabimage0/tab_hlrt.gif'        #selectedToUnselectedRightImage;
             end
         else 
             if isLastBlock?(index) 
-                  return "/images/tabimage0/tab_dmrt_end.gif"  # ("unSelectedRightImage");
+                  return '/images/tabimage0/tab_dmrt_end.gif'  #unSelectedRightImage;
             elsif  !nextIsSelected?(index) #下一个block也是非选中的
-                  return "/images/tabimage0/tab_dmrt.gif"    # ("unselectedToUnselectedRightImage");
+                  return '/images/tabimage0/tab_dmrt.gif'        # unselectedToUnselectedRightImage;
             else #下一个block是选中的
-                   return "/images/tabimage0/tab_hllt.gif"     #("unselectedToSelectedRightImage");
+                   return '/images/tabimage0/tab_hllt.gif'     #unselectedToSelectedRightImage;
             end 
         end # of if selected?
     end #of getRightImage
