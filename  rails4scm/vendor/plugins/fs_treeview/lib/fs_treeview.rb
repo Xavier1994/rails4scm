@@ -193,10 +193,10 @@ protected
         
         while t.parent()!=nil and iLevel<100 do
             isLast=t.lastNodeThisLevel?();
-#如果是根节点也不能作为最后节点处理            
-            indent="<td> <a class='webfx-tree-icon' href='#'>"  \
-                    +" <img class='webfx-tree-icon' id=\'#{theNode.id}-indent-#{iLevel}\'"   
-                    +" src=\'#{getIndentImage(isLast)}\' border='0' /> </a> </td>"+ indent 
+            #如果是根节点也不能作为最后节点处理            
+            indent="<td> <a class='webfx-tree-icon' href='#'>"  
+            indent+=" <img class='webfx-tree-icon' id='#{theNode.id}-indent-#{iLevel}' src='#{getIndentImage(isLast)}' border='0'>"   
+            indent+=" </a> </td>" 
             t=t.parent() 
             iLevel +=1  
         end # of whild
@@ -235,15 +235,15 @@ protected
            url="#"   # 页节点不产生展开节点的连接! 只有folder才有连接
         end
         html+="<td width=18> <a href=\'#{url}\' class=\"webfx-tree-icon\"> \r\n"  #td1
-        html+="<img src=\'#{signIcon}\' border=0 class=\"webfx-tree-icon\" /> </a> </td>\r\n"  #td1
+        html+="<img src=\'#{signIcon}\' border=0 class=\"webfx-tree-icon\" > </a> </td>\r\n"  #td1
 #处理check框        
         if self.selectable?() then
             html+="<td width=18> <a href=\'#{callback_url}&item=checkImg&id=#{theNode.id}\' class=\"webfx-tree-icon\"> \r\n"  #td1.5
-            html+="<img src=\'#{getCheckImage(nodeChecked?(theNode.id))}\' border=0 /> </a> </td> \r\n"  #td1.5
+            html+="<img src=\'#{getCheckImage(nodeChecked?(theNode.id))}\' border=0 > </a> </td> \r\n"  #td1.5
         end    
 #处理节点位图           
         html+="<td width=18>  <a href=\'#{callback_url}&item=nodeImg&id=#{theNode.id}\' class=\"webfx-tree-icon\"> \r\n"  #td2
-        html+="<img src=\'#{getNodeImage(theNode,isOpen,isFolder,currentNode?(theNode))}\' border=0 /> </a></td>\r\n"  #td2
+        html+="<img src=\'#{getNodeImage(theNode,isOpen,isFolder,currentNode?(theNode))}\' border=0 > </a></td>\r\n"  #td2
 #处理节点标签
         html+="<td nowrap> <div class=\"webfx-tree-icon\">";
         html+="<a href=\'#{callback_url}&item=label&id=#{theNode.id}\' class=\"webfx-tree-icon\"> #{theNode.label.empty?() ? '&nbsp' : theNode.label} </a>"
@@ -407,12 +407,12 @@ protected
             html+="<tr><td> \r\n <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" >"   #table2
             html+="<tr id= \'#{@treeViewModel.id()}\' class='webfx-tree-icon' height=20>";
             html+="<td width=18>"
-            html+="<a href='#' class='webfx-tree-icon'> <img src=\'#{getRootNodeImage()}\' border=0 class='webfx-tree-icon'/> </a>"
+            html+="<a href='#' class='webfx-tree-icon'> <img src=\'#{getRootNodeImage()}\' border=0 class='webfx-tree-icon'> </a>"
             html+="</td>"   # /td witdh=18
             html+="<td nowrap> <div class='webfx-tree-icon'> "
             html+="<a href='#' class='webfx-tree-item'>#{@treeViewModel.label}</a> " 
             html+="</div> </td>"  # /td nowrap
-            html+="</tr> </table> "  #table2
+            html+="</tr> </table> "  #table2 
             html+="</td></tr> \r\n"  #table2
         end   # if showRoot?()
 

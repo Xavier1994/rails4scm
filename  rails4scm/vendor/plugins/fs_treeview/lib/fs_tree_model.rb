@@ -69,34 +69,34 @@ module FsTreeModel
            end      
  
            def nodeExpanded?(id)
-              id==nil ? false : @expandedIds.include?(id);
+              id==nil ? false : @expandedIds.include?(id.to_s);
            end
 
            def nodeChecked?(id)
-              id==nil ? false : @checkedIds.include?(id);
+              id==nil ? false : @checkedIds.include?(id.to_s);
            end
             
            def expand(id)
               if id==nil then return end
-              if not @expandedIds.include?(id) then @expandedIds<<id  end
+              if not @expandedIds.include?(id.to_s) then @expandedIds<<id.to_s  end
               @currentNodeId=id
            end
             
             def collapse(id)
                 if id==nil then return end
-                if @expandedIds.include?(id) then @expandedIds.delete(id)  end
+                if @expandedIds.include?(id.to_s) then @expandedIds.delete(id.to_s)  end
                 @currentNodeId=id
             end
             
             def check(id)
               if id==nil then return end
-              if not @checkedIds.include?(id) then @checkedIds<<id  end
+              if not @checkedIds.include?(id.to_s) then @checkedIds<<id.to_s  end
               @currentNodeId=id
             end
             
             def uncheck(id)
                 if id==nil then return end
-                if @checkedIds.include?(id) then @checkedIds.delete(id)  end
+                if @checkedIds.include?(id.to_s) then @checkedIds.delete(id.to_s)  end
                 @currentNodeId=id
             end
         end # of class  TreeviewState
