@@ -13,5 +13,11 @@ class ApplicationController < ActionController::Base
 #		     	ActiveRecord::Base.connection.execute 'SET NAMES UTF8'
 #		  end
  	  end
-  
+  private
+    #过滤器功能来阻止不经过登录页面进入系统
+    def fileLoginSessionNil()
+      if session[:operator] == nil then
+        redirect_to(:controller =>"/framework/logcheck", :action =>"index",:loginflag=>"1")
+      end
+    end
 end
