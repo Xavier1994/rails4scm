@@ -117,7 +117,11 @@ protected
         openIcon=treeviewItem.openIcon(); 
 # 由于树的所有节点可以都是“分组”类似MS的explorer，因此不论是否叶节点都显示当指针
         if isCurrent and showFocus?() then
-            return @fileImage
+           if isFolder then
+             @fileImage 
+           else
+             return @selectedImage
+           end
         else if isFolder then
             if not isNodeOpened then
                  if icon!=nil and not icon=="" then 
@@ -128,7 +132,7 @@ protected
             else  # if open
                  if openIcon!=nil and not openIcon=="" then 
                     return openIcon 
-                 else  
+                 else
                     return @openFolderImage
                 end #openIcon                   
             end    
@@ -176,7 +180,7 @@ protected
       
       def currentNode?(nodeId)
          if @treeviewState==nil or nodeId==nil then return false end
-         return nodeId==@treeviewState.currentNodeId()        
+         return nodeId.to_s==@treeviewState.currentNodeId() 
       end
       
       def renderNode(theNode,parent,depth,view)
@@ -243,7 +247,7 @@ protected
         end    
 #处理节点位图           
         html+="<td width=18>  <a href=\'#{callback_url}&item=nodeImg&id=#{theNode.id}\' class=\"webfx-tree-icon\"> \r\n"  #td2
-        html+="<img src=\'#{getNodeImage(theNode,isOpen,isFolder,currentNode?(theNode))}\' border=0 > </a></td>\r\n"  #td2
+        html+="<img src=\'#{getNodeImage(theNode,isOpen,isFolder,currentNode?(theNode.id))}\' border=0 > </a></td>\r\n"  #td2
 #处理节点标签
         html+="<td nowrap> <div class=\"webfx-tree-icon\">";
         html+="<a href=\'#{callback_url}&item=label&id=#{theNode.id}\' class=\"webfx-tree-icon\"> #{theNode.label.empty?() ? '&nbsp' : theNode.label} </a>"
@@ -366,7 +370,7 @@ protected
       def showRoot?()  return @showRoot  end
       def  rootOpened?() return @rootOpened end   #根节点是否展开了
         
-      def initialize(model,treeviewState,listenerObj,selectable=true,showFocus=true,showRoot=true) 
+      def initialize(model,treeviewState,listenerObj,selectable=true,showFocus=true,showRoot=true)  
            @treeViewModel=model
            @treeviewState=treeviewState
            @listenerObj=listenerObj
