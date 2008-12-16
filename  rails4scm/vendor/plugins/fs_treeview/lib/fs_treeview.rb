@@ -118,7 +118,19 @@ protected
 # 由于树的所有节点可以都是“分组”类似MS的explorer，因此不论是否叶节点都显示当指针
         if isCurrent and showFocus?() then
            if isFolder then
-             @fileImage 
+             if not isNodeOpened then
+                 if icon!=nil and not icon=="" then 
+                   return icon 
+                else  
+                    return @closeFolderImage
+                end #icon
+            else  # if open
+                 if openIcon!=nil and not openIcon=="" then 
+                    return openIcon 
+                 else
+                    return @openFolderImage
+                end #openIcon                   
+            end
            else
              return @selectedImage
            end
