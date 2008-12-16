@@ -4,6 +4,7 @@ class Framework::LogcheckController < ApplicationController
       def index()
           @userName=""; 
           @passWord=""; 
+          @login_flag = params[:loginflag]
        end
        
        def login()
