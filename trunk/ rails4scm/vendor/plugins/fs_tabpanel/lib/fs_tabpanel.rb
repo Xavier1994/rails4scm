@@ -290,8 +290,8 @@ protected
         end
         
         @blockNames=names;
-        @blockLabels=labels;
-        Log4r::Logger["USER"].debug("++++TabPanel 拆分参数完毕！++++names size=#{names.size} andlabelsize=#{labels.size}");
+        @blockLabels=labels; 
+        #Log4r::Logger["USER"].debug("++++TabPanel 拆分参数完毕！++++names size=#{names.size} andlabelsize=#{labels.size}");
     end # of fuction setBlocksValue
 
     def isStringEqual?(str1,str2)
