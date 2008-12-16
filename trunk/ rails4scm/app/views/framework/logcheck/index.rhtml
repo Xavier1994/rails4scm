@@ -33,21 +33,35 @@
         
             if (nextfield == document.forms[0].elements["userName"])
             {
+                if(document.forms[0].userName.value == ""){ 
+                    alert("用户名不能为空");
+                    document.forms[0].userName.focus();
+                    return false;
+                }
                 document.forms[0].passWord.focus();
-
             }
             else if(nextfield == document.forms[0].elements["passWord"])
             {
                 exeClick();
             }
         }
-    } 
+    }
+    
+    function init(){
+        var login_flag="<%=@login_flag%>";
+        if (login_flag == "1"){
+            alert("请登录!");
+            document.forms[0].userName.focus();
+            return false;
+        }
+    }
+
 </script>
 
 
 </head>
-
-<body text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="/images/framework/l0.gif" bgcolor="#000081">
+ 
+<body text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="/images/framework/l0.gif" bgcolor="#000081" onload="init()">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
   <tr>
     <td align="center" valign="middle"> 
