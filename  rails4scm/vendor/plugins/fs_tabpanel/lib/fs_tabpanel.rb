@@ -119,49 +119,61 @@ protected
            end
          end
          
+         chgId = "chg_tab_img_"
          for i in (0 .. @blockNames.size-1) 
             name = @blockNames[i]
             lbnm = @blockLabels[i]
             #linkstyle= self.isSelected?(i)  ?  "title_menu":"title_menu_uncur";
             if i == 0 then
+                @chgId = ""
+                @chgId = chgId + "0"
                 if j == i then
-                  result_html+="								<td><img border='0' src='/images/tabimage/card_l_l_01.gif' width='27' height='27'></td>\r\n"
+                  result_html+="								<td><img border='0' id='#{@chgId}' src='/images/tabimage/card_l_l_01.gif' width='27' height='27'></td>\r\n"
                 else
-                  result_html+="								<td><img border='0' src='/images/tabimage/card_h_l_01.gif' width='27' height='27'></td>\r\n"
+                  result_html+="								<td><img border='0' id='#{@chgId}' src='/images/tabimage/card_h_l_01.gif' width='27' height='27'></td>\r\n"
                 end
             end
                 
             if i == j then
-               result_html+="								<td background='/images/tabimage/card_l_m.gif' nowrap align='center'>\r\n"
+               @chgId = ""
+               @chgId = chgId + ((i*2)+2-1).to_s
+               result_html+="								<td id='#{@chgId}' background='/images/tabimage/card_l_m.gif' nowrap align='center'>\r\n"
             else
-               result_html+="								<td background='/images/tabimage/card_h_m.gif' nowrap align='center'>\r\n"
+               @chgId = ""
+               @chgId = chgId + ((i*2)+2-1).to_s
+               result_html+="								<td id='#{@chgId}' background='/images/tabimage/card_h_m.gif' nowrap align='center'>\r\n"
             end
             result_html+="								   <font color='#7CA48F'><b><a onclick=\"javascript:selectTab('#{name}')\">#{lbnm}</a></b></font>\r\n"
             if i != @blockNames.size-1 then
+                @chgId = ""
+                @chgId = chgId + ((i*2)+2).to_s
                 if j == 0 and i == 0 then
-                   result_html+="								<td><img border='0' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\r\n"
+                   result_html+="								<td><img border='0' id='#{@chgId}' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\r\n"
                 else
                    if (i+1) == j then
-                     result_html+="								<td><img border='0' src='/images/tabimage/card_l_l_02.gif' width='27' height='27'></td>\r\n"
+                     result_html+="								<td><img border='0' id='#{@chgId}' src='/images/tabimage/card_l_l_02.gif' width='27' height='27'></td>\r\n"
                    else
                      if i == j then
-                        result_html+="								<td><img border='0' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\r\n"
+                        result_html+="								<td><img border='0' id='#{@chgId}' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\r\n"
                      else
-                        result_html+="								<td><img border='0' src='/images/tabimage/card_h_l_02.gif' width='27' height='27'></td>\r\n"
+                        result_html+="								<td><img border='0' id='#{@chgId}' src='/images/tabimage/card_h_l_02.gif' width='27' height='27'></td>\r\n"
                      end
                    end
                 end
             end
 
             if i == @blockNames.size-1 then
+                @chgId = ""
+                @chgId = chgId + ((i*2)+2).to_s
                 if i == j then
-                  result_html+="								<td><img border='0' src='/images/tabimage/card_l_r_02.gif' width='27' height='27'></td>\r\n"
+                  result_html+="								<td><img border='0' id='#{@chgId}' src='/images/tabimage/card_l_r_02.gif' width='27' height='27'></td>\r\n"
                 else
-                  result_html+="								<td><img border='0' src='/images/tabimage/card_h_r_02.gif' width='27' height='27'></td>\r\n"
+                  result_html+="								<td><img border='0' id='#{@chgId}' src='/images/tabimage/card_h_r_02.gif' width='27' height='27'></td>\r\n"
                 end
             end
          end
-
+         @chgId = nil
+         chgId = nil
          result_html+="							</tr>\r\n"
          result_html+="						</table>\r\n"
          result_html+="                                        </div>"
@@ -177,6 +189,7 @@ protected
        
        result_html+="   blockNames  = new Array();\r\n"
        result_html+="   blockLabels = new Array();\r\n"
+       result_html+="   chgId = \"chg_tab_img_\";\r\n"
        result_html+="   selectIndex = 0;\r\n"
        for i in (0 .. @blockNames.size-1) 
            result_html+="   blockNames[#{i}]  = \"#{@blockNames[i]}\";\r\n"
@@ -202,9 +215,9 @@ protected
        result_html+="       }\r\n"
        result_html+="     } \r\n"
        result_html+="   } \r\n"
-       result_html+="   fstabpanelheaddiv = document.getElementById(\"fs_tabpanel_head_div\");\r\n"
-       result_html+="   fstabpanelheaddiv.innerHTML = fs_tabpanel_callback(selectIndex);\r\n" 
-       result_html+=" }\r\n"
+       result_html+="   fs_tabpanel_callback(selectIndex);\r\n"
+       result_html+="   return false; \r\n"
+       result_html+=" }\r\n" 
        result_html+=" \r\n"
        result_html+= fs_tabpanel_callback()
        result_html+=" \r\n"
@@ -216,59 +229,56 @@ protected
      #选中某个卡片的时候
      def fs_tabpanel_callback()
              result_html="  function fs_tabpanel_callback(selectIndex) {\r\n"
-             result_html+="    text = '';\r\n"
-             result_html+="    text+= \"                                     <div id='fs_tabpanel_head_div' align='left'>\";\r\n"
-             result_html+="    text+= \" 				       <table cellpadding='0'  cellspacing='0'  border='0'>\";\r\n" 
-             result_html+="    text+= \"						<tr>\";\r\n"
              result_html+="    if (selectIndex == ''){\r\n"
              result_html+="      selectIndex=0; \r\n"
              result_html+="    }\r\n"
              result_html+="    var j = 0;\r\n"              
              result_html+="    for (i=0;i< blockNames.length;i++){ \r\n"
-             result_html+="       name = blockNames[i];\r\n"
-             result_html+="       lbnm = blockLabels[i];\r\n"
-             #linkstyle= self.isSelected?(i)  ?  "title_menu":"title_menu_uncur";
              result_html+="       if (i == 0){\r\n"
+             result_html+="          chgId_cd = chgId + i;\r\n"
+             result_html+="          object = document.getElementById(chgId_cd);\r\n"
              result_html+="          if (selectIndex == i){\r\n"
-             result_html+="    text+= \"								<td><img border='0' src='/images/tabimage/card_l_l_01.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="   		object.src='/images/tabimage/card_l_l_01.gif';\r\n"
              result_html+="          }else{\r\n"
-             result_html+="    text+= \"								<td><img border='0' src='/images/tabimage/card_h_l_01.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="             object.src='/images/tabimage/card_h_l_01.gif';\r\n"
              result_html+="          }\r\n"
-             result_html+="        }\r\n"
-             result_html+="       if (i == selectIndex){\r\n"
-             result_html+="    text+= \"								<td background='/images/tabimage/card_l_m.gif' nowrap align='center'>\";\r\n"
-             result_html+="       }else{\r\n"
-             result_html+="    text+= \"								<td background='/images/tabimage/card_h_m.gif' nowrap align='center'>\";\r\n"
              result_html+="       }\r\n"
-             result_html+="    text+=\" 							   <font color='#7CA48F'><b><a onclick=javascript:selectTab('\" + name + \"')>\" + lbnm + \"</a></b></font>\";\r\n"
+             result_html+="       if (i == selectIndex){\r\n"
+             result_html+="          chgId_cd = chgId + ((i*2)+1);\r\n"
+             result_html+="          object = document.getElementById(chgId_cd);\r\n"
+             result_html+="          object.background='/images/tabimage/card_l_m.gif';\r\n"
+             result_html+="       }else{\r\n"
+             result_html+="          chgId_cd = chgId + ((i*2)+1);\r\n"
+             result_html+="          object = document.getElementById(chgId_cd);\r\n"
+             result_html+="          object.background='/images/tabimage/card_h_m.gif';\r\n"
+             result_html+="       }\r\n"
              result_html+="       if (i != blockNames.length-1){\r\n"
+             result_html+="          chgId_cd = chgId + ((i*2)+2);\r\n"
+             result_html+="          object = document.getElementById(chgId_cd);\r\n"
              result_html+="          if (i == 0 && selectIndex == 0){\r\n"
-             result_html+="		text+= \"						<td><img border='0' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="		object.src='/images/tabimage/card_l_r_01.gif';\r\n"
              result_html+="          }else {\r\n"
              result_html+="             if ((i+1) == selectIndex){\r\n"
-             result_html+="			text+= \"					<td><img border='0' src='/images/tabimage/card_l_l_02.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="		   object.src='/images/tabimage/card_l_l_02.gif';\r\n"
              result_html+="             }else{\r\n"
              result_html+="                if (i == selectIndex){\r\n"
-             result_html+="			text+= \"					<td><img border='0' src='/images/tabimage/card_l_r_01.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="		      object.src='/images/tabimage/card_l_r_01.gif';\r\n"
              result_html+="                }else{\r\n"
-             result_html+="			text+= \"					<td><img border='0' src='/images/tabimage/card_h_l_02.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="		      object.src='/images/tabimage/card_h_l_02.gif';\r\n"
              result_html+="                }\r\n"
              result_html+="             }\r\n"
              result_html+="          }\r\n"
              result_html+="       }\r\n"
              result_html+="       if (i == blockNames.length-1){\r\n"
+             result_html+="          chgId_cd = chgId + ((i*2)+2);\r\n"
+             result_html+="          object = document.getElementById(chgId_cd);\r\n"
              result_html+="          if (i == selectIndex){\r\n"
-             result_html+="		text+= \"						<td><img border='0' src='/images/tabimage/card_l_r_02.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="	        object.src='/images/tabimage/card_l_r_02.gif';\r\n"
              result_html+="          }else{\r\n"
-             result_html+="		text+= \"						<td><img border='0' src='/images/tabimage/card_h_r_02.gif' width='27' height='27'></td>\";\r\n"
+             result_html+="		object.src='/images/tabimage/card_h_r_02.gif';\r\n"
              result_html+="          }\r\n"
              result_html+="       }\r\n"
              result_html+="    }\r\n"
-
-             result_html+="    text += \"							</tr>\";\r\n"
-             result_html+="    text += \"						</table>\";\r\n"
-             result_html+="    text += \"                                        </div>\";\r\n"
-             result_html+="    return text\r\n"
              result_html+="  }\r\n"
              
              return result_html
