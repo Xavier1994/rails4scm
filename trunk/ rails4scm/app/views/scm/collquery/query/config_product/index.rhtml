@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>相关产品</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %>    
+  </head>
+  <body bgcolor="#F6F6F6">
+    <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+      <thead class="td_header_bak2">
+        <tr>
+          <td class="td_header_bak2" width="15%">产品编号</td>
+          <td class="td_header_bak3" width="40%">产品名称</td>
+          <td class="td_header_bak3" width="15%">产品版本</td>
+          <td class="td_header_bak3" width="15%">最新标志</td>
+          <td class="td_header_bak3" width="15%">配置项版本</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% 
+        i = 0
+        for product in @product 
+        %>
+          <tr>
+            <td class="td6" width="15%">&nbsp;<%=product.product_code%></td>
+            <td class="td7" width="40%">&nbsp;<%=product.product_name%></td>
+            <td class="td7" width="15%">&nbsp;<%=product.product_vers%></td>
+            <td class="td7" width="15%">&nbsp;<%=product.active_status%></td>
+            <td class="td7" width="15%">&nbsp;<%=product.h_config_vers%></td>
+          </tr>
+        <% 
+          i = i + 1
+        end
+        if i<5 then
+          i = 5 - i
+          j = 0
+          for j in [0,1,2,3,4]
+        %>
+          <tr>
+            <td class="td6" width="15%">&nbsp;</td>
+            <td class="td7" width="40%">&nbsp;</td>
+            <td class="td7" width="15%">&nbsp;</td>
+            <td class="td7" width="15%">&nbsp;</td>
+            <td class="td7" width="15%">&nbsp;</td>
+          </tr>
+        <%
+          end
+        end
+        %>
+      </tbody>
+    </table>
+  </body>
+</html>

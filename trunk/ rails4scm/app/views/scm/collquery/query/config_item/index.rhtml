@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    
+    <script language="javascript">
+        function query(){
+            document.forms[0].submit();
+        }
+        
+        function onclickText(){
+            if(event.keyCode == 13) {
+                query();
+            }
+        }
+    </script>
+  </head>
+  <body bgcolor="#F6F6F6" >
+  <% form_tag :action =>'index' do %>
+  <table width="2100px">
+     <tr>
+       <td>
+         <table>
+           <tr>
+             <td>
+               名称：     <input type="text" name="configure_name" onkeydown="onclickText()" value="<%=@configure_name%>" >
+               类别：     <input type="text" name="configure_type" value="<%=@configure_type%>">
+               配置项编号：<input type="text" name="configure_code" value="<%=@configure_code%>">
+               <input type="button" value="查询" onclick="query()">
+             </td>
+           </tr>
+         </table>
+       </td>
+     </tr>
+     <tr>
+       <td width="100%" valign="top">
+         <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <thead >
+              <tr>
+                <td class="td_header_bak2" width="">配置项编号</td>　
+                <td class="td_header_bak3" width="">配置项名称</td>
+                <td class="td_header_bak3" width="">配置项类别</td>
+                <td class="td_header_bak3" width="">发布日期</td>
+                <td class="td_header_bak3" width="">发布人</td>
+                <td class="td_header_bak3" width="">配置项说明</td>
+                <td class="td_header_bak3" width="">存放位置</td>
+                <td class="td_header_bak3" width="">开发库目录</td>
+                <td class="td_header_bak3" width="">配置责任人</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% for configureItem in @configureItem %>
+                <tr>
+                  <td class="td6" >&nbsp;<%=configureItem.CONFIGURE_CODE%></td>
+                  <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_NAME%></td>
+                  <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_TYPE%></td>
+                  <td class="td7" >&nbsp;<%=(configureItem.CONFIGURE_PUB_DATE).strftime('%Y-%m-%d')%></td>
+                  <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_PUB_PERSON%></td>
+                  <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_REMARK%></td>
+                  <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_STORE_ADDR%></td>
+                  <td class="td7" >&nbsp;<%=configureItem.DEVELOP_PATH%></td>
+                  <td class="td7" >&nbsp;<%=configureItem.CONF_DUTY_PERSON%></td>
+                </tr>
+              <%  end %>
+            </tbody>
+          </table>
+       </td>
+     </tr>
+  </table>
+  
+  <% end %>
+  </body>
+</html>
