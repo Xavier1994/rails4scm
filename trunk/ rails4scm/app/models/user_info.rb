@@ -4,8 +4,7 @@ class UserInfo < ActiveRecord::Base
   
   def findOne(operid,pswd)
     begin
-    UserInfo.find(:first,:conditions =>["oper_id =? and pswd =?",operid,pswd])
-    
+      UserInfo.find(:first,:conditions =>["oper_id =? and pswd =?",operid,pswd])
     rescue Exception => e
        print e.backtrace.join("\n")
     end
