@@ -24,8 +24,8 @@
            <tr>
              <td>
                名称：     <input type="text" name="configure_name" onkeydown="onclickText()" value="<%=@configure_name%>" >
-               类别：     <input type="text" name="configure_type" value="<%=@configure_type%>">
-               配置项编号：<input type="text" name="configure_code" value="<%=@configure_code%>">
+               类别：     <input type="text" name="configure_type" onkeydown="onclickText()" value="<%=@configure_type%>">
+               配置项编号：<input type="text" name="configure_code" onkeydown="onclickText()" value="<%=@configure_code%>">
                <input type="button" value="查询" onclick="query()">
              </td>
            </tr>
