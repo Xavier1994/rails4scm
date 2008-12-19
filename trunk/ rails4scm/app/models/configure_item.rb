@@ -2,6 +2,7 @@ class ConfigureItem < ActiveRecord::Base
   self.table_name = "configure_item"
   self.primary_key = "id"
   
+  
   #查询所有的配置项分类的最后一级菜单
   def findConfigureItem()
         sql = "select isnull(configure_code,'') code,isnull(configure_name,'') name,configure_type from configure_item where configure_type in( "
@@ -18,9 +19,9 @@ class ConfigureItem < ActiveRecord::Base
   end
   
   #根据不同条件查询配置项
-  def findItemAll(configure_name,configure_type,configure_code)
+  def findItemAll(pageSize,curPageSize,configure_name,configure_type,configure_code)
        if(configure_name == nil and configure_type == nil and configure_code == nil) then
-          ConfigureItem.find(:all)
+          sql = "select * from configure_item "
        else
           sql = "select * from configure_item where "
           where = ""
@@ -47,7 +48,12 @@ class ConfigureItem < ActiveRecord::Base
              end
           end 
           sql += whre_a
-          ConfigureItem.find_by_sql(sql)
        end
+       ConfigureItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"id")
   end
+  
+  def fenYe(pageSize,curPageSize)
+    ConfigureItem.paginate(:per_page =>pageSize, :page =>curPageSize,:order=>"id")
+  end
+  
 end
