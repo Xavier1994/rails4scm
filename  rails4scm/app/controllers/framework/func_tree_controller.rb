@@ -67,7 +67,7 @@ private
        end
        i=1  
        for functionGroupUp in @rtFunctionGroupUp  
-         functionGroupUpName = Iconv.iconv("GB2312","UTF-8",functionGroupUp.func_group_name) 
+         functionGroupUpName = functionGroupUp.func_group_name 
          functionGroupUpUrl  = functionGroupUp.url
          group_id            = functionGroupUp.func_group_id
          sub1=FsTreeModel::Treeview.new(functionGroupUpName,functionGroupUpUrl,i,'value1')
@@ -75,7 +75,7 @@ private
          for functionGroup in @rtFunctionGroup
             up_group_id = functionGroup.up_group_id
             if group_id == up_group_id then
-              functionGroupName = Iconv.iconv("GB2312","UTF-8",functionGroup.func_group_name) 
+              functionGroupName = functionGroup.func_group_name 
               functionGroupUrl  = functionGroup.url
               group_id_up = functionGroup.func_group_id
               cn = i.to_s + j.to_s 
@@ -85,7 +85,7 @@ private
                 func_group_id = systemFunction.func_group_id 
                 if group_id_up == func_group_id then
                   cnk = cn.to_s + k.to_s 
-                  systemName = Iconv.iconv("GB2312","UTF-8",systemFunction.func_name)
+                  systemName = systemFunction.func_name
                   systemUrl  = systemFunction.target
                   sub3=FsTreeModel::Treeview.new(systemName,systemUrl,cnk,'value' + cnk)
                   cnk = ""
@@ -101,6 +101,7 @@ private
             end
             up_group_id = nil
          end
+         group_id = nil
          i = i+1
          inst<<sub1 
        end
