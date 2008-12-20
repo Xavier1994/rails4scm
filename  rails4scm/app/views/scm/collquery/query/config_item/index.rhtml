@@ -1,7 +1,8 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "style_table" %>
+    <%= stylesheet_link_tag "common_style" %> 
     
     <script language="javascript">
         function query(){
@@ -26,7 +27,7 @@
                名称：     <input type="text" name="configure_name" onkeydown="onclickText()" value="<%=@configure_name%>" >
                类别：     <input type="text" name="configure_type" onkeydown="onclickText()" value="<%=@configure_type%>">
                配置项编号：<input type="text" name="configure_code" onkeydown="onclickText()" value="<%=@configure_code%>">
-               <input type="button" value="查询" onclick="query()">
+               <input type="button" value="查询" onclick="query()" class="btn3_mouseout">
              </td>
            </tr>
          </table>
