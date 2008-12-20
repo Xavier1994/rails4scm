@@ -40,28 +40,35 @@ class Scm::Event::Note::EventNoteController < ApplicationController
     
     #查询
     @eventRecord = getData(pageSize,curPageSize,@event_name,@m_event_type,@project_code,@event_sponsor,@current_status)
-    
+
     #保存
     click_hidden = params[:click_hidden]
     if click_hidden == nil or click_hidden == "" then
       click_hidden = "0"
     end
-    
+  end
+  
   private
      #查询
      def getData(pageSize,curPageSize,event_name,m_event_type,project_code,event_sponsor,current_status)
        eventRecord = EventRecord.new
-       event = eventRecord.findEventRecordAll(pageSize,curPageSize,@event_name,@m_event_type,@project_code,@event_sponsor,@current_status) 
-       return event
+       eventR = eventRecord.findEventRecordAll(pageSize,curPageSize,event_name,m_event_type,project_code,event_sponsor,current_status) 
+       return eventR
      end
      
      #查询所有的项目
+     def getProject()
+       projectMsg = ProjectMsg.new()
+       return projectMsg.findProjectMsgAll()
+     end
+     
+     #查询所有的事件标识类型
      def getPfroject()
-       
+       projectMsg = ProjectMsg.new()
+       return projectMsg.findProjectMsgAll()
      end
      
      #添加
      #修改
      #删除
-  end
 end
