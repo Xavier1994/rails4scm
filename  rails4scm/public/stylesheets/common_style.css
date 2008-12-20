@@ -275,3 +275,10 @@ A.tabpanel:hover   { COLOR: #ff0000; TEXT-DECORATION: none}
 
 /*\u5e95\u7aef\u8fb9\u6846*/
 .bottom_border { BORDER-BOTTOM: 1px solid #FFFFFF; BORDER-TOP: 1px solid #1A594D; BORDER-left: 1px solid #1A594D; BORDER-right: 1px solid #FFFFFF; background-color: #317D6B} 
+.btn3_mouseout {
+ BORDER-RIGHT: #3A5F54 1px solid; PADDING-RIGHT: 4px; BORDER-TOP: #80B2A4 1px solid; PADDING-LEFT: 4px; FONT-SIZE: 12px; FILTER: 
+
+progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#4D7F71, EndColorStr=#4D7F71); BORDER-LEFT: #80B2A4 1px 
+
+solid; CURSOR: hand; COLOR: white; PADDING-TOP: 2px; BORDER-BOTTOM: #3A5F54 1px solid;PADDING-bottom: 0px; 
+}
