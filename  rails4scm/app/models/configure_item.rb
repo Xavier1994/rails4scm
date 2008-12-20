@@ -20,11 +20,9 @@ class ConfigureItem < ActiveRecord::Base
   
   #根据不同条件查询配置项
   def findItemAll(pageSize,curPageSize,configure_name,configure_type,configure_code)
-       if(configure_name == nil and configure_type == nil and configure_code == nil) then
-          sql = "select * from configure_item "
-       else
-          sql = "select * from configure_item where "
-          where = ""
+       sql = "select * from configure_item "
+       if(configure_name != nil or configure_type != nil or configure_code != nil) then
+          where = " where "
           if(configure_name != nil) then
             where += "configure_name like '%" + configure_name + "%' and "
           end
