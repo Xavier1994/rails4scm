@@ -2,12 +2,16 @@ class Scm::Collquery::Query::ProductBaseinfoController < ApplicationController
 
   def index
      product_code = params[:code]
+    @product_code=product_code
     @products = nil
     @productVers = nil
+    @productcodeArray=Array.new(1)
+    @productcodeArray[0]=product_code
     if product_code != nil then
       productItems=PruductConfigueItem.new()
       @products=productItems.productBaseinfo(product_code)
       @productVers=productItems.productVersinfo(product_code)
     end
   end
+  
 end
