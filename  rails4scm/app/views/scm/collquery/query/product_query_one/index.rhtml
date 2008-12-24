@@ -1,0 +1,80 @@
+<html>
+  <head>  
+        <meta http-equiv="Content-Type" content="text/html; charset=GB2312">  
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="软件产品配置信息查询">
+        <%= stylesheet_link_tag "style_table" %>
+  </head>
+  <script language="javascript">
+        function query(){
+            document.forms[0].submit();
+        }
+        
+        function onclickText(){
+            if(event.keyCode == 13) {
+                query();
+            }
+        }
+    </script>
+<body>
+<% form_tag :action =>'index' do %>
+    <table cellpadding=0 cellspacing=0 border=0 width="1600px" height="100%">
+      <tr height="20px">
+       <td>
+         <table>
+           <tr>
+             <td>
+               <input type="checkbox" checked name="whereProduct" value="true">产品：
+               <select style="width:100px" name="product">
+                 <% for product in @products%>  
+                   <option value="<%=product.PRODUCT_CODE%>"><%=product.PRODUCT_NAME%></option>
+                 <% end%>
+               </select>
+               <input type="checkbox" checked name="whereProductVer" value="true">版本：
+                <select style="width:100px" name="productVer">
+                 <% for productVer in @productVers%>  
+                   <option value="<%=productVer.PRODUCT_VERS%>"><%=productVer.PRODUCT_VERS%></option>
+                 <% end%>
+               </select>
+               <input type="button" value="查询" onclick="query()" class="btn3_mouseout">
+             </td>
+           </tr>
+         </table>
+       </td>
+     </tr>
+     <tr>
+       <td valign="top">
+         <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <tr>
+                <td class="td_header_bak2" width="70px">产品代码</td>
+                <td class="td_header_bak3" width="100px">产品名称</td>
+                <td class="td_header_bak3" width="80px">责任人</td>
+                <td class="td_header_bak3" width="80px">配置项代码</td>
+                <td class="td_header_bak3" width="100px">配置项名称</td>
+                <td class="td_header_bak3" width="50px">版本号</td>
+                <td class="td_header_bak3" width="100px">配置项分类</td>
+                <td class="td_header_bak3" width="200px">存放位置</td>
+                <td class="td_header_bak3" width="120px">状态日期</td>
+                <td class="td_header_bak3" width="80px">状态</td>
+            </tr>
+            <% for item in @items%>
+            <tr>
+                <td class="td6">&nbsp;<%=item.PRODUCT_CODE%></td>
+                <td class="td7">&nbsp;<%=item.PRODUCT_NAME%></td>
+                <td class="td7">&nbsp;<%=item.PRODUCT_CONF_PERSON%></td>
+                <td class="td7">&nbsp;<%=item.CONFIGURE_CODE%></td>
+                <td class="td7">&nbsp;<%=item.CONFIGURE_NAME%></td>
+                <td class="td7">&nbsp;<%=item.CONFIGURE_VERS%></td>
+                <td class="td7">&nbsp;<%=item.CONFIGURE_TYPE%></td>
+                <td class="td7">&nbsp;<%=item.CONFIGURE_STORE_ADDR%></td>
+                <td class="td7">&nbsp;<%=item.STATE_DATE%></td>
+                <td class="td7">&nbsp;<%=item.CUR_STATE%></td>
+            </tr>
+            <% end%>
+        </table>
+       </td>
+     </tr>
+    </table>
+<%end%>
+</body>
+</html>
