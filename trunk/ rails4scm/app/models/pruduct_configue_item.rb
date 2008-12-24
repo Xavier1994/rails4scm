@@ -26,4 +26,15 @@ class PruductConfigueItem < ActiveRecord::Base
     PruductConfigueItem.find_by_sql(sql) 
   end
   
+  def productBaseinfo(product_code)
+    sql ="select * from SOFTWARE_PRODUCT where PRODUCT_CODE='"+product_code+"'"
+    PruductConfigueItem.find_by_sql(sql) 
+  end
+  
+    
+def productVersinfo(product_code)
+    sql ="SELECT  SOFTWARE_PRODUCT_VER.ID ,SOFTWARE_PRODUCT_VER.PRODUCT_CODE ,SOFTWARE_PRODUCT_VER.PRODUCT_VERS ,SOFTWARE_PRODUCT_VER.COMMENT ,SOFTWARE_PRODUCT_VER.PRODUCT_CONF_PERSON"
+    sql +=" FROM SOFTWARE_PRODUCT_VER  where SOFTWARE_PRODUCT_VER.PRODUCT_CODE='"+product_code+"'  order by SOFTWARE_PRODUCT_VER.ID desc "
+    PruductConfigueItem.find_by_sql(sql) 
+  end   
 end
