@@ -1,0 +1,22 @@
+<html>
+  <head>  
+        <meta http-equiv="Content-Type" content="text/html; charset=GB2312">  
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="软件产品配置信息查询">
+        <%= stylesheet_link_tag "style_table" %>
+  </head>
+<body leftmargin="6" topmargin="6">
+    <table  align="left" cellpadding=0 cellspacing=0 border=0 width="250px" height="100%">
+     <tr>
+       <td valign="top">
+         <table align="left" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <tr>
+              <td><%=js_treeview_tag(@productsTree) %>
+            </td>
+            </tr>
+        </table>
+       </td>
+     </tr>
+    </table>
+</body>
+</html>
