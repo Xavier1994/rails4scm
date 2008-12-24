@@ -1,2 +1,86 @@
-<h1>Scm::Collquery::Query::ProductVerItems#index</h1>
-<p>Find me in app/views/scm/collquery/query/product_ver_items/index.rhtml</p>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link href="/stylesheets/style_table.css?1194846686" media="screen" rel="Stylesheet" type="text/css" /> 
+  </head>
+  <body>
+      <table cellpadding=0 cellspacing=0 border=0 width=2000px  height="200px">
+      <tr>
+        <td valign="top">
+          <div style="overflow-x:auto;overflow-y:auto">
+            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+              <thead class="td_header_bak2">
+                <tr>
+                  <td colspan="12"><div align="left">该版本对应的配置项:</div></td>
+                </tr>
+                <tr>
+                  <td class="td_header_bak2" width="100px">配置项名称</td>
+                  <td class="td_header_bak3" width="100px">配置项版本</td>
+                  <td class="td_header_bak3" width="100px">当前状态</td>
+                  <td class="td_header_bak3" width="200px">配置项说明</td>
+                  <td class="td_header_bak3" width="100px">配置项责任人</td>
+                  <td class="td_header_bak3" width="100px">配置项编号</td>
+                  <td class="td_header_bak3" width="100px">配置项类别</td>
+                  <td class="td_header_bak3" width="120px">状态日期</td>
+                  <td class="td_header_bak3" width="200px">存放位置</td>
+                  <td class="td_header_bak3" width="100px">开发库目录</td>
+                  <td class="td_header_bak3" width="100px">同步下载</td>
+                  <td class="td_header_bak3" width="100px">同步上传</td>
+                </tr>
+              </thead>
+              <tbody>
+<%for productItem in @productItems%>
+                <tr>
+                  <td class="td6">&nbsp;<%=productItem.CONFIGURE_NAME%></td>
+                  <td class="td7">&nbsp;<%=productItem.H_CONFIG_VERS%></td>
+                  <td class="td7">&nbsp;<%=productItem.CUR_STATE%></td>
+                  <td class="td6">&nbsp;<%=productItem.CONFIGURE_REMARK%></td>
+                  <td class="td7">&nbsp;<%=productItem.CONF_DUTY_PERSON%></td>
+                  <td class="td7">&nbsp;<%=productItem.CONFIGURE_CODE%></td>
+                  <td class="td6">&nbsp;<%=productItem.CONFIGURE_TYPE%></td>
+                  <td class="td7">&nbsp;<%=productItem.STATE_DATE%></td>
+                  <td class="td7">&nbsp;<%=productItem.CONFIGURE_STORE_ADDR%></td>
+                  <td class="td6">&nbsp;<%=productItem.DEVELOP_PATH%></td>
+                  <td class="td7">&nbsp;<%=productItem.AUTO_DOWN%></td>
+                  <td class="td7">&nbsp;<%=productItem.AUTO_UP%></td>
+                </tr>
+<%end%>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <table cellpadding=0 cellspacing=0 border=0 width=100% height="300px">
+    <hr>
+      <tr>
+        <td valign="top">
+          <div style="overflow-x:auto;overflow-y:auto">
+            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+              <thead class="td_header_bak2">
+                <tr>
+                  <td colspan="7"><div align="left">产品版本清单:</div></td>
+                </tr>
+
+                <tr>
+                  <td class="td_header_bak2">产品版本</td>
+                  <td class="td_header_bak3">备注</td>
+                  <td class="td_header_bak3">配置负责人</td>
+                </tr>
+
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="td6">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>
