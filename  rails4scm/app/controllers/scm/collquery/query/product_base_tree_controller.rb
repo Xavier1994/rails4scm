@@ -11,8 +11,8 @@ class Scm::Collquery::Query::ProductBaseTreeController < ApplicationController
     topText="产品清单W@"
     topTextArray=topText.split("W@");
     begin
-      inst=FsTreeModel::Treeview.new(topTextArray[0],"#",0,'mainvalue',"product_baseInfo_main")
-      url = "/scm/collquery/query/product_baseinfo?code="
+      url = "/scm/collquery/query/product_baseinfo"
+      inst=FsTreeModel::Treeview.new(topTextArray[0],url,0,'mainvalue',"product_baseInfo_main")
       k = 1
       for product in @products
           product_code = product.PRODUCT_CODE
