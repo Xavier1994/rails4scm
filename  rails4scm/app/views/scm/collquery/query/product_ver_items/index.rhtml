@@ -3,6 +3,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <link href="/stylesheets/style_table.css?1194846686" media="screen" rel="Stylesheet" type="text/css" /> 
   </head>
+<script>
+window.moveTo((screen.availWidth*20/100)+27,168);
+</script>
   <body>
       <table cellpadding=0 cellspacing=0 border=0 width=2000px  height="200px">
       <tr>
@@ -29,7 +32,9 @@
                 </tr>
               </thead>
               <tbody>
-<%for productItem in @productItems%>
+<%
+if @productItems!=nil then
+    for productItem in @productItems%>
                 <tr>
                   <td class="td6">&nbsp;<%=productItem.CONFIGURE_NAME%></td>
                   <td class="td7">&nbsp;<%=productItem.H_CONFIG_VERS%></td>
@@ -44,43 +49,15 @@
                   <td class="td7">&nbsp;<%=productItem.AUTO_DOWN%></td>
                   <td class="td7">&nbsp;<%=productItem.AUTO_UP%></td>
                 </tr>
-<%end%>
+<%
+    end
+end%>
+
               </tbody>
             </table>
           </div>
         </td>
       </tr>
     </table>
-    <table cellpadding=0 cellspacing=0 border=0 width=100% height="300px">
-    <hr>
-      <tr>
-        <td valign="top">
-          <div style="overflow-x:auto;overflow-y:auto">
-            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
-              <thead class="td_header_bak2">
-                <tr>
-                  <td colspan="7"><div align="left">产品版本清单:</div></td>
-                </tr>
-
-                <tr>
-                  <td class="td_header_bak2">产品版本</td>
-                  <td class="td_header_bak3">备注</td>
-                  <td class="td_header_bak3">配置负责人</td>
-                </tr>
-
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="td6">&nbsp;</td>
-                  <td class="td7">&nbsp;</td>
-                  <td class="td7">&nbsp;</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </td>
-      </tr>
-    </table>
-
   </body>
 </html>

@@ -57,7 +57,9 @@
                 <td class="td_header_bak3" width="120px">×´Ì¬ÈÕÆÚ</td>
                 <td class="td_header_bak3" width="80px">×´Ì¬</td>
             </tr>
-            <% for item in @items%>
+<% 
+if @items!=nil then
+    for item in @items%>
             <tr>
                 <td class="td6">&nbsp;<%=item.PRODUCT_CODE%></td>
                 <td class="td7">&nbsp;<%=item.PRODUCT_NAME%></td>
@@ -70,7 +72,9 @@
                 <td class="td7">&nbsp;<%=item.STATE_DATE%></td>
                 <td class="td7">&nbsp;<%=item.CUR_STATE%></td>
             </tr>
-            <% end%>
+<%
+    end 
+end%>
         </table>
        </td>
      </tr>
