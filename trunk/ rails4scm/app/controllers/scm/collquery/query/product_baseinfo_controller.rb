@@ -14,4 +14,9 @@ class Scm::Collquery::Query::ProductBaseinfoController < ApplicationController
     end
   end
   
+  def goProductVerItems
+    productCode=params[:productCode]
+    productVer=params[:productVer]
+    redirect_to(:controller =>"product_ver_items?product_code="+productCode+"&product_vers="+productVer,:action => :index) 
+  end
 end
