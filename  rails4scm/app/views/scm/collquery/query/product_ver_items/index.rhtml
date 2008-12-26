@@ -21,6 +21,7 @@ window.moveTo((screen.availWidth*20/100)+27,168);
                   <td class="td_header_bak2" width="150px">配置项名称</td>
                   <td class="td_header_bak3" width="80px">配置项版本</td>
                   <td class="td_header_bak3" width="80px">当前状态</td>
+                  <td class="td_header_bak3" width="70px">操作</td>
                   <td class="td_header_bak3" width="100px">配置项说明</td>
                   <td class="td_header_bak3" width="80px">责任人</td>
                   <td class="td_header_bak3" width="100px">配置项编号</td>
@@ -30,7 +31,7 @@ window.moveTo((screen.availWidth*20/100)+27,168);
                   <td class="td_header_bak3" width="250px">开发库目录</td>
                   <td class="td_header_bak3" width="70px">同步下载</td>
                   <td class="td_header_bak3" width="70px">同步上传</td>
-                  <td class="td_header_bak3" width="70px">操作</td>
+                  
                 </tr>
               </thead>
               <tbody>
@@ -44,6 +45,7 @@ if @productItems!=nil then
                   <td class="td6">&nbsp;<%=productItem.CONFIGURE_NAME%></td>
                   <td class="td7">&nbsp;<%=productItem.H_CONFIG_VERS%></td>
                   <td class="td7">&nbsp;<%=productItem.CUR_STATE%></td>
+                  <td class="td7">&nbsp;<%= submit_tag "查看历史版本" %>
                   <td class="td7">&nbsp;<%=productItem.CONFIGURE_REMARK%></td>
                   <td class="td7">&nbsp;<%=productItem.CONF_DUTY_PERSON%></td>
                   <td class="td7">&nbsp;<%=productItem.CONFIGURE_CODE%></td>
@@ -53,7 +55,7 @@ if @productItems!=nil then
                   <td class="td7">&nbsp;<%=productItem.DEVELOP_PATH%></td>
                   <td class="td7">&nbsp;<%=productItem.AUTO_DOWN%></td>
                   <td class="td7">&nbsp;<%=productItem.AUTO_UP%></td>
-                  <td class="td7">&nbsp;<%= submit_tag "查看历史版本" %>
+                  
                   </td>
                 <%= end_form_tag %>
                 </tr>
