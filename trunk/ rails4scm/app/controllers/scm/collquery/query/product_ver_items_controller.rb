@@ -35,7 +35,6 @@ class Scm::Collquery::Query::ProductVerItemsController < ApplicationController
         end
       end
     end
-    puts(outText)
     render_text outText
   end
 end
