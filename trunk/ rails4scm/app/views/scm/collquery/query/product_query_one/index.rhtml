@@ -4,17 +4,43 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="软件产品配置信息查询">
         <%= stylesheet_link_tag "style_table" %>
+        <%= javascript_include_tag "prototype" %>
   </head>
   <script language="javascript">
         function query(){
             document.forms[0].submit();
         }
-        
-        function onclickText(){
-            if(event.keyCode == 13) {
-                query();
+        function queryItems(){
+            produtcode=document.getElementById("product").value
+            if (produtcode!=null&&produtcode!=""){
+                url = "/scm/collquery/query/product_query_one/getvers?product_code=" + produtcode;
+                var xmlHttp;
+                if(window.ActiveXObject){
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }else if(window.XMLHttpRequest){
+                    xmlHttp=new XMLHttpRequest();
+                }else {return;}
+                var content="";//构造要携带的数据  
+                xmlHttp.open("GET",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
+                xmlHttp.send(null);//发送数据 
+                if(xmlHttp.readystate==4) //请求状态为4表示成功
+                    {
+                    if(xmlHttp.status==200) //http状态200表示OK
+                        {
+                            document .getElementById ("ajaxver").innerHTML =xmlHttp.responseText; 
+                        }
+                    else //http返回状态失败
+                        {
+                            alert("服务端返回状态" + xmlHttp.statusText);
+                        }
+                    }
+                else //请求状态还没有成功，页面等待
+                    {
+                        document .getElementById ("ajaxver").innerHTML ="数据加载中";
+                    }
             }
         }
+        if(event.keyCode == 13) {query();}
     </script>
 <body>
 <% form_tag :action =>'index' do %>
@@ -25,17 +51,40 @@
            <tr>
              <td>
                <input type="checkbox" checked name="whereProduct" value="true">产品：
-               <select style="width:100px" name="product">
-                 <% for product in @products%>  
-                   <option value="<%=product.PRODUCT_CODE%>"><%=product.PRODUCT_NAME%></option>
+</td>
+<td>
+               <select style="width:100px" name="product" id="product" onchange="queryItems()">
+                <option value=""></option>
+                 <% for product in @products%>
+                   <% if product.PRODUCT_CODE == @product%>
+                     <option value="<%=product.PRODUCT_CODE%>" selected="true"><%=product.PRODUCT_NAME%></option>
+                   <% else%>
+                     <option value="<%=product.PRODUCT_CODE%>"><%=product.PRODUCT_NAME%></option>
+                   <% end %>
                  <% end%>
                </select>
-               <input type="checkbox" checked name="whereProductVer" value="true">版本：
-                <select style="width:100px" name="productVer">
-                 <% for productVer in @productVers%>  
-                   <option value="<%=productVer.PRODUCT_VERS%>"><%=productVer.PRODUCT_VERS%></option>
-                 <% end%>
-               </select>
+             </td>
+            <td>
+            <%
+            if @whereProductVer!=nil&&@whereProductVer == "true" then
+            %>
+               <input type="checkbox" checked name="whereProductVer" value="true">
+                 <%else %>
+                   <input type="checkbox"  name="whereProductVer" value="true">
+                    <%end %>
+                     版本：
+            </td>
+            <td>
+                 <div id="ajaxver">
+<%if @verHtml!=nil then%>
+  <%=@verHtml%>
+  <%else %>
+<select>
+</select>
+<%end%>
+                 </div>
+            </td>
+            <td>
                <input type="button" value="查询" onclick="query()" class="btn3_mouseout">
              </td>
            </tr>
