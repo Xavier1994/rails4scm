@@ -3,32 +3,34 @@
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <link href="/stylesheets/style_table.css?1194846686" media="screen" rel="Stylesheet" type="text/css" /> 
   </head>
+<%= javascript_include_tag "prototype" %>
 <script>
 window.moveTo((screen.availWidth*20/100)+27,168);
 </script>
   <body>
-      <table cellpadding=0 cellspacing=0 border=0 width=2000px  height="200px">
+    <table cellpadding=0 cellspacing=0 border=0 width=2000px  height="200px">
       <tr>
         <td valign="top">
           <div style="overflow-x:auto;overflow-y:auto">
             <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
               <thead class="td_header_bak2">
                 <tr>
-                  <td colspan="12"><div align="left">该版本对应的配置项:</div></td>
+                  <td colspan="13"><div align="left">该版本对应的配置项:</div></td>
                 </tr>
                 <tr>
-                  <td class="td_header_bak2" width="100px">配置项名称</td>
-                  <td class="td_header_bak3" width="100px">配置项版本</td>
-                  <td class="td_header_bak3" width="100px">当前状态</td>
-                  <td class="td_header_bak3" width="200px">配置项说明</td>
-                  <td class="td_header_bak3" width="100px">配置项责任人</td>
+                  <td class="td_header_bak2" width="150px">配置项名称</td>
+                  <td class="td_header_bak3" width="80px">配置项版本</td>
+                  <td class="td_header_bak3" width="80px">当前状态</td>
+                  <td class="td_header_bak3" width="100px">配置项说明</td>
+                  <td class="td_header_bak3" width="80px">责任人</td>
                   <td class="td_header_bak3" width="100px">配置项编号</td>
                   <td class="td_header_bak3" width="100px">配置项类别</td>
                   <td class="td_header_bak3" width="120px">状态日期</td>
-                  <td class="td_header_bak3" width="200px">存放位置</td>
-                  <td class="td_header_bak3" width="100px">开发库目录</td>
-                  <td class="td_header_bak3" width="100px">同步下载</td>
-                  <td class="td_header_bak3" width="100px">同步上传</td>
+                  <td class="td_header_bak3" width="350px">存放位置</td>
+                  <td class="td_header_bak3" width="250px">开发库目录</td>
+                  <td class="td_header_bak3" width="70px">同步下载</td>
+                  <td class="td_header_bak3" width="70px">同步上传</td>
+                  <td class="td_header_bak3" width="70px">操作</td>
                 </tr>
               </thead>
               <tbody>
@@ -36,24 +38,48 @@ window.moveTo((screen.availWidth*20/100)+27,168);
 if @productItems!=nil then
     for productItem in @productItems%>
                 <tr>
+<%= form_remote_tag(:update => "list",
+:url => {:controller=>"product_ver_items", :action => "history", :configure_code=>productItem.CONFIGURE_CODE,:product_code=>@product_code,:product_vers=>@product_vers},
+:position => "top" ) %>
                   <td class="td6">&nbsp;<%=productItem.CONFIGURE_NAME%></td>
                   <td class="td7">&nbsp;<%=productItem.H_CONFIG_VERS%></td>
                   <td class="td7">&nbsp;<%=productItem.CUR_STATE%></td>
-                  <td class="td6">&nbsp;<%=productItem.CONFIGURE_REMARK%></td>
+                  <td class="td7">&nbsp;<%=productItem.CONFIGURE_REMARK%></td>
                   <td class="td7">&nbsp;<%=productItem.CONF_DUTY_PERSON%></td>
                   <td class="td7">&nbsp;<%=productItem.CONFIGURE_CODE%></td>
-                  <td class="td6">&nbsp;<%=productItem.CONFIGURE_TYPE%></td>
+                  <td class="td7">&nbsp;<%=productItem.CONFIGURE_TYPE%></td>
                   <td class="td7">&nbsp;<%=productItem.STATE_DATE%></td>
                   <td class="td7">&nbsp;<%=productItem.CONFIGURE_STORE_ADDR%></td>
-                  <td class="td6">&nbsp;<%=productItem.DEVELOP_PATH%></td>
+                  <td class="td7">&nbsp;<%=productItem.DEVELOP_PATH%></td>
                   <td class="td7">&nbsp;<%=productItem.AUTO_DOWN%></td>
                   <td class="td7">&nbsp;<%=productItem.AUTO_UP%></td>
+                  <td class="td7">&nbsp;<%= submit_tag "查看历史版本" %>
+                  </td>
+                <%= end_form_tag %>
                 </tr>
 <%
     end
 end%>
 
               </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">
+          <div style="overflow-x:auto;overflow-y:auto">
+            <table cellpadding=0 cellspacing=0 border=0 style="width:300px;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                <thead class="td_header_bak2">
+                    <tr>
+                        <td ><div align="left">配置项历史版本:</div></td>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td id="list"></td>
+                        </tr>
+                </tbody>
             </table>
           </div>
         </td>
