@@ -5,8 +5,12 @@
   </head>
 <script language="JavaScript">
 function queryItems(productver){
-    var productcode=document.getElementById("productcode").value;
+    var productcode=document.getElementById("productCode").value;
     window.open("/scm/collquery/query/product_ver_items?product_code="+productcode+"&product_vers="+productver,"","menubar=no,location=no,toolbar=yes,scrollbars=yes,resizable=yes,width=748px,height=450px");
+}
+function queryProjects(productver){
+    var productcode=document.getElementById("productCode").value;
+    window.open("/scm/collquery/query/product_ver_projects?product_code="+productcode+"&product_vers="+productver,"","menubar=no,location=no,toolbar=yes,scrollbars=yes,resizable=yes,width=748px,height=450px");
 }
 </script>
   <body>
@@ -51,16 +55,15 @@ end%>
             <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
               <thead class="td_header_bak2">
                 <tr>
-                  <td colspan="7"><div align="left">产品版本清单:</div></td>
-                  <input type="hidden" name="productcode" id="productcode" value="<%=@product_code%>">
+                  <td colspan="4"><div align="left">产品版本清单:</div></td>
+                  <input type="hidden" name="productCode" id="productCode" value="<%=@product_code%>">
                 </tr>
-
                 <tr>
                   <td class="td_header_bak2">产品版本</td>
                   <td class="td_header_bak3">备注</td>
                   <td class="td_header_bak3">配置负责人</td>
+                  <td class="td_header_bak3">操作</td>
                 </tr>
-
               </thead>
               <tbody>
 <%
@@ -70,6 +73,10 @@ if @productVers!=nil then
                   <td class="td6">&nbsp;<%=productVer.PRODUCT_VERS%></td>
                   <td class="td7">&nbsp;<%=productVer.COMMENT%></td>
                   <td class="td7">&nbsp;<%=productVer.PRODUCT_CONF_PERSON%></td>
+                  <td class="td7">
+                    &nbsp;<a href="#" onclick="queryItems(<%=productVer.PRODUCT_VERS%>)">对应配置项</a>
+                    &nbsp;<a href="#" onclick="queryProjects(<%=productVer.PRODUCT_VERS%>)">对应项目</a>
+                  </td>
                 </tr>
 <%
     end 
@@ -80,6 +87,5 @@ end%>
         </td>
       </tr>
     </table>
-    
   </body>
 </html>
