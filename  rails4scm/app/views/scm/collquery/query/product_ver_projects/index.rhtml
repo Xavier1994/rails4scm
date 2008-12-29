@@ -2,6 +2,8 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <link href="/stylesheets/style_table.css?1194846686" media="screen" rel="Stylesheet" type="text/css" /> 
+    <%= stylesheet_link_tag "style_table" %>
+    <%= stylesheet_link_tag "common_style" %> 
   </head>
 <script>
 window.moveTo((screen.availWidth*20/100)+27,168);
@@ -27,7 +29,7 @@ window.moveTo((screen.availWidth*20/100)+27,168);
               </thead>
               <tbody>
 <%
-if @productProjects!=nil then
+if @productProjects!=nil&&@productProjects.size>0 then
     for productProject in @productProjects%>
                 <tr>
                   <td class="td6">&nbsp;<%=productProject.PROJECT_CODE%></td>
@@ -39,6 +41,23 @@ if @productProjects!=nil then
                 </tr>
 <%
     end
+    %>
+    <tr>
+                <td colspan="10">&nbsp;<%= will_paginate @productProjects%>  </td>
+            </tr>
+  
+  <%
+else
+  %>
+                <tr>
+                  <td class="td6">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr>
+<%
 end%>
               </tbody>
             </table>
