@@ -107,14 +107,14 @@
                   continue;
                }
                if(i == 3){
-                  text_name0 = kongjian_evetype_select("eventRecord[" + rows + "][M_EVENT_TYPE]","eventRecord_" + rows + "_M_EVENT_TYPE","");
+                  text_name0 = kongjian_evetype_select("","eventRecord[" + rows + "][M_EVENT_TYPE]","eventRecord_" + rows + "_M_EVENT_TYPE");
                   detail.rows[len].cells[i].setAttribute("align","left"); 
                   detail.rows[len].cells[i].appendChild(text_name0);
                   detail.rows[len].cells[i].className =  tdclass7;
                   continue;
                }
                if(i == 4){
-                  text_name0 = kongjian_project_select("eventRecord[" + rows + "][PROJECT_CODE]","eventRecord_" + rows + "_PROJECT_CODE","");
+                  text_name0 = kongjian_project_select("","eventRecord[" + rows + "][PROJECT_CODE]","eventRecord_" + rows + "_PROJECT_CODE");
                   detail.rows[len].cells[i].setAttribute("align","left"); 
                   detail.rows[len].cells[i].appendChild(text_name0);
                   detail.rows[len].cells[i].className =  tdclass7;
@@ -125,6 +125,7 @@
                continue;
              } 
         }
+
         //点击修改按钮
         function update(){
             var me = document.forms[0];
@@ -146,22 +147,26 @@
                 hid = "record" + (i+1) + "ID";
                 hvalue = document.getElementById(hid).value;
                 
+                cells_3 = jsTrim(cells_3); 
+                cells_4 = jsTrim(cells_4); 
+                cells_5 = jsTrim(cells_5);
+                
                 detail.rows[i].cells[2].innerText = "";
                 detail.rows[i].cells[3].innerText = "";
                 detail.rows[i].cells[4].innerText = "";
 
                 //事件名称    
-                text_name2 = kongjian_text("record[" + j + "][EVENT_NAME]","record_" + j + "_EVENT_NAME",cells_3);
+                text_name2 = kongjian_text(cells_3,"record[" + j + "][EVENT_NAME]","record_" + j + "_EVENT_NAME");
                 detail.rows[i].cells[2].setAttribute("align","left"); 
                 detail.rows[i].cells[2].appendChild(text_name2);
                 
                 //标识事件类型
-                text_name3 = kongjian_evetype_select("record[" + j + "][M_EVENT_TYPE]","record_" + j + "_M_EVENT_TYPE",cells_4);
+                text_name3 = kongjian_evetype_select(cells_4,"record[" + j + "][M_EVENT_TYPE]","record_" + j + "_M_EVENT_TYPE");
                 detail.rows[i].cells[3].setAttribute("align","left"); 
                 detail.rows[i].cells[3].appendChild(text_name3);
 
                 //项目
-                text_name4 = kongjian_project_select("record[" + j + "][PROJECT_CODE]","record_" + j + "_PROJECT_CODE",cells_5);
+                text_name4 = kongjian_project_select(cells_5,"record[" + j + "][PROJECT_CODE]","record_" + j + "_PROJECT_CODE");
                 detail.rows[i].cells[4].setAttribute("align","left"); 
                 detail.rows[i].cells[4].appendChild(text_name4);
                 
@@ -214,14 +219,14 @@
         }
 
         //生成下拉框控件 kname:控件名字  kid:控件Id,style:选择框大小[项目]
-        function kongjian_project_select(kname,kid,stylet,selectValue) {
+        function kongjian_project_select(selectValue,kname,kid,stylet) {
             var selProject = document.createElement("select");
             selProject.options[0] = new Option("－－", "－－");
             <% 
             i = 1
             for project in @project
-            %>  
-            selProject.options[<%=i%>] = new Option("<%=project.PROJECT_NAME%>", "<%=project.PROJECT_CODE%>");
+            %> 
+            selProject.options[<%=i%>] = new Option("<%=project.PROJECT_NAME%>", "<%=project.PROJECT_CODE%>"); 
             <% 
             i = i +1
             end 
@@ -237,7 +242,7 @@
         }
         
         //生成下拉框控件 kname:控件名字  kid:控件Id,style:选择框大小[标识事件类型]
-        function kongjian_evetype_select(kname,kid,stylet,selectValue) {
+        function kongjian_evetype_select(event_type_value,kname,kid,stylet) {
             var selEveType = document.createElement("select");
             selEveType.options[0] = new Option(" ", "");
             <% 
@@ -251,7 +256,7 @@
             %>
             selEveType.setAttribute("name",kname);
             selEveType.setAttribute("id"  ,kid);
-            selEveType.setAttribute("value",selectValue);
+            selEveType.setAttribute("value",event_type_value);
             //selEveType.className =  textwidth;
             if(stylet != "") { 
                     selEveType.setAttribute("style",stylet);  
@@ -286,6 +291,12 @@
                 alert(message);
             }
         }
+        
+        //去处空格
+        function jsTrim(strText){ 
+           return strText.replace(/(^\s*|\s*$)/g,"")
+        }
+
     </script>
   </head>
   <body bgcolor="#F6F6F6" onload="init()">
