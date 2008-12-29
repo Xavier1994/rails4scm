@@ -2,6 +2,7 @@ class EventRecord < ActiveRecord::Base
   self.table_name = "event_record"
   self.primary_key = "id"
   
+  attr_accessor :id
   def findEventRecordAll(pageSize,curPageSize,event_name,m_event_type,project_code,event_sponsor,current_status)
     sql = "select * from event_record "
     if(event_name != nil or m_event_type != nil or project_code != nil or event_sponsor != nil or current_status != nil) then
@@ -37,6 +38,25 @@ class EventRecord < ActiveRecord::Base
           sql += whre_a
     end
     
-    EventRecord.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"event_time desc")
+    EventRecord.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"id")
+  end
+  
+  #保存
+  def addSave(id,sid,event_name_t,m_event_type_t,project_code_t,person)
+       eventRecord = EventRecord.new
+       eventRecord.ID=id
+       eventRecord.EVENT_CODE=sid
+       eventRecord.EVENT_NAME=event_name_t
+       eventRecord.M_EVENT_TYPE=m_event_type_t
+       eventRecord.PROJECT_CODE=project_code_t
+       eventRecord.CURRENT_STATUS="已创建"
+       eventRecord.EVENT_SPONSOR=person
+       eventRecord.EVENT_TIME=Time.now
+       
+       eventRecord.save 
+  end
+ 
+  def findEventRecor(event_code)
+    EventRecord.find(:first,:conditions =>["event_code=? ",event_code])
   end
 end

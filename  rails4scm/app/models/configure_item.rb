@@ -2,6 +2,7 @@ class ConfigureItem < ActiveRecord::Base
   self.table_name = "configure_item"
   self.primary_key = "id"
   
+  attr_accessor :id
   
   #查询所有的配置项分类的最后一级菜单
   def findConfigureItem()
@@ -50,8 +51,23 @@ class ConfigureItem < ActiveRecord::Base
        ConfigureItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"id")
   end
   
-  def fenYe(pageSize,curPageSize)
-    ConfigureItem.paginate(:per_page =>pageSize, :page =>curPageSize,:order=>"id")
+  def findConfig(pageSize,curPageSize,event_code)
+    sql = "select * from ("
+    sql += "SELECT CONFIGURE_ITEM.ID,CONFIGURE_ITEM.CONFIGURE_NAME,CONFIGURE_CHG_APP.PRE_VERSION,"
+    sql += "CONFIGURE_ITEM.CONFIGURE_CODE,CONFIGURE_CHG_APP.AFT_VERSION FROM CONFIGURE_CHG_APP,CONFIGURE_ITEM "
+    sql += "WHERE ( CONFIGURE_CHG_APP.CONFIGURE_CODE = CONFIGURE_ITEM.CONFIGURE_CODE ) "
+    sql += "and CONFIGURE_CHG_APP.event_code='" + event_code + "') a "
+    
+    ConfigureItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"id")
   end
   
+  def findConfigOne(config_code,event_code)
+    sql = "SELECT CONFIGURE_ITEM.ID,CONFIGURE_ITEM.CONFIGURE_NAME,CONFIGURE_CHG_APP.PRE_VERSION,"
+    sql += "CONFIGURE_ITEM.CONFIGURE_CODE,CONFIGURE_CHG_APP.AFT_VERSION FROM CONFIGURE_CHG_APP,CONFIGURE_ITEM "
+    sql += "WHERE ( CONFIGURE_CHG_APP.CONFIGURE_CODE = CONFIGURE_ITEM.CONFIGURE_CODE ) "
+    sql += "and CONFIGURE_CHG_APP.event_code='" + event_code + "'"
+    sql += "and CONFIGURE_CHG_APP.CONFIGURE_CODE='" + config_code + "'"
+    
+    ConfigureItem.find_by_sql(sql) 
+  end
 end
