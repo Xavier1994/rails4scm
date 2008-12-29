@@ -17,6 +17,7 @@ class Scm::Collquery::Query::ProductQueryOneController < ApplicationController
     elsif(@whereProductVer ==nil) then
       @productVer =nil
     end
+    @items =nil
     if @product!=nil&&@product!="" then
        @items = list(pageSize,curPageSize,@product,@productVer)
        @productVers=productVerList(@product)
