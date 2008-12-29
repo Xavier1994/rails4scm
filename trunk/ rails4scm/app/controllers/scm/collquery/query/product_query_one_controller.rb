@@ -3,10 +3,12 @@ class Scm::Collquery::Query::ProductQueryOneController < ApplicationController
  def index
     curPageSize = params[:page]
     pageSize = 18
+
     @whereProduct     = params[:whereProduct]
     @whereProductVer   = params[:whereProductVer]
     @product   = params[:product]
     @productVer  = params[:productVer]
+    
     if(@whereProduct!=nil&&@whereProduct == "true"&&@product!=nil&&@product =="") then
       @product = nil
     elsif(@whereProduct==nil) then
@@ -16,6 +18,17 @@ class Scm::Collquery::Query::ProductQueryOneController < ApplicationController
         @productVer =nil
     elsif(@whereProductVer ==nil) then
       @productVer =nil
+    end
+    if(curPageSize != nil&&curPageSize!="")
+      @whereProduct = session[:productQueryOneWhereProduct]
+      @whereProductVer = session[:productQueryOneWhereProductVer]
+      @product = session[:productQueryOneProduct]
+      @productVer= session[:productQueryOneProductVer]
+    else
+      session[:productQueryOneWhereProduct] = @whereProduct
+      session[:productQueryOneWhereProductVer] = @whereProductVer
+      session[:productQueryOneProduct] = @product
+      session[:productQueryOneProductVer] = @productVer
     end
     @items =nil
     if @product!=nil&&@product!="" then

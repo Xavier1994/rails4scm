@@ -108,7 +108,7 @@
                 <td class="td_header_bak3" width="80px">״̬</td>
             </tr>
 <% 
-if @items!=nil then
+if @items!=nil&&@items.size>0 then
     for item in @items%>
             <tr>
                 <td class="td6">&nbsp;<%=item.PRODUCT_CODE%></td>
@@ -125,9 +125,29 @@ if @items!=nil then
 <%
     end 
     %>
-  <%= will_paginate @items%>  
+    <tr>
+                <td colspan="10">&nbsp;<%= will_paginate @items%>  </td>
+            </tr>
+  
+  <%
+else
+  %>
+            <tr>
+                <td class="td6">&nbsp;</td>
+                <td class="td7">&nbsp;</td>
+                <td class="td7">&nbsp;</td>
+                <td class="td7">&nbsp;</td>
+                <td class="td7">&nbsp;</td>
+                <td class="td7">&nbsp;</td>
+                <td class="td7">&nbsp;</td>
+                <td class="td7">&nbsp;</td>
+                <td class="td7">&nbsp;</td>
+                <td class="td7">&nbsp;</td>
+            </tr>
+            
   <%
 end%>
+            
         </table>
        </td>
      </tr>

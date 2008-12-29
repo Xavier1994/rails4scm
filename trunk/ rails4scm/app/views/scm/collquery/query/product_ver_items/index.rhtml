@@ -2,10 +2,44 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <link href="/stylesheets/style_table.css?1194846686" media="screen" rel="Stylesheet" type="text/css" /> 
+    <%= stylesheet_link_tag "style_table" %>
+    <%= stylesheet_link_tag "common_style" %> 
   </head>
 <%= javascript_include_tag "prototype" %>
-<script>
+<script language="JavaScript">
 window.moveTo((screen.availWidth*20/100)+27,168);
+function queryHistory(configueCode){
+            produtcode=document.getElementById("productCode").value;
+            productvers=document.getElementById("productVers").value;
+            if (produtcode!=null&&produtcode!=""){
+                url = "/scm/collquery/query/product_ver_items/history?configure_code="+configueCode+"&product_code="+produtcode+"&product_vers="+productvers;
+                var xmlHttp;
+                if(window.ActiveXObject){
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }else if(window.XMLHttpRequest){
+                    xmlHttp=new XMLHttpRequest();
+                }else {return;}
+                var content="";//构造要携带的数据  
+                xmlHttp.open("GET",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
+                xmlHttp.send(null);//发送数据 
+                
+                if(xmlHttp.readystate==4) //请求状态为4表示成功
+                    {
+                    if(xmlHttp.status==200) //http状态200表示OK
+                        {
+                            document.getElementById ("list").innerHTML =xmlHttp.responseText; 
+                        }
+                    else //http返回状态失败
+                        {
+                            alert("服务端返回状态" + xmlHttp.statusText);
+                        }
+                    }
+                else //请求状态还没有成功，页面等待
+                    {
+                        document .getElementById ("list").innerHTML ="数据加载中";
+                    }
+            }
+        }
 </script>
   <body>
     <table cellpadding=0 cellspacing=0 border=0 width=2000px  height="200px">
@@ -36,16 +70,15 @@ window.moveTo((screen.availWidth*20/100)+27,168);
               </thead>
               <tbody>
 <%
-if @productItems!=nil then
+if @productItems!=nil&&@productItems.size>0 then
     for productItem in @productItems%>
                 <tr>
-<%= form_remote_tag(:update => "list",
-:url => {:controller=>"product_ver_items", :action => "history", :configure_code=>productItem.CONFIGURE_CODE,:product_code=>@product_code,:product_vers=>@product_vers},
-:position => "top" ) %>
+<input type="hidden" name="productCode" id="productCode" value="<%=@product_code%>">
+<input type="hidden" name="productVers" id="productVers" value="<%=@product_vers%>">
                   <td class="td6">&nbsp;<%=productItem.CONFIGURE_NAME%></td>
                   <td class="td7">&nbsp;<%=productItem.H_CONFIG_VERS%></td>
                   <td class="td7">&nbsp;<%=productItem.CUR_STATE%></td>
-                  <td class="td7">&nbsp;<%= submit_tag "查看历史版本" %>
+                  <td class="td7">&nbsp;<a href="#" onclick="queryHistory('<%=productItem.CONFIGURE_CODE%>')">查看历史版本</a></td>
                   <td class="td7">&nbsp;<%=productItem.CONFIGURE_REMARK%></td>
                   <td class="td7">&nbsp;<%=productItem.CONF_DUTY_PERSON%></td>
                   <td class="td7">&nbsp;<%=productItem.CONFIGURE_CODE%></td>
@@ -55,13 +88,35 @@ if @productItems!=nil then
                   <td class="td7">&nbsp;<%=productItem.DEVELOP_PATH%></td>
                   <td class="td7">&nbsp;<%=productItem.AUTO_DOWN%></td>
                   <td class="td7">&nbsp;<%=productItem.AUTO_UP%></td>
-                  
-                  </td>
-                <%= end_form_tag %>
                 </tr>
 <%
     end
+%>
+    <tr>
+                <td colspan="10">&nbsp;<%= will_paginate @productItems%>  </td>
+            </tr>
+  
+  <%
+else
+  %>
+                <tr>
+                  <td class="td6">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr>
+<%
 end%>
+
 
               </tbody>
             </table>
@@ -71,16 +126,18 @@ end%>
       <tr>
         <td valign="top">
           <div style="overflow-x:auto;overflow-y:auto">
-            <table cellpadding=0 cellspacing=0 border=0 style="width:300px;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <table cellpadding=0 cellspacing=0 border=0 style="width:150px;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <thead class="td_header_bak2">
                     <tr>
                         <td ><div align="left">配置项历史版本:</div></td>
                     </tr>
                 </thead>
                 <tbody>
+
                         <tr>
-                            <td id="list"></td>
+                            <td class="td6" id="list">&nbsp;</td>
                         </tr>
+
                 </tbody>
             </table>
           </div>
