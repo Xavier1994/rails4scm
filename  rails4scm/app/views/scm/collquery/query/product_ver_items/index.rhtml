@@ -75,7 +75,7 @@ if @productItems!=nil&&@productItems.size>0 then
                 <tr>
 <input type="hidden" name="productCode" id="productCode" value="<%=@product_code%>">
 <input type="hidden" name="productVers" id="productVers" value="<%=@product_vers%>">
-                  <td class="td6">&nbsp;<%=productItem.CONFIGURE_NAME%></td>
+                  <td class="td6">&nbsp;<%=productItem.CONFIGURE_NAME%>&nbsp;<%=productItem.ID%></td>
                   <td class="td7">&nbsp;<%=productItem.H_CONFIG_VERS%></td>
                   <td class="td7">&nbsp;<%=productItem.CUR_STATE%></td>
                   <td class="td7">&nbsp;<a href="#" onclick="queryHistory('<%=productItem.CONFIGURE_CODE%>')">查看历史版本</a></td>
