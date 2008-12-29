@@ -10,7 +10,7 @@ class PruductConfigueItem < ActiveRecord::Base
     if (productVer != nil) then
       sql +=" AND (SOFTWARE_PRODUCT_VER.PRODUCT_VERS ='"+productVer+"')"
     end
-    PruductConfigueItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"id")
+    PruductConfigueItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"ID")
   end
  
   def productList()
@@ -38,7 +38,7 @@ class PruductConfigueItem < ActiveRecord::Base
     sql ="SELECT PRODUCT_COMP_CONF.H_CONFIG_VERS,PRODUCT_COMP_CONF.PRODUCT_CODE,PRODUCT_COMP_CONF.PRODUCT_VERS,PRODUCT_COMP_CONF.ACTIVE_STATUS,CONFIGURE_ITEM.ID,PRODUCT_COMP_CONF.CONFIGURE_CODE,CONFIGURE_ITEM.CONFIGURE_NAME,CONFIGURE_ITEM.CONFIGURE_REMARK,CONFIGURE_VERSION.CUR_STATE,CONFIGURE_ITEM.CONFIGURE_TYPE,CONFIGURE_ITEM.CONF_DUTY_PERSON,CONFIGURE_VERSION.STATE_DATE,CONFIGURE_ITEM.CONFIGURE_STORE_ADDR,PRODUCT_COMP_CONF.DEVELOP_PATH,CONFIGURE_VERSION.RELA_ADDRESS,PRODUCT_COMP_CONF.AUTO_DOWN,PRODUCT_COMP_CONF.AUTO_UP"
     sql +=" FROM PRODUCT_COMP_CONF,CONFIGURE_ITEM,CONFIGURE_VERSION  "
     sql +=" WHERE ( PRODUCT_COMP_CONF.CONFIGURE_CODE = CONFIGURE_ITEM.CONFIGURE_CODE ) and  ( CONFIGURE_VERSION.CONFIGURE_CODE = PRODUCT_COMP_CONF.CONFIGURE_CODE ) and  ( CONFIGURE_VERSION.CONFIGURE_VERS = PRODUCT_COMP_CONF.H_CONFIG_VERS ) AND (PRODUCT_COMP_CONF.PRODUCT_CODE='"+product_code+"') AND (PRODUCT_COMP_CONF.PRODUCT_VERS='"+product_vers+"') AND PRODUCT_COMP_CONF.ACTIVE_STATUS='Y'"
-    PruductConfigueItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"id")
+    PruductConfigueItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"ID")
   end 
   
   def productItemsHistory(product_code,product_vers,configure_code)
@@ -50,9 +50,9 @@ class PruductConfigueItem < ActiveRecord::Base
   
   def  productVerProjects(pageSize,curPageSize,product_code,product_ver)
     
-    sql ="SELECT  PROJECT_MSG.PROJECT_CODE ,PROJECT_MSG.PROJECT_NAME ,PROJECT_MSG.PROJECT_MANAGER ,PRJ_CON_RELA.PRODUCT_CODE ,PRJ_CON_RELA.PRODUCT_VERS ,PROJECT_MSG.PROJECT_CONF_PERSON  "
+    sql ="SELECT  PRJ_CON_RELA.ID,PROJECT_MSG.PROJECT_CODE ,PROJECT_MSG.PROJECT_NAME ,PROJECT_MSG.PROJECT_MANAGER ,PRJ_CON_RELA.PRODUCT_CODE ,PRJ_CON_RELA.PRODUCT_VERS ,PROJECT_MSG.PROJECT_CONF_PERSON  "
     sql +=" FROM PRJ_CON_RELA ,PROJECT_MSG   "
-    sql +=" WHERE ( PRJ_CON_RELA.PROJECT_CODE = PROJECT_MSG.PROJECT_CODE ) AND PRJ_CON_RELA.PRODUCT_CODE='"+product_code+"' AND PRJ_CON_RELA.PRODUCT_VERS='"+product_ver+"' GROUP BY PROJECT_MSG.PROJECT_CODE ,PROJECT_MSG.PROJECT_NAME ,PROJECT_MSG.PROJECT_MANAGER ,PRJ_CON_RELA.PRODUCT_CODE ,PRJ_CON_RELA.PRODUCT_VERS ,PROJECT_MSG.PROJECT_CONF_PERSON "
-    PruductConfigueItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize)
+    sql +=" WHERE ( PRJ_CON_RELA.PROJECT_CODE = PROJECT_MSG.PROJECT_CODE ) AND PRJ_CON_RELA.PRODUCT_CODE='"+product_code+"' AND PRJ_CON_RELA.PRODUCT_VERS='"+product_ver+"'"
+    PruductConfigueItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:group=>"PROJECT_CODE",:group=>"PROJECT_NAME",:group=>"PROJECT_MANAGER ",:group=>"PRODUCT_CODE",:group=>"PRODUCT_VERS",:group=>"PROJECT_CONF_PERSON ",:order=>"ID")
   end
 end
