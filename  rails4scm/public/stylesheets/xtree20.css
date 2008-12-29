@@ -1,0 +1,41 @@
+BODY{
+	SCROLLBAR-FACE-COLOR: #ffffff;  
+     SCROLLBAR-HIGHLIGHT-COLOR: #125544; 
+     SCROLLBAR-SHADOW-COLOR: #125544;     
+     SCROLLBAR-3DLIGHT-COLOR: #ffffff; 
+     SCROLLBAR-ARROW-COLOR: #125544; 
+     SCROLLBAR-TRACK-COLOR: #ffffff;     
+     SCROLLBAR-DARKSHADOW-COLOR: #ffffff; 
+     SCROLLBAR-BASE-COLOR: #ffffff; 
+	BACKGROUND-COLOR: #FFFFFF;
+}
+.webfx-tree-container {
+    FONT: icon; MARGIN: 0px; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px; WHITE-SPACE: nowrap
+}
+.webfx-tree-item {
+    COLOR: black; FONT: icon; MARGIN: 0px; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px; WHITE-SPACE: nowrap
+}
+.webfx-tree-item A {
+    MARGIN-LEFT: 3px; PADDING-BOTTOM: 1px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 1px
+}
+.webfx-tree-item A:active {
+    MARGIN-LEFT: 3px; PADDING-BOTTOM: 1px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 1px
+}
+.webfx-tree-item A:hover {
+    MARGIN-LEFT: 3px; PADDING-BOTTOM: 1px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 1px
+}
+.webfx-tree-item A {
+    COLOR: black; TEXT-DECORATION: none
+}
+.webfx-tree-item A:hover {
+    COLOR: blue; TEXT-DECORATION: underline
+}
+.webfx-tree-item A:active {
+    BACKGROUND: highlight; COLOR: highlighttext; TEXT-DECORATION: none
+}
+.webfx-tree-item IMG {
+    BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-RIGHT: 0px; BORDER-TOP: 0px; VERTICAL-ALIGN: middle
+}
+.webfx-tree-icon {
+    HEIGHT: 20px; WIDTH: 16px
+}
