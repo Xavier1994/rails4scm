@@ -50,7 +50,6 @@ class Scm::Collquery::Query::ProductVerItemsController < ApplicationController
       end
       outText+="</table>"
     end
-    puts(outText)
     render_text outText
   end
 end
