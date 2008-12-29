@@ -68,6 +68,7 @@ private
        i=1  
        for functionGroupUp in @rtFunctionGroupUp  
          functionGroupUpName = functionGroupUp.func_group_name 
+         functionGroupUpName = functionGroupUpName.split(//)[3,functionGroupUpName.length]
          functionGroupUpUrl  = functionGroupUp.url
          group_id            = functionGroupUp.func_group_id
          sub1=FsTreeModel::Treeview.new(functionGroupUpName,functionGroupUpUrl,i,'value1')
@@ -86,7 +87,7 @@ private
                 if group_id_up == func_group_id then
                   cnk = cn.to_s + k.to_s 
                   systemName = systemFunction.func_name
-                  systemUrl  = systemFunction.target
+                  systemUrl  = systemFunction.target + systemFunction.func_param
                   sub3=FsTreeModel::Treeview.new(systemName,systemUrl,cnk,'value' + cnk)
                   cnk = ""
                   k = k + 1
