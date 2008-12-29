@@ -4,6 +4,7 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="软件产品配置信息查询">
         <%= stylesheet_link_tag "style_table" %>
+        <%= stylesheet_link_tag "common_style" %> 
         <%= javascript_include_tag "prototype" %>
   </head>
   <script language="javascript">
@@ -75,13 +76,13 @@
                      版本：
             </td>
             <td>
-                 <div id="ajaxver">
-<%if @verHtml!=nil then%>
-  <%=@verHtml%>
-  <%else %>
-<select>
-</select>
-<%end%>
+              <div id="ajaxver">
+                <%if @verHtml!=nil then%>
+                    <%=@verHtml%>
+                <%else %>
+                <select>
+                </select>
+            <%end%>
                  </div>
             </td>
             <td>
@@ -123,11 +124,15 @@ if @items!=nil then
             </tr>
 <%
     end 
+    %>
+  <%= will_paginate @items%>  
+  <%
 end%>
         </table>
        </td>
      </tr>
     </table>
 <%end%>
+
 </body>
 </html>
