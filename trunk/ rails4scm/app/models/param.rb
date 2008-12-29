@@ -18,4 +18,9 @@ class Param < ActiveRecord::Base
         
         Param.find_by_sql(sql) 
   end
+  
+  #查询标识事件类型
+  def findTypeAll(type)
+        Param.find(:all,:conditions =>["param_class =? ",type])
+  end
 end
