@@ -10,7 +10,7 @@ class PruductConfigueItem < ActiveRecord::Base
     if (productVer != nil) then
       sql +=" AND (SOFTWARE_PRODUCT_VER.PRODUCT_VERS ='"+productVer+"')"
     end
-    PruductConfigueItem.find_by_sql(sql) 
+    #PruductConfigueItem.find_by_sql(sql) 
     PruductConfigueItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize)
   end
  
