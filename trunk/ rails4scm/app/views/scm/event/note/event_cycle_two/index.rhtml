@@ -1,0 +1,345 @@
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+
+    <script language="javascript">
+        function chg(){
+          var msg = window.confirm("触发申请将加到变更表，您是否要触发变更申请");
+          if(msg) {
+              var me = document.forms[0];
+              me.event_chg_hidden.value="4";
+              me.submit();
+          }
+        }
+
+        function init(){
+          var vlw = "<%=@quarters_validate[0]%>";
+          var message = "<%=@message%>";
+          var me = document.forms[0];
+          if(vlw == "A" || vlw == "B"){
+              try{
+                    me.tijiao_button.disabled ="false";
+                    me.queding_button.disabled ="false";
+                    me.stat_button.disabled ="false";
+              } catch(e) {}
+          }
+          if(vlw == "C") {
+              try{
+                me.EVENT_PRSN01.focus();
+              }catch(e) {}
+          }
+          if(vlw == "D") {
+              try{
+                me.EVENT_PRSN01.focus();
+              }catch(e){}
+          }
+          if(vlw == "E") {
+              try{
+                me.REMARK_01.focus();
+              } catch(e) {
+              }
+          }
+          if(vlw == "F") {
+              try{
+                me.tijiao_button.disabled ="false";
+                me.queding_button.disabled ="false";
+              } catch(e) {
+              }
+          }
+
+          if(message != ""){
+              alert(message);
+              window.parent.frames["cycle_iframe_one"].location.href="/scm/event/note/event_cycle_one?event_code=<%=@event_code%>";
+          }
+        }
+      
+        //确定按钮
+        function save(){
+            var me = document.forms[0];
+            me.event_chg_hidden.value="1";
+            me.submit();
+        }
+
+        //提交到下一个状态
+        function tijiao(){
+            var me = document.forms[0];
+            me.event_chg_hidden.value="2";
+            me.submit();
+        }
+
+        //状态回溯
+        function state(){
+            url = "/scm/event/note/event_stat?event_code=<%=@event_code%>";
+            var redata = window.showModalDialog(url, "状态回溯", "dialogHeight:200px;dialogWidth:500px;");
+            if(redata != null){
+                var me = document.forms[0];
+                me.event_chg_hidden.value="3";
+                me.current_stat.value  = redata.current_stat;
+                me.submit();
+            }
+        }
+        
+        //事件执行情况
+        function execute_info(){
+            url = "/scm/event/note/event_execute?event_code=<%=@event_code%>";
+            window.open(url);
+            //var redata = window.showModalDialog(url, "事件执行情况", "dialogHeight:500px;dialogWidth:800px;");
+            //if(redata != null){
+            //    var me = document.forms[0];
+           //     me.event_chg_hidden.value="5";
+           //     me.current_stat.value  = redata.current_stat;
+          //      me.submit();
+          //  }
+        }
+    </script>
+  </head>
+  <body bgcolor="#F6F6F6" onload="init()">
+    <% form_tag :action =>'index' do %>
+    <input type="hidden" name="event_code" value="<%=@event_code%>" >
+    <input type="hidden" name="event_chg_hidden">
+    <input type="hidden" name="current_stat">
+    <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <tr>
+          <td align="center" height="30px"><b>事件生命周期</b></td>
+        </tr>
+        <tr>
+          <td >&nbsp; 当前事件:<%=@eventRecord.EVENT_NAME%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前状态:<%=@eventRecord.CURRENT_STATUS%></td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+            <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="4">状态=决策中</td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @quarters_validate[0] == "C" then%>
+                    <tr>
+                      <td class="td6" width="30%">事件转发决策人</td>
+                      <td class="td7" width="40%"><input type="text" name="EVENT_PRSN01" style="width:100%" value="<%=@configureMsgCycleDetYi.EVENT_PRSN01%>"></td>
+                      <td class="td7" width="30%" colspan="2">日期和时间：<%=calendar_field :DATA,:data1,@date_01_Yi,1,{:date_format=>'%Y-%m-%d'}%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">CCB</td>
+                      <td class="td7" width="40%">&nbsp;<%=@oper.NAME%></td>
+                      <td class="td7" width="30%" colspan="2">日期和时间：<%=@date_02_Yi%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >CCB的决定</td>
+                      <td class="td7" colspan="2" width="55%"><input type="text" name="CONCLUSION_01" style="width:100%" value="<%=@configureMsgCycleDetYi.CONCLUSION_01%>"></td>
+                      <td class="td7" rowspan="2" width="15%">&nbsp;
+                          <input type="button" value="触发变更申请" onclick="chg()" class="btn3_mouseout">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >变更优先级</td>
+                      <td class="td7" colspan="2" width="55%"><input type="text" name="CONCLUSION_02" style="width:100%" value="<%=@configureMsgCycleDetYi.CONCLUSION_02%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >拒绝理由</td>
+                      <td class="td7" colspan="3"><input type="text" name="REMARK_01" style="width:100%" value="<%=@configureMsgCycleDetYi.REMARK_01%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >延期到</td>
+                      <td class="td7" colspan="3"><input type="text" name="REMARK_02" style="width:100%" value="<%=@configureMsgCycleDetYi.REMARK_02%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >由谁通知事件观察人</td>
+                      <td class="td7" colspan="3"><input type="text" name="REMARK_03" style="width:100%" value="<%=@configureMsgCycleDetYi.REMARK_03%>"></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">事件转发决策人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetYi.EVENT_PRSN01%></td>
+                      <td class="td7" width="30%" colspan="2">日期和时间：<%=@date_01_Yi%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">CCB</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetYi.EVENT_PRSN02%></td>
+                      <td class="td7" width="30%" colspan="2">日期和时间：<%=@date_02_Yi%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >CCB的决定</td>
+                      <td class="td7" colspan="2" width="55%">&nbsp;<%=@configureMsgCycleDetYi.CONCLUSION_01%></td>
+                      <td class="td7" rowspan="2" width="15%">&nbsp;
+                          <!--<input type="button" value="触发变更申请" onclick="chg()" class="btn3_mouseout">-->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >变更优先级</td>
+                      <td class="td7" colspan="2" width="55%">&nbsp;<%=@configureMsgCycleDetYi.CONCLUSION_02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >拒绝理由</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureMsgCycleDetYi.REMARK_01%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >延期到</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureMsgCycleDetYi.REMARK_02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >由谁通知事件观察人</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureMsgCycleDetYi.REMARK_03%></td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height="20px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+             <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="3">状态=变更中</td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @quarters_validate[0] == "D" then%>
+                    <tr>
+                      <td class="td6" width="30%">由谁开放变更请求</td>
+                      <td class="td7" width="40%"><input type="text" name="EVENT_PRSN01" style="width:100%" value="<%=@configureMsgCycleDetEr.EVENT_PRSN01%>"></td>
+                      <td class="td7" width="30%">日期和时间：<%=calendar_field :DATA,:data1,@date_01_Er,1,{:date_format=>'%Y-%m-%d'}%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">由谁接受/关闭所有的变更请求</td>
+                      <td class="td7" width="40%">&nbsp;<%=@oper.NAME%></td>
+                      <td class="td7" width="30%">日期和时间：<%=@date_02_Er%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">总的实际变更工作量</td>
+                      <td class="td7" colspan="2"><input type="text" name="WORK_DAYS01" style="width:100%" value="<%=@configureMsgCycleDetEr.WORK_DAYS01%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">总的实际测试工作量</td>
+                      <td class="td7" colspan="2"><input type="text" name="WORK_DAYS02" style="width:100%" value="<%=@configureMsgCycleDetEr.WORK_DAYS02%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >CCB的决定</td>
+                      <td class="td7" colspan="2"><input type="text" name="CONCLUSION_01" style="width:100%" value="<%=@configureMsgCycleDetEr.CONCLUSION_01%>"></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">由谁开放变更请求</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetEr.EVENT_PRSN01%></td>
+                      <td class="td7" width="30%">日期和时间：<%=@date_01_Er%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">由谁接受/关闭所有的变更请求</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetEr.EVENT_PRSN02%></td>
+                      <td class="td7" width="30%">日期和时间：<%=@date_02_Er%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">总的实际变更工作量</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.WORK_DAYS01%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">总的实际测试工作量</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.WORK_DAYS02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >CCB的决定</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.CONCLUSION_01%></td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height="20px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+             <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="4">状态=关闭</td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @quarters_validate[0] == "E" then%>
+                    <tr>
+                      <td class="td6" rowspan="3" width="30%">条件</td>
+                      <td class="td7" colspan="2" width="55%"><input type="text" name="REMARK_01" style="width:100%" value="<%=@configureMsgCycleDetSa.REMARK_01%>"></td>
+                      <td class="td7" rowspan="2" width="15%">&nbsp;
+                          <input type="button" value="事件执行情况" onclick="execute_info()" class="btn3_mouseout">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="td7" width="55%"><input type="text" name="REMARK_02" style="width:100%" value="<%=@configureMsgCycleDetSa.REMARK_02%>"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="td7" width="55%"><input type="text" name="REMARK_03" style="width:100%" value="<%=@configureMsgCycleDetSa.REMARK_03%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">评语</td>
+                      <td class="td7" colspan="3"><input type="text" name="CONCLUSION_01" style="width:100%" value="<%=@configureMsgCycleDetSa.CONCLUSION_01%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">由谁通知事件观察人</td>
+                      <td class="td7" width="40%"><input type="text" name="EVENT_PRSN01" style="width:100%" value="<%=@configureMsgCycleDetSa.EVENT_PRSN01%>"></td>
+                      <td class="td7" colspan="2" width="30%">日期和时间：<%=calendar_field :DATA,:data1,@date_01_Sa,1,{:date_format=>'%Y-%m-%d'}%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">CCB签字</td>
+                      <td class="td7" width="40%">&nbsp;<%=@oper.NAME%></td>
+                      <td class="td7" colspan="2" width="30%">日期和时间：<%=@date_02_Sa%></td>
+                    </tr>
+                  <% else%>
+                    <tr>
+                      <td class="td6" rowspan="3" width="30%">条件</td>
+                      <td class="td7" colspan="2" width="55%">&nbsp;<%=@configureMsgCycleDetSa.REMARK_01%></td>
+                      <td class="td7" rowspan="2" width="15%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="td7" width="55%">&nbsp;<%=@configureMsgCycleDetSa.REMARK_02%></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="td7" width="55%">&nbsp;<%=@configureMsgCycleDetSa.REMARK_03%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">评语</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureMsgCycleDetSa.CONCLUSION_01%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">由谁通知事件观察人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetSa.EVENT_PRSN01%></td>
+                      <td class="td7" colspan="2" width="30%">日期和时间：<%=@date_01_Sa%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">CCB签字</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetSa.EVENT_PRSN02%></td>
+                      <td class="td7" colspan="2" width="30%">日期和时间：<%=@date_02_Sa%></td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table align="center">
+              <tr>
+                <td align="center">
+                  <input type="button" onclick="save()" class="btn3_mouseout" name="queding_button" value="确定">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="button" onclick="tijiao()" class="btn3_mouseout" name="tijiao_button" value="<%=@quarters_validate[1]%>" >
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="button" onclick="state()" class="btn3_mouseout" name="stat_button" value="状态回溯" >
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>
+    <% end %>
+  </body>
+</html>
