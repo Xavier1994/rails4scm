@@ -1,0 +1,297 @@
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+
+    <script language="javascript">
+        function chg(){
+          var msg = window.confirm("触发申请将加到变更表，您是否要触发变更申请");
+          if(msg) {
+              var me = document.forms[0];
+              me.event_chg_hidden.value="4";
+              me.submit();
+          }
+        }
+
+        function init(){
+          var vlw = "<%=@quarters_validate[0]%>";
+          var message = "<%=@message%>";
+          var me = document.forms[0];
+          if(vlw == "A" || vlw == "B"){
+              try{
+                    //me.tijiao_button.disabled ="false";
+                    //me.queding_button.disabled ="false";
+                    //me.stat_button.disabled ="false";
+              } catch(e) {}
+          }
+          
+          if(vlw == "F") {
+              try{
+                me.tijiao_button.disabled ="false";
+                me.queding_button.disabled ="false";
+              } catch(e) {
+              }
+          }
+
+          if(message != ""){
+              alert(message);
+              window.parent.frames["cycle_iframe_one"].location.href="/scm/event/note/event_cycle_one?event_code=<%=@event_code%>";
+          }
+        }
+      
+        //确定按钮
+        function save(){
+            var me = document.forms[0];
+            me.event_chg_hidden.value="1";
+            me.submit();
+        }
+
+        //提交到下一个状态
+        function tijiao(){
+            var me = document.forms[0];
+            me.event_chg_hidden.value="2";
+            me.submit();
+        }
+
+        //状态回溯
+        function state(){
+            url = "/scm/event/note/event_stat?event_code=<%=@event_code%>";
+            var redata = window.showModalDialog(url, "状态回溯", "dialogHeight:200px;dialogWidth:500px;");
+            if(redata != null){
+                var me = document.forms[0];
+                me.event_chg_hidden.value="3";
+                me.current_stat.value  = redata.current_stat;
+                me.submit();
+            }
+        }
+        
+        //事件执行情况
+        function execute_info(){
+            url = "/scm/event/note/event_execute?event_code=<%=@event_code%>";
+            window.open(url);
+            //var redata = window.showModalDialog(url, "事件执行情况", "dialogHeight:500px;dialogWidth:800px;");
+            //if(redata != null){
+            //    var me = document.forms[0];
+           //     me.event_chg_hidden.value="5";
+           //     me.current_stat.value  = redata.current_stat;
+          //      me.submit();
+          //  }
+        }
+    </script>
+  </head>
+  <body bgcolor="#F6F6F6" onload="init()">
+    <% form_tag :action =>'index' do %>
+    <input type="hidden" name="configure_chg_no" value="<%=@configure_chg_no%>" >
+    <input type="hidden" name="event_chg_hidden">
+    <input type="hidden" name="current_stat">
+    <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <tr>
+          <td align="center" height="30px"><b>变更请求表</b></td>
+        </tr>
+        <tr>
+          <td >&nbsp; 配置项:<%=@configurechg.CONFIGURE_CODE%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前版本:<%=@configurechg.PRE_VERSION%></td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+            <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="4">状态=<%=@configure_state[0]%></td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @quarters_validate[0] == "A" then%>
+                    <tr>
+                      <td class="td6" width="30%">申请人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetYi.CHG_PRSN01%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Yi%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">对申请变更的详尽描述</td>
+                      <td class="td7" colspan="3"><input type="text" name="REMARK" style="width:100%" value="<%=@configureChgCycleDetYi.REMARK%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >估计变更的工作量</td>
+                      <td class="td7" colspan="3"><input type="text" name="WORK_DAYS" style="width:100%" value="<%=@configureChgCycleDetYi.WORK_DAYS%>"></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">申请人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetYi.CHG_PRSN01%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Yi%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">对申请变更的详尽描述</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureChgCycleDetYi.REMARK%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >估计变更的工作量</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureChgCycleDetYi.WORK_DAYS%></td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height="20px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+             <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="3">状态=<%=@configure_state[1]%></td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @quarters_validate[0] == "B" then%>
+                    <tr>
+                      <td class="td6" width="30%">变更实现人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetEr.CHG_PRSN01%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Er%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">对申请变更的详尽描述</td>
+                      <td class="td7" colspan="3"><input type="text" name="REMARK" style="width:100%" value="<%=@configureChgCycleDetEr.REMARK%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">实际的变更工作量</td>
+                      <td class="td7" colspan="2"><input type="text" name="WORK_DAYS" style="width:100%" value="<%=@configureChgCycleDetEr.WORK_DAYS%>"></td>
+                      <td class="td7" width="15%"><input type="button" value="变更描述" onclick="execute_info()" class="btn3_mouseout"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">实现人签字</td>
+                      <td class="td7" width="40%"><input type="text" name="CHG_PRSN02" style="width:100%" value="<%=@configureChgCycleDetEr.CHG_PRSN02%>"></td>
+                      <td class="td7" colspan="2">日期和时间：<%=calendar_field :DATA,:data2,@chg_date02_Er,1,{:date_format=>'%Y-%m-%d'}%></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">变更实现人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetEr.CHG_PRSN01%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Er%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">对申请变更的详尽描述</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureChgCycleDetEr.REMARK%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">实际的变更工作量</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureChgCycleDetEr.WORK_DAYS%></td>
+                      <td class="td7" width="15%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">实现人签字</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetEr.CHG_PRSN02%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=@chg_date02_Er%></td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height="20px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+             <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="4">状态=<%=@configure_state[2]%></td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @quarters_validate[0] == "C" then%>
+                    <tr>
+                      <td class="td6" width="30%">评语</td>
+                      <td class="td7" colspan="2"><input type="text" name="REMARK" style="width:100%" value="<%=@configureChgCycleDetSa.REMARK%>"></td>
+                      <td class="td7" width="15%"><input type="button" value="升级描述" onclick="execute_info()" class="btn3_mouseout"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">批准人签字</td>
+                      <td class="td7" width="40%"><input type="text" name="CHG_PRSN01" style="width:100%" value="<%=@configureChgCycleDetSa.CHG_PRSN01%>"></td>
+                      <td class="td7" colspan="2">日期和时间：<%=calendar_field :DATA,:data1,@chg_date01_Sa,1,{:date_format=>'%Y-%m-%d'}%></td>
+                    </tr>
+                  <% else%>
+                    <tr>
+                      <td class="td6" width="30%">评语</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureChgCycleDetSa.REMARK%></td>
+                      <td class="td7" width="15%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">批准人签字</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetSa.CHG_PRSN01%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Sa%></td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height="20px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+             <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="3">状态=<%=@configure_state[3]%></td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @quarters_validate[0] == "D" then%>
+                    <tr>
+                      <td class="td6" width="30%">执行人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetSi.CHG_PRSN01%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Si%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">描述</td>
+                      <td class="td7" colspan="3"><input type="text" name="REMARK" style="width:100%" value="<%=@configureChgCycleDetEr.REMARK%>"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">立即更新</td>
+                      <td class="td7" colspan="3"><input type="button" value="执行" onclick="execute_info()" class="btn3_mouseout"></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">执行人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetSi.CHG_PRSN01%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Si%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">描述</td>
+                      <td class="td7" colspan="3">&nbsp; <%=@configureChgCycleDetEr.REMARK%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">立即更新</td>
+                      <td class="td7" colspan="3">&nbsp;</td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table align="center">
+              <tr>
+                <td align="center">
+                  <input type="button" onclick="save()" class="btn3_mouseout" name="queding_button" value="确定">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="button" onclick="tijiao()" class="btn3_mouseout" name="tijiao_button" value="<%=@quarters_validate[1]%>" >
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="button" onclick="state()" class="btn3_mouseout" name="stat_button" value="状态回溯" >
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>
+    <% end %>
+  </body>
+</html>
