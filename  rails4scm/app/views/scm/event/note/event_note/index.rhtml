@@ -47,13 +47,14 @@ util = Util.new
         //点击生命周期按钮
         function cycle(event_code){
             url = "/scm/event/note/event_cycle?event_code=" + event_code;
+
             var redata = window.showModalDialog(url, "事件生命周期", "dialogHeight:700px;dialogWidth:900px;help=no;status=0");
             if(redata == undefined) {
                 var me = document.forms[0];
                 clickobject = me.click_hidden;
                 clickobject.value = "";
                 me.submit();
-            }
+           }
         }
         
         //点击添加按钮
@@ -105,7 +106,7 @@ util = Util.new
                   continue;
                }
                if(i == 2){
-                  text_name0 = kongjian_text("eventRecord[" + rows + "][EVENT_NAME]","eventRecord_" + rows + "_EVENT_NAME","");
+                  text_name0 = kongjian_text("","eventRecord[" + rows + "][EVENT_NAME]","eventRecord_" + rows + "_EVENT_NAME");
                   detail.rows[len].cells[i].setAttribute("align","left"); 
                   detail.rows[len].cells[i].appendChild(text_name0);
                   detail.rows[len].cells[i].className =  tdclass7;
@@ -302,13 +303,26 @@ util = Util.new
         function jsTrim(strText){ 
            return strText.replace(/(^\s*|\s*$)/g,"")
         }
-
+        
+        //状态回溯
+        function state(event_code,id){
+            url = "/scm/event/note/event_stat?event_code=" + event_code;
+            var redata = window.showModalDialog(url, "状态回溯", "dialogHeight:200px;dialogWidth:500px;");
+            if(redata != null){
+                var me = document.forms[0];
+                me.click_hidden.value="4";
+                me.current_stat.value  = redata.current_stat;
+                me.delete_ID_hidden.value = id;
+                me.submit();
+            }
+        }
     </script>
   </head>
   <body bgcolor="#F6F6F6" onload="init()">
   <% form_tag :action =>'index' do %>
   <input type="hidden" name="click_hidden">
   <input type="hidden" name="delete_ID_hidden">
+  <input type="hidden" name="current_stat">
   <table width="1100px">
      <tr>
        <td>
@@ -331,7 +345,7 @@ util = Util.new
          <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
             <thead id="mytablehead">
               <tr>
-                <td class="td_header_bak2" width="200px">&nbsp;</td>
+                <td class="td_header_bak2" width="250px">&nbsp;</td>
                 <td class="td_header_bak3" width="80px">事件标识</td>　
                 <td class="td_header_bak3" width="300px">事件名称</td>
                 <td class="td_header_bak3" width="150px">标识事件类型</td>
@@ -349,7 +363,8 @@ util = Util.new
                 <tr>
                   <td class="td6" >&nbsp;
                      <input type="button" value="删除" onclick="delet('<%=eventRecord.ID%>','<%=eventRecord.EVENT_SPONSOR%>','<%=eventRecord.CURRENT_STATUS%>')" class="btn3_mouseout">
-                     <input type="button" value="事件生命周期" onclick="cycle('<%=eventRecord.EVENT_CODE%>')" class="btn3_mouseout">
+                     <input type="button" value="生命周期" onclick="cycle('<%=eventRecord.EVENT_CODE%>')" class="btn3_mouseout">
+                     <input type="button" value="状态回溯" class="btn3_mouseout" onclick="state('<%=eventRecord.EVENT_CODE%>','<%=eventRecord.ID%>')" >
                      <input type="hidden" id="record<%=j%>ID" value="<%=eventRecord.ID%>">
                   </td>
                   <td class="td7" >&nbsp;<%=eventRecord.EVENT_CODE%></td>
