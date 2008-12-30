@@ -33,8 +33,8 @@
         }
         
         //点击生命周期按钮
-        function cycle(){
-            url = "/scm/item/query/item_cycle?event_code=";
+        function cycle(configure_chg_no){
+            url = "/scm/item/query/item_cycle?configure_chg_no=" + configure_chg_no;
             var redata = window.showModalDialog(url, "配置项生命周期", "dialogHeight:700px;dialogWidth:900px;help=no;status=0");
             if(redata == undefined) {
                 var me = document.forms[0];
@@ -44,20 +44,120 @@
             }
         }
         
-       
+        //状态回溯
+        function state(configure_chg_no){
+            url = "/scm/item/query/item_stat?configure_chg_no=" + configure_chg_no;
+            var redata = window.showModalDialog(url, "状态回溯", "dialogHeight:200px;dialogWidth:500px;");
+            if(redata != null){
+                var me = document.forms[0];
+                me.click_hidden.value="2";
+                me.current_stat.value  = redata.current_stat;
+                me.configure_chg_no_hidden.value = configure_chg_no;
+                me.submit();
+            }
+        }
+        
+        //作废
+        function cancel(configure_chg_no) {
+            var me = document.forms[0];
+            me.click_hidden.value="3";
+            me.current_stat.value  = "已废除";
+            me.configure_chg_no_hidden.value = configure_chg_no;
+            me.submit();
+        }
+        //点击修改按钮
+        function update(){
+            var me = document.forms[0];
+            clickobject = me.click_hidden;
+            clickobject.value = "1";
+            
+            //表体的行数
+	    var detail = document.getElementById("mytablebody");
+	    var len = detail.rows.length;
+            var j = 1;
+            for(var i=0;i < len;i++){ 
+                cells_9 = detail.rows[i].cells[9].innerText
+                cells_9 = jsTrim(cells_9);
+                if(cells_9 == "关闭" || cells_9 == "已废除"){
+                    continue;
+                }
+                cells_7 = detail.rows[i].cells[7].innerText
+                hid = "configure" + (i+1) + "ID";
+                hvalue = document.getElementById(hid).value;
+                
+                cells_7 = jsTrim(cells_7); 
+                
+                detail.rows[i].cells[7].innerText = "";
+
+                //后版本
+                text_name2 = kongjian_text(cells_7,"configure[" + j + "][AFT_VERSION]","configure_" + j + "_AFT_VERSION");
+                detail.rows[i].cells[7].setAttribute("align","left"); 
+                detail.rows[i].cells[7].appendChild(text_name2);
+                
+                //隐藏ID
+                text_name5 = kongjian_hidden("configure[" + j + "][ID]","configure_" + j + "_ID",hvalue);
+                detail.rows[i].cells[7].setAttribute("align","left"); 
+                detail.rows[i].cells[7].appendChild(text_name5);
+                j++;
+            }
+            if(j == 1){
+                alert("该页数据全部关闭，不允许修改");
+            }
+        }
+        
+        //点击保存按钮
+        function save(){
+            var me = document.forms[0];
+            clickobject = me.click_hidden;
+            clickvalue = clickobject.value;
+            if(clickvalue == ""){
+                alert("没有记录，不允许保存");
+                return false;
+            }
+            me.submit();
+        }
+
+        //生成文本框控件 kname:控件名字  kid:控件Id size:大小
+        function kongjian_text(textValue,kname,kid) {
+                var text_name0 = document.createElement("input");
+                text_name0.setAttribute("type","text");
+                text_name0.setAttribute("name",kname);
+                text_name0.setAttribute("id"  ,kid);
+                text_name0.setAttribute("value",textValue);
+                text_name0.className =  textwidth;    
+                return text_name0;
+        }
+        
+        //生成隐藏控件 kname:控件名字  kid:控件Id size:大小
+        function kongjian_hidden(kname,kid,textValue) {
+                var text_name0 = document.createElement("input");
+                text_name0.setAttribute("type","hidden");
+                text_name0.setAttribute("name",kname);
+                text_name0.setAttribute("id"  ,kid);
+                text_name0.setAttribute("value",textValue);   
+                return text_name0;
+        }
+
         function init(){
             var message = "<%=@message%>";
             if(message != "") {
                 alert(message);
             }
         }
+
+        //去处空格
+        function jsTrim(strText){ 
+           return strText.replace(/(^\s*|\s*$)/g,"")
+        }
+        
     </script>
   </head>
-  <body bgcolor="#F6F6F6">
+  <body bgcolor="#F6F6F6" onload="init()">
   <% form_tag :action =>'index' do %>
   <input type="hidden" name="click_hidden">
-  <input type="hidden" name="delete_ID_hidden">
-  <table width="1100px">
+  <input type="hidden" name="current_stat">
+  <input type="hidden" name="configure_chg_no_hidden">
+  <table width="1300px">
      <tr>
        <td>
          <table>
@@ -91,7 +191,7 @@
          <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
             <thead id="mytablehead">
               <tr>
-                <td class="td_header_bak2" width="80px">&nbsp;</td>
+                <td class="td_header_bak2" width="200px">&nbsp;</td>
                 <td class="td_header_bak3" width="90px">变更标识</td>　
                 <td class="td_header_bak3" width="90px">配置项编号</td>
                 <td class="td_header_bak3" width="200px">配置项名称</td>
@@ -99,7 +199,7 @@
                 <td class="td_header_bak3" width="200px">事件名称</td>
                 <td class="td_header_bak3" width="50px">前版本</td>
                 <td class="td_header_bak3" width="50px">后版本</td>
-                <td class="td_header_bak3" width="150px">项目</td>
+                <td class="td_header_bak3" width="120px">项目</td>
                 <td class="td_header_bak3" width="80px">当前状态</td>
               </tr>
             </thead>
@@ -110,7 +210,10 @@
               %>
                 <tr>
                   <td class="td6" >&nbsp;
-                     <input type="button" value="生命周期" onclick="cycle()" class="btn3_mouseout">
+                     <input type="button" value="生命周期" class="btn3_mouseout" onclick="cycle('<%=configure.CONFIGURE_CHG_NO%>')" >
+                     <input type="button" value="状态回溯" class="btn3_mouseout" onclick="state('<%=configure.CONFIGURE_CHG_NO%>')" >
+                     <input type="button" value="作废"     class="btn3_mouseout" onclick="cancel('<%=configure.CONFIGURE_CHG_NO%>')">
+                     <input type="hidden" id="configure<%=j%>ID" value="<%=configure.ID%>">
                   </td>
                   <td class="td7" >&nbsp;<%=configure.CONFIGURE_CHG_NO%></td>
                   <td class="td7" >&nbsp;<%=configure.CONFIGURE_CODE%></td>
@@ -132,9 +235,9 @@
      </tr>
      <tr>
        <td align="center">
-         <input type="button" value="添加" onclick="add()"    class="btn3_mouseout">&nbsp;&nbsp;
-         <input type="button" value="修改" onclick="update()" class="btn3_mouseout">&nbsp;&nbsp;
-         <input type="button" value="保存" onclick="save()"   class="btn3_mouseout">
+         <input type="button" value="保存" onclick="save()"   class="btn3_mouseout">&nbsp;&nbsp;
+         <input type="button" value="修改" onclick="update()"  class="btn3_mouseout">&nbsp;&nbsp;
+         <input type="button" value="状态回溯" onclick="" class="btn3_mouseout">
        </td>
      </tr>
   </table>
