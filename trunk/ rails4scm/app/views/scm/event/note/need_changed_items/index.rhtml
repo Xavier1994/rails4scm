@@ -62,46 +62,57 @@ function add(){
 }
 </script>
   <body onload="load();">
-    <table cellpadding=0 cellspacing=0 border=0 width=¡°1000px¡± height="450px">
+    <table cellpadding=0 cellspacing=0 border=0 width=¡°1000px¡± height="100%">
       <tr>
         <td valign="top" width="400px" height="450px">
           <div style="overflow-x:auto;overflow-y:auto">
             <iframe name="source" id="source" width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" src="/scm/event/note/need_source_items?<%=@event_code%>"> </iframe>  
           </div>
         </td>
-        <td align="center" valign="top" width="50px" height="450px">
+        <td align="center" valign="middle" width="20px" height="100%">
           <div style="overflow-x:auto;overflow-y:auto">
             <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <tr>
-                    <td valign="top" align="center">
-                        <input type="button" value=">>>" onclick="add()">
+                    <td valign="middle" align="center">
+                        <input type="button" value=">>" onclick="add()" class="btn3_mouseout">
                         <input type="hidden" name="event_code" id="event_code" value="<%=@event_code%>">
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" align="center">
+                    <td valign="middle" align="center">
                         &nbsp;
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" align="center">
-                        <input type="button" value="<<<" onclick="">
+                        <input type="button" value="<<" onclick="" class="btn3_mouseout">
                     </td>
                 </tr>
             </table>
           </div>
         </td>
-        <td valign="top"  width="550px" height="450px">
-          <div style="overflow-x:auto;overflow-y:auto">
-            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <td valign="top"  width="550px" height="100%">
+          
+            <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height=350;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <tr>
-                  <td id="list">&nbsp;</td>
+                  <td>
+                    <div style="overflow-x:auto;overflow-y:auto;height:250px;">
+                    <table valign="top" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                        <tr>
+                            <td id="list">&nbsp;</td>
+                        </tr>
+                    </table>
+                    </div>
+                  </td>
                 </tr>
-            </table>
-            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+
+                <tr>
+                  <td>
+                    <div style="overflow-x:auto;overflow-y:auto;height:200px;">
+                    <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height:100px;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <tr>
                   <td colspan="5">
-                    <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                    <table cellpadding=0 cellspacing=0 border=0 style="height:250px;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                         <HR>
                         <thead class="td_header_bak2">
                         <tr>
@@ -151,7 +162,10 @@ function add(){
                   </td>
                 </tr>
             </table>
-          </div>
+            </div>
+                  </td>
+                </tr>
+            </table>
         </td>
       </tr>
     </table>
