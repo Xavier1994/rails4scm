@@ -1,5 +1,5 @@
 class Scm::Event::Note::NeedSourceItemsController < ApplicationController
-
+   before_filter :fileLoginSessionNil
   def index
     @event_code=params[:event_code]
     @eventItemsSource=session[:eventItemsSource]
