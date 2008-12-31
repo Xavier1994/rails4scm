@@ -14,4 +14,12 @@ class PrjConRela < ActiveRecord::Base
     
     PrjConRela.find_by_sql(sql)
   end
+  
+  def findCode(configure_code,config_vers)
+    sql = "select PROJECT_CODE "
+    sql += "from PRJ_CON_RELA "
+    sql += " where configure_code='"+configure_code+"' and configure_vers='"+config_vers+"' group by project_code"
+    
+    PrjConRela.find_by_sql(sql)
+  end
 end
