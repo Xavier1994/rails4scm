@@ -13,4 +13,14 @@ class ProductCompConf < ActiveRecord::Base
     
     ProductCompConf.find_by_sql(sql)
   end
+  
+  #查询相关产品
+  #configure_code -- 配置项编号
+  #h_config_vers  -- 版本号
+  def findByCodeVer(configure_code,h_config_vers)
+    sql = "select PRODUCT_CODE,PRODUCT_VERS "
+    sql += "from PRODUCT_COMP_CONF  "
+    sql += " where CONFIGURE_CODE='"+configure_code+"' and H_CONFIG_VERS='"+h_config_vers+"' and active_status='Y'"
+    ProductCompConf.find_by_sql(sql)
+  end
 end

@@ -13,7 +13,7 @@ class ConfigureItem < ActiveRecord::Base
         
         ConfigureItem.find_by_sql(sql)
   end
-  
+    
   #查询配置项分类的信息
   def findConfigureItemCode(configure_code)
        ConfigureItem.find(:all,:conditions =>["configure_code =?",configure_code])
@@ -70,4 +70,13 @@ class ConfigureItem < ActiveRecord::Base
     
     ConfigureItem.find_by_sql(sql) 
   end
+  
+  #查询该事件对应所有的配置项
+  def findEventConfigureItem(configure_name,configure_type)
+        sql = " SELECT CONFIGURE_ITEM.CONFIGURE_NAME,CONFIGURE_VERSION.CONFIGURE_VERS, CONFIGURE_VERSION.CUR_STATE,CONFIGURE_ITEM.CONFIGURE_CODE "
+        sql += " FROM CONFIGURE_ITEM, CONFIGURE_VERSION   "
+        sql += " WHERE ( CONFIGURE_ITEM.CONFIGURE_CODE = CONFIGURE_VERSION.CONFIGURE_CODE ) and  ( ( CONFIGURE_VERSION.CUR_STATE <> '检出-变更' ) )  AND CONFIGURE_ITEM.CONFIGURE_TYPE like '%"+configure_type+"%' AND CONFIGURE_ITEM.CONFIGURE_NAME like '%"+configure_name+"%'"
+        ConfigureItem.find_by_sql(sql)
+  end
+  
 end
