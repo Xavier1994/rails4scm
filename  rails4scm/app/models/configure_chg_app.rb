@@ -1,6 +1,7 @@
 class ConfigureChgApp < ActiveRecord::Base
   self.table_name = "CONFIGURE_CHG_APP"
   self.primary_key = "id"
+  attr_accessor :id
   
    def list(pageSize,curPageSize)
      sql = "select distinct aa.id, aa.CONFIGURE_CHG_NO,aa.CONFIGURE_CODE,ab.CONFIGURE_NAME,aa.EVENT_CODE,"
@@ -68,5 +69,9 @@ class ConfigureChgApp < ActiveRecord::Base
     #sql += " order by CONFIGURE_CHG_APP.EVENT_CODE desc"
     
     ConfigureChgApp.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"ID")
+  end
+  
+  def findConfigureChgApp_no(configure_chg_no)
+    ConfigureChgApp.find(:first,:conditions =>["configure_chg_no =? ",configure_chg_no])
   end
 end
