@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link href="/stylesheets/style_table.css?1194846686" media="screen" rel="Stylesheet" type="text/css" /> 
+    <%= stylesheet_link_tag "style_table" %>
+    <%= stylesheet_link_tag "common_style" %> 
+  </head>
+<%= javascript_include_tag "prototype" %>
+<script language="JavaScript">
+function query(){
+            document.forms[0].submit();
+        }
+function p_query(){
+    if(event.keyCode == 13) {
+       query();
+    }
+}
+
+function selectchange(checkbox){
+    var param_configure_code=document.getElementById("param_configure_code").value;
+    if(param_configure_code==null||param_configure_code==""){
+        if(checkbox.checked){
+            document.getElementById("param_configure_code").value=checkbox.value;
+        }else{
+            //donothing
+        }
+    }else{
+        if(checkbox.checked){
+            //把原来选中的变成不被选中
+            document.getElementById(param_configure_code).checked=false;
+            //用现在的值覆盖原来的值
+            document.getElementById("param_configure_code").value=checkbox.value;
+        }else{
+            //把原来选中的变成不被选中
+            document.getElementById(param_configure_code).checked=false;
+            //用空值覆盖原来的值
+            document.getElementById("param_configure_code").value="";
+        }
+    }
+}
+</script>
+  <body>
+    <table cellpadding=0 cellspacing=0 border=0 width=“100%”>
+      <tr>
+        <td valign="top">
+          <div style="overflow-x:auto;overflow-y:auto">
+            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+              <thead class="td_header_bak2">
+<% form_tag :action =>'query' do %>
+                <tr>
+                  <td colspan="4" align="left">名称:<input type="text" name="configure_name" size="12" id="configure_name" onkeydown="p_query()">&nbsp;
+                  类型:<input type="text" name="configure_type" size="12" id="configure_type" onkeydown="p_query()">
+                  &nbsp;<input type="button" value="查询" onclick="query()" class="btn3_mouseout">
+                      </td>
+                </tr>
+<%end%>
+                <tr>
+                  <td class="td_header_bak2" width="50px">选中<input type="hidden" name="param_configure_code" id="param_configure_code"></td>
+                  <td class="td_header_bak2" width="150px">配置项名称</td>
+                  <td class="td_header_bak3" width="110px">配置项版本</td>
+                  <td class="td_header_bak3" width="90px">当前状态</td>
+                </tr>
+              </thead>
+              <tbody>
+<%
+if @eventItemsSource!=nil&&@eventItemsSource.size>0 then
+    for eventItemSource in @eventItemsSource%>
+                <tr>
+                  <td class="td6">&nbsp;
+                    <input type="checkbox" name="<%=eventItemSource.CONFIGURE_CODE%>@<%=eventItemSource.CONFIGURE_NAME%>@<%=eventItemSource.CONFIGURE_VERS%>@" onclick="selectchange(this)" value="<%=eventItemSource.CONFIGURE_CODE%>@<%=eventItemSource.CONFIGURE_NAME%>@<%=eventItemSource.CONFIGURE_VERS%>@">
+                  </td>
+                  <td class="td7">&nbsp;<%=eventItemSource.CONFIGURE_NAME%></td>
+                  <td class="td7">&nbsp;<%=eventItemSource.CONFIGURE_VERS%></td>
+                  <td class="td7">&nbsp;<%=eventItemSource.CUR_STATE%></td>
+                </tr>
+<%
+    end
+else
+  %>
+                <tr>
+                  <td class="td6">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr>
+<%
+end%>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+<script>
+document.forms[0].configure_name.focus();
+</script>
+</html>
