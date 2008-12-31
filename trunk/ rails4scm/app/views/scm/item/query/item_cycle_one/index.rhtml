@@ -10,7 +10,7 @@
           var msg = window.confirm("触发申请将加到变更表，您是否要触发变更申请");
           if(msg) {
               var me = document.forms[0];
-              me.event_chg_hidden.value="4";
+              me.click_hidden.value="4";
               me.submit();
           }
         }
@@ -19,79 +19,86 @@
           var vlw = "<%=@quarters_validate[0]%>";
           var message = "<%=@message%>";
           var me = document.forms[0];
-          if(vlw == "A" || vlw == "B"){
+          if(vlw == "E"){
               try{
-                    //me.tijiao_button.disabled ="false";
-                    //me.queding_button.disabled ="false";
+                    me.tijiao_button.disabled ="false";
+                    me.queding_button.disabled ="false";
                     //me.stat_button.disabled ="false";
               } catch(e) {}
-          }
-          
-          if(vlw == "F") {
-              try{
-                me.tijiao_button.disabled ="false";
-                me.queding_button.disabled ="false";
-              } catch(e) {
-              }
           }
 
           if(message != ""){
               alert(message);
-              window.parent.frames["cycle_iframe_one"].location.href="/scm/event/note/event_cycle_one?event_code=<%=@event_code%>";
           }
         }
       
         //确定按钮
         function save(){
             var me = document.forms[0];
-            me.event_chg_hidden.value="1";
+            var curst = "<%=@quarters_validate[0]%>";
+            if(curst == "B"){
+                if(me.CHG_PRSN02.value == "") {
+                    alert("实现人签字 信息为空，请填写!");
+                    me.CHG_PRSN02.focus();
+                    return false;
+                }
+            }
+            me.click_hidden.value="1";
             me.submit();
         }
 
         //提交到下一个状态
         function tijiao(){
             var me = document.forms[0];
-            me.event_chg_hidden.value="2";
+            me.click_hidden.value="2";
             me.submit();
         }
 
         //状态回溯
         function state(){
-            url = "/scm/event/note/event_stat?event_code=<%=@event_code%>";
+            url = "/scm/item/query/item_stat?configure_chg_no=<%=@configure_chg_no%>";
             var redata = window.showModalDialog(url, "状态回溯", "dialogHeight:200px;dialogWidth:500px;");
             if(redata != null){
                 var me = document.forms[0];
-                me.event_chg_hidden.value="3";
+                me.click_hidden.value="3";
                 me.current_stat.value  = redata.current_stat;
                 me.submit();
             }
         }
         
-        //事件执行情况
+        //执行按钮
         function execute_info(){
-            url = "/scm/event/note/event_execute?event_code=<%=@event_code%>";
+           var me = document.forms[0];
+           me.click_hidden.value="4";
+           me.submit();
+        }
+
+        //变更描述
+        function biangeng(){
+            url = "/scm/item/query/item_chg_depict?configure_chg_no=<%=@configure_chg_no%>";
             window.open(url);
-            //var redata = window.showModalDialog(url, "事件执行情况", "dialogHeight:500px;dialogWidth:800px;");
-            //if(redata != null){
-            //    var me = document.forms[0];
-           //     me.event_chg_hidden.value="5";
-           //     me.current_stat.value  = redata.current_stat;
-          //      me.submit();
-          //  }
+            //window.showModalDialog(url, "状态回溯", "dialogHeight:800px;dialogWidth:1000px;");
+        }
+        
+        //升级描述
+        function upgrade(){
+            url = "/scm/item/query/item_upgrade_depict?configure_chg_no=<%=@configure_chg_no%>";
+            window.open(url);
+            //window.showModalDialog(url, "状态回溯", "dialogHeight:800px;dialogWidth:1000px;");
         }
     </script>
   </head>
   <body bgcolor="#F6F6F6" onload="init()">
     <% form_tag :action =>'index' do %>
     <input type="hidden" name="configure_chg_no" value="<%=@configure_chg_no%>" >
-    <input type="hidden" name="event_chg_hidden">
+    <input type="hidden" name="click_hidden">
     <input type="hidden" name="current_stat">
     <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
         <tr>
           <td align="center" height="30px"><b>变更请求表</b></td>
         </tr>
         <tr>
-          <td >&nbsp; 配置项:<%=@configurechg.CONFIGURE_CODE%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前版本:<%=@configurechg.PRE_VERSION%></td>
+          <td >&nbsp; 配置项:<%=@configurechg.CONFIGURE_CODE%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前版本:<%=@configurechg.PRE_VERSION%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前状态:<%=@configurechg.CURRENT_STATUS%></td>
         </tr>
         <tr>
           <td >&nbsp;
@@ -143,7 +150,7 @@
              <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                <thead id="mytablehead">
                   <tr>
-                     <td class="td_header_bak2" width="200px" colspan="3">状态=<%=@configure_state[1]%></td>
+                     <td class="td_header_bak2" width="200px" colspan="4">状态=<%=@configure_state[1]%></td>
                   </tr>
                </thead>
                <tbody>
@@ -160,7 +167,7 @@
                     <tr>
                       <td class="td6" width="30%">实际的变更工作量</td>
                       <td class="td7" colspan="2"><input type="text" name="WORK_DAYS" style="width:100%" value="<%=@configureChgCycleDetEr.WORK_DAYS%>"></td>
-                      <td class="td7" width="15%"><input type="button" value="变更描述" onclick="execute_info()" class="btn3_mouseout"></td>
+                      <td class="td7" width="15%"><input type="button" value="变更描述" onclick="biangeng()" class="btn3_mouseout"></td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%">实现人签字</td>
@@ -208,7 +215,7 @@
                     <tr>
                       <td class="td6" width="30%">评语</td>
                       <td class="td7" colspan="2"><input type="text" name="REMARK" style="width:100%" value="<%=@configureChgCycleDetSa.REMARK%>"></td>
-                      <td class="td7" width="15%"><input type="button" value="升级描述" onclick="execute_info()" class="btn3_mouseout"></td>
+                      <td class="td7" width="15%"><input type="button" value="升级描述" onclick="upgrade()" class="btn3_mouseout"></td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%">批准人签字</td>

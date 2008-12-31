@@ -35,6 +35,7 @@
         //点击生命周期按钮
         function cycle(configure_chg_no){
             url = "/scm/item/query/item_cycle?configure_chg_no=" + configure_chg_no;
+            //window.open(url);
             var redata = window.showModalDialog(url, "配置项生命周期", "dialogHeight:700px;dialogWidth:900px;help=no;status=0");
             if(redata == undefined) {
                 var me = document.forms[0];
@@ -59,11 +60,15 @@
         
         //作废
         function cancel(configure_chg_no) {
-            var me = document.forms[0];
-            me.click_hidden.value="3";
-            me.current_stat.value  = "已废除";
-            me.configure_chg_no_hidden.value = configure_chg_no;
-            me.submit();
+            var msg = window.confirm("确认要作废");
+            window.status = (msg)?"true":"false";
+            if(msg) {
+              var me = document.forms[0];
+              me.click_hidden.value="3";
+              me.current_stat.value  = "已废除";
+              me.configure_chg_no_hidden.value = configure_chg_no;
+              me.submit();
+            }
         }
         //点击修改按钮
         function update(){
