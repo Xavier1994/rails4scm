@@ -1,0 +1,215 @@
+<%
+require 'util/util'
+util = Util.new
+%>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+    
+    <style>
+            .textback {
+                    background-color:#73A5E7;
+            }
+
+            .textwidth {
+                    width:100%
+            }
+    </style>
+    <script language="javascript">
+        var tdclass6  = "td6";
+        var tdclass7  = "td7";
+	var textwidth = "textwidth";
+        var colums = new Array();
+
+        //去处空格
+        function jsTrim(strText){ 
+           return strText.replace(/(^\s*|\s*$)/g,"")
+        }
+        
+        //添加
+        function add(){
+            var me = document.forms[0];
+            clickobject = me.click_hidden;
+            clickobject.value = "1";
+ 
+            //检测单元格数量
+	    var head = document.getElementById("mytablehead");
+	    var cols = head.rows[0].cells.length;
+
+            //表体的行数
+	    var detail = document.getElementById("mytablebody");
+	    var rows = detail.rows.length;
+
+	    detail.insertRow(rows);
+            for(var i=0;i<cols;i++) { 
+               detail.rows[rows].insertCell(i);
+               if(i == 0){
+                  detail.rows[rows].cells[0].innerText = " ";
+                  detail.rows[rows].cells[0].className =  tdclass6;
+               }else{
+                  kname = "chg[" + (rows+1) + "][" + colums[i-1] + "]";
+                  kid   = "chg_" + (rows+1) + "_" + colums[i-1];
+                  var text_name0 = kongjian_text("",kname,kid);
+                  detail.rows[rows].cells[i].setAttribute("align","left"); 
+                  detail.rows[rows].cells[i].appendChild(text_name0);
+                  detail.rows[rows].cells[i].className =  tdclass7;
+               }
+             } 
+        }
+        
+        //修改
+        function update() {
+            var me = document.forms[0];
+            clickobject = me.click_hidden;
+            clickobject.value = "1";
+            
+            //检测单元格数量
+	    var head = document.getElementById("mytablehead");
+	    var cols = head.rows[0].cells.length;
+
+            //表体的行数
+	    var detail = document.getElementById("mytablebody");
+	    var rows = 0;
+            <%if (@chgdata != nil)%> 
+                rows = <%=@chgdata.size%>;
+            <% end %>
+
+            for(var i=0;i<rows;i++) {
+               for(var j=0;j<cols;j++) {
+                 if(j != 0){
+                    cells_i = detail.rows[i].cells[j].innerText
+                    cells_i = jsTrim(cells_i); 
+                    detail.rows[i].cells[j].innerText = "";
+                    kname = "chg[" + (i+1) + "][" + colums[j-1] + "]";
+                    kid   = "chg_" + (i+1) + "_" + colums[j-1];
+                    var text_name0 = kongjian_text(cells_i,kname,kid);
+                    detail.rows[i].cells[j].setAttribute("align","left"); 
+                    detail.rows[i].cells[j].appendChild(text_name0);
+                    detail.rows[i].cells[j].className =  tdclass7;
+                 }
+               }
+             } 
+        }
+
+        //生成文本框控件 kname:控件名字  kid:控件Id size:大小
+        function kongjian_text(textValue,kname,kid) {
+                var text_name0 = document.createElement("input");
+                text_name0.setAttribute("type","text");
+                text_name0.setAttribute("name",kname);
+                text_name0.setAttribute("id"  ,kid);
+                text_name0.setAttribute("value",textValue);
+                text_name0.className =  textwidth;    
+                return text_name0;
+        }
+        
+        //保存按钮
+        function save(){
+            //表体的行数
+	    var detail = document.getElementById("mytablebody");
+	    var rows = detail.rows.length;
+            if(rows<=0){
+                alert("没有记录不保存!");
+                return false;
+            }
+            var me = document.forms[0];
+            me.submit();
+        }
+        
+        //删除
+        function delet(id){
+            var msg = window.confirm("确认删除");
+            window.status = (msg)?"true":"false";
+            if(msg) {
+              var me = document.forms[0];
+              clickobject = me.click_hidden;
+              clickobject.value = "2";
+              me.delete_id_hidden.value=id;
+              me.submit();
+            }
+        }
+
+        function init(){
+            <% 
+            cn = 0
+            for cols in @clos
+            %>
+                colums[<%=cn%>] = "<%=cols%>";
+            <%
+            cn = cn + 1
+            end
+            %> 
+            message = "<%=@message%>";
+            if(message != "") {
+                alert(message);
+            }
+        }
+    </script>
+  </head>
+  <body bgcolor="#F6F6F6" onload="init()">
+  <% form_tag :action =>'index' do %>
+  <input type="hidden" name="configure_chg_no" value="<%=@configure_chg_no%>">
+  <input type="hidden" name="click_hidden">
+  <input type="hidden" name="delete_id_hidden">
+  <table width="950">
+     <tr>
+        <td align="left" colspan="2">数据库改动记录:</td>
+     </tr>
+     <tr>
+       <td>
+         <!--<input type="button" value="导入" class="btn3_mouseout" onclick="" >&nbsp;&nbsp;&nbsp;-->
+         <input type="button" value="添加" class="btn3_mouseout" onclick="add()" >&nbsp;&nbsp;&nbsp;
+         <input type="button" value="修改" class="btn3_mouseout" onclick="update()" >&nbsp;&nbsp;&nbsp;
+         <input type="button" value="保存" class="btn3_mouseout" onclick="save()" >
+       </td>
+     </tr>
+     <tr>
+        <td width="100%" valign="top">
+          <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <thead id="mytablehead">
+              <tr>
+                <td class="td_header_bak2" width="50px">&nbsp;</td>
+                <td class="td_header_bak3" width="80px">日期</td>　
+                <td class="td_header_bak3" width="120px">表名</td>
+                <td class="td_header_bak3" width="120px">列名</td>
+                <td class="td_header_bak3" width="100px">存在问题</td>
+                <td class="td_header_bak3" width="200px">修改纪要</td>
+                <td class="td_header_bak3" width="50px">修改人</td>
+              </tr>
+            </thead>
+            <tbody id="mytablebody">
+              <% 
+              k=0
+              for chg in @chgdata 
+              %>
+                <tr>
+                  <td class="td6">
+                    <input type="button" value="删除" class="btn3_mouseout" onclick="delet('<%=chg.ID%>')" >
+                    <input type="hidden" name="chg[<%=k+1%>][ID]" value="<%=chg.ID%>">
+                  </td>
+                  <% 
+                  for column in @clos 
+                     if(column == "MODIFY_DATE" and @chgdata[k].attributes[column] != nil)        
+                  %>
+                    <td class="td7" >
+                      &nbsp;<%=util.formatDatatimeToSting(@chgdata[k].attributes[column])%>
+                    </td>
+                  <% else%>
+                    <td class="td7" >
+                      &nbsp;<%=@chgdata[k].attributes[column]%>
+                    </td>
+                  <% end end  %>
+                </tr>
+              <% 
+              k=k+1 
+              end %>
+            </tbody>
+          </table>
+        </td>
+     </tr>
+  </table>
+  <% end %>
+  
+  </body>
+</html>
