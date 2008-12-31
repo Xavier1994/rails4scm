@@ -79,4 +79,12 @@ class ConfigureItem < ActiveRecord::Base
         ConfigureItem.find_by_sql(sql)
   end
   
+   #查询该事件对应所有的配置项
+  def findEventConfigureItemSelected(event_code)
+        sql = " SELECT  RELA_CHG_CONFIGURE.ID ,RELA_CHG_CONFIGURE.CONFIGURE_CODE ,RELA_CHG_CONFIGURE.EVENT_CODE ,RELA_CHG_CONFIGURE.CONFIGURE_VERS ,RELA_CHG_CONFIGURE.M_CONFIG_FLAG ,CONFIGURE_ITEM.CONFIGURE_NAME "
+        sql += " FROM RELA_CHG_CONFIGURE ,CONFIGURE_ITEM  "
+        sql += " WHERE ( RELA_CHG_CONFIGURE.CONFIGURE_CODE = CONFIGURE_ITEM.CONFIGURE_CODE ) AND EVENT_CODE='"+event_code+"'"
+        ConfigureItem.find_by_sql(sql)
+  end
+
 end
