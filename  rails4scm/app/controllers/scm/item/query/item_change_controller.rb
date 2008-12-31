@@ -21,6 +21,58 @@ class Scm::Item::Query::ItemChangeController < ApplicationController
       session[:project_code_session]   = @project_code
       session[:current_status_session] = @current_status
     end
+    click_hidden = params[:click_hidden]
+    if click_hidden == nil or click_hidden == "" then
+      click_hidden = "0"
+    end
+    
+    @oper = session[:operator]
+    tishi = "±£¥Ê@W◊¥Ã¨ªÿÀ›@W≥…π¶!@W ß∞‹@W◊˜∑œ@W"
+    @tishi = tishi.split("@W")
+    @message = ""
+    case click_hidden.to_i
+       when 1  #–ﬁ∏ƒ
+         begin
+           i =1
+           for param in params[:configure]
+             reco=param[i]
+             conf = ConfigureChgApp.find(reco[:ID])
+             conf.id= reco[:ID]
+             conf.AFT_VERSION=reco[:AFT_VERSION]
+             conf.save
+           end
+           @message=@tishi[0] + @tishi[2]
+         rescue Exception => e
+           @message=@tishi[0] + @tishi[3]
+         end
+         
+       when 2  #◊¥Ã¨ªÿÀ›
+         begin
+           current_stat = params[:current_stat]
+           configure_chg_no = params[:configure_chg_no_hidden]
+           
+           conf = ConfigureChgApp.find(configure_chg_no)
+           conf.id= conf.ID
+           conf.CURRENT_STATUS=current_stat
+           conf.save
+           @message=@tishi[1] + @tishi[2]
+         rescue Exception => e
+           @message=@tishi[1] + @tishi[3]
+         end
+      when 3  #◊¥Ã¨◊˜∑œ
+         begin
+           current_stat = params[:current_stat]
+           configure_chg_no = params[:configure_chg_no_hidden]
+           
+           conf = ConfigureChgApp.find(configure_chg_no)
+           conf.id= conf.ID
+           conf.CURRENT_STATUS=current_stat
+           conf.save
+           @message=@tishi[4] + @tishi[2]
+         rescue Exception => e
+           @message=@tishi[4] + @tishi[3]
+         end
+    end
     
     #≤È—Ø
     @configure = getData(pageSize,curPageSize,@configure_code,@configure_name,@event_name,@project_code,@current_status)
