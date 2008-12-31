@@ -37,15 +37,14 @@ class Scm::Event::Note::EventNoteController < ApplicationController
       session[:event_sponsor_session]  = @event_sponsor
       session[:current_status_session] = @current_status
     end
- 
-    #保存
     click_hidden = params[:click_hidden]
     if click_hidden == nil or click_hidden == "" then
       click_hidden = "0"
     end
     
+    #保存
     @oper = session[:operator]
-    tishi = "添加@W修改@W删除@W成功!@W失败@W您只能删除你自己发起的事件@W该事件已触发变更申请,不能进行删除,如需改动请与管理员联系@W"
+    tishi = "添加@W修改@W删除@W成功!@W失败!@W您只能删除你自己发起的事件@W该事件已触发变更申请,不能进行删除,如需改动请与管理员联系@W事件状态修改@W"
     @tishi = tishi.split("@W")
     @message = ""
     case click_hidden.to_i
@@ -98,6 +97,18 @@ class Scm::Event::Note::EventNoteController < ApplicationController
            end
          rescue Exception => e
            @message=@tishi[2] + @tishi[4]
+         end
+     when 4  #状态回溯
+         begin
+           event_no     = params[:delete_ID_hidden]
+           current_stat = params[:current_stat]
+           eventRecord = EventRecord.find(event_no)
+           eventRecord.id = event_no
+           eventRecord.CURRENT_STATUS = current_stat
+           eventRecord.save
+           @message=@tishi[7] + @tishi[3]
+         rescue Exception => e
+           @message=@tishi[7] + @tishi[4]
          end
     end
     
