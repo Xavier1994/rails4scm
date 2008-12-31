@@ -1,6 +1,7 @@
 class ConfigureVers < ActiveRecord::Base
   self.table_name = "configure_version"
   self.primary_key = "id"
+  attr_accessor :id
   
   #查询版本信息
   def findConfigureVersList(configure_code)
@@ -13,4 +14,13 @@ class ConfigureVers < ActiveRecord::Base
     
     ConfigureVers.find_by_sql(sql) 
   end
+  
+  def findConfigureVersOne(configure_code,pre_version)
+    ConfigureVers.find(:first,:conditions =>["configure_code=? and configure_vers=?",configure_code,pre_version])
+  end
+  
+  def findConfigureVers(configure_code,configure_vers)
+    ConfigureVers.find(:all,:conditions =>["configure_code=? and configure_vers=?",configure_code,configure_vers])
+  end
+  
 end
