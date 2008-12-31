@@ -1,0 +1,170 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link href="/stylesheets/style_table.css?1194846686" media="screen" rel="Stylesheet" type="text/css" /> 
+    <%= stylesheet_link_tag "style_table" %>
+    <%= stylesheet_link_tag "common_style" %> 
+  </head>
+<%= javascript_include_tag "prototype" %>
+<script language="JavaScript">
+function add(){
+    if(self.source.document.getElementById("param_configure_code").value==null||self.source.document.getElementById("param_configure_code").value==""){
+        alert("请在左窗口中选择配置项！");
+    }else{
+        var configure_params=self.source.document.getElementById("param_configure_code").value;
+        var event_code=self.document.getElementById("event_code").value;
+        if (configure_params!=null&&configure_params!=""){
+                url = "/scm/event/note/need_changed_items/changeItem";
+                var xmlHttp;
+                if(window.ActiveXObject){
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }else if(window.XMLHttpRequest){
+                    xmlHttp=new XMLHttpRequest();
+                }else {return;}
+
+                var content="configure_params="+configure_params+"&event_code="+event_code;//构造要携带的数据  
+                xmlHttp.open("POST",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
+                xmlHttp.send(content);//发送数据 
+                
+                if(xmlHttp.readystate==4) //请求状态为4表示成功
+                    {
+                    if(xmlHttp.status==200) //http状态200表示OK
+                        {
+                            document.getElementById ("list").innerHTML =xmlHttp.responseText; 
+                            
+                        }
+                    else //http返回状态失败
+                        {
+                            alert("服务端返回状态" + xmlHttp.statusText);
+                        }
+                    }
+                else //请求状态还没有成功，页面等待
+                    {
+                        document .getElementById ("list").innerHTML ="数据加载中";
+                    }
+            }
+    }
+}
+</script>
+  <body>
+    <table cellpadding=0 cellspacing=0 border=0 width=“1000px” height="450px">
+      <tr>
+        <td valign="top" width="400px" height="450px">
+          <div style="overflow-x:auto;overflow-y:auto">
+            <iframe name="source" id="source" width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" src="/scm/event/note/need_source_items?<%=@event_code%>"> </iframe>  
+          </div>
+        </td>
+        <td align="center" valign="top" width="50px" height="450px">
+          <div style="overflow-x:auto;overflow-y:auto">
+            <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                <tr>
+                    <td valign="top" align="center">
+                        <input type="button" value=">>>" onclick="add()">
+                        <input type="hidden" name="event_code" id="event_code" value="<%=@event_code%>">
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" align="center">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" align="center">
+                        <input type="button" value="<<<" onclick="">
+                    </td>
+                </tr>
+            </table>
+          </div>
+        </td>
+        <td valign="top"  width="550px" height="450px">
+          <div style="overflow-x:auto;overflow-y:auto">
+            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+              <thead class="td_header_bak2">
+                <tr>
+                  <td class="td_header_bak2" width="150px">配置项名称</td>
+                  <td class="td_header_bak3" width="80px">配置项版本</td>
+                  <td class="td_header_bak3" width="80px">配置项编号</td>
+                  <td class="td_header_bak3" width="80px">事件编号</td>
+                </tr>
+              </thead>
+              <tbody>
+<%
+if @configureItems!=nil&&@configureItems.size>0 then
+    for configureItem in @configureItems
+%>
+                <tr>
+                  <td class="td6">&nbsp;<%=configureItem.CONFIGURE_NAME%></td>
+                  <td class="td7">&nbsp;<%=configureItem.CONFIGURE_VERS%></td>
+                  <td class="td7">&nbsp;<%=configureItem.CONFIGURE_CODE%></td>
+                  <td class="td7">&nbsp;<%=configureItem.EVENT_CODE%></td>
+                </tr>
+<%
+    end
+end
+%>
+  
+
+                <tr>
+                  <td colspan="4" id="list">&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                <tr>
+                  <td colspan="5">
+                    <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                        <HR>
+                        <thead class="td_header_bak2">
+                        <tr>
+                            <td valign="top">涉及项目</td>
+                            <td valign="top">涉及产品</td>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td valign="top">
+                                <div style="overflow-x:auto;overflow-y:auto">
+                                <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                                    <thead class="td_header_bak2">
+                                        <tr>
+                                            <td class="td_header_bak2" width="150px">配置项名称</td>
+                                            <td class="td_header_bak3" width="80px">配置项版本</td>
+                                            <td class="td_header_bak3" width="80px">当前状态</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3">&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div style="overflow-x:auto;overflow-y:auto">
+                                <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                                    <thead class="td_header_bak2">
+                                        <tr>
+                                            <td class="td_header_bak2" width="150px">配置项名称</td>
+                                            <td class="td_header_bak3" width="80px">配置项版本</td>
+                                            <td class="td_header_bak3" width="80px">当前状态</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3">&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                  </td>
+                </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
