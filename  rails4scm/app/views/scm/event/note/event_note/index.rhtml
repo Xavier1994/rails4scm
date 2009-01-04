@@ -58,14 +58,7 @@ util = Util.new
         }
         
         //点击添加按钮
-        function add(){
-            var resourceSize = "<%=@eventRecord.size%>";
-            if (resourceSize == "") {
-                resourceSize = "0";
-            }
-
-            resourceSize = parseInt(resourceSize);
-            
+        function add(){   
             var quarters_validate = "<%=@quarters_validate%>"
             if(quarters_validate =="-1" || quarters_validate == "") {
                 alert("对不起，你没有这个权限!");
@@ -77,72 +70,63 @@ util = Util.new
 			
 	    //检测单元格数量
 	    var head = document.getElementById("mytablehead");
-	    var lend = head.rows[0].cells.length;
+	    var cols = head.rows[0].cells.length;
 			
 	    //表体的行数
 	    var detail = document.getElementById("mytablebody");
-	    var len = detail.rows.length;
-            var rows = len;
-            if( rows == "") {
-                rows = "0";
-            }
+	    var rows = detail.rows.length;
             
-            rows = parseInt(rows);
-            rows = rows - resourceSize;
-            if(rows<=0) {
-                rows = 1
-            }else{
-                rows += 1;
-            }
+	    detail.insertRow(rows);
 
-	    detail.insertRow(len);
-
-            for(var i=0;i<lend;i++) {
+            for(var i=0;i<cols;i++) {
                var text_name0;   
-               detail.rows[len].insertCell(i);
+               detail.rows[rows].insertCell(i);
                if(i == 0){
-                  detail.rows[len].cells[i].innerText = " ";
-                  detail.rows[len].cells[i].className =  tdclass6;
+                  detail.rows[rows].cells[i].innerText = " ";
+                  detail.rows[rows].cells[i].className =  tdclass6;
                   continue;
                }
                if(i == 2){
-                  text_name0 = kongjian_text("","eventRecord[" + rows + "][EVENT_NAME]","eventRecord_" + rows + "_EVENT_NAME");
-                  detail.rows[len].cells[i].setAttribute("align","left"); 
-                  detail.rows[len].cells[i].appendChild(text_name0);
-                  detail.rows[len].cells[i].className =  tdclass7;
+                  text_name0 = kongjian_text("","eventRecord[" + (rows+1) + "][EVENT_NAME]","eventRecord_" + (rows+1) + "_EVENT_NAME");
+                  detail.rows[rows].cells[i].setAttribute("align","left"); 
+                  detail.rows[rows].cells[i].appendChild(text_name0);
+                  detail.rows[rows].cells[i].className =  tdclass7;
                   continue;
                }
                if(i == 3){
-                  text_name0 = kongjian_evetype_select("","eventRecord[" + rows + "][M_EVENT_TYPE]","eventRecord_" + rows + "_M_EVENT_TYPE");
-                  detail.rows[len].cells[i].setAttribute("align","left"); 
-                  detail.rows[len].cells[i].appendChild(text_name0);
-                  detail.rows[len].cells[i].className =  tdclass7;
+                  text_name0 = kongjian_evetype_select("","eventRecord[" + (rows+1) + "][M_EVENT_TYPE]","eventRecord_" + (rows+1) + "_M_EVENT_TYPE");
+                  detail.rows[rows].cells[i].setAttribute("align","left"); 
+                  detail.rows[rows].cells[i].appendChild(text_name0);
+                  detail.rows[rows].cells[i].className =  tdclass7;
                   continue;
                }
                if(i == 4){
-                  text_name0 = kongjian_project_select("","eventRecord[" + rows + "][PROJECT_CODE]","eventRecord_" + rows + "_PROJECT_CODE");
-                  detail.rows[len].cells[i].setAttribute("align","left"); 
-                  detail.rows[len].cells[i].appendChild(text_name0);
-                  detail.rows[len].cells[i].className =  tdclass7;
+                  text_name0 = kongjian_project_select("","eventRecord[" + (rows+1) + "][PROJECT_CODE]","eventRecord_" + (rows+1) + "_PROJECT_CODE");
+                  detail.rows[rows].cells[i].setAttribute("align","left"); 
+                  detail.rows[rows].cells[i].appendChild(text_name0);
+                  detail.rows[rows].cells[i].className =  tdclass7;
                   continue;
                }
-               detail.rows[len].cells[i].innerText = " ";
-               detail.rows[len].cells[i].className =  tdclass7;
+               detail.rows[rows].cells[i].innerText = " ";
+               detail.rows[rows].cells[i].className =  tdclass7;
                continue;
              } 
         }
 
         //点击修改按钮
         function update(){
+            var resourceSize = "<%=@eventRecord.size%>";
             var me = document.forms[0];
             clickobject = me.click_hidden;
-            clickobject.value = "2";
+            clickobject.value = "1";
             
             //表体的行数
 	    var detail = document.getElementById("mytablebody");
-	    var len = detail.rows.length;
-            var j = 1;
-            for(var i=0;i < len;i++){ 
+	    var rows = 0;
+            <%if (@eventRecord != nil)%> 
+                rows = <%=@eventRecord.size%>;
+            <% end %>
+            for(var i=0;i<rows;i++){ 
                 cells_6 = detail.rows[i].cells[5].innerText
                 cells_6 = jsTrim(cells_6);
                 if(cells_6 == "已关闭"){
@@ -151,9 +135,7 @@ util = Util.new
                 cells_3 = detail.rows[i].cells[2].innerText
                 cells_4 = detail.rows[i].cells[3].innerText
                 cells_5 = detail.rows[i].cells[4].innerText
-                hid = "record" + (i+1) + "ID";
-                hvalue = document.getElementById(hid).value;
-                
+ 
                 cells_3 = jsTrim(cells_3); 
                 cells_4 = jsTrim(cells_4); 
                 cells_5 = jsTrim(cells_5);
@@ -162,26 +144,26 @@ util = Util.new
                 detail.rows[i].cells[3].innerText = "";
                 detail.rows[i].cells[4].innerText = "";
 
-                //事件名称    
-                text_name2 = kongjian_text(cells_3,"record[" + j + "][EVENT_NAME]","record_" + j + "_EVENT_NAME");
+                //事件名称
+                kname1 = "eventRecord[" + (i+1) + "][EVENT_NAME]";
+                kid1   = "eventRecord_" + (i+1) + "_EVENT_NAME";
+                text_name2 = kongjian_text(cells_3,kname1,kid1);
                 detail.rows[i].cells[2].setAttribute("align","left"); 
                 detail.rows[i].cells[2].appendChild(text_name2);
                 
                 //标识事件类型
-                text_name3 = kongjian_evetype_select(cells_4,"record[" + j + "][M_EVENT_TYPE]","record_" + j + "_M_EVENT_TYPE");
+                kname2 = "eventRecord[" + (i+1) + "][M_EVENT_TYPE]";
+                kid2   = "eventRecord_" + (i+1) + "_M_EVENT_TYPE";
+                text_name3 = kongjian_evetype_select(cells_4,kname2,kid2);
                 detail.rows[i].cells[3].setAttribute("align","left"); 
                 detail.rows[i].cells[3].appendChild(text_name3);
 
                 //项目
-                text_name4 = kongjian_project_select(cells_5,"record[" + j + "][PROJECT_CODE]","record_" + j + "_PROJECT_CODE");
+                kname3 = "eventRecord[" + (i+1) + "][PROJECT_CODE]";
+                kid3   = "eventRecord_" + (i+1) + "_PROJECT_CODE";
+                text_name4 = kongjian_project_select(cells_5,kname3,kid3);
                 detail.rows[i].cells[4].setAttribute("align","left"); 
                 detail.rows[i].cells[4].appendChild(text_name4);
-                
-                //隐藏ID
-                text_name5 = kongjian_hidden("record[" + j + "][ID]","record_" + j + "_ID",hvalue);
-                detail.rows[i].cells[2].setAttribute("align","left"); 
-                detail.rows[i].cells[2].appendChild(text_name5);
-                j++;
             }
         }
         
@@ -323,7 +305,8 @@ util = Util.new
   <input type="hidden" name="click_hidden">
   <input type="hidden" name="delete_ID_hidden">
   <input type="hidden" name="current_stat">
-  <table width="1100px">
+  <input type="hidden" name="rows_hidden" value="<%=@eventRecord.size%>">
+  <table width="1200px">
      <tr>
        <td>
          <table>
@@ -365,7 +348,7 @@ util = Util.new
                      <input type="button" value="删除" onclick="delet('<%=eventRecord.ID%>','<%=eventRecord.EVENT_SPONSOR%>','<%=eventRecord.CURRENT_STATUS%>')" class="btn3_mouseout">
                      <input type="button" value="生命周期" onclick="cycle('<%=eventRecord.EVENT_CODE%>')" class="btn3_mouseout">
                      <input type="button" value="状态回溯" class="btn3_mouseout" onclick="state('<%=eventRecord.EVENT_CODE%>','<%=eventRecord.ID%>')" >
-                     <input type="hidden" id="record<%=j%>ID" value="<%=eventRecord.ID%>">
+                     <input type="hidden" name="eventRecord[<%=j%>][ID]" id="record<%=j%>ID" value="<%=eventRecord.ID%>">
                   </td>
                   <td class="td7" >&nbsp;<%=eventRecord.EVENT_CODE%></td>
                   <td class="td7" >&nbsp;<%=eventRecord.EVENT_NAME%></td>
