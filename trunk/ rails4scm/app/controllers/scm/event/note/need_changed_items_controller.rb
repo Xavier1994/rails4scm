@@ -1,14 +1,15 @@
 class Scm::Event::Note::NeedChangedItemsController < ApplicationController
-  before_filter :fileLoginSessionNil
+
   def index
     @event_code=params[:event_code]
   end
-
-  def changeItem
+  
+  def addItem
     configure_params=params[:configure_params]
     event_code=params[:event_code]
-
-    outText="<table cellpadding=0 cellspacing=0 border=0 style=\"width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px\"><thead class=\"td_header_bak2\"><tr><td class=\"td_header_bak2\" width=\"160px\">配置项名称</td><td class=\"td_header_bak3\" width=\"70px\">配置项版本</td><td class=\"td_header_bak3\" width=\"80px\">配置项编号</td><td class=\"td_header_bak3\" width=\"80px\">事件编号</td></tr></thead><tbody>"
+    textTemp="@@@@@@已存在变更申请,配置项:@W版本为:@W"
+    textArray=textTemp.split("@W")
+    outText="<table cellpadding=0 cellspacing=0 border=0 style=\"width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 0px; border-right-style: solid; border-right-width: 0px\"><thead class=\"td_header_bak2\"><tr><td class=\"td_header_bak2\" width=\"50px\">选择<input type=\"text\" name=\"param_configure_code\" id=\"param_configure_code\"></td><td class=\"td_header_bak3\" width=\"160px\">配置项名称</td><td class=\"td_header_bak3\" width=\"70px\">配置项版本</td><td class=\"td_header_bak3\" width=\"80px\">配置项编号</td><td class=\"td_header_bak3\" width=\"80px\">事件编号</td></tr></thead><tbody>"
     @selectedItems=nil
     b=true
     if event_code!=nil then 
@@ -85,7 +86,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
               k+=1
             end
           else
-            outText="@@@@@@已存在变更申请,配置项:"+configureParamsArray[1].to_s+"  版本为:"+configureParamsArray[2].to_s+"!"
+            outText=textArray[0]+configureParamsArray[1].to_s+textArray[1]+configureParamsArray[2].to_s
             b=false
           end
         end
@@ -97,7 +98,8 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
           if configureItems!=nil && configureItems.size>0 then
             for configureitem in configureItems
               outText+="<tr>"
-              outText+="<td class='td6' width='160px'>&nbsp;"+configureitem.CONFIGURE_NAME+"</td>"
+              outText+="<td class='td6' width='50px'>&nbsp;<input type=\"checkbox\" name=\""+configureitem.CONFIGURE_CODE+"@"+configureitem.CONFIGURE_VERS+"\" onclick=\"selectdelete(this)\" value=\""+configureitem.CONFIGURE_CODE+"@"+configureitem.CONFIGURE_VERS+"\"></td>"
+              outText+="<td class='td7' width='160px'>&nbsp;"+configureitem.CONFIGURE_NAME+"</td>"
               outText+="<td class='td7' width='70px'>&nbsp;"+configureitem.CONFIGURE_VERS+"</td>"
               outText+="<td class='td7' width='80px'>&nbsp;"+configureitem.CONFIGURE_CODE+"</td>"
               outText+="<td class='td7' width='80px'>&nbsp;"+configureitem.EVENT_CODE+"</td>"
@@ -106,6 +108,62 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
           end
           outText+="</tbody></table>"
         end
+    end
+    render_text outText
+  end
+  
+  def deleteItem
+    configure_params=params[:configure_params]
+    event_code=params[:event_code]
+    outText=""
+    if event_code!=nil then 
+      message = "待评估@W0@@你是否确定要删除配置项:@W的变更请求?@W1@W2@@该事件状态发生变化，已不能直接删除，请与管理员联系!@W3@@该事件已出发变更，不能直接删除，请与管理员联系!@W"
+      messageArray = message.split("@W")
+      if configure_params!=nil then
+        configure_params=Iconv.iconv("GB2312","UTF-8",configure_params).to_s
+        configureParamsArray=configure_params.split("@")
+        relaChgConfigure0=RelaChgConfigure.new
+        
+        if configureParamsArray[0]!=nil && configureParamsArray[1]!=nil then
+          itemNum=relaChgConfigure0.findEventAppConfigItemNum(event_code, configureParamsArray[0], configureParamsArray[1])
+          if itemNum[0].cn<=0 then
+            eventRecord=EventRecord.new
+            events=eventRecord.findEventRecor(event_code)
+            if events!=nil then
+              status=""             
+              status=events.CURRENT_STATUS
+              if status==messageArray[0] then
+                outText=messageArray[1]+configureParamsArray[0].to_s+messageArray[2]
+              else
+                outText=messageArray[3]
+              end
+            else
+              outText=messageArray[4]
+            end
+          else
+            outText=outText=messageArray[5]
+          end
+        end
+      end
+    end
+    render_text outText
+  end
+  def deleteItemReally
+    configure_params=params[:configure_params]
+    event_code=params[:event_code]
+    outText=""
+    if event_code!=nil then 
+      if configure_params!=nil then
+        configure_params=Iconv.iconv("GB2312","UTF-8",configure_params).to_s
+        configureParamsArray=configure_params.split("@")
+        if configureParamsArray[0]!=nil && configureParamsArray[1]!=nil then
+          confChgReproductProducts=ConfChgReproductProducts.new
+          confChgReproductProducts.delete_all("event_code="+event_code,"configure_code="+configureParamsArray[0],"configure_vers="+configureParamsArray[1])
+          relaChgConfigure=RelaChgConfigure.new
+          relaChgConfigure.delete_all("event_code="+event_code,"configure_code="+configureParamsArray[0],"configure_vers="+configureParamsArray[1])
+          outText="ok"
+        end
+      end
     end
     render_text outText
   end

@@ -12,4 +12,11 @@ class RelaChgConfigure < ActiveRecord::Base
         sql += " WHERE isnull(event_code,'¿Õ')='"+event_code +"' and isnull(configure_code,'¿Õ')='"+configure_code+"' and isnull(configure_vers,'¿Õ')='"+configure_ver+"'"
         ConfigureItem.find_by_sql(sql)
   end
+  #²éÑ¯ÅäÖÃÏî
+  def findEventAppConfigItemNum(event_code,configure_code,configure_ver)
+        sql = " select  count(*) cn "
+        sql += "  from configure_chg_app   "
+        sql += " WHERE isnull(event_code,'¿Õ')='"+event_code +"' and isnull(configure_code,'¿Õ')='"+configure_code+"' and isnull(pre_version,'¿Õ')='"+configure_ver+"'"
+        ConfigureItem.find_by_sql(sql)
+  end
 end

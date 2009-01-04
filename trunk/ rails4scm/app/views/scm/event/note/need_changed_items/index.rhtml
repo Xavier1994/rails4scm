@@ -25,7 +25,7 @@ function add(){
         var configure_params=self.source.document.getElementById("param_configure_code").value;
         var event_code=self.document.getElementById("event_code").value;
         if (configure_params!=null&&configure_params!=""){
-                url = "/scm/event/note/need_changed_items/changeItem";
+                url = "/scm/event/note/need_changed_items/addItem";
                 newActive();
                 if(xmlHttp==null){
                     return;
@@ -60,6 +60,109 @@ function add(){
             }
     }
 }
+function deleteItem(){
+    if(document.getElementById("param_configure_code").value==null||document.getElementById("param_configure_code").value==""){
+        alert("请在右窗口中选择配置项！");
+    }else{
+        var configure_params=document.getElementById("param_configure_code").value;
+        var event_code=self.document.getElementById("event_code").value;
+        if (configure_params!=null&&configure_params!=""){
+                url = "/scm/event/note/need_changed_items/deleteItem";
+                newActive();
+                if(xmlHttp==null){
+                    return;
+                }
+
+                var content="configure_params="+configure_params+"&event_code="+event_code;//构造要携带的数据  
+                xmlHttp.open("POST",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
+                xmlHttp.send(content);//发送数据 
+                
+                if(xmlHttp.readystate==4) //请求状态为4表示成功
+                    {
+                    if(xmlHttp.status==200) //http状态200表示OK
+                        {
+                            var   tempArray=new   Array();
+                            tempArray=(xmlHttp.responseText).split("@@");
+                            if(tempArray[0]=="0"){
+                                if(confirm(tempArray[1])){
+                                    reallyDeleteItem();
+                                }else{
+                                }
+                            }else{
+                                alert(tempArray[1]);
+                            }
+                        }
+                    else //http返回状态失败
+                        {
+                            alert("服务端返回状态" + xmlHttp.statusText);
+                        }
+                    }
+                else //请求状态还没有成功，页面等待
+                    {
+                        document .getElementById ("list").innerHTML ="数据加载中";
+                    }
+            }
+    }
+}
+function reallyDeleteItem(){
+    if(document.getElementById("param_configure_code").value==null||document.getElementById("param_configure_code").value==""){
+        alert("请在右窗口中选择配置项！");
+    }else{
+
+        var configure_params=document.getElementById("param_configure_code").value;
+        var event_code=self.document.getElementById("event_code").value;
+        if (configure_params!=null&&configure_params!=""){
+                url = "/scm/event/note/need_changed_items/deleteItemReally";
+                newActive();
+                if(xmlHttp==null){
+                    return;
+                }
+
+                var content="configure_params="+configure_params+"&event_code="+event_code;//构造要携带的数据  
+                xmlHttp.open("POST",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
+                xmlHttp.send(content);//发送数据 
+                if(xmlHttp.readystate==4) //请求状态为4表示成功
+                    {
+                    if(xmlHttp.status==200) //http状态200表示OK
+                        {
+                            if(xmlHttp.responseText=="ok"){
+                                load();
+                            }
+                        }
+                    else //http返回状态失败
+                        {
+                            alert("服务端返回状态" + xmlHttp.statusText);
+                        }
+                    }
+                else //请求状态还没有成功，页面等待
+                    {
+                        document .getElementById ("list").innerHTML ="数据加载中";
+                    }
+            }
+    }
+}
+function selectdelete(checkbox){
+    var param_configure_code=document.getElementById("param_configure_code").value;
+    if(param_configure_code==null||param_configure_code==""){
+        if(checkbox.checked){
+            document.getElementById("param_configure_code").value=checkbox.value;
+        }else{
+            //donothing
+        }
+    }else{
+        if(checkbox.checked){
+            //把原来选中的变成不被选中
+            document.getElementById(param_configure_code).checked=false;
+            //用现在的值覆盖原来的值
+            document.getElementById("param_configure_code").value=checkbox.value;
+        }else{
+            //把原来选中的变成不被选中
+            document.getElementById(param_configure_code).checked=false;
+            //用空值覆盖原来的值
+            document.getElementById("param_configure_code").value="";
+        }
+    }
+}
 </script>
   <body onload="load();">
     <table cellpadding=0 cellspacing=0 border=0 width=“1000px” height="100%">
@@ -85,14 +188,13 @@ function add(){
                 </tr>
                 <tr>
                     <td valign="top" align="center">
-                        <input type="button" value="<<" onclick="" class="btn3_mouseout">
+                        <input type="button" value="<<" onclick="deleteItem()" class="btn3_mouseout">
                     </td>
                 </tr>
             </table>
           </div>
         </td>
-        <td valign="top"  width="550px" height="100%">
-          
+        <td valign="top"  width="570px" height="100%">
             <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height=350;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <tr>
                   <td>
@@ -108,7 +210,7 @@ function add(){
 
                 <tr>
                   <td>
-                    <div style="overflow-x:auto;overflow-y:auto;height:200px;">
+                    <div style="overflow-x:auto;overflow-y:auto;height:300px;">
                     <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height:100px;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <tr>
                   <td colspan="5">
@@ -171,7 +273,7 @@ function add(){
     </table>
 <script language="JavaScript">
 function load(){
-  url = "/scm/event/note/need_changed_items/changeItem";
+  url = "/scm/event/note/need_changed_items/addItem";
   newActive();
   if(xmlHttp==null){
       return;
