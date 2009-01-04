@@ -15,31 +15,32 @@
   <body bgcolor="#F6F6F6">
   <% form_tag :action =>'index' do %>
     <input type="hidden" name="config_code_hidden">
-    <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:1000px;height:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+    <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:1000px;height:90%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
         <tr valign="top">
-          <td width="200px" heigth="100%">
-            <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+          <td width="200px" height="100%" valign="top">
+            <div style="width:250px;height:80%;overflow-x:auto">
+            配置项:<%=@config_code_hidden%>
+            <table align="center" valign="top" cellpadding=0 cellspacing=0 border=0 style="width:300px;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
               <thead>
-                <tr>
-                  <td colspan="3">配置项:<%=@config_code_hidden%></td>
-                </tr>
-                <tr>
-                  <td class="td_header_bak2" width="100px" >配置项名称</td>
-                  <td class="td_header_bak3" width="50px" >前版本</td>
-                  <td class="td_header_bak3" width="50px" >后版本</td>
+                <tr valign="top">
+                  <td class="td_header_bak2" width="200px" valign="top">配置项名称</td>
+                  <td class="td_header_bak3" width="50px" valign="top">前版本</td>
+                  <td class="td_header_bak3" width="50px" valign="top">后版本</td>
                 </tr>
               </thead>
               <tbody>
                 <% for configureItem in @ConfigureItem %>
                   <tr>
-                    <td class="td6">&nbsp;<a href="#" onclick="click_item('<%=configureItem.CONFIGURE_CODE%>')"><%=configureItem.CONFIGURE_NAME%></a></td>
-                    <td class="td7">&nbsp;<a href="#" onclick="click_item('<%=configureItem.CONFIGURE_CODE%>')"><%=configureItem.PRE_VERSION%></a></td>
-                    <td class="td7">&nbsp;<a href="#" onclick="click_item('<%=configureItem.CONFIGURE_CODE%>')"><%=configureItem.AFT_VERSION%></a></td>
+                    <td class="td6" valign="top">&nbsp;<a href="#" onclick="click_item('<%=configureItem.CONFIGURE_CODE%>')"><%=configureItem.CONFIGURE_NAME%></a></td>
+                    <td class="td7" valign="top">&nbsp;<a href="#" onclick="click_item('<%=configureItem.CONFIGURE_CODE%>')"><%=configureItem.PRE_VERSION%></a></td>
+                    <td class="td7" valign="top">&nbsp;<a href="#" onclick="click_item('<%=configureItem.CONFIGURE_CODE%>')"><%=configureItem.AFT_VERSION%></a></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
+            </div>
             <%= will_paginate @ConfigureItem %>
+          
           </td>
           <td width="800px" heigth="100%" valign="top">
             <table align="center" cellpadding=0 cellspacing=0 valign="top" border=0 style="width:100%;height:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
