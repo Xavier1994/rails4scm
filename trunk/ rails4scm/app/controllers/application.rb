@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   session :session_key => '_rails4scm_session_id'
 
   before_filter :configure_charsets
-  before_filter :fileLoginSessionNil
  
   def configure_charsets
 		  @response.headers["Content-Type"] = "text/html; charset=GB2312"
