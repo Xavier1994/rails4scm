@@ -1,6 +1,7 @@
 require 'kernel/operator'
 
 class Framework::LogcheckController < ApplicationController
+  
       def index()
           @userName=""; 
           @passWord=""; 
