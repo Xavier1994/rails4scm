@@ -69,13 +69,13 @@ end%>
 <%
 if @productVers!=nil then
     for productVer in @productVers%>
-                <tr ondblclick="queryItems(<%=productVer.PRODUCT_VERS%>)">
+                <tr ondblclick="queryItems('<%=productVer.PRODUCT_VERS%>')">
                   <td class="td6">&nbsp;<%=productVer.PRODUCT_VERS%></td>
                   <td class="td7">&nbsp;<%=productVer.COMMENT%></td>
                   <td class="td7">&nbsp;<%=productVer.PRODUCT_CONF_PERSON%></td>
                   <td class="td7">
-                    &nbsp;<a href="#" onclick="queryItems(<%=productVer.PRODUCT_VERS%>)">对应配置项</a>
-                    &nbsp;<a href="#" onclick="queryProjects(<%=productVer.PRODUCT_VERS%>)">对应项目</a>
+                    &nbsp;<a href="#" onclick="queryItems('<%=productVer.PRODUCT_VERS%>')">对应配置项</a>
+                    &nbsp;<a href="#" onclick="queryProjects('<%=productVer.PRODUCT_VERS%>')">对应项目</a>
                   </td>
                 </tr>
 <%
