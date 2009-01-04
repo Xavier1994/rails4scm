@@ -78,7 +78,7 @@ values
 ('120201','1202','配置项变更查询','','/scm','N','1','','','','N','/item/query/item_query',24006);
 
 
-配置项管理授权
+--配置项管理授权
 
 insert into RT_POSITION_RIGHT_ITEM (ROW_ID,FUNC_ID,PERSON_CLASS_CODE,RIGHT_ITEM_ID,FLAG,GRANT_TYPE,ID) values(2000,100101,'SA',null,'N','3',100);
 insert into RT_POSITION_RIGHT_ITEM (ROW_ID,FUNC_ID,PERSON_CLASS_CODE,RIGHT_ITEM_ID,FLAG,GRANT_TYPE,ID) values(2001,100201,'SA',null,'N','3',101);
