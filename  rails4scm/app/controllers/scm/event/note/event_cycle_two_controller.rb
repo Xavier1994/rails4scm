@@ -131,13 +131,45 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
     #提交
     if(queding_hidden == "2")
       @eventRecord.id = @eventRecord.ID
+      event_prsn01  = params[:EVENT_PRSN01]
+      k=1
+      for date_0102 in params[:DATA]
+          dt = date_0102[k.to_i]
+          date_01 = dt[:data1]
+      end
+      event_prsn02  = params[:EVENT_PRSN02]
+      date_02       = Time.now
+      conclusion_01 = params[:CONCLUSION_01]
+      conclusion_02 = params[:CONCLUSION_02]
+      work_days01   = params[:WORK_DAYS01]
+      work_days02   = params[:WORK_DAYS02]
+      remark_01     = params[:REMARK_01]
+      remark_02     = params[:REMARK_02]
+      remark_03     = params[:REMARK_03]
       
       case @quarters_validate[0]
          when "C"
            #决策中
            begin
-             @eventRecord.CURRENT_STATUS = @eventArr[3]
+             event_prsn02  = @oper.NAME
+             date_02       = Time.now
              
+             @configureMsgCycleDetYi.EVENT_PRSN01=event_prsn01
+             @configureMsgCycleDetYi.DATE_01     =date_01
+             @configureMsgCycleDetYi.EVENT_PRSN02=event_prsn02
+             @configureMsgCycleDetYi.DATE_02     =date_02
+             @configureMsgCycleDetYi.REMARK_01   =remark_01
+             @configureMsgCycleDetYi.REMARK_02   =remark_02
+             @configureMsgCycleDetYi.REMARK_03   =remark_03
+             @configureMsgCycleDetYi.CONCLUSION_01=conclusion_01
+             @configureMsgCycleDetYi.CONCLUSION_02=conclusion_02
+             @configureMsgCycleDetYi.WORK_DAYS01=work_days01
+             @configureMsgCycleDetYi.WORK_DAYS02=work_days02
+
+             @configureMsgCycleDetYi.id = @configureMsgCycleDetYi.ID
+             @configureMsgCycleDetYi.save
+             
+             @eventRecord.CURRENT_STATUS = @eventArr[3]
              @eventRecord.save
              @message = tijiaoArr[0] + @eventArr[3] + tijiaoArr[1]
            rescue Exception => e
@@ -146,6 +178,24 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
          when "D"
            #变更中
            begin
+             event_prsn02  = @oper.NAME
+             date_02       = Time.now
+
+             @configureMsgCycleDetEr.EVENT_PRSN01=event_prsn01
+             @configureMsgCycleDetEr.DATE_01     =date_01
+             @configureMsgCycleDetEr.EVENT_PRSN02=event_prsn02
+             @configureMsgCycleDetEr.DATE_02     =date_02
+             @configureMsgCycleDetEr.REMARK_01   =remark_01
+             @configureMsgCycleDetEr.REMARK_02   =remark_02
+             @configureMsgCycleDetEr.REMARK_03   =remark_03
+             @configureMsgCycleDetEr.CONCLUSION_01=conclusion_01
+             @configureMsgCycleDetEr.CONCLUSION_02=conclusion_02
+             @configureMsgCycleDetEr.WORK_DAYS01=work_days01
+             @configureMsgCycleDetEr.WORK_DAYS02=work_days02
+
+             @configureMsgCycleDetEr.id = @configureMsgCycleDetEr.ID
+             @configureMsgCycleDetEr.save
+             
              @eventRecord.CURRENT_STATUS = @eventArr[4]
              @eventRecord.save
              @message = tijiaoArr[0] + @eventArr[4] + tijiaoArr[1]
@@ -155,6 +205,24 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
          when "E"
            #关闭
            begin
+             event_prsn02  = @oper.NAME
+             date_02       = Time.now
+
+             @configureMsgCycleDetSa.EVENT_PRSN01=event_prsn01
+             @configureMsgCycleDetSa.DATE_01     =date_01
+             @configureMsgCycleDetSa.EVENT_PRSN02=event_prsn02
+             @configureMsgCycleDetSa.DATE_02     =date_02
+             @configureMsgCycleDetSa.REMARK_01   =remark_01
+             @configureMsgCycleDetSa.REMARK_02   =remark_02
+             @configureMsgCycleDetSa.REMARK_03   =remark_03
+             @configureMsgCycleDetSa.CONCLUSION_01=conclusion_01
+             @configureMsgCycleDetSa.CONCLUSION_02=conclusion_02
+             @configureMsgCycleDetSa.WORK_DAYS01=work_days01
+             @configureMsgCycleDetSa.WORK_DAYS02=work_days02
+
+             @configureMsgCycleDetSa.id = @configureMsgCycleDetSa.ID
+             @configureMsgCycleDetSa.save
+             
              #所有的项目已经结束
              confChgReprojectProjects = ConfChgReprojectProjects.new
              cProject = confChgReprojectProjects.findConfChgReprojectProjects(@event_code)
@@ -166,7 +234,7 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
              cus = "关闭@W"
              cusArra = cus.split("@W")
              configureChgApp = ConfigureChgApp.new
-             cChg = configureChgApp.findConfigureChgApp(@event_code,cusArra[0])
+             cChg = configureChgApp.findConfigureChgAppStaute(@event_code,cusArra[0])
              if(cChg.size>0) then
                @message = tijiaoArr[5]
                return ""
@@ -309,7 +377,7 @@ private
           quarters_validate = OperatorWorks.new.quarters_validate(@oper.OPER_ID,"E5")
           if(quarters_validate == 100)
             vl[0] = "F"
-            vl[1] = ""
+            vl[1] = "提交"
           end
      end
      return vl
