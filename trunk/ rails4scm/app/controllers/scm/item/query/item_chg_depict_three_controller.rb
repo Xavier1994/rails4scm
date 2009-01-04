@@ -14,24 +14,27 @@ class Scm::Item::Query::ItemChgDepictThreeController < ApplicationController
     end
     #±£´æ
     if(click_hidden == "1")
-      i =0
-      for param in params[:chg]
+      hash = params[:chg].to_a
+      for param in hash
        chg=param[1]
-       i = i + 1
+       i =param[0].to_i
        if(i<=@chgdata.size)
          begin
-           id = chg[:ID]
-           chgdata = ChgDocumentRecord.find(id)
-           chgdata.id=id
-           chgdata.MODIFY_TIME=chg[:MODIFY_TIME]
-           chgdata.SUB_SYSTEM=chg[:SUB_SYSTEM]
-           chgdata.OBJECT_NAME=chg[:OBJECT_NAME]
-           chgdata.PROBLEM_DESCRIBE=chg[:PROBLEM_DESCRIBE]
-           chgdata.MODIFY_NOTE=chg[:MODIFY_NOTE] 
-           chgdata.MODIRY_PERSON=chg[:MODIRY_PERSON]
-           chgdata.PROBLEM_KIND=chg[:PROBLEM_KIND]
-           chgdata.COMMENT=chg[:COMMENT]
-           chgdata.save
+           if(chg.key?(:MODIFY_TIME))
+             id = chg[:ID]
+             chgdata = ChgDocumentRecord.find(id)
+             chgdata.id=id
+             chgdata.MODIFY_TIME=chg[:MODIFY_TIME]
+             chgdata.SUB_SYSTEM=chg[:SUB_SYSTEM]
+             chgdata.OBJECT_NAME=chg[:OBJECT_NAME]
+             chgdata.PROBLEM_DESCRIBE=chg[:PROBLEM_DESCRIBE]
+             chgdata.MODIFY_NOTE=chg[:MODIFY_NOTE] 
+             chgdata.MODIRY_PERSON=chg[:MODIRY_PERSON]
+             chgdata.PROBLEM_KIND=chg[:PROBLEM_KIND]
+             chgdata.COMMENT=chg[:COMMENT]
+             chgdata.save
+           end
+           
          rescue Exception => e
            puts e.message
          end

@@ -15,21 +15,25 @@ class Scm::Item::Query::ItemChgDepictOneController < ApplicationController
     #±£´æ
     if(click_hidden == "1")
       i =0
-      for param in params[:chg]
+      hash = params[:chg].to_a
+      for param in hash
        chg=param[1]
-       i = i + 1
+       i =param[0].to_i
        if(i<=@chgdata.size)
          begin
-           id = chg[:ID]
-           chgdata = ChgDatabaseRecord.find(id)
-           chgdata.id=id
-           chgdata.MODIFY_DATE=chg[:MODIFY_DATE]
-           chgdata.TABLE_NAME=chg[:TABLE_NAME]
-           chgdata.COLUMN_NAME=chg[:COLUMN_NAME]
-           chgdata.PROBLEM_DETAIL=chg[:PROBLEM_DETAIL]
-           chgdata.MODIFY_DETAIL=chg[:MODIFY_DETAIL]
-           chgdata.MODIFY_PERSON=chg[:MODIFY_PERSON] 
-           chgdata.save
+           if(chg.key?(:MODIFY_DATE))
+             id = chg[:ID]
+             chgdata = ChgDatabaseRecord.find(id)
+             chgdata.id=id
+             chgdata.MODIFY_DATE=chg[:MODIFY_DATE]
+             chgdata.TABLE_NAME=chg[:TABLE_NAME]
+             chgdata.COLUMN_NAME=chg[:COLUMN_NAME]
+             chgdata.PROBLEM_DETAIL=chg[:PROBLEM_DETAIL]
+             chgdata.MODIFY_DETAIL=chg[:MODIFY_DETAIL]
+             chgdata.MODIFY_PERSON=chg[:MODIFY_PERSON]
+             chgdata.save
+           end
+           
          rescue Exception => e
            puts e.message
          end
@@ -54,8 +58,9 @@ class Scm::Item::Query::ItemChgDepictOneController < ApplicationController
            puts e.message
          end
        end
-       @message=message[0] + message[2]
+       chg=nil
       end
+      @message=message[0] + message[2]
     end
     
     #É¾³ý
