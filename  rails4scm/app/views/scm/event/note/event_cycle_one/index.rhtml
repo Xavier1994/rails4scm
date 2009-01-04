@@ -65,7 +65,7 @@
         //需求变更的配置项
         function config(){
             url = "/scm/event/note/need_changed_items?event_code=<%=@event_code%>";
-            window.open(url, "更改配置项", "menubar=no,location=no,toolbar=yes,status=yes,scrollbars=yes,resizable=no,width=1000px,height=450px,top=100px,left=5px");
+            window.open(url, "更改配置项", "menubar=no,location=no,toolbar=no,status=yes,scrollbars=yes,resizable=no,width="+screen.availWidth+",height="+(screen.availHeight*6/8)+",top="+(screen.availHeight/8)+",left=0");
         }
         
     </script>
