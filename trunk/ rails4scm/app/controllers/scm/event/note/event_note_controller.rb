@@ -44,40 +44,49 @@ class Scm::Event::Note::EventNoteController < ApplicationController
     
     #保存
     @oper = session[:operator]
-    tishi = "添加@W修改@W删除@W成功!@W失败!@W您只能删除你自己发起的事件@W该事件已触发变更申请,不能进行删除,如需改动请与管理员联系@W事件状态修改@W"
+    tishi = "保存@W修改@W删除@W成功!@W失败!@W您只能删除你自己发起的事件@W该事件已触发变更申请,不能进行删除,如需改动请与管理员联系@W事件状态修改@W"
     @tishi = tishi.split("@W")
+    event_hidden = "已创建@W待评估@W决策中@W变更中@W关闭@W已关闭@W"
+    eventArr = event_hidden.split("@W")
     @message = ""
     case click_hidden.to_i
        when 1  #添加
-         begin
-           i =1
-           event_hidden = "已创建@W待评估@W决策中@W变更中@W关闭@W"
-           eventArr = event_hidden.split("@W")
-           for param in params[:eventRecord]
-             reco=param[i]
-             addSave(eventArr,reco[:EVENT_NAME],reco[:M_EVENT_TYPE],reco[:PROJECT_CODE],@oper.NAME) 
+          i =0
+          rows = params[:rows_hidden]
+          if(rows == nil || rows == "")
+            rows = 0
+          end
+          rows = rows.to_i
+          
+          hash = params[:eventRecord].to_a
+          for param in hash
+           reco=param[1]
+           i =param[0].to_i
+           if(i<=rows)
+             begin
+               if (reco.key?(:EVENT_NAME))
+                 eventRe = EventRecord.find(reco[:ID])
+                 if(eventRe.CURRENT_STATUS == eventArr[5])
+                   continue
+                 end
+                 eventRe.id=reco[:ID]
+                 eventRe.EVENT_NAME=reco[:EVENT_NAME]
+                 eventRe.M_EVENT_TYPE=reco[:M_EVENT_TYPE]
+                 eventRe.PROJECT_CODE=reco[:PROJECT_CODE]
+                 eventRe.save
+               end
+             rescue Exception => e
+               @message=@tishi[0] + @tishi[4]
+             end
+           else
+             begin
+               addSave(eventArr,reco[:EVENT_NAME],reco[:M_EVENT_TYPE],reco[:PROJECT_CODE],@oper.NAME)
+             rescue Exception => e
+               @message=@tishi[0] + @tishi[4]
+             end
            end
            @message=@tishi[0] + @tishi[3]
-         rescue Exception => e
-           @message=@tishi[0] + @tishi[4]
-         end
-         
-       when 2  #修改
-         begin
-           k =1
-           for re in params[:record]
-             reco=re[k]
-             eventRe = EventRecord.find(reco[:ID])
-             eventRe.id=reco[:ID]
-             eventRe.EVENT_NAME=reco[:EVENT_NAME]
-             eventRe.M_EVENT_TYPE=reco[:M_EVENT_TYPE]
-             eventRe.PROJECT_CODE=reco[:PROJECT_CODE]
-             eventRe.save
-           end
-           @message=@tishi[1] + @tishi[3]
-         rescue Exception => e
-           @message=@tishi[1] + @tishi[4]
-         end
+          end
        when 3  #删除
          begin
            delete_ID_hidden = params[:delete_ID_hidden]
@@ -87,8 +96,11 @@ class Scm::Event::Note::EventNoteController < ApplicationController
              if(configCount.size>0)
                @message=@tishi[6]
              else
-               eventRe.id=delete_ID_hidden
-               eventRe.delete(delete_ID_hidden)
+               msg_cycle=ConfigureMsgCycleDet.find(:all,:conditions =>["event_code =? ",eventRe.EVENT_CODE])
+               for msg in msg_cycle
+                 ConfigureMsgCycleDet.delete(msg.ID)
+               end
+               EventRecord.delete(delete_ID_hidden)
                @message=@tishi[2] + @tishi[3]
              end
              

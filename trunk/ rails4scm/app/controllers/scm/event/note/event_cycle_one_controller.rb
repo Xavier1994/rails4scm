@@ -106,13 +106,45 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
     #提交
     if(queding_hidden == "2")
       @eventRecord.id = @eventRecord.ID
+      event_prsn01  = params[:EVENT_PRSN01]
+      date_01       = Time.now
+      event_prsn02  = params[:EVENT_PRSN02]
+      date_02       = Time.now
+      conclusion_01 = params[:CONCLUSION_01]
+      conclusion_02 = params[:CONCLUSION_02]
+      work_days01   = params[:WORK_DAYS01]
+      work_days02   = params[:WORK_DAYS02]
+      remark_01     = params[:REMARK_01]
+      remark_02     = params[:REMARK_02]
+      remark_03     = params[:REMARK_03]
       
       case @quarters_validate[0]
          when "A"
            #已创建
            begin
-             @eventRecord.CURRENT_STATUS = @eventArr[1]
+             event_prsn01  = @oper.NAME
+             date_01       = Time.now
+             k=1
+             for date_0102 in params[:DATA]
+                  dt = date_0102[k.to_i]
+                  date_02 = dt[:data2]
+             end
+             @configureMsgCycleDetYi.EVENT_PRSN01=event_prsn01
+             @configureMsgCycleDetYi.DATE_01     =date_01
+             @configureMsgCycleDetYi.EVENT_PRSN02=event_prsn02
+             @configureMsgCycleDetYi.DATE_02     =date_02
+             @configureMsgCycleDetYi.REMARK_01   =remark_01
+             @configureMsgCycleDetYi.REMARK_02   =remark_02
+             @configureMsgCycleDetYi.REMARK_03   =remark_03
+             @configureMsgCycleDetYi.CONCLUSION_01=conclusion_01
+             @configureMsgCycleDetYi.CONCLUSION_02=conclusion_02
+             @configureMsgCycleDetYi.WORK_DAYS01=work_days01
+             @configureMsgCycleDetYi.WORK_DAYS02=work_days02
+
+             @configureMsgCycleDetYi.id = @configureMsgCycleDetYi.ID
+             @configureMsgCycleDetYi.save
              
+             @eventRecord.CURRENT_STATUS = @eventArr[1]
              @eventRecord.save
              @message = tijiaoArr[0] + @eventArr[1] + tijiaoArr[1]
            rescue Exception => e
@@ -121,6 +153,28 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
          when "B"
            #待评估
            begin
+             event_prsn02  = @oper.NAME
+             date_02       = Time.now
+             k=1
+             for date_0102 in params[:DATA]
+                  dt = date_0102[k.to_i]
+                  date_01 = dt[:data1]
+             end
+             @configureMsgCycleDetEr.EVENT_PRSN01=event_prsn01
+             @configureMsgCycleDetEr.DATE_01     =date_01
+             @configureMsgCycleDetEr.EVENT_PRSN02=event_prsn02
+             @configureMsgCycleDetEr.DATE_02     =date_02
+             @configureMsgCycleDetEr.REMARK_01   =remark_01
+             @configureMsgCycleDetEr.REMARK_02   =remark_02
+             @configureMsgCycleDetEr.REMARK_03   =remark_03
+             @configureMsgCycleDetEr.CONCLUSION_01=conclusion_01
+             @configureMsgCycleDetEr.CONCLUSION_02=conclusion_02
+             @configureMsgCycleDetEr.WORK_DAYS01=work_days01
+             @configureMsgCycleDetEr.WORK_DAYS02=work_days02
+
+             @configureMsgCycleDetEr.id = @configureMsgCycleDetEr.ID
+             @configureMsgCycleDetEr.save
+             
              @eventRecord.CURRENT_STATUS = @eventArr[2]
              @eventRecord.save
              @message = tijiaoArr[0] + @eventArr[2] + tijiaoArr[1]
