@@ -6,11 +6,11 @@
 <script language="JavaScript">
 function queryItems(productver){
     var productcode=document.getElementById("productCode").value;
-    window.open("/scm/collquery/query/product_ver_items?product_code="+productcode+"&product_vers="+productver,"","menubar=no,location=no,toolbar=yes,scrollbars=yes,resizable=yes,width=748px,height=450px");
+    window.open("/scm/collquery/query/product_ver_items?product_code="+productcode+"&product_vers="+productver,"","menubar=no,location=no,toolbar=yes,scrollbars=yes,resizable=yes,width="+screen.availWidth*6/8+",height="+(screen.availHeight*5/8)+",top="+(screen.availHeight/8)+",left="+screen.availWidth/8);
 }
 function queryProjects(productver){
     var productcode=document.getElementById("productCode").value;
-    window.open("/scm/collquery/query/product_ver_projects?product_code="+productcode+"&product_vers="+productver,"","menubar=no,location=no,toolbar=yes,scrollbars=yes,resizable=yes,width=748px,height=450px");
+    window.open("/scm/collquery/query/product_ver_projects?product_code="+productcode+"&product_vers="+productver,"","menubar=no,location=no,toolbar=yes,scrollbars=yes,resizable=yes,width="+screen.availWidth*6/8+",height="+(screen.availHeight*5/8)+",top="+(screen.availHeight/8)+",left="+screen.availWidth/8);
 }
 </script>
   <body>
