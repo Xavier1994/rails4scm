@@ -158,9 +158,9 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
         configureParamsArray=configure_params.split("@")
         if configureParamsArray[0]!=nil && configureParamsArray[1]!=nil then
           confChgReproductProducts=ConfChgReproductProducts.new
-          confChgReproductProducts.delete_all("event_code="+event_code,"configure_code="+configureParamsArray[0],"configure_vers="+configureParamsArray[1])
+          confChgReproductProducts.delete_all(["event_code=?",event_code]["configure_code=?",configureParamsArray[0]]["configure_vers=?",configureParamsArray[1]])
           relaChgConfigure=RelaChgConfigure.new
-          relaChgConfigure.delete_all("event_code="+event_code,"configure_code="+configureParamsArray[0],"configure_vers="+configureParamsArray[1])
+          relaChgConfigure.delete_all(["event_code=?",event_code]["configure_code=?",configureParamsArray[0]]["configure_vers=?",configureParamsArray[1]])
           outText="ok"
         end
       end

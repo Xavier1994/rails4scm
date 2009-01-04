@@ -1,5 +1,4 @@
 class Scm::Collquery::Query::ProductQueryTwoController < ApplicationController
-   before_filter :fileLoginSessionNil
   def index
     text ="产品基本信息W@"
     blockTextArray = text.split("W@")

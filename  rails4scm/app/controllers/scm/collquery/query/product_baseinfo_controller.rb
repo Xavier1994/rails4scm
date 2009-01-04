@@ -1,5 +1,4 @@
 class Scm::Collquery::Query::ProductBaseinfoController < ApplicationController
-   before_filter :fileLoginSessionNil
   def index
      product_code = params[:code]
     @product_code=product_code
