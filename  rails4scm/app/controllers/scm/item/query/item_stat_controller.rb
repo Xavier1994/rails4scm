@@ -5,6 +5,9 @@ class Scm::Item::Query::ItemStatController < ApplicationController
     confChg = ConfigureChgApp.new
     param = Param.new
     @configure = confChg.findConfigureChgApp_no(@configure_chg_no) 
-    @param =  param.findTypeAll("con_stat2")
+    @param =  param.findTypeXiao("con_stat2",@configure.CURRENT_STATUS)
+    if(@param == nil || @param.size<=0)
+      @param =  param.findTypeAll("con_stat2")
+    end
   end
 end
