@@ -1,5 +1,4 @@
 class Scm::Collquery::Query::ProductBaseTreeController < ApplicationController
-  before_filter :fileLoginSessionNil
   def index
     @productsTree =productTreeList()
   end

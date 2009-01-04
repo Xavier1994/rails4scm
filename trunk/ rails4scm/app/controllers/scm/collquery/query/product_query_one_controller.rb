@@ -1,5 +1,4 @@
 class Scm::Collquery::Query::ProductQueryOneController < ApplicationController
- before_filter :fileLoginSessionNil
  def index
     curPageSize = params[:page]
     pageSize = 18
