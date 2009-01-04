@@ -85,14 +85,13 @@
         //事件执行情况
         function execute_info(){
             url = "/scm/event/note/event_execute?event_code=<%=@event_code%>";
-            window.open(url);
-            //var redata = window.showModalDialog(url, "事件执行情况", "dialogHeight:500px;dialogWidth:800px;");
-            //if(redata != null){
-            //    var me = document.forms[0];
-           //     me.event_chg_hidden.value="5";
-           //     me.current_stat.value  = redata.current_stat;
-          //      me.submit();
-          //  }
+            var redata = window.showModalDialog(url, "事件执行情况", "dialogHeight:500px;dialogWidth:800px;");
+            if(redata != null){
+               var me = document.forms[0];
+                me.event_chg_hidden.value="5";
+                me.current_stat.value  = redata.current_stat;
+                me.submit();
+            }
         }
     </script>
   </head>
