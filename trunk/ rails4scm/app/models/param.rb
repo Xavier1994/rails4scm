@@ -23,4 +23,12 @@ class Param < ActiveRecord::Base
   def findTypeAll(type)
         Param.find(:all,:conditions =>["param_class =? ",type])
   end
+  
+  #查询小于等于当前状态的所有状态
+  def findTypeXiao(param_class,param_name)
+    sql = "select * from PARAM where param_class='" + param_class + "' "
+    sql += "and PARAM_CODE<= (select PARAM_CODE from PARAM where param_class='" + param_class + "' "
+    sql += "and PARAM_NAME='" + param_name + "') "
+    Param.find_by_sql(sql) 
+  end
 end
