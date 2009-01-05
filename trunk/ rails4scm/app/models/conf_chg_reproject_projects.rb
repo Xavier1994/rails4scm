@@ -1,6 +1,7 @@
 class ConfChgReprojectProjects < ActiveRecord::Base
   self.table_name = "conf_chg_reproject_projects"
   self.primary_key = "id"
+  attr_accessor :id
   
   def findConfChgReprojectProjects(event_code)
     project_state = "ÒÑ½áÊø@W"
@@ -15,4 +16,12 @@ class ConfChgReprojectProjects < ActiveRecord::Base
  
     ConfChgReprojectProjects.find_by_sql(sql)
   end
+  
+  def findByEvencodeConfcodeConfver(event_code,configure_code,configure_ver)
+    sql = "SELECT  CONF_CHG_REPROJECT_PROJECTS.ID ,CONF_CHG_REPROJECT_PROJECTS.EVENT_CODE ,CONF_CHG_REPROJECT_PROJECTS.CONFIGURE_CODE ,CONF_CHG_REPROJECT_PROJECTS.CONFIGURE_VERS ,CONF_CHG_REPROJECT_PROJECTS.PROJECT_CODE ,CONF_CHG_REPROJECT_PROJECTS.CAN_USE_FLAG ,PROJECT_MSG.PROJECT_NAME     "
+    sql += " FROM CONF_CHG_REPROJECT_PROJECTS ,PROJECT_MSG      "
+    sql += " WHERE ( CONF_CHG_REPROJECT_PROJECTS.PROJECT_CODE = PROJECT_MSG.PROJECT_CODE ) and EVENT_CODE='" + event_code + "' and CONFIGURE_CODE='"+configure_code+"' and CONFIGURE_VERS='"+configure_ver+"'"
+     ConfChgReprojectProjects.find_by_sql(sql)
+  end
+  
 end

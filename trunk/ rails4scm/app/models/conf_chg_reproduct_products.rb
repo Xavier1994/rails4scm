@@ -53,4 +53,16 @@ class ConfChgReproductProducts < ActiveRecord::Base
     
     ConfChgReproductProducts.find_by_sql(sql )
   end
+  #查询配置项组件列表
+  def findAllCols(event_code,configure_code,configure_vers)
+     ConfChgReproductProducts.find(:all,:conditions=>["event_code =? and configure_code =? and configure_vers=?",event_code,configure_code,configure_vers])
+  end
+  
+  def findByEvencodeConfcodeConfver(event_code,configure_code,configure_ver)
+    sql = "SELECT CONF_CHG_REPRODUCT_PRODUCTS.ID CID,CONF_CHG_REPRODUCT_PRODUCTS.EVENT_CODE,CONF_CHG_REPRODUCT_PRODUCTS.CONFIGURE_CODE,SOFTWARE_PRODUCT.PRODUCT_NAME,CONF_CHG_REPRODUCT_PRODUCTS.CONFIGURE_VERS,CONF_CHG_REPRODUCT_PRODUCTS.PRODUCT_CODE,CONF_CHG_REPRODUCT_PRODUCTS.PRODUCT_VERS,CONF_CHG_REPRODUCT_PRODUCTS.EXEC_STATUS,CONF_CHG_REPRODUCT_PRODUCTS.CAN_USE_FLAG,SOFTWARE_PRODUCT.H_PRO_VERS,SOFTWARE_PRODUCT.PRODUCT_CODE,SOFTWARE_PRODUCT.ID  "
+    sql += " FROM CONF_CHG_REPRODUCT_PRODUCTS, SOFTWARE_PRODUCT "
+    sql += " WHERE ( CONF_CHG_REPRODUCT_PRODUCTS.PRODUCT_CODE = SOFTWARE_PRODUCT.PRODUCT_CODE ) and EVENT_CODE='" + event_code + "' and CONFIGURE_CODE='"+configure_code+"' and CONFIGURE_VERS='"+configure_ver+"'"
+     ConfChgReproductProducts.find_by_sql(sql)
+  end
+      
 end
