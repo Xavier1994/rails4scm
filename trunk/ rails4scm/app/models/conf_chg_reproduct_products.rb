@@ -1,6 +1,7 @@
 class ConfChgReproductProducts < ActiveRecord::Base
   self.table_name = "conf_Chg_reproduct_products"
   self.primary_key = "id"
+  attr_accessor :id
   
   #查询未升级的项目
   def findProjectNon(event_code,configure_code,configure_vers)
