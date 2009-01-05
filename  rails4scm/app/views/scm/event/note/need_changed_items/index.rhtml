@@ -141,6 +141,39 @@ function reallyDeleteItem(){
             }
     }
 }
+
+function changeProjectProduct(configure_params){
+    if(configure_params==null||configure_params==""){
+        alert("请与系统管理员联系！");
+    }else{
+        var event_code=self.document.getElementById("event_code").value;
+        url = "/scm/event/note/need_changed_items/changeProjectProduct";
+        newActive();
+        if(xmlHttp==null){
+              return;
+        }
+
+        var content="configure_params="+configure_params+"&event_code="+event_code;//构造要携带的数据  
+        xmlHttp.open("POST",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
+        xmlHttp.send(content);//发送数据 
+                
+        if(xmlHttp.readystate==4) //请求状态为4表示成功
+              {
+               if(xmlHttp.status==200) //http状态200表示OK
+                    {
+                        document.getElementById ("projectProductList").innerHTML =xmlHttp.responseText; 
+                    }
+                else //http返回状态失败
+                    {
+                        alert("服务端返回状态" + xmlHttp.statusText);
+                     }
+                }
+         else //请求状态还没有成功，页面等待
+                {
+                    document .getElementById ("list").innerHTML ="数据加载中";
+                }
+    }
+}
 function selectdelete(checkbox){
     var param_configure_code=document.getElementById("param_configure_code").value;
     if(param_configure_code==null||param_configure_code==""){
@@ -163,6 +196,196 @@ function selectdelete(checkbox){
         }
     }
 }
+function productsubmit(){
+    if(document.productform==null){
+        alert("没有需要更新的产品");
+    }else{
+        productparams="";
+        if(document.productform.productattribute==null){
+            alert("没有需要更新的产品");
+        }else{
+            producttemp=document.productform.productattribute.value;
+            producttempArray=producttemp.split("@");
+            for(i=0;i<producttempArray.length;i++){//逐行取参数
+                if(producttempArray[i]!=null&&producttempArray[i]!=""){
+                    if(document.getElementById("product"+producttempArray[i])!=null){
+                        if(document.getElementById("product"+producttempArray[i]).checked){
+                            productparams+=document.getElementById("product"+producttempArray[i]).value+"@11|@";
+                        }else{
+                            productparams+=document.getElementById("product"+producttempArray[i]).value+"@00|@";
+                        }
+                    }else{
+                        //do nothing
+                    }
+                }
+            }
+            var event_code=self.document.getElementById("event_code").value;
+            url = "/scm/event/note/need_changed_items/projectProductSubmit";
+            newActive();
+            if(xmlHttp==null){
+                return;
+            }
+
+            if(productparams!=""){
+                var content="productparams="+productparams+"&event_code="+event_code;//构造要携带的数据  
+                xmlHttp.open("POST",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
+                xmlHttp.send(content);//发送数据 
+        
+                if(xmlHttp.readystate==4) //请求状态为4表示成功
+                {
+                    if(xmlHttp.status==200) //http状态200表示OK
+                    {
+                        alert(xmlHttp.responseText); 
+                    }
+                    else //http返回状态失败
+                    {
+                        alert("服务端返回状态" + xmlHttp.statusText);
+                    }
+                }
+                else //请求状态还没有成功，页面等待
+                {
+                    document .getElementById ("list").innerHTML ="数据加载中";
+                }
+            }else{
+                alert("没有需要更新的产品");
+            }
+        }
+    }
+}
+function projectsubmit(){
+    if(document.projectform==null){
+        alert("没有需要更新的项目");
+    }else{
+        projectparams="";
+        if(document.projectform.projectattribute==null){
+            alert("没有需要更新的项目");
+        }else{
+            projecttemp=document.projectform.projectattribute.value;
+            projecttempArray=projecttemp.split("@");
+            for(i=0;i<projecttempArray.length;i++){//逐行取参数
+                if(projecttempArray[i]!=null&&projecttempArray[i]!=""){
+                    if(document.getElementById("product"+projecttempArray[i])!=null){
+                        if(document.getElementById("product"+tempArray[i]).checked){
+                            projectparams+=document.getElementById("project"+projecttempArray[i]).value+"@11|@";
+                        }else{
+                            projectparams+=document.getElementById("project"+projecttempArray[i]).value+"@00|@";
+                        }
+                    }else{
+                        //do nothing
+                    }
+                }
+            }
+            var event_code=self.document.getElementById("event_code").value;
+            url = "/scm/event/note/need_changed_items/projectProductSubmit";
+            newActive();
+            if(xmlHttp==null){
+               return;
+            }
+
+            if(projectparams!=""){
+                var content="projectparams="+projectparams+"&event_code="+event_code;//构造要携带的数据  
+                xmlHttp.open("POST",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
+                xmlHttp.send(content);//发送数据 
+        
+                if(xmlHttp.readystate==4) //请求状态为4表示成功
+                {
+                    if(xmlHttp.status==200) //http状态200表示OK
+                    {
+                        alert(xmlHttp.responseText); 
+                    }
+                    else //http返回状态失败
+                    {
+                        alert("服务端返回状态" + xmlHttp.statusText);
+                    }
+                }
+                else //请求状态还没有成功，页面等待
+                {
+                    document .getElementById ("list").innerHTML ="数据加载中";
+                }
+            }else{
+                alert("没有需要更新的项目");
+            }
+        }
+   }
+}
+function projectproducesubmit(){
+    if(document.projectform==null&&document.productform==null){
+        alert("没有需要更新的项目和产品");
+    }else{
+        projectparams="";
+        productparams="";
+        if(document.projectform.projectattribute!=null&&document.projectform.projectattribute.value!=""){
+            projecttemp=document.projectform.projectattribute.value;
+            projecttempArray=projecttemp.split("@");
+            for(i=0;i<projecttempArray.length;i++){//逐行取参数
+                if(projecttempArray[i]!=null&&projecttempArray[i]!=""){
+                    if(document.getElementById("product"+projecttempArray[i])!=null){
+                        if(document.getElementById("product"+tempArray[i]).checked){
+                            projectparams+=document.getElementById("project"+projecttempArray[i]).value+"@11|@";
+                        }else{
+                            projectparams+=document.getElementById("project"+projecttempArray[i]).value+"@00|@";
+                        }
+                    }else{
+                        //do nothing
+                    }
+                }
+            }
+        }
+        if(document.productform.productattribute!=null&&document.productform.productattribute.value!=""){
+            producttemp=document.productform.productattribute.value;
+            producttempArray=producttemp.split("@");
+            for(i=0;i<producttempArray.length;i++){//逐行取参数
+                if(producttempArray[i]!=null&&producttempArray[i]!=""){
+                    if(document.getElementById("product"+producttempArray[i])!=null){
+                        if(document.getElementById("product"+producttempArray[i]).checked){
+                            productparams+=document.getElementById("product"+producttempArray[i]).value+"@11|@";
+                        }else{
+                            productparams+=document.getElementById("product"+producttempArray[i]).value+"@00|@";
+                        }
+                    }else{
+                        //do nothing
+                    }
+                }
+            }
+        }
+
+        if(projectparams==""&&productparams==""){
+                alert("没有需要升级的配置项");
+        }else{
+                var event_code=self.document.getElementById("event_code").value;
+                url = "/scm/event/note/need_changed_items/projectProductSubmit";
+                newActive();
+                if(xmlHttp==null){
+                      return;
+                }
+                var content="event_code="+event_code;
+                if(projectparams!=""){
+                    content+="&projectparams="+projectparams;//构造要携带的数据 
+                }
+                if(productparams!=""){
+                    content+="&productparams="+productparams;//构造要携带的数据 
+                }
+                xmlHttp.open("POST",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
+                xmlHttp.send(content);//发送数据 
+
+                if(xmlHttp.readystate==4) //请求状态为4表示成功
+                {
+                    if(xmlHttp.status==200) //http状态200表示OK
+                    {
+                        alert(xmlHttp.responseText); 
+                    }
+                    else //http返回状态失败
+                    {
+                        alert("服务端返回状态" + xmlHttp.statusText);
+                    }
+                }
+                else //请求状态还没有成功，页面等待
+                {
+                    document .getElementById ("list").innerHTML ="数据加载中";
+                }
+        }
+   }
+}
 </script>
   <body onload="load();">
     <table cellpadding=0 cellspacing=0 border=0 width=“1000px” height="100%">
@@ -175,7 +398,7 @@ function selectdelete(checkbox){
         <td align="center" valign="middle" width="20px" height="100%">
           <div style="overflow-x:auto;overflow-y:auto">
             <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
-                <tr>
+                <tr >
                     <td valign="middle" align="center">
                         <input type="button" value=">>" onclick="add()" class="btn3_mouseout">
                         <input type="hidden" name="event_code" id="event_code" value="<%=@event_code%>">
@@ -194,11 +417,11 @@ function selectdelete(checkbox){
             </table>
           </div>
         </td>
-        <td valign="top"  width="570px" height="100%">
-            <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height=350;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <td valign="top"  width="570px" height="450px">
+            <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height=100%;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <tr>
                   <td>
-                    <div style="overflow-x:auto;overflow-y:auto;height:250px;">
+                    <div style="overflow-x:auto;overflow-y:auto;height:300px;">
                     <table valign="top" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                         <tr>
                             <td id="list">&nbsp;</td>
@@ -207,64 +430,91 @@ function selectdelete(checkbox){
                     </div>
                   </td>
                 </tr>
+                <tr>
+                    <td valign="middle">
+                        <table valign="middle" cellpadding=0 cellspacing=0 border=0 style="height:10px;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                            <HR/>
+                            <tr>
+                                <td >
+                                  &nbsp;&nbsp;
+                                  <input align="center" type="button" onclick="projectsubmit()" name="projectbutton" class="btn3_mouseout" value="项目升级确认">
+                                  &nbsp;&nbsp;
+                                </td>
+                                <td >
+                                  <input align="center" type="button" onclick="projectproducesubmit()" name="bothbutton" class="btn3_mouseout" value="项目升级和产品升级一并确认">
+                                </td>
+                                <td >
+                                  &nbsp;&nbsp;
+                                  <input align="center" type="button" onclick="productsubmit()" name="productbutton" class="btn3_mouseout" value="产品升级确认">
+                                  &nbsp;&nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><HR/></td>
+                            </tr>
 
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table valign="middle" cellpadding=0 cellspacing=0 border=0 style="height:10px;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 0px; border-right-style: solid; border-right-width: 0px">
+                            <thead class="td_header_bak2">
+                               <tr>
+                                <td valign="middle">涉及项目</td>
+                                <td valign="middle">涉及产品</td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </td>
+                </tr>
                 <tr>
                   <td>
-                    <div style="overflow-x:auto;overflow-y:auto;height:300px;">
-                    <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height:100px;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
-                <tr>
-                  <td colspan="5">
-                    <table cellpadding=0 cellspacing=0 border=0 style="height:250px;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
-                        <HR>
-                        <thead class="td_header_bak2">
+                    <div  style="overflow-x:auto;overflow-y:auto;height:180px;">
+                    <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height:200;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 0px; border-right-style: solid; border-right-width: 0px">
                         <tr>
-                            <td valign="top">涉及项目</td>
-                            <td valign="top">涉及产品</td>
-                        </tr>
-                        </thead>
-                        <tr>
-                            <td valign="top">
-                                <div style="overflow-x:auto;overflow-y:auto">
-                                <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
-                                    <thead class="td_header_bak2">
-                                        <tr>
-                                            <td class="td_header_bak2" width="150px">配置项名称</td>
-                                            <td class="td_header_bak3" width="80px">配置项版本</td>
-                                            <td class="td_header_bak3" width="80px">当前状态</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="3">&nbsp;</td>
-                                        </tr>
-                                    </tbody>
+                        <td colspan="5" id="projectProductList">
+                            <table cellpadding=0 cellspacing=0 border=0 style="height:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 0px; border-right-style: solid; border-right-width: 0px">
+                                    <tr>
+                                        <td valign="top">
+                                            <div style="overflow-x:auto;overflow-y:auto">
+                                            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                                                <thead class="td_header_bak2">
+                                                    <tr>
+                                                        <td class="td_header_bak2" width="150px">项目名称</td>
+                                                        <td class="td_header_bak3" width="100px">配置项升级后是否适用</td>
+                                                        <td class="td_header_bak3" width="80px">项目编号</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                        
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </td>
+                                        <td valign="top">
+                                            <div style="overflow-x:auto;overflow-y:auto">
+                                            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                                                <thead class="td_header_bak2">
+                                                    <tr>
+                                                        <td class="td_header_bak2" width="150px">产品名称</td>
+                                                        <td class="td_header_bak3" width="100px">配置项升级后是否适用</td>
+                                                        <td class="td_header_bak3" width="80px">产品版本</td>
+                                                        <td class="td_header_bak3" width="80px">产品编号</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                        
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </table>
-                                </div>
                             </td>
-                            <td valign="top">
-                                <div style="overflow-x:auto;overflow-y:auto">
-                                <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
-                                    <thead class="td_header_bak2">
-                                        <tr>
-                                            <td class="td_header_bak2" width="150px">配置项名称</td>
-                                            <td class="td_header_bak3" width="80px">配置项版本</td>
-                                            <td class="td_header_bak3" width="80px">当前状态</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="3">&nbsp;</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                  </td>
-                </tr>
-            </table>
-            </div>
+                          </tr>
+                      </table>
+                    </div>
                   </td>
                 </tr>
             </table>
