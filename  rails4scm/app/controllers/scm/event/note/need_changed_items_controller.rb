@@ -5,13 +5,16 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
   end
   
   def addItem
+    textreturn="出现异常，请与系统管理员联系!@|"
+    textreturnArray=textreturn.split("@|")
     configure_params=params[:configure_params]
     event_code=params[:event_code]
     textTemp="@@@@@@已存在变更申请,配置项:@W版本为:@W"
     textArray=textTemp.split("@W")
-    outText="<table cellpadding=0 cellspacing=0 border=0 style=\"width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 0px; border-right-style: solid; border-right-width: 0px\"><thead class=\"td_header_bak2\"><tr><td class=\"td_header_bak2\" width=\"50px\">选择<input type=\"hidden\" name=\"param_configure_code\" id=\"param_configure_code\"></td><td class=\"td_header_bak3\" width=\"160px\">配置项名称</td><td class=\"td_header_bak3\" width=\"70px\">配置项版本</td><td class=\"td_header_bak3\" width=\"80px\">配置项编号</td><td class=\"td_header_bak3\" width=\"80px\">事件编号</td></tr></thead><tbody>"
+    outText="<table cellpadding=0 cellspacing=0 border=0 style=\"width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 0px; border-right-style: solid; border-right-width: 0px\"><thead class=\"td_header_bak2\"><tr><td class=\"td_header_bak2\" width=\"50px\">选择<input type=\"hidden\" name=\"param_configure_code\" id=\"param_configure_code\"></td><td class=\"td_header_bak3\" width=\"160px\">配置项名称</td><td class=\"td_header_bak3\" width=\"70px\">配置项版本</td><td class=\"td_header_bak3\" width=\"80px\">配置项编号</td><td class=\"td_header_bak3\" width=\"80px\">事件编号</td><td class=\"td_header_bak3\" width=\"120px\">操作</td></tr></thead><tbody>"
     @selectedItems=nil
     b=true
+    begin
     if event_code!=nil then 
       if configure_params!=nil then
         configure_params=Iconv.iconv("GB2312","UTF-8",configure_params).to_s
@@ -98,26 +101,38 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
           configureItem=ConfigureItem.new
           configureItems=configureItem.findEventConfigureItemSelected(event_code)
           if configureItems!=nil && configureItems.size>0 then
+            projectproductOperateText="相关项目及产品|@"
+            projectproductOperateArray=projectproductOperateText.split("|@")
             for configureitem in configureItems
-              outText+="<tr ondblclick=\"changeProjectProduct('"+configureitem.CONFIGURE_CODE+"@"+configureitem.CONFIGURE_VERS+"')\">"
+              outText+="<tr>"
               outText+="<td class='td6' width='50px'>&nbsp;<input type=\"checkbox\" name=\""+configureitem.CONFIGURE_CODE+"@"+configureitem.CONFIGURE_VERS+"\" onclick=\"selectdelete(this)\" value=\""+configureitem.CONFIGURE_CODE+"@"+configureitem.CONFIGURE_VERS+"\"></td>"
               outText+="<td class='td7' width='160px'>&nbsp;"+configureitem.CONFIGURE_NAME+"</td>"
               outText+="<td class='td7' width='70px'>&nbsp;"+configureitem.CONFIGURE_VERS+"</td>"
               outText+="<td class='td7' width='80px'>&nbsp;"+configureitem.CONFIGURE_CODE+"</td>"
               outText+="<td class='td7' width='80px'>&nbsp;"+configureitem.EVENT_CODE+"</td>"
+              outText+="<td class='td7' width='120px'>&nbsp;<a href='#' onclick=\"changeProjectProduct('"+configureitem.CONFIGURE_CODE+"@"+configureitem.CONFIGURE_VERS+"')\">"+projectproductOperateArray[0].to_s+"</a></td>"
               outText+="</tr>"
             end
           end
           outText+="</tbody></table>"
         end
     end
+    rescue Exception => e  
+      outText=textreturnArray[0]
+      render_text outText
+             puts(e.to_s)
+             print e.backtrace.join("[删除配置项异常--(/scm/event/note/need_changed_items_controller)]\n")
+    end
     render_text outText
   end
   
   def deleteItem
+    textreturn="出现异常，请与系统管理员联系!@|"
+    textreturnArray=textreturn.split("@|")
     configure_params=params[:configure_params]
     event_code=params[:event_code]
     outText=""
+    begin
     if event_code!=nil then 
       message = "待评估@W0@@你是否确定要删除配置项:@W的变更请求?@W1@W2@@该事件状态发生变化，已不能直接删除，请与管理员联系!@W3@@该事件已出发变更，不能直接删除，请与管理员联系!@W"
       messageArray = message.split("@W")
@@ -148,10 +163,18 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
         end
       end
     end
+    rescue Exception => e  
+             outText=textreturnArray[0]
+             render_text outText
+             puts(e.to_s)
+             print e.backtrace.join("[删除配置项异常--(/scm/event/note/need_changed_items_controller)]\n")
+    end
     render_text outText
   end
   
   def changeProjectProduct
+    textreturn="出现异常，请与系统管理员联系!@|"
+    textreturnArray=textreturn.split("@|")
     configure_params=params[:configure_params]
     event_code=params[:event_code]
     outText=""
@@ -205,7 +228,9 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
             end
             
           end
-          rescue Exception => e  
+          rescue Exception => e 
+             outText=textreturnArray[0]
+             render_text outText            
              puts(e.to_s)
              print e.backtrace.join("[删除配置项异常--(/scm/event/note/need_changed_items_controller)]\n")
           end
@@ -217,6 +242,8 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
     render_text outText
   end
   def deleteItemReally
+    textreturn="出现异常，请与系统管理员联系!@|"
+    textreturnArray=textreturn.split("@|")
     configure_params=params[:configure_params]
     event_code=params[:event_code]
     outText=""
@@ -238,6 +265,8 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
           end
           outText="ok"
           rescue Exception => e  
+             outText=textreturnArray[0]
+             render_text outText
              puts(e.to_s)
              print e.backtrace.join("[删除配置项异常--(/scm/event/note/need_changed_items_controller)]\n")
           end
@@ -260,6 +289,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
           for projectRow in projectRowArray
             projectOnerowArray=projectRow.split("@")
             confChgReprojectProjects=ConfChgReprojectProjects.find(:first,:conditions=>["ID =? ",projectOnerowArray[0]])
+            confChgReprojectProjects.id=confChgReprojectProjects.ID
             confChgReprojectProjects.CAN_USE_FLAG=projectOnerowArray[1]
             confChgReprojectProjects.save
           end
@@ -270,8 +300,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
             productOnerowArray=productRow.split("@")
             confChgReproductProducts=ConfChgReproductProducts.find(:first,:conditions=>["ID =? ",productOnerowArray[0]])
             if confChgReproductProducts!=nil then
-              puts(productOnerowArray[0])
-              puts(productOnerowArray[1])
+              confChgReproductProducts.id = confChgReproductProducts.ID
               confChgReproductProducts.CAN_USE_FLAG=productOnerowArray[1]
               confChgReproductProducts.save
             else
@@ -285,6 +314,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
       end
     rescue Exception => e  
               outText=tempTextArray[0]
+              render_text outText
              puts(e.to_s)
              print e.backtrace.join("[删除配置项异常--(/scm/event/note/need_changed_items_controller)]\n")
     end
