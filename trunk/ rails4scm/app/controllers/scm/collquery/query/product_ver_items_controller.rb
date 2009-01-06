@@ -11,8 +11,15 @@ class Scm::Collquery::Query::ProductVerItemsController < ApplicationController
       session[:product_ver_tems_product_code] = @product_code
       session[:product_ver_tems_product_vers] = @product_vers
     end
+    
+    @product_name=nil
     @productItems=nil
     if @product_code!=nil&&@product_vers!=nil then
+      pruductConfigueItem=PruductConfigueItem.new
+      products=pruductConfigueItem.productBaseinfo(@product_code)
+      for product in products
+        @product_name=product.PRODUCT_NAME
+      end
       @productItems=productVerItems(pageSize,curPageSize,@product_code,@product_vers)
     end
   end
