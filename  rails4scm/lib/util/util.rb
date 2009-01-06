@@ -18,6 +18,20 @@ class Util
     else
       return datatime.to_datetime.strftime(fmt)
     end
-    
   end
+  
+  def intercept(str,startsize,endsize)
+    if(str != nil)
+      if(startsize == nil) 
+        startsize = 0
+      end
+      if(endsize == nil)
+        endsize = str.length
+      end
+      str = str.split(//)[startsize,endsize]
+    end
+    
+    return str
+  end
+  
 end
