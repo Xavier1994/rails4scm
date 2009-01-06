@@ -65,7 +65,8 @@
         //需求变更的配置项
         function config(){
             url = "/scm/event/note/need_changed_items?event_code=<%=@event_code%>";
-            window.open(url, "更改配置项", "menubar=no,location=no,toolbar=no,status=yes,scrollbars=yes,resizable=no,width="+screen.availWidth+",height="+(screen.availHeight*6/8)+",top="+(screen.availHeight/8)+",left=0");
+            //window.open(url, "更改配置项", "menubar=no,location=no,toolbar=no,status=yes,scrollbars=yes,resizable=no,width="+screen.availWidth+",height="+(screen.availHeight*6/8)+",top="+(screen.availHeight/8)+",left=0");
+            window.showModalDialog(url, "更改配置项", "dialogHeight:600px;dialogWidth:1200px;");
         }
         
     </script>
