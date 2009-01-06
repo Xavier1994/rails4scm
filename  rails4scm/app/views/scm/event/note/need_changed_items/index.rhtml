@@ -198,11 +198,11 @@ function selectdelete(checkbox){
 }
 function productsubmit(){
     if(document.productform==null){
-        alert("没有需要更新的产品");
+        alert("没有需要升级的产品");
     }else{
         productparams="";
         if(document.productform.productattribute==null){
-            alert("没有需要更新的产品");
+            alert("没有需要升级的产品");
         }else{
             producttemp=document.productform.productattribute.value;
             producttempArray=producttemp.split("@");
@@ -246,18 +246,18 @@ function productsubmit(){
                     document .getElementById ("list").innerHTML ="数据加载中";
                 }
             }else{
-                alert("没有需要更新的产品");
+                alert("没有需要升级的产品");
             }
         }
     }
 }
 function projectsubmit(){
     if(document.projectform==null){
-        alert("没有需要更新的项目");
+        alert("没有需要升级的项目");
     }else{
         projectparams="";
         if(document.projectform.projectattribute==null){
-            alert("没有需要更新的项目");
+            alert("没有需要升级的项目");
         }else{
             projecttemp=document.projectform.projectattribute.value;
             projecttempArray=projecttemp.split("@");
@@ -303,14 +303,14 @@ function projectsubmit(){
                     document .getElementById ("list").innerHTML ="数据加载中";
                 }
             }else{
-                alert("没有需要更新的项目");
+                alert("没有需要升级的项目");
             }
         }
    }
 }
 function projectproducesubmit(){
     if(document.projectform==null&&document.productform==null){
-        alert("没有需要更新的项目和产品");
+        alert("没有需要升级的项目和产品");
     }else{
         projectparams="";
         productparams="";
@@ -350,7 +350,7 @@ function projectproducesubmit(){
         }
 
         if(projectparams==""&&productparams==""){
-                alert("没有需要升级的配置项");
+                alert("没有需要升级的项目和产品");
         }else{
                 var event_code=self.document.getElementById("event_code").value;
                 url = "/scm/event/note/need_changed_items/projectProductSubmit";
