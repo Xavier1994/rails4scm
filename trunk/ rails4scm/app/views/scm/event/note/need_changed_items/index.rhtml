@@ -208,11 +208,11 @@ function productsubmit(){
             producttempArray=producttemp.split("@");
             for(i=0;i<producttempArray.length;i++){//逐行取参数
                 if(producttempArray[i]!=null&&producttempArray[i]!=""){
-                    if(document.getElementById("product"+producttempArray[i])!=null){
-                        if(document.getElementById("product"+producttempArray[i]).checked){
-                            productparams+=document.getElementById("product"+producttempArray[i]).value+"@11|@";
-                        }else{
-                            productparams+=document.getElementById("product"+producttempArray[i]).value+"@00|@";
+                    if(document.getElementsByName("product"+producttempArray[i])!=null){
+                        if(document.getElementsByName("product"+producttempArray[i])[0].checked){
+                            productparams+=document.getElementsByName("product"+producttempArray[i])[0].value+"|@";
+                        }else if(document.getElementsByName("product"+producttempArray[i])[1].checked){
+                            productparams+=document.getElementsByName("product"+producttempArray[i])[1].value+"|@";
                         }
                     }else{
                         //do nothing
@@ -225,7 +225,6 @@ function productsubmit(){
             if(xmlHttp==null){
                 return;
             }
-
             if(productparams!=""){
                 var content="productparams="+productparams+"&event_code="+event_code;//构造要携带的数据  
                 xmlHttp.open("POST",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
@@ -264,11 +263,12 @@ function projectsubmit(){
             projecttempArray=projecttemp.split("@");
             for(i=0;i<projecttempArray.length;i++){//逐行取参数
                 if(projecttempArray[i]!=null&&projecttempArray[i]!=""){
-                    if(document.getElementById("product"+projecttempArray[i])!=null){
-                        if(document.getElementById("product"+tempArray[i]).checked){
-                            projectparams+=document.getElementById("project"+projecttempArray[i]).value+"@11|@";
-                        }else{
-                            projectparams+=document.getElementById("project"+projecttempArray[i]).value+"@00|@";
+                    if(document.getElementsByName("project"+projecttempArray[i])!=null){
+                        if(document.getElementsByName("project"+projecttempArray[i])[0].checked){
+                            projectparams+=document.getElementsByName("project"+projecttempArray[i])[0].value+"|@";
+                        }
+                        if(document.getElementsByName("project"+projecttempArray[i])[1].checked){
+                            projectparams+=document.getElementsByName("project"+projecttempArray[i])[1].value+"|@";
                         }
                     }else{
                         //do nothing
@@ -319,11 +319,11 @@ function projectproducesubmit(){
             projecttempArray=projecttemp.split("@");
             for(i=0;i<projecttempArray.length;i++){//逐行取参数
                 if(projecttempArray[i]!=null&&projecttempArray[i]!=""){
-                    if(document.getElementById("product"+projecttempArray[i])!=null){
-                        if(document.getElementById("product"+tempArray[i]).checked){
-                            projectparams+=document.getElementById("project"+projecttempArray[i]).value+"@11|@";
-                        }else{
-                            projectparams+=document.getElementById("project"+projecttempArray[i]).value+"@00|@";
+                    if(document.getElementsByName("project"+projecttempArray[i])!=null){
+                        if(document.getElementsByName("project"+projecttempArray[i])[0].checked){
+                            projectparams+=document.getElementsByName("project"+projecttempArray[i])[0].value+"|@";
+                        }else if(document.getElementsByName("project"+projecttempArray[i])[1].checked){
+                            projectparams+=document.getElementsByName("project"+projecttempArray[i])[1].value+"|@";
                         }
                     }else{
                         //do nothing
@@ -336,11 +336,11 @@ function projectproducesubmit(){
             producttempArray=producttemp.split("@");
             for(i=0;i<producttempArray.length;i++){//逐行取参数
                 if(producttempArray[i]!=null&&producttempArray[i]!=""){
-                    if(document.getElementById("product"+producttempArray[i])!=null){
-                        if(document.getElementById("product"+producttempArray[i]).checked){
-                            productparams+=document.getElementById("product"+producttempArray[i]).value+"@11|@";
-                        }else{
-                            productparams+=document.getElementById("product"+producttempArray[i]).value+"@00|@";
+                    if(document.getElementsByName("product"+producttempArray[i])!=null){
+                        if(document.getElementsByName("product"+producttempArray[i])[0].checked){
+                            productparams+=document.getElementsByName("product"+producttempArray[i])[0].value+"|@";
+                        }else if(document.getElementsByName("product"+producttempArray[i])[1].checked){
+                            productparams+=document.getElementsByName("product"+producttempArray[i])[1].value+"|@";
                         }
                     }else{
                         //do nothing
@@ -487,7 +487,11 @@ function projectproducesubmit(){
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                        
+                                                    <tr>
+                                                        <td class="td6" width="150px">&nbsp;</td>
+                                                        <td class="td7" width="100px">&nbsp;</td>
+                                                        <td class="td7" width="80px">&nbsp;</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                             </div>
@@ -504,7 +508,12 @@ function projectproducesubmit(){
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                        
+                                                    <tr>
+                                                        <td class="td6" width="150px">&nbsp;</td>
+                                                        <td class="td7" width="100px">&nbsp;</td>
+                                                        <td class="td7" width="80px">&nbsp;</td>
+                                                        <td class="td7" width="80px">&nbsp;</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                             </div>
