@@ -190,43 +190,52 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
           projectList=confChgReprojectProjects.findByEvencodeConfcodeConfver(event_code, configureParamsArray[0], configureParamsArray[1])
           productList=confChgReproductProducts.findByEvencodeConfcodeConfver(event_code, configureParamsArray[0], configureParamsArray[1])
           projectattributenames=""
+          flagText="适&nbsp;&nbsp;用@不适用@"
+          flagArray=flagText.split("@")
           if projectList!=nil && projectList.size>0 then
             for project in projectList
-              projectattributenames+project.CID.to_s+"@"
+              projectattributenames+=project.CID.to_s+"@"
               outText+="<tr>"
               outText+="<td class='td6' width='150px'>&nbsp;"+project.PROJECT_NAME+"</td>"
-              if project.CAN_USE_FLAG.to_s=="11" then
-                outText+="<td class='td7' width='100px'>&nbsp;<input type='checkbox' name='project"+project.CID.to_s+"' id='project"+project.CID.to_s+"'  checked value='"+project.CID.to_s+"'></td>"
-              elsif project.CAN_USE_FLAG.to_s=="00" then
-                outText+="<td class='td7' width='100px'>&nbsp;<input type='checkbox' name='project"+project.CID.to_s+"' id='project"+project.CID.to_s+"'  value='"+project.CID.to_s+"'></td>"
-              else
-                outText+="<td class='td7' width='100px'>&nbsp;not 11 or 00</td>"
+              if project.CAN_USE_FLAG.strip.to_s=="11" then
+                outText+="<td class='td7' width='100px'><input type='radio' name='project"+project.CID.to_s+"' checked value='"+project.CID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='product"+project.CID.to_s+"'  value='"+project.CID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
+              elsif project.CAN_USE_FLAG.strip.to_s=="00" then
+                outText+="<td class='td7' width='100px'><input type='radio' name='project"+project.CID.to_s+"' value='"+project.CID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='product"+project.CID.to_s+"' checked value='"+project.CID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
+              else 
+                outText+="<td class='td7' width='100px'><input type='radio' name='project"+project.CID.to_s+"' value='"+project.CID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='product"+project.CID.to_s+"' value='"+project.CID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
               end
               outText+="<td class='td7' width='80px'>&nbsp;"+project.PROJECT_CODE+"<input type=\"hidden\" name=\"project_event_code\" value=\""+project.EVENT_CODE+"\">"+"<input type=\"hidden\" name=\"project_configure_code\" value=\""+project.CONFIGURE_CODE+"\">"+"<input type=\"hidden\" name=\"project_configure_vers\" value=\""+project.CONFIGURE_VERS+"\">"+"<input type=\"hidden\" name=\"project_id\" value=\""+project.ID.to_s+"\"></td>"
               outText+="</tr>"
               outText+="<input type='hidden' name='projectattribute'  value='"+projectattributenames.to_s+"'>"
             end
+          else
+             outText+="<tr><td class=\"td6\" width=\"150px\">&nbsp;</td><td class=\"td7\" width=\"100px\">&nbsp;</td><td class=\"td7\" width=\"80px\">&nbsp;</td></tr>"
           end
           outText+="<input type='hidden' name='projectattribute'  value='"+projectattributenames.to_s+"'>"
-          outText+="</form></tbody></table></div></td><td valign=\"top\"><div style=\"overflow-x:auto;overflow-y:auto\"><table cellpadding=0 cellspacing=0 border=0 style=\"width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px\"><thead class=\"td_header_bak2\"><tr><td class=\"td_header_bak2\" width=\"150px\">产品名称</td><td class=\"td_header_bak3\" width=\"80px\">配置项升级后是否适用</td><td class=\"td_header_bak3\" width=\"80px\">产品版本</td><td class=\"td_header_bak3\" width=\"80px\">产品编号</td></tr></thead><tbody><form name='productform'>"
+          outText+="</form></tbody></table></div></td><td valign=\"top\"><div style=\"overflow-x:auto;overflow-y:auto\"><table cellpadding=0 cellspacing=0 border=0 style=\"width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px\"><thead class=\"td_header_bak2\"><tr><td class=\"td_header_bak2\" width=\"150px\">产品名称</td><td class=\"td_header_bak3\" width=\"80px\">配置项升级后是否适用</td><td class=\"td_header_bak3\" width=\"100px\">产品版本</td><td class=\"td_header_bak3\" width=\"80px\">产品编号</td></tr></thead><tbody><form name='productform'>"
           productattributenames=""
+          flagText="适&nbsp;&nbsp;用@不适用@"
+          flagArray=flagText.split("@")
           if productList!=nil && productList.size>0 then
+            n=0
             for product in productList
               productattributenames+=product.CID.to_s+"@"
               outText+="<tr>"
               outText+="<td class='td6' width='150px'>&nbsp;"+product.PRODUCT_NAME+"</td>"
-              if product.CAN_USE_FLAG.to_s=="11" then
-                outText+="<td class='td7' width='100px'>&nbsp;<input type='checkbox' name='product"+product.CID.to_s+"' id='product"+product.CID.to_s+"'  checked value='"+product.CID.to_s+"'></td>"
-              elsif product.CAN_USE_FLAG.to_s=="00" then
-                outText+="<td class='td7' width='100px'>&nbsp;<input type='checkbox' name='product"+product.CID.to_s+"' id='product"+product.CID.to_s+"'  value='"+product.CID.to_s+"'></td>"
-              else
-                outText+="<td class='td7' width='100px'>&nbsp;not 11 or 00</td>"
+              if product.CAN_USE_FLAG.strip.to_s=="11" then
+                outText+="<td class='td7' width='100px'><input type='radio' name='product"+product.CID.to_s+"' checked value='"+product.CID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='product"+product.CID.to_s+"'  value='"+product.CID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
+              elsif product.CAN_USE_FLAG.strip.to_s=="00" then
+                outText+="<td class='td7' width='100px'><input type='radio' name='product"+product.CID.to_s+"' value='"+product.CID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='product"+product.CID.to_s+"' checked value='"+product.CID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
+              else 
+                outText+="<td class='td7' width='100px'><input type='radio' name='product"+product.CID.to_s+"' value='"+product.CID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='product"+product.CID.to_s+"' value='"+product.CID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
               end
               outText+="<td class='td7' width='80px'>&nbsp;"+product.PRODUCT_VERS+"</td>"
               outText+="<td class='td7' width='80px'>&nbsp;"+product.PRODUCT_CODE+"<input type=\"hidden\" name=\"product_event_code\" value=\""+product.EVENT_CODE+"\">"+"<input type=\"hidden\" name=\"product_configure_code\" value=\""+product.CONFIGURE_CODE+"\">"+"<input type=\"hidden\" name=\"product_configure_vers\" value=\""+product.CONFIGURE_VERS+"\">"+"<input type=\"hidden\" name=\"product_id\" value=\""+product.ID.to_s+"\">"+"</td>"
               outText+="</tr>"
+              n=n+1
             end
-            
+          else
+             outText+="<tr><td class=\"td6\" width=\"150px\">&nbsp;</td><td class=\"td7\" width=\"100px\">&nbsp;</td><td class=\"td7\" width=\"80px\">&nbsp;</td><td class=\"td7\" width=\"80px\">&nbsp;</td></tr>"
           end
           rescue Exception => e 
              outText=textreturnArray[0]
