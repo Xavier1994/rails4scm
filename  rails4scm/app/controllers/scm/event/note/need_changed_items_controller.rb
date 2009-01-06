@@ -71,7 +71,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
             k=0
             if prjConRelas!=nil && prjConRelas.size>0 then
               for prjConRela in prjConRelas
-                prjconrelacodeArray[k]=prjConRela.PRODUCT_CODE
+                prjconrelacodeArray[k]=prjConRela.PROJECT_CODE
                 k+=1
               end
             end
