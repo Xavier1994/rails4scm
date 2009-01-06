@@ -40,15 +40,15 @@ function selectchange(checkbox){
 }
 </script>
   <body>
-    <table cellpadding=0 cellspacing=0 border=0 width=“100%”>
+    <table cellpadding=0 cellspacing=0 border=0 width=“550px”>
       <tr>
         <td valign="top">
-          <div style="overflow-x:auto;overflow-y:auto">
-            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+          <div style="overflow-x:auto;overflow-y:auto;width:550px">
+            <table cellpadding=0 cellspacing=0 border=0 style="550px;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
               <thead class="td_header_bak2">
 <% form_tag :action =>'query' do %>
                 <tr>
-                  <td colspan="4" align="left">名称:<input type="text" name="configure_name" size="12" id="configure_name" onkeydown="p_query()">&nbsp;
+                  <td colspan="5" align="left">名称:<input type="text" name="configure_name" size="12" id="configure_name" onkeydown="p_query()">&nbsp;
                   类型:<input type="text" name="configure_type" size="12" id="configure_type" onkeydown="p_query()">
                   &nbsp;<input type="button" value="查询" onclick="query()" class="btn3_mouseout">
                       </td>
@@ -56,9 +56,10 @@ function selectchange(checkbox){
 <%end%>
                 <tr>
                   <td class="td_header_bak2" width="50px">选中<input type="hidden" name="param_configure_code" id="param_configure_code"></td>
-                  <td class="td_header_bak3" width="150px">配置项名称</td>
-                  <td class="td_header_bak3" width="110px">配置项版本</td>
-                  <td class="td_header_bak3" width="90px">当前状态</td>
+                  <td class="td_header_bak3" width="130px">配置项名称</td>
+                  <td class="td_header_bak3" width="50px">版本</td>
+                  <td class="td_header_bak3" width="120px">配置项类型</td>
+                  <td class="td_header_bak3" width="80px">当前状态</td>
                 </tr>
               </thead>
               <tbody>
@@ -66,22 +67,25 @@ function selectchange(checkbox){
 if @eventItemsSource!=nil&&@eventItemsSource.size>0 then
     for eventItemSource in @eventItemsSource%>
                 <tr>
-                  <td class="td6">&nbsp;
+                  <td class="td6" width="50px">
                     <input type="checkbox" name="<%=eventItemSource.CONFIGURE_CODE%>@<%=eventItemSource.CONFIGURE_NAME%>@<%=eventItemSource.CONFIGURE_VERS%>@" onclick="selectchange(this)" value="<%=eventItemSource.CONFIGURE_CODE%>@<%=eventItemSource.CONFIGURE_NAME%>@<%=eventItemSource.CONFIGURE_VERS%>@">
                   </td>
-                  <td class="td7">&nbsp;<%=eventItemSource.CONFIGURE_NAME%></td>
-                  <td class="td7">&nbsp;<%=eventItemSource.CONFIGURE_VERS%></td>
-                  <td class="td7">&nbsp;<%=eventItemSource.CUR_STATE%></td>
+                  <td class="td7" width="130px">&nbsp;<%=eventItemSource.CONFIGURE_NAME.to_s%></td>
+                  <td class="td7" width="50px">&nbsp;<%=eventItemSource.CONFIGURE_VERS.to_s%></td>
+                  <td class="td7" width="120px">&nbsp;<%=eventItemSource.CONFIGURE_TYPE.to_s%></td>
+                  <td class="td7" width="80px">&nbsp;<%=eventItemSource.CUR_STATE.to_s%></td>
+                  
                 </tr>
 <%
     end
 else
   %>
                 <tr>
-                  <td class="td6">&nbsp;</td>
-                  <td class="td7">&nbsp;</td>
-                  <td class="td7">&nbsp;</td>
-                  <td class="td7">&nbsp;</td>
+                  <td class="td6" width="50px">&nbsp;</td>
+                  <td class="td7" width="130px">&nbsp;</td>
+                  <td class="td7" width="50px">&nbsp;</td>
+                  <td class="td7" width="120px">&nbsp;</td>
+                  <td class="td7" width="80px">&nbsp;</td>
                 </tr>
 <%
 end%>
