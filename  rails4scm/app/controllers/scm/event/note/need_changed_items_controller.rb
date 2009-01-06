@@ -2,6 +2,10 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
 
   def index
     @event_code=params[:event_code]
+    eventRecords=EventRecord.new
+    eventRecord=eventRecords.findEventRecor(@event_code)
+    @event_name=eventRecord.EVENT_NAME
+    @project_name=eventRecord.PROJECT_CODE
   end
   
   def addItem
