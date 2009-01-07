@@ -30,8 +30,8 @@ class Util
         endsize = str.length
       end
       endsize = endsize *2 + 2
-  
-      str = Iconv.conv("gb2312","UTF-16",Iconv.conv("UTF-16","gb2312",str)[startsize,endsize]) 
+      lstr = Iconv.conv("UTF-16","gb2312",str)
+      str = Iconv.conv("gb2312","UTF-16",lstr[startsize,endsize]) 
     end
     return str
   end
