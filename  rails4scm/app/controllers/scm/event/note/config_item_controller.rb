@@ -11,7 +11,7 @@ class Scm::Event::Note::ConfigItemController < ApplicationController
       event_code = session[:ConfigItem_event_code]
     end
     curPageSize = params[:page]
-    pageSize = 18
+    pageSize = 23
     
     config_code_hidden = params[:config_code_hidden]
     if(config_code_hidden != nil) then

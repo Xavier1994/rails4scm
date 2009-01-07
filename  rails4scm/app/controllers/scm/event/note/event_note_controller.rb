@@ -2,7 +2,7 @@ class Scm::Event::Note::EventNoteController < ApplicationController
 
   def index
     curPageSize = params[:page]
-    pageSize = 18
+    pageSize = 22
     @event_name     = params[:event_name]
     @m_event_type   = params[:m_event_type]
     @project_code   = params[:project_code]
@@ -59,6 +59,7 @@ class Scm::Event::Note::EventNoteController < ApplicationController
           rows = rows.to_i
           
           hash = params[:eventRecord].to_a
+          errcount = 0
           for param in hash
            reco=param[1]
            i =param[0].to_i
@@ -77,15 +78,19 @@ class Scm::Event::Note::EventNoteController < ApplicationController
                end
              rescue Exception => e
                @message=@tishi[0] + @tishi[4]
+               errcount += 1
              end
            else
              begin
                addSave(eventArr,reco[:EVENT_NAME],reco[:M_EVENT_TYPE],reco[:PROJECT_CODE],@oper.NAME)
              rescue Exception => e
                @message=@tishi[0] + @tishi[4]
+               errcount += 1
              end
            end
-           @message=@tishi[0] + @tishi[3]
+          end
+          if(errcount == 0)
+            @message=@tishi[0] + @tishi[3]
           end
        when 3  #É¾³ý
          begin
