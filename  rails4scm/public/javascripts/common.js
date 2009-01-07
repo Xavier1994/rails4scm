@@ -4,6 +4,7 @@ function show(o,obj,obj1){
   m.style.pixelLeft=getL(o);
   m.style.pixelTop=getT(o); 
   m.style.visibility='';
+  
   var m1=document.getElementById(obj1);
   m1.style.visibility='hidden';
 }
