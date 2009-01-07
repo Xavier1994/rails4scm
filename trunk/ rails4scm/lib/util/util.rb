@@ -9,14 +9,18 @@ class Util
   end
   
   def formatDatatimeToSting(datatime)
-    if datatime== nil then
+    if datatime== nil || datatime== "" then
       return ""
     end
     fmt = '%Y-%m-%d'
-    if datatime.isdst then
+    
+    cl = datatime.class.to_s
+    if cl =="Time" then
       return datatime.strftime(fmt)
     else
-      return datatime.to_datetime.strftime(fmt)
+      data = ParseDate.parsedate(datatime,fmt)
+      d = Time.local( data[0],data[1],data[2] )
+      return d.strftime(fmt)
     end
   end
   
@@ -32,6 +36,9 @@ class Util
       endsize = endsize *2 + 2
       lstr = Iconv.conv("UTF-16","gb2312",str)
       str = Iconv.conv("gb2312","UTF-16",lstr[startsize,endsize]) 
+      if(lstr.length>endsize)
+        str << " ..."
+      end
     end
     return str
   end
