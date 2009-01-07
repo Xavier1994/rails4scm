@@ -67,7 +67,6 @@ class Scm::Collquery::Query::ProductQueryOneController < ApplicationController
   
 private  
  def list(pageSize,curPageSize,product,productVer)
-   puts(product,productVer)
     productItems = PruductConfigueItem.new()
     return productItems.getProductConfigueItems(pageSize,curPageSize,product,productVer)
   end  
