@@ -1,8 +1,13 @@
+<%
+require 'util/util'
+util = Util.new
+%>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <%= stylesheet_link_tag "style_table" %>
-    <%= stylesheet_link_tag "common_style" %> 
+    <%= stylesheet_link_tag "common_style" %>
+    <%= javascript_include_tag "common" %>
     
     <script language="javascript">
         function query(){
@@ -18,7 +23,7 @@
   </head>
   <body bgcolor="#F6F6F6" >
   <% form_tag :action =>'index' do %>
-  <table width="2100px">
+  <table width="1000px">
      <tr>
        <td>
          <table>
@@ -50,19 +55,65 @@
               </tr>
             </thead>
             <tbody>
-              <% for configureItem in @configureItem %>
+              <% 
+              j = 1
+              for configureItem in @configureItem 
+              %>
                 <tr>
                   <td class="td6" >&nbsp;<%=configureItem.CONFIGURE_CODE%></td>
-                  <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_NAME%></td>
-                  <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_TYPE%></td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_1_1">
+                      <%=util.intercept(configureItem.CONFIGURE_NAME, 0, 15)%>
+                    </font>
+                    <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                        <%=configureItem.CONFIGURE_NAME%>
+                    </div>
+                  </td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_2_1">
+                      <%=util.intercept(configureItem.CONFIGURE_TYPE, 0, 15)%>
+                    </font>
+                    <div id="DIV<%=j%>_2_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                        <%=configureItem.CONFIGURE_TYPE%>
+                    </div>
+                  </td>
                   <td class="td7" >&nbsp;<%=(configureItem.CONFIGURE_PUB_DATE).strftime('%Y-%m-%d')%></td>
                   <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_PUB_PERSON%></td>
-                  <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_REMARK%></td>
-                  <td class="td7" >&nbsp;<%=configureItem.CONFIGURE_STORE_ADDR%></td>
-                  <td class="td7" >&nbsp;<%=configureItem.DEVELOP_PATH%></td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_3_1">
+                      <%=util.intercept(configureItem.CONFIGURE_REMARK, 0, 15)%>
+                    </font>
+                    <div id="DIV<%=j%>_3_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                        <%=configureItem.CONFIGURE_REMARK%>
+                    </div>
+                  </td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_4_2','DIV<%=j%>_4_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_4_1">
+                      <%=util.intercept(configureItem.CONFIGURE_STORE_ADDR, 0, 15)%>
+                    </font>
+                    <div id="DIV<%=j%>_4_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_4_2','DIV<%=j%>_4_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
+                        <%=configureItem.CONFIGURE_STORE_ADDR%>
+                    </div>
+                  </td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_5_2','DIV<%=j%>_5_1')" onmouseout="hide('DIV<%=j%>_5_2','DIV<%=j%>_5_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_5_1">
+                      <%=util.intercept(configureItem.DEVELOP_PATH, 0, 15)%>
+                    </font>
+                    <div id="DIV<%=j%>_5_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_5_2','DIV<%=j%>_5_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
+                        <%=configureItem.DEVELOP_PATH%>
+                    </div>
+                  </td>
                   <td class="td7" >&nbsp;<%=configureItem.CONF_DUTY_PERSON%></td>
                 </tr>
-              <%  end %>
+              <%  
+                j += 1
+              end 
+              %>
             </tbody>
           </table>
        </td>

@@ -160,7 +160,7 @@ util = Util.new
   <input type="hidden" name="click_hidden">
   <input type="hidden" name="current_stat">
   <input type="hidden" name="configure_chg_no_hidden">
-  <table width="1250px">
+  <table width="1100px">
      <tr>
        <td>
          <table>
@@ -194,11 +194,11 @@ util = Util.new
          <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
             <thead id="mytablehead">
               <tr>
-                <td class="td_header_bak2" width="150px">&nbsp;</td>
-                <td class="td_header_bak3" width="90px">变更标识</td>　
+                <td class="td_header_bak2" width="180px">&nbsp;</td>
+                <td class="td_header_bak3" width="70px">变更标识</td>　
                 <td class="td_header_bak3" width="90px">配置项编号</td>
                 <td class="td_header_bak3" width="200px">配置项名称</td>
-                <td class="td_header_bak3" width="100px">事件标识</td>
+                <td class="td_header_bak3" width="70px">事件标识</td>
                 <td class="td_header_bak3" width="200px">事件名称</td>
                 <td class="td_header_bak3" width="50px">前版本</td>
                 <td class="td_header_bak3" width="50px">后版本</td>
@@ -213,19 +213,19 @@ util = Util.new
               %>
                 <tr>
                   <td class="td6" >&nbsp;
-                     <input type="button" value="生命周期" class="btn3_mouseout" onclick="cycle('<%=configure.CONFIGURE_CHG_NO%>')" >
-                     <input type="button" value="状态回溯" class="btn3_mouseout" onclick="state('<%=configure.CONFIGURE_CHG_NO%>')" >
-                     <input type="button" value="作废"     class="btn3_mouseout" onclick="cancel('<%=configure.CONFIGURE_CHG_NO%>')">
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cycle('<%=configure.CONFIGURE_CHG_NO%>')">生命周期</a>&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="state('<%=configure.CONFIGURE_CHG_NO%>')">状态回溯</a>&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cancel('<%=configure.CONFIGURE_CHG_NO%>')">作废</a>&nbsp;
                      <input type="hidden" id="configure<%=j%>ID" value="<%=configure.ID%>">
                   </td>
                   <td class="td7" >&nbsp;<%=configure.CONFIGURE_CHG_NO%></td>
                   <td class="td7" >&nbsp;<%=configure.CONFIGURE_CODE%></td>
                   <td class="td7" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
                     &nbsp;
-                    <font id="DIV<%=j%>_1_1">
-                        <%=util.intercept(configure.CONFIGURE_NAME, 0, 15)%>
+                    <font id="DIV<%=j%>_1_1"> 
+                        <%=util.intercept(configure.CONFIGURE_NAME, 0, 13)%>
                     </font>
-                    <div id="DIV<%=j%>_1_2" style="VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                    <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
                       <%=configure.CONFIGURE_NAME%> 
                     </div>
                   </td>
@@ -234,7 +234,7 @@ util = Util.new
                     <font id="DIV<%=j%>_2_1">
                         <%=util.intercept(configure.EVENT_NAME,0,15)%>
                     </font>
-                    <div id="DIV<%=j%>_2_2" style="VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                    <div id="DIV<%=j%>_2_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
                       <%=configure.EVENT_NAME%> 
                     </div>
                     
