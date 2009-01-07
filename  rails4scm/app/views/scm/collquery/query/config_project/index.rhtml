@@ -1,8 +1,13 @@
+<%
+require 'util/util'
+util = Util.new
+%>
 <html>
   <head>
     <title>相关项目</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <%= stylesheet_link_tag "style_table" %>    
+    <%= javascript_include_tag "common" %>
   </head>
   <body bgcolor="#F6F6F6">
     <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
@@ -19,11 +24,20 @@
       <tbody>
         <%
         i = 0
+        if(@project != nil)
         for project in @project 
         %>  
           <tr>
             <td class="td6" width="15%">&nbsp;<%=project.project_code%></td>
-            <td class="td7" width="30%">&nbsp;<%=project.project_name%></td>
+            <td class="td7" width="30%" onmouseover="show(this,'DIV<%=i%>_1_2','DIV<%=i%>_1_1')" onmouseout="hide('DIV<%=i%>_1_2','DIV<%=i%>_1_1')">
+              &nbsp;
+              <font id="DIV<%=i%>_1_1">
+                <%=util.intercept(project.project_name, 0, 15)%>
+              </font>
+              <div id="DIV<%=i%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=i%>_1_2','DIV<%=i%>_1_1')" onmouseout="hide('DIV<%=i%>_1_2','DIV<%=i%>_1_1')">
+                  <%=project.project_name%>
+              </div>
+            </td>
             <td class="td7" width="13%">&nbsp;<%=project.project_manager%></td>
             <td class="td7" width="10%">&nbsp;<%=project.conf_m_respon%></td>
             <td class="td7" width="10%">&nbsp;<%=project.configure_vers%></td>
@@ -31,6 +45,7 @@
           </tr>
         <% 
           i = i + 1
+        end
         end
         if i<5 then
           i = 5 - i

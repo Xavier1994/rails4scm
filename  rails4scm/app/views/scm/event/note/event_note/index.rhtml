@@ -8,6 +8,7 @@ util = Util.new
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %>
+    <%= javascript_include_tag "common" %>
     
     <style>
             .textback {
@@ -213,11 +214,13 @@ util = Util.new
             selProject.options[0] = new Option("－－", "－－");
             <% 
             i = 1
+            if (@project != nil)
             for project in @project
             %> 
             selProject.options[<%=i%>] = new Option("<%=project.PROJECT_NAME%>", "<%=project.PROJECT_CODE%>"); 
             <% 
             i = i +1
+            end
             end 
             %>
             selProject.setAttribute("name",kname);
@@ -236,11 +239,13 @@ util = Util.new
             selEveType.options[0] = new Option(" ", "");
             <% 
             i = 1
+            if(@eveType != nil)
             for eveType in @eveType
             %>  
             selEveType.options[<%=i%>] = new Option("<%=eveType.PARAM_NAME%>", "<%=eveType.PARAM_NAME%>");
             <% 
             i = i +1
+            end
             end 
             %>
             selEveType.setAttribute("name",kname);
@@ -281,11 +286,6 @@ util = Util.new
             }
         }
         
-        //去处空格
-        function jsTrim(strText){ 
-           return strText.replace(/(^\s*|\s*$)/g,"")
-        }
-        
         //状态回溯
         function state(event_code,id){
             url = "/scm/event/note/event_stat?event_code=" + event_code;
@@ -306,7 +306,7 @@ util = Util.new
   <input type="hidden" name="delete_ID_hidden">
   <input type="hidden" name="current_stat">
   <input type="hidden" name="rows_hidden" value="<%=@eventRecord.size%>">
-  <table width="1200px">
+  <table width="990px">
      <tr>
        <td>
          <table>
@@ -328,37 +328,80 @@ util = Util.new
          <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
             <thead id="mytablehead">
               <tr>
-                <td class="td_header_bak2" width="250px">&nbsp;</td>
+                <td class="td_header_bak2" width="170px">&nbsp;</td>
                 <td class="td_header_bak3" width="80px">事件标识</td>　
-                <td class="td_header_bak3" width="300px">事件名称</td>
+                <td class="td_header_bak3" width="200px">事件名称</td>
                 <td class="td_header_bak3" width="150px">标识事件类型</td>
                 <td class="td_header_bak3" width="100px">项目</td>
                 <td class="td_header_bak3" width="80px">当前阶段</td>
                 <td class="td_header_bak3" width="80px">发起人</td>
-                <td class="td_header_bak3" width="100px">事件发起时间</td>
+                <td class="td_header_bak3" width="80px">事件发起时间</td>
               </tr>
             </thead>
             <tbody id="mytablebody">
               <% 
               j = 1
+              if(@eventRecord != nil)
               for eventRecord in @eventRecord 
               %>
                 <tr>
                   <td class="td6" >&nbsp;
-                     <input type="button" value="删除" onclick="delet('<%=eventRecord.ID%>','<%=eventRecord.EVENT_SPONSOR%>','<%=eventRecord.CURRENT_STATUS%>')" class="btn3_mouseout">
-                     <input type="button" value="生命周期" onclick="cycle('<%=eventRecord.EVENT_CODE%>')" class="btn3_mouseout">
-                     <input type="button" value="状态回溯" class="btn3_mouseout" onclick="state('<%=eventRecord.EVENT_CODE%>','<%=eventRecord.ID%>')" >
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="delet('<%=eventRecord.ID%>','<%=eventRecord.EVENT_SPONSOR%>','<%=eventRecord.CURRENT_STATUS%>')">删除</a>&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cycle('<%=eventRecord.EVENT_CODE%>')">生命周期</a>&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="state('<%=eventRecord.EVENT_CODE%>','<%=eventRecord.ID%>')">状态回溯</a>&nbsp;
                      <input type="hidden" name="eventRecord[<%=j%>][ID]" id="record<%=j%>ID" value="<%=eventRecord.ID%>">
                   </td>
                   <td class="td7" >&nbsp;<%=eventRecord.EVENT_CODE%></td>
-                  <td class="td7" >&nbsp;<%=eventRecord.EVENT_NAME%></td>
-                  <td class="td7" >&nbsp;<%=eventRecord.M_EVENT_TYPE%></td>
-                  <td class="td7" >&nbsp;<%=eventRecord.PROJECT_CODE%></td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_1_1">
+                        <%=util.intercept(eventRecord.EVENT_NAME, 0, 15)%>
+                    </font>
+                    <div id="DIV<%=j%>_1_2" style="VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                        <%=eventRecord.EVENT_NAME%>
+                    </div>
+                  </td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_2_1">
+                        <%=util.intercept(eventRecord.M_EVENT_TYPE, 0, 15)%>
+                    </font>
+                    <div id="DIV<%=j%>_2_2" style="VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                        <%=eventRecord.M_EVENT_TYPE%>
+                    </div>
+                  </td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                    &nbsp;
+                    
+                    <font id="DIV<%=j%>_3_1">
+                        <%=util.intercept(eventRecord.PROJECT_CODE, 0, 7)%>
+                    </font>
+                    <div id="DIV<%=j%>_3_2" style="VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                        <%=eventRecord.PROJECT_CODE%>
+                    </div>
+                  </td>
                   <td class="td7" >&nbsp;<%=eventRecord.CURRENT_STATUS%></td>
                   <td class="td7" >&nbsp;<%=eventRecord.EVENT_SPONSOR%></td>
                   <td class="td7" >&nbsp;<%=util.formatDatatimeToSting(eventRecord.EVENT_TIME)%></td>
                 </tr>
-              <% j=j+1 end %>
+              <% j=j+1 end 
+              else
+                for c in (i..5)
+              %>
+                <tr>
+                  <td class="td6" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>　
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                </tr>
+              <%
+                end
+              end
+              %>
             </tbody>
           </table>
        </td>

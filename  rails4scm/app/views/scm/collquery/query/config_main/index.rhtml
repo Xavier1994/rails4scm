@@ -1,9 +1,18 @@
+<%
+require 'util/util'
+util = Util.new
+%>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <%= stylesheet_link_tag "style_table" %>
+    <%= stylesheet_link_tag "common_style" %>
+    <%= javascript_include_tag "common" %>
+    
     <script language="javascript">
+      <%if(@itemOne != nil)%>
       code = '<%=@itemOne.CONFIGURE_CODE%>'
+      <% end %>
       function product(version){
         url = "/scm/collquery/query/config_product?code=" + code + "&h_config_vers=" + version
         window.showModalDialog(url, "相关产品", "dialogHeight:600px;dialogWidth:800px;");
@@ -17,11 +26,14 @@
   <body>
     <table cellpadding=0 cellspacing=0 border=0 width=100% height="100%">
       <tr>
-          <td>配置项编号:<%=@itemOne.CONFIGURE_CODE%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配置项名称:<%=@itemOne.CONFIGURE_NAME%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <% if (@itemOne != nil)%>
+            <td>配置项编号:<%=@itemOne.CONFIGURE_CODE%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配置项名称:<%=@itemOne.CONFIGURE_NAME%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <% else %>
+            <td>配置项编号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配置项名称:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <% end %>
       </tr>
       <tr>
         <td valign="top" >
-          <div style="overflow-x:auto;overflow-y:auto;width:800px;">
             <table cellpadding=0 cellspacing=0 border=0 style="width:800px;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
               <thead class="td_header_bak2">
                 <tr>
@@ -38,20 +50,51 @@
                 </tr>
               </thead>
               <tbody>
-                <% for item in @item %>
+                <% 
+                j = 1
+                if(@item != nil)
+                for item in @item 
+                %>
                   <tr>
                     <td class="td6">&nbsp;<%=item.CONFIGURE_TYPE%></td>
-                    <td class="td7">&nbsp;<%=item.CONFIGURE_STORE_ADDR%></td>
+                    <td class="td7" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                      &nbsp;
+                      <font id="DIV<%=j%>_1_1">
+                        <%=util.intercept(item.CONFIGURE_STORE_ADDR, 0, 15)%>
+                      </font>
+                      <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                          <%=item.CONFIGURE_STORE_ADDR%>
+                      </div>
+                    </td>
                     <td class="td7">&nbsp;<%=(item.CONFIGURE_PUB_DATE).strftime('%Y-%m-%d')%></td>
                     <td class="td7">&nbsp;<%=item.CONFIGURE_PUB_PERSON%></td>
-                    <td class="td7">&nbsp;<%=item.CONFIGURE_REMARK%></td>
+                    <td class="td7" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                      &nbsp;
+                      <font id="DIV<%=j%>_2_1">
+                        <%=util.intercept(item.CONFIGURE_REMARK, 0, 15)%>
+                      </font>
+                      <div id="DIV<%=j%>_2_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                          <%=item.CONFIGURE_REMARK%>
+                      </div>
+                    </td>
                     <td class="td7">&nbsp;<%=item.CONF_DUTY_PERSON%></td>
-                    <td class="td7">&nbsp;<%=item.DEVELOP_PATH%></td>
+                    <td class="td7" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                      &nbsp;
+                      <font id="DIV<%=j%>_3_1">
+                        <%=util.intercept(item.DEVELOP_PATH, 0, 15)%>
+                      </font>
+                      <div id="DIV<%=j%>_3_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                          <%=item.DEVELOP_PATH%>
+                      </div>
+                    </td>
                   </tr>
-                <% end %>
+                <% 
+                  j += 1
+                end 
+                end
+                %>
               </tbody>
             </table>
-          </div>
         </td>
       </tr>
       <tr>
@@ -68,13 +111,45 @@
                 </tr>
               </thead>
               <tbody>
-                <% for comp in @comp %>
+                <% 
+                j =1
+                if(@comp != nil)
+                for comp in @comp 
+                %>
                   <tr>
                     <td class="td6">&nbsp;<%=comp.COMP_CODE%></td>
-                    <td class="td7">&nbsp;<%=comp.COMP_NAME%></td>
-                    <td class="td7">&nbsp;<%=comp.COMP_COMMENT%></td>
+                    <td class="td7" onmouseover="show(this,'DIV<%=j%>_4_2','DIV<%=j%>_4_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
+                      &nbsp;
+                      <font id="DIV<%=j%>_4_1">
+                        <%=util.intercept(comp.COMP_NAME, 0, 15)%>
+                      </font>
+                      <div id="DIV<%=j%>_4_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_4_2','DIV<%=j%>_4_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
+                          <%=comp.COMP_NAME%>
+                      </div>
+                    </td>
+                    <td class="td7" onmouseover="show(this,'DIV<%=j%>_5_2','DIV<%=j%>_5_1')" onmouseout="hide('DIV<%=j%>_5_2','DIV<%=j%>_5_1')">
+                      &nbsp;
+                      <font id="DIV<%=j%>_5_1">
+                        <%=util.intercept(comp.COMP_COMMENT, 0, 15)%>
+                      </font>
+                      <div id="DIV<%=j%>_5_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_5_2','DIV<%=j%>_5_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
+                          <%=comp.COMP_COMMENT%>
+                      </div>
+                    </td>
                   </tr>
-                <% end %>
+                <%
+                    j += 1
+                end
+                else
+                %>
+                    <tr>
+                      <td class="td6">&nbsp;</td>
+                      <td class="td7">&nbsp;</td>
+                      <td class="td7">&nbsp;</td>
+                    </tr>
+                <%
+                end
+                %>
               </tbody>
             </table>
         </td>
@@ -101,7 +176,11 @@
                 </tr>
               </thead>
               <tbody>
-                <% for vers in @vers %>
+                <% 
+                j = 1
+                if(@vers != nil)
+                for vers in @vers 
+                %>
                   <tr>
                     <td class="td6">&nbsp;
                       <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="product('<%=vers.configure_vers%>')">相关产品</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -109,16 +188,68 @@
                     </td>
                     <td class="td7">&nbsp;<%=vers.configure_vers%></td>
                     <td class="td7">&nbsp;<%=vers.cur_state%></td>
-                    <td class="td7">&nbsp;<%=(vers.state_date)%></td>
+                    <td class="td7">&nbsp;<%=util.formatDatatimeToSting(vers.state_date)%></td>
                     <td class="td7">&nbsp;<%=vers.ver_release%></td>
-                    <td class="td7">&nbsp;<%=vers.rela_address%></td>
-                    <td class="td7">&nbsp;<%=vers.project_name%></td>
-                    <td class="td7">&nbsp;<%=vers.event_name%></td>
+                    <td class="td7" onmouseover="show(this,'DIV<%=j%>_6_2','DIV<%=j%>_6_1')" onmouseout="hide('DIV<%=j%>_6_2','DIV<%=j%>_6_1')">
+                      &nbsp;
+                      <font id="DIV<%=j%>_6_1">
+                        <%=util.intercept(vers.rela_address, 0, 15)%>
+                      </font>
+                      <div id="DIV<%=j%>_6_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_6_2','DIV<%=j%>_6_1')" onmouseout="hide('DIV<%=j%>_6_2','DIV<%=j%>_6_1')">
+                          <%=vers.rela_address%>
+                      </div>
+                    </td>
+                    <td class="td7" onmouseover="show(this,'DIV<%=j%>_7_2','DIV<%=j%>_7_1')" onmouseout="hide('DIV<%=j%>_7_2','DIV<%=j%>_7_1')">
+                      &nbsp;
+                      <font id="DIV<%=j%>_7_1">
+                        <%=util.intercept(vers.project_name, 0, 15)%>
+                      </font>
+                      <div id="DIV<%=j%>_7_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_7_2','DIV<%=j%>_7_1')" onmouseout="hide('DIV<%=j%>_7_2','DIV<%=j%>_7_1')">
+                          <%=vers.project_name%>
+                      </div>
+                    </td>
+                    <td class="td7" onmouseover="show(this,'DIV<%=j%>_8_2','DIV<%=j%>_8_1')" onmouseout="hide('DIV<%=j%>_8_2','DIV<%=j%>_8_1')">
+                      &nbsp;
+                      <font id="DIV<%=j%>_8_1">
+                        <%=util.intercept(vers.event_name, 0, 15)%>
+                      </font>
+                      <div id="DIV<%=j%>_8_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_8_2','DIV<%=j%>_8_1')" onmouseout="hide('DIV<%=j%>_8_2','DIV<%=j%>_8_1')">
+                          <%=vers.event_name%>
+                      </div>
+                    </td>
                     <td class="td7">&nbsp;<%=vers.project_manager%></td>
                     <td class="td7">&nbsp;<%=vers.event_sponsor%></td>
-                    <td class="td7">&nbsp;<%=vers.develop_path%></td>
+                    <td class="td7" onmouseover="show(this,'DIV<%=j%>_9_2','DIV<%=j%>_9_1')" onmouseout="hide('DIV<%=j%>_9_2','DIV<%=j%>_9_1')">
+                      &nbsp;
+                      <font id="DIV<%=j%>_9_1">
+                        <%=util.intercept(vers.develop_path, 0, 15)%>
+                      </font>
+                      <div id="DIV<%=j%>_9_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_9_2','DIV<%=j%>_9_1')" onmouseout="hide('DIV<%=j%>_9_2','DIV<%=j%>_9_1')">
+                          <%=vers.develop_path%>
+                      </div>
+                    </td>
                   </tr>
-                <% end %>
+                <%
+                    j += 1
+                end
+                else
+                %>
+                  <tr>
+                    <td class="td6">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                    <td class="td7">&nbsp;</td>
+                  </tr>
+                <%
+                end
+                %>
               </tbody>
             </table>
         </td>
