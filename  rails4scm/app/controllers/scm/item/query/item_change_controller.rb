@@ -2,7 +2,7 @@ class Scm::Item::Query::ItemChangeController < ApplicationController
 
   def index
     curPageSize = params[:page]
-    pageSize = 18
+    pageSize = 22
     @configure_code = params[:configure_code]
     @configure_name = params[:configure_name]
     @event_name     = params[:event_name]
