@@ -21,16 +21,18 @@ class Util
   end
   
   def intercept(str,startsize,endsize)
-    if(str != nil)
+    if(str != nil) 
       if(startsize == nil) 
         startsize = 0
       end
+      startsize = startsize + 2
       if(endsize == nil)
         endsize = str.length
       end
-      str = str.split(//)[startsize,endsize]
+      endsize = endsize *2 + 2
+  
+      str = Iconv.conv("gb2312","UTF-16",Iconv.conv("UTF-16","gb2312",str)[startsize,endsize]) 
     end
-    
     return str
   end
   
