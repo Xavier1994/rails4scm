@@ -42,7 +42,8 @@ class ConfigureChgApp < ActiveRecord::Base
   end
   
   def findConfigureChgAppAll(pageSize,curPageSize,configure_code,configure_name,event_name,project_code,current_status)
-    sql = "SELECT CONFIGURE_CHG_APP.ID,CONFIGURE_CHG_APP.CONFIGURE_CHG_NO,CONFIGURE_CHG_APP.CONFIGURE_CODE, "
+    sql = "select * from ("
+    sql += "SELECT CONFIGURE_CHG_APP.ID,CONFIGURE_CHG_APP.CONFIGURE_CHG_NO,CONFIGURE_CHG_APP.CONFIGURE_CODE, "
     sql += "CONFIGURE_ITEM.CONFIGURE_NAME,CONFIGURE_CHG_APP.EVENT_CODE, EVENT_RECORD.EVENT_NAME,"
     sql += "CONFIGURE_CHG_APP.RELA_EVENT_NAME,CONFIGURE_CHG_APP.PRE_VERSION,CONFIGURE_CHG_APP.AFT_VERSION,"
     sql += "CONFIGURE_CHG_APP.CONFIG_CHG_TYPE,CONFIGURE_CHG_APP.CONF_CHG_ORDER, "
@@ -75,8 +76,8 @@ class ConfigureChgApp < ActiveRecord::Base
       current_status = current_status.rstrip
       sql += " AND CONFIGURE_CHG_APP.CURRENT_STATUS = '" + current_status + "'"
     end
-    
-    #sql += " order by CONFIGURE_CHG_APP.EVENT_CODE desc"
+    sql += ") as t "
+    sql += " order by EVENT_CODE desc"
     
     ConfigureChgApp.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"ID")
   end
