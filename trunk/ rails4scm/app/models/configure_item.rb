@@ -54,7 +54,8 @@ class ConfigureItem < ActiveRecord::Base
           end 
           sql += whre_a
        end
-       ConfigureItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"id")
+       sql += " order by ID desc "
+       ConfigureItem.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"id desc") 
   end
   
   def findConfig(pageSize,curPageSize,event_code)
