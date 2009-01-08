@@ -51,18 +51,28 @@ class ConfigureChgApp < ActiveRecord::Base
     sql += " WHERE ( CONFIGURE_CHG_APP.CONFIGURE_CODE = CONFIGURE_ITEM.CONFIGURE_CODE and EVENT_RECORD.EVENT_CODE=CONFIGURE_CHG_APP.EVENT_CODE) "
     
     if(configure_code != nil and configure_code != "") then
+      configure_code = configure_code.lstrip
+      configure_code = configure_code.rstrip
       sql += " AND CONFIGURE_CHG_APP.CONFIGURE_CODE='" + configure_code + "' "
     end
     if(configure_name != nil and configure_name != "") then
+      configure_name = configure_name.lstrip
+      configure_name = configure_name.rstrip
       sql += " AND CONFIGURE_ITEM.CONFIGURE_NAME like '%" + configure_name + "%'"
     end
     if(event_name != nil and event_name != "") then
+      event_name = event_name.lstrip
+      event_name = event_name.rstrip
       sql += " AND EVENT_RECORD.EVENT_NAME like '%" + event_name + "%'"
     end
     if(project_code != nil and project_code != "") then
+      project_code = project_code.lstrip
+      project_code = project_code.rstrip
       sql += " AND CONFIGURE_CHG_APP.PROJECT_CODE like '%" + project_code + "%'"
     end
     if(current_status != nil and current_status != "") then
+      current_status = current_status.lstrip
+      current_status = current_status.rstrip
       sql += " AND CONFIGURE_CHG_APP.CURRENT_STATUS = '" + current_status + "'"
     end
     
