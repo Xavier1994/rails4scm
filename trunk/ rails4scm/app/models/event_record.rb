@@ -8,18 +8,28 @@ class EventRecord < ActiveRecord::Base
     if(event_name != nil or m_event_type != nil or project_code != nil or event_sponsor != nil or current_status != nil) then
           where = " where "
           if(event_name != nil) then
+            event_name = event_name.lstrip
+            event_name = event_name.rstrip
             where += "event_name like '%" + event_name + "%' and "
           end
           if(m_event_type != nil) then
+            m_event_type = m_event_type.lstrip
+            m_event_type = m_event_type.rstrip
             where += "m_event_type like '%" + m_event_type + "%' and "
           end
           if(project_code != nil) then
+            project_code = project_code.lstrip
+            project_code = project_code.rstrip
             where += "project_code like '%" + project_code + "%' and "
           end
           if(event_sponsor != nil) then
+            event_sponsor = event_sponsor.lstrip
+            event_sponsor = event_sponsor.rstrip
             where += "event_sponsor like '%" + event_sponsor + "%' and "
           end
           if(current_status != nil) then
+            current_status = current_status.lstrip
+            current_status = current_status.rstrip
             where += "current_status ='" + current_status + "' and "
           end
           whre_a = ""
