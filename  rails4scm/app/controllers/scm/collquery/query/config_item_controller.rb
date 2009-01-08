@@ -3,6 +3,7 @@ class Scm::Collquery::Query::ConfigItemController < ApplicationController
   
   def index
     curPageSize = params[:page]
+    checkflagurl = params[:checkflag_url]
     pageSize = 18
     @configure_name = params[:configure_name]
     @configure_type = params[:configure_type]
@@ -27,7 +28,9 @@ class Scm::Collquery::Query::ConfigItemController < ApplicationController
     end
     
     #²éÑ¯
-    @configureItem = getData(pageSize,curPageSize,@configure_name,@configure_type,@configure_code)
+    if(checkflagurl == nil || checkflagurl == "")
+      @configureItem = getData(pageSize,curPageSize,@configure_name,@configure_type,@configure_code)
+    end
   end
   
   private
