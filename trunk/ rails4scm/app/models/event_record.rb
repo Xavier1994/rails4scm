@@ -46,9 +46,11 @@ class EventRecord < ActiveRecord::Base
              end
           end 
           sql += whre_a
+          
     end
+    sql += " ORDER BY EVENT_TIME desc" 
     
-    EventRecord.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"id")
+    EventRecord.paginate_by_sql([sql],:per_page =>pageSize,:page =>curPageSize,:order=>"EVENT_TIME desc")
   end
   
   #±£´æ
