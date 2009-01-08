@@ -25,12 +25,18 @@ class ConfigureItem < ActiveRecord::Base
        if(configure_name != nil or configure_type != nil or configure_code != nil) then
           where = " where "
           if(configure_name != nil) then
+            configure_name = configure_name.lstrip
+            configure_name = configure_name.rstrip
             where += "configure_name like '%" + configure_name + "%' and "
           end
           if(configure_type != nil) then
+            configure_type = configure_type.lstrip
+            configure_type = configure_type.rstrip
             where += "configure_type like '%" + configure_type + "%' and "
           end
           if(configure_code != nil) then
+            configure_code = configure_code.lstrip
+            configure_code = configure_code.rstrip
             where += "configure_code like '%" + configure_code + "%' and "
           end
           whre_a = ""
