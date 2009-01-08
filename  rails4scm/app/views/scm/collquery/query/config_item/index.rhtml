@@ -23,12 +23,12 @@ util = Util.new
   </head>
   <body bgcolor="#F6F6F6" >
   <% form_tag :action =>'index' do %>
-  <table width="1000px">
-     <tr>
-       <td>
-         <table>
+  <table width="1000px" cellpadding=0 cellspacing=0 border=0 >
+     <tr valign="top">
+       <td height="10px">
+         <table cellpadding=0 cellspacing=0 border=0>
            <tr>
-             <td>
+             <td height="10px">
                名称：     <input type="text" name="configure_name" onkeydown="onclickText()" value="<%=@configure_name%>" >
                类别：     <input type="text" name="configure_type" onkeydown="onclickText()" value="<%=@configure_type%>">
                配置项编号：<input type="text" name="configure_code" onkeydown="onclickText()" value="<%=@configure_code%>">
@@ -38,8 +38,8 @@ util = Util.new
          </table>
        </td>
      </tr>
-     <tr>
-       <td width="100%" valign="top">
+     <tr valign="top">
+       <td width="100%">
          <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
             <thead >
               <tr>
@@ -54,9 +54,10 @@ util = Util.new
                 <td class="td_header_bak3" width="">配置责任人</td>
               </tr>
             </thead>
-            <tbody>
+            <tbody >
               <% 
               j = 1
+              if(@configureItem != nil)
               for configureItem in @configureItem 
               %>
                 <tr>
@@ -113,13 +114,50 @@ util = Util.new
               <%  
                 j += 1
               end 
+              else
               %>
+                <tr>
+                  <td class="td6">&nbsp;</td>　
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td class="td6">&nbsp;</td>　
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td class="td6">&nbsp;</td>　
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
        </td>
      </tr>
   </table>
 <% end %>
+  <% if (@configureItem != nil)%>
   <%= will_paginate @configureItem %>
+  <% end %>
   </body>
 </html>
