@@ -49,7 +49,7 @@ util = Util.new
     </script>
 <body>
 <% form_tag :action =>'index' do %>
-    <table cellpadding=0 cellspacing=0 border=0 width="1050px" height="100%" align="center">
+    <table cellpadding=0 cellspacing=0 border=0 width="1100px" height="100%" align="center">
       <tr height="20px">
        <td>
          <table>
@@ -131,7 +131,7 @@ if @items!=nil&&@items.size>0 then
                 <td class="td7" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
                     &nbsp;
                     <font id="DIV<%=j%>_2_1">
-                      <%=util.intercept(item.CONFIGURE_NAME, 0, 15)%>
+                      <%=util.intercept(item.CONFIGURE_NAME, 0, 12)%>
                     </font>
                     <div id="DIV<%=j%>_2_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
                         <%=item.CONFIGURE_NAME%>
@@ -141,7 +141,7 @@ if @items!=nil&&@items.size>0 then
                 <td class="td7" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
                     &nbsp;
                     <font id="DIV<%=j%>_3_1">
-                      <%=util.intercept(item.CONFIGURE_TYPE, 0, 8)%>
+                      <%=util.intercept(item.CONFIGURE_TYPE, 0, 5)%>
                     </font>
                     <div id="DIV<%=j%>_3_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
                         <%=item.CONFIGURE_TYPE%>
