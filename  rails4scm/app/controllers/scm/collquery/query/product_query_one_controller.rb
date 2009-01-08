@@ -1,7 +1,7 @@
 class Scm::Collquery::Query::ProductQueryOneController < ApplicationController
  def index
     curPageSize = params[:page]
-    pageSize = 18
+    pageSize = 22
 
     @whereProduct     = params[:whereProduct]
     @whereProductVer   = params[:whereProductVer]
