@@ -69,10 +69,8 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
          when "B"
            #已实现
            begin
-             for date_0102 in params[:DATA]
-                dt = date_0102[1]
-                chg_date02 = dt[:data2]
-            end
+             dt = params[:DATA]
+             chg_date02 = dt[:data2]
              @configureChgCycleDetEr.CHG_PRSN01=chg_prsn01
              @configureChgCycleDetEr.CHG_DATE01=chg_date01
              @configureChgCycleDetEr.CHG_PRSN02=chg_prsn02
@@ -91,6 +89,8 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
           when "C"
            #已批准
            begin
+             dt = params[:DATA]
+             chg_date01 = dt[:data1]
              @configureChgCycleDetSa.CHG_PRSN01=chg_prsn01
              @configureChgCycleDetSa.CHG_DATE01=chg_date01
              @configureChgCycleDetSa.CHG_PRSN02=chg_prsn02
