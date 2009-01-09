@@ -8,6 +8,13 @@ util = Util.new
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %>
+    <script language="javascript">
+      //事件执行情况
+        function execute_info(){
+            url = "/scm/event/query/event_execute?event_code=<%=@event_code%>";
+            window.showModalDialog(url, "事件执行情况", "dialogHeight:500px;dialogWidth:800px;");
+        }
+    </script>
   </head>
   <body bgcolor="#F6F6F6">
     <% form_tag :action =>'index' do %>
@@ -175,7 +182,9 @@ util = Util.new
                     <tr>
                       <td class="td6" rowspan="3" width="30%">条件</td>
                       <td class="td7" colspan="2" width="55%">&nbsp;<%=@configureMsgCycleDetSa.REMARK_01%></td>
-                      <td class="td7" rowspan="2" width="15%">&nbsp;</td>
+                      <td class="td7" rowspan="2" width="15%">
+                        <input type="button" value="事件执行情况" onclick="execute_info()" class="btn3_mouseout">
+                      </td>
                     </tr>
                     <tr>
                       <td colspan="2" class="td7" width="55%">&nbsp;<%=@configureMsgCycleDetSa.REMARK_02%></td>

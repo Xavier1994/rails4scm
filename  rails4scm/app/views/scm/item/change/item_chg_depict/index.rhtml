@@ -1,0 +1,177 @@
+<%
+require 'util/util'
+util = Util.new
+%>
+<html>
+<head>
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+</head>
+<body>
+  <table width="100%" height="100%">
+    <tr>
+      <td valign="top">
+        <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <thead>
+              <tr>
+                <td class="td_header_bak3" width="80px">日期</td>　
+                <td class="td_header_bak3" width="120px">表名</td>
+                <td class="td_header_bak3" width="120px">列名</td>
+                <td class="td_header_bak3" width="100px">存在问题</td>
+                <td class="td_header_bak3" width="200px">修改纪要</td>
+                <td class="td_header_bak3" width="50px">修改人</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% 
+              k=0
+              if(@chgdataOne != nil)
+              for chg in @chgdataOne 
+              %>
+                <tr>
+                  <% 
+                  for column in @closOne 
+                     if(column == "MODIFY_DATE" and @chgdataOne[k].attributes[column] != nil)        
+                  %>
+                    <td class="td6" >
+                      &nbsp;<%=util.formatDatatimeToSting(@chgdataOne[k].attributes[column])%>
+                    </td>
+                  <% else%>
+                    <td class="td7" >
+                      &nbsp;<%=@chgdataOne[k].attributes[column]%>
+                    </td>
+                  <% end end  %>
+                </tr>
+              <% 
+              k=k+1
+              end
+              else
+              %>
+                <tr>
+                  <td class="td6">&nbsp;</td>　
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr> 
+              <%end %>
+            </tbody>
+          </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">
+        <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <thead>
+              <tr>
+                <td class="td_header_bak3" width="80px">日期</td>　
+                <td class="td_header_bak3" width="120px">子系统</td>
+                <td class="td_header_bak3" width="120px">应用名</td>
+                <td class="td_header_bak3" width="100px">对象名</td>
+                <td class="td_header_bak3" width="200px">问题描述</td>
+                <td class="td_header_bak3" width="200px">修改纪要</td>
+                <td class="td_header_bak3" width="50px">修改人</td>
+                <td class="td_header_bak3" width="100px">问题性质</td>
+                <td class="td_header_bak3" width="200px">备注</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% 
+              k=0
+              if(@chgdataTwo != nil)
+              for chg in @chgdataTwo 
+              %>
+                <tr>
+                  <% 
+                  for column in @closTwo 
+                     if(column == "MODIFY_TIME" and @chgdataTwo[k].attributes[column] != nil)        
+                  %>
+                    <td class="td6" >
+                      &nbsp;<%=util.formatDatatimeToSting(@chgdataTwo[k].attributes[column])%>
+                    </td>
+                  <% else%>
+                    <td class="td7" >
+                      &nbsp;<%=@chgdataTwo[k].attributes[column]%>
+                    </td>
+                  <% end end  %>
+                </tr>
+              <% 
+              k=k+1 
+              end
+              else%>
+                <tr>
+                  <td class="td6">&nbsp;</td>　
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr>
+              <%
+              end %>
+            </tbody>
+          </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">
+        <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <thead>
+              <tr>
+                <td class="td_header_bak3" width="80px">日期</td>　
+                <td class="td_header_bak3" width="120px">子系统</td>
+                <td class="td_header_bak3" width="120px">文件名</td>
+                <td class="td_header_bak3" width="200px">问题描述</td>
+                <td class="td_header_bak3" width="200px">修改纪要</td>
+                <td class="td_header_bak3" width="50px">修改人</td>
+                <td class="td_header_bak3" width="100px">问题性质</td>
+                <td class="td_header_bak3" width="200px">备注</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% 
+              k=0
+              if(@chgdataThree != nil)
+              for chg in @chgdataThree 
+              %>
+                <tr>
+                  <% 
+                  for column in @closThree 
+                     if(column == "MODIFY_TIME" and @closThree[k].attributes[column] != nil)        
+                  %>
+                    <td class="td6" >
+                      &nbsp;<%=util.formatDatatimeToSting(@closThree[k].attributes[column])%>
+                    </td>
+                  <% else%>
+                    <td class="td7" >
+                      &nbsp;<%=@closThree[k].attributes[column]%>
+                    </td>
+                  <% end end  %>
+                </tr>
+              <% 
+              k=k+1 
+              end 
+              else
+              %>
+                <tr>
+                  <td class="td6">&nbsp;</td>　
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                  <td class="td7">&nbsp;</td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
