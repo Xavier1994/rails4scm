@@ -30,7 +30,45 @@ function getT(e){
   return t;
 } 
 
- //去处空格
+//去处空格
 function jsTrim(strText){ 
    return strText.replace(/(^\s*|\s*$)/g,"")
+}
+
+/*
+用途：检查数字
+*/
+function isNumber( s ){   	
+    var regu = "^[0-9]+$";
+    var re = new RegExp(regu);
+    if (s.search(re) != -1) {
+            return true;
+    } else { 
+            return false;
+    }
+}
+
+/*
+用途：检查输入对象的值是否符合整数格式
+输入：str 输入的字符串
+返回：如果通过验证返回true,否则返回false
+*/
+function isInteger( str ){  
+        if(str.indexOf(".") > -1) {
+                return 1;
+        }
+        if(str.indexOf("-") > -1) {
+                return 2;
+        }
+        if(str.indexOf("+") > -1) {
+                return 3;
+        }  
+        if(isNumber(str) == false) {
+                return 5;    
+        } 
+        if(isNaN(str)) {    
+                return 4;
+        }else {
+                return 0;
+        } 
 }
