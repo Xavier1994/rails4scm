@@ -152,6 +152,15 @@ background:#F7C76B;
              height:20px; 
              text-align:left;
            }
+.td8       { 
+             border-top: 1px solid #000000;
+             border-left: 1px solid #000000;
+             border-right: 1px solid #000000;
+             border-bottom: 1px solid #000000;
+             font-size:12px;color:#808080;
+             height:20px; 
+             text-align:left;
+           }
 
 .td21       { border-top: 1px solid #ffffff; 
              border-left: 1px solid #ffffff;
