@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %> 
-    
+    <%= dhtml_calendar_includes %>
     <script language="javascript">
         function init(){
             var vlw = "<%=@quarters_validate[0]%>";
@@ -101,7 +101,9 @@
                     <tr>
                       <td class="td6" width="30%">事件观察人</td>
                       <td class="td7" width="40%"><input type="text" name="EVENT_PRSN02" style="width:100%" value="<%=@configureMsgCycleDetYi.EVENT_PRSN02%>"></td>
-                      <td class="td7" width="30%">日期和时间：<%=calendar_field :DATA,:data2,@date_02_Yi,1,{:date_format=>'%Y-%m-%d'}%></td>
+                      <td class="td7" width="30%">日期和时间：
+                          <%= calendar_box 'DATA', 'data2',{ :class => 'date',:value =>@date_02_Yi,:field_title => 'data2',:button_title => 'Show calendar' },{ :firstDay => 1,:step => 1,:showOthers => true,:cache => true } %>
+                      </td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%" rowspan="2">详尽的观察情况描述</td>
@@ -165,7 +167,11 @@
                     <tr>
                       <td class="td6" width="30%">事件转发评估人</td>
                       <td class="td7" width="40%"><input type="text" name="EVENT_PRSN01" style="width:100%" value="<%=@configureMsgCycleDetEr.EVENT_PRSN01%>"></td>
-                      <td class="td7" width="30%">日期和时间：<%=calendar_field :DATA,:data1,@date_01_Er,1,{:date_format=>'%Y-%m-%d'}%></td>
+                      <td class="td7" width="30%">日期和时间：
+                        <%= calendar_box 'DATA', 'data1',
+                          { :class => 'date',:value => @date_01_Er,:field_title => 'data1',:button_title => 'Show calendar' },
+                          { :firstDay => 1,:step => 1,:showOthers => true,:cache => true } %>
+                      </td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%">事件评估人</td>
