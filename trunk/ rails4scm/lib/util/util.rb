@@ -15,7 +15,8 @@ class Util
     fmt = '%Y-%m-%d'
     
     cl = datatime.class.to_s
-    if cl =="Time" then
+
+    if cl == "Time" || cl == "DateTime" then
       return datatime.strftime(fmt)
     else
       data = ParseDate.parsedate(datatime,fmt)
