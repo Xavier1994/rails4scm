@@ -33,11 +33,8 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
     #保存[确定按钮]
     if(queding_hidden == "1")
       event_prsn01  = params[:EVENT_PRSN01]
-      k=1
-      for date_0102 in params[:DATA]
-          dt = date_0102[k.to_i]
-          date_01 = dt[:data1]
-      end
+      dt = params[:DATA]
+      date_01 = dt[:data1]
       event_prsn02  = params[:EVENT_PRSN02]
       date_02       = Time.now
       conclusion_01 = params[:CONCLUSION_01]
@@ -132,11 +129,8 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
     if(queding_hidden == "2")
       @eventRecord.id = @eventRecord.ID
       event_prsn01  = params[:EVENT_PRSN01]
-      k=1
-      for date_0102 in params[:DATA]
-          dt = date_0102[k.to_i]
-          date_01 = dt[:data1]
-      end
+      dt = params[:DATA]
+      date_01 = dt[:data1]
       event_prsn02  = params[:EVENT_PRSN02]
       date_02       = Time.now
       conclusion_01 = params[:CONCLUSION_01]
