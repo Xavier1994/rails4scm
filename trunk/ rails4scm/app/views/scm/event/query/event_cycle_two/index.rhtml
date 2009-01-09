@@ -1,0 +1,234 @@
+<%
+require 'util/util'
+util = Util.new
+%>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+  </head>
+  <body bgcolor="#F6F6F6">
+    <% form_tag :action =>'index' do %>
+    <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <tr>
+          <td align="center" height="30px"><b>事件生命周期</b></td>
+        </tr>
+        <tr>
+          <td >&nbsp; 当前事件:<%=@eventRecord.EVENT_NAME%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前状态:<%=@eventRecord.CURRENT_STATUS%></td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+            <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="4">状态=决策中</td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @configureMsgCycleDetYi != nil then%>
+                    <tr>
+                      <td class="td6" width="30%">事件转发决策人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetYi.EVENT_PRSN01%></td>
+                      <td class="td7" width="30%" colspan="2">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetYi.DATE_01)%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">CCB</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetYi.EVENT_PRSN02%></td>
+                      <td class="td7" width="30%" colspan="2">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetYi.DATE_02)%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >CCB的决定</td>
+                      <td class="td7" colspan="2" width="55%">&nbsp;<%=@configureMsgCycleDetYi.CONCLUSION_01%></td>
+                      <td class="td7" rowspan="2" width="15%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >变更优先级</td>
+                      <td class="td7" colspan="2" width="55%">&nbsp;<%=@configureMsgCycleDetYi.CONCLUSION_02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >拒绝理由</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureMsgCycleDetYi.REMARK_01%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >延期到</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureMsgCycleDetYi.REMARK_02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >由谁通知事件观察人</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureMsgCycleDetYi.REMARK_03%></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">事件转发决策人</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" width="30%" colspan="2">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">CCB</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" width="30%" colspan="2">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >CCB的决定</td>
+                      <td class="td7" colspan="2" width="55%">&nbsp;</td>
+                      <td class="td7" rowspan="2" width="15%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >变更优先级</td>
+                      <td class="td7" colspan="2" width="55%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >拒绝理由</td>
+                      <td class="td7" colspan="3">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >延期到</td>
+                      <td class="td7" colspan="3">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >由谁通知事件观察人</td>
+                      <td class="td7" colspan="3">&nbsp;</td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height="20px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+             <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="3">状态=变更中</td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @configureMsgCycleDetEr != nil then%>
+                    <tr>
+                      <td class="td6" width="30%">由谁开放变更请求</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetEr.EVENT_PRSN01%></td>
+                      <td class="td7" width="30%">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetEr.DATE_01)%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">由谁接受/关闭所有的变更请求</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetEr.EVENT_PRSN02%></td>
+                      <td class="td7" width="30%">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetEr.DATE_02)%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">总的实际变更工作量</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.WORK_DAYS01%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">总的实际测试工作量</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.WORK_DAYS02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >CCB的决定</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.CONCLUSION_01%></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">由谁开放变更请求</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" width="30%">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">由谁接受/关闭所有的变更请求</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" width="30%">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">总的实际变更工作量</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">总的实际测试工作量</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >CCB的决定</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height="20px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+             <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="4">状态=关闭</td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @configureMsgCycleDetSa != nil then%>
+                    <tr>
+                      <td class="td6" rowspan="3" width="30%">条件</td>
+                      <td class="td7" colspan="2" width="55%">&nbsp;<%=@configureMsgCycleDetSa.REMARK_01%></td>
+                      <td class="td7" rowspan="2" width="15%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="td7" width="55%">&nbsp;<%=@configureMsgCycleDetSa.REMARK_02%></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="td7" width="55%">&nbsp;<%=@configureMsgCycleDetSa.REMARK_03%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">评语</td>
+                      <td class="td7" colspan="3">&nbsp;<%=@configureMsgCycleDetSa.CONCLUSION_01%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">由谁通知事件观察人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetSa.EVENT_PRSN01%></td>
+                      <td class="td7" colspan="2" width="30%">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetSa.DATE_01)%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">CCB签字</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetSa.EVENT_PRSN02%></td>
+                      <td class="td7" colspan="2" width="30%">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetSa.DATE_02)%></td>
+                    </tr>
+                  <% else%>
+                    <tr>
+                      <td class="td6" rowspan="3" width="30%">条件</td>
+                      <td class="td7" colspan="2" width="55%">&nbsp;</td>
+                      <td class="td7" rowspan="2" width="15%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="td7" width="55%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="td7" width="55%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">评语</td>
+                      <td class="td7" colspan="3">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">由谁通知事件观察人</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" colspan="2" width="30%">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">CCB签字</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" colspan="2" width="30%">日期和时间：</td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+    </table>
+    <% end %>
+  </body>
+</html>

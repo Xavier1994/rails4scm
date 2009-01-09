@@ -1,0 +1,190 @@
+<%
+require 'util/util'
+util = Util.new
+%>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %> 
+  </head>
+  <body bgcolor="#F6F6F6">
+    <% form_tag :action =>'index' do %>
+    <input type="hidden" name="event_code" value="<%=@event_code%>">
+    <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <tr>
+          <td align="center" height="30px"><b>事件生命周期</b></td>
+        </tr>
+        <tr>
+          <td >&nbsp; 当前事件:<%=@eventRecord.EVENT_NAME%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前状态:<%=@eventRecord.CURRENT_STATUS%></td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+            <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="3">状态=已创建 </td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @configureMsgCycleDetYi != nil then%>
+                    <tr>
+                      <td class="td6" width="30%">事件记录创建人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetYi.EVENT_PRSN01%></td>
+                      <td class="td7" width="30%">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetYi.DATE_01)%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">事件观察人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetYi.EVENT_PRSN02%></td>
+                      <td class="td7" width="30%">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetYi.DATE_02)%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" rowspan="2">详尽的观察情况描述</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetYi.REMARK_01%></td>
+                    </tr>
+                    <tr>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetYi.REMARK_02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >观察到事件的项目阶段</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetYi.REMARK_03%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >事件严重程度</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetYi.CONCLUSION_01%></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">事件记录创建人</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" width="30%">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">事件观察人</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" width="30%">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" rowspan="2">详尽的观察情况描述</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >观察到事件的项目阶段</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >事件严重程度</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height="20px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td >&nbsp;
+             <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2" width="200px" colspan="3">状态=待评估</td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% if @configureMsgCycleDetEr != nil then%>
+                    <tr>
+                      <td class="td6" width="30%">事件转发评估人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetEr.EVENT_PRSN01%></td>
+                      <td class="td7" width="30%">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetEr.DATE_01)%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">事件评估人</td>
+                      <td class="td7" width="40%">&nbsp;<%=@configureMsgCycleDetYi.EVENT_PRSN01%></td>
+                      <td class="td7" width="30%">日期和时间：<%=util.formatDatatimeToSting(@configureMsgCycleDetEr.DATE_02)%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">评估人分类</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.CONCLUSION_01%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">详尽的解决方案描述</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.CONCLUSION_02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >其他受影响的配置项-说明影响</td>
+                      <td class="td7" colspan="">&nbsp;<%=@configureMsgCycleDetEr.REMARK_01%></td>
+                      <td class="td7" colspan="">
+                          &nbsp;
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >估计的纠错工作量</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.WORK_DAYS01%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >估计的重复测试与回归测试工作量</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.WORK_DAYS02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >出现缺陷的阶段</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.REMARK_02%></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >工作区的描述</td>
+                      <td class="td7" colspan="2">&nbsp;<%=@configureMsgCycleDetEr.REMARK_03%></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">事件转发评估人</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" width="30%">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">事件评估人</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" width="30%">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">评估人分类</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">详尽的解决方案描述</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >其他受影响的配置项-说明影响</td>
+                      <td class="td7" colspan="">&nbsp;</td>
+                      <td class="td7" colspan="">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >估计的纠错工作量</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >估计的重复测试与回归测试工作量</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >出现缺陷的阶段</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >工作区的描述</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
+                    </tr>
+                  <% end %>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+    </table>
+    <% end %>
+  </body>
+</html>
