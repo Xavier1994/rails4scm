@@ -75,7 +75,7 @@ values
 insert into RT_SYSTEM_FUNCTION 
 (FUNC_ID,FUNC_GROUP_ID,FUNC_NAME,DATASOURCE,TARGET,ISHAVECHILD,ORDER_COL,FILTER_COL,IS_FILTER,IS_DEPT,DEL_FLAG,FUNC_PARAM,ID)
 values
-('120201','1202','配置项变更查询','','/scm','N','1','','','','N','/item/query/item_query',24006);
+('120201','1202','配置项变更查询','','/scm','N','1','','','','N','/item/change/item_query',24006);
 
 
 --配置项管理授权
