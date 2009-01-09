@@ -55,7 +55,7 @@ util = Util.new
                 clickobject = me.click_hidden;
                 clickobject.value = "";
                 me.submit();
-           }
+           } 
         }
         
         //点击添加按钮
@@ -332,7 +332,7 @@ util = Util.new
                 <td class="td_header_bak3" width="80px">事件标识</td>　
                 <td class="td_header_bak3" width="200px">事件名称</td>
                 <td class="td_header_bak3" width="150px">标识事件类型</td>
-                <td class="td_header_bak3" width="100px">项目</td>
+                <td class="td_header_bak3" width="150px">(产品)项目名称</td>
                 <td class="td_header_bak3" width="80px">当前阶段</td>
                 <td class="td_header_bak3" width="80px">发起人</td>
                 <td class="td_header_bak3" width="80px">事件发起时间</td>
@@ -374,7 +374,7 @@ util = Util.new
                     &nbsp;
                     
                     <font id="DIV<%=j%>_3_1">
-                        <%=util.intercept(eventRecord.PROJECT_CODE, 0, 7)%>
+                        <%=util.intercept(eventRecord.PROJECT_CODE, 0, 9)%>
                     </font>
                     <div id="DIV<%=j%>_3_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
                         <%=eventRecord.PROJECT_CODE%>
