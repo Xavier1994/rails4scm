@@ -1,0 +1,22 @@
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="/stylesheets/common_style.css" type="text/css">
+</head>
+ 
+<body bgcolor="#000081" >
+<form name="form">
+     <%= tab_begin(@blockDefs,'ITEM_CYCLE_DIV',nil) %>
+        <%= tabpage_begin('ITEM_CYCLE_DIV',true) %>
+          <iframe width="100%" height="100%" frameborder="0" name="cycle_iframe_one" marginwidth="0" marginheight="0" scrolling="auto" src="/scm/item/change/item_cycle_one?configure_chg_no=<%=@configure_chg_no%>"> </iframe>
+        <%= tabpage_end %>
+
+        <%= tabpage_begin("CONFIG_ITEM_DIV",false) %>
+    	   <iframe width="100%" height="100%" frameborder="0" name="cycle_iframe_one" marginwidth="0" marginheight="0" scrolling="auto" src="/scm/item/change/item_cycle_upgrade?configure_chg_no=<%=@configure_chg_no%>"> </iframe>
+        <%= tabpage_end %>
+
+     <%=tab_end()%>
+</form>
+</body>
+</html>

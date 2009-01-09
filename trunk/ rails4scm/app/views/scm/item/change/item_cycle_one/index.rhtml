@@ -1,94 +1,33 @@
+<%
+require 'util/util'
+util = Util.new
+%>
+
 <html>
   <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %>
-    <%= dhtml_calendar_includes %>
+    
     <script language="javascript">
-        function chg(){
-          var msg = window.confirm("触发申请将加到变更表，您是否要触发变更申请");
-          if(msg) {
-              var me = document.forms[0];
-              me.click_hidden.value="4";
-              me.submit();
-          }
-        }
-
-        function init(){
-          var vlw = "<%=@quarters_validate[0]%>";
-          var message = "<%=@message%>";
-          var me = document.forms[0];
-          if(vlw == "E"){
-              try{
-                    me.tijiao_button.disabled ="false";
-                    me.queding_button.disabled ="false";
-                    //me.stat_button.disabled ="false";
-              } catch(e) {}
-          }
-
-          if(message != ""){
-              alert(message);
-          }
-        }
-      
-        //确定按钮
-        function save(){
-            var me = document.forms[0];
-            var curst = "<%=@quarters_validate[0]%>";
-            if(curst == "B"){
-                if(me.CHG_PRSN02.value == "") {
-                    alert("实现人签字 信息为空，请填写!");
-                    me.CHG_PRSN02.focus();
-                    return false;
-                }
-            }
-            me.click_hidden.value="1";
-            me.submit();
-        }
-
-        //提交到下一个状态
-        function tijiao(){
-            var me = document.forms[0];
-            me.click_hidden.value="2";
-            me.submit();
-        }
-
-        //状态回溯
-        function state(){
-            url = "/scm/item/query/item_stat?configure_chg_no=<%=@configure_chg_no%>";
-            var redata = window.showModalDialog(url, "状态回溯", "dialogHeight:200px;dialogWidth:500px;");
-            if(redata != null){
-                var me = document.forms[0];
-                me.click_hidden.value="3";
-                me.current_stat.value  = redata.current_stat;
-                me.submit();
-            }
-        }
-        
-        //执行按钮
-        function execute_info(){
-           var me = document.forms[0];
-           me.click_hidden.value="4";
-           me.submit();
-        }
 
         //变更描述
         function biangeng(){
-            url = "/scm/item/query/item_chg_depict?configure_chg_no=<%=@configure_chg_no%>";
+            url = "/scm/item/change/item_chg_depict?configure_chg_no=<%=@configure_chg_no%>";
             //window.open(url);
-            window.showModalDialog(url, "", "dialogHeight:800px;dialogWidth:1000px;");
+            window.showModalDialog(url, "", "dialogHeight:600px;dialogWidth:800px;");
         }
         
         //升级描述
         function upgrade(){
-            url = "/scm/item/query/item_upgrade_depict?configure_chg_no=<%=@configure_chg_no%>";
+            url = "/scm/item/change/item_upgrade_depict?configure_chg_no=<%=@configure_chg_no%>";
             //window.open(url);
             window.showModalDialog(url, "", "dialogHeight:400px;dialogWidth:1000px;");
         }
     </script>
   </head>
-  <body bgcolor="#F6F6F6" onload="init()">
+  <body bgcolor="#F6F6F6" >
     <% form_tag :action =>'index' do %>
     <input type="hidden" name="configure_chg_no" value="<%=@configure_chg_no%>" >
     <input type="hidden" name="click_hidden">
@@ -109,25 +48,11 @@
                   </tr>
                </thead>
                <tbody>
-                  <% if @quarters_validate[0] == "A" then%>
+                  <% if @configureChgCycleDetYi != nil then%>
                     <tr>
                       <td class="td6" width="30%">申请人</td>
                       <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetYi.CHG_PRSN01%></td>
-                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Yi%></td>
-                    </tr>
-                    <tr>
-                      <td class="td6" width="30%">对申请变更的详尽描述</td>
-                      <td class="td7" colspan="3"><input type="text" name="REMARK" style="width:100%" value="<%=@configureChgCycleDetYi.REMARK%>"></td>
-                    </tr>
-                    <tr>
-                      <td class="td6" width="30%" >估计变更的工作量</td>
-                      <td class="td7" colspan="3"><input type="text" name="WORK_DAYS" style="width:100%" value="<%=@configureChgCycleDetYi.WORK_DAYS%>"></td>
-                    </tr>
-                  <% else %>
-                    <tr>
-                      <td class="td6" width="30%">申请人</td>
-                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetYi.CHG_PRSN01%></td>
-                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Yi%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=util.formatDatatimeToSting(@configureChgCycleDetYi.CHG_DATE01)%></td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%">对申请变更的详尽描述</td>
@@ -136,6 +61,20 @@
                     <tr>
                       <td class="td6" width="30%" >估计变更的工作量</td>
                       <td class="td7" colspan="3">&nbsp;<%=@configureChgCycleDetYi.WORK_DAYS%></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">申请人</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" colspan="2">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">对申请变更的详尽描述</td>
+                      <td class="td7" colspan="3">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%" >估计变更的工作量</td>
+                      <td class="td7" colspan="3">&nbsp;</td>
                     </tr>
                   <% end %>
                </tbody>
@@ -154,33 +93,11 @@
                   </tr>
                </thead>
                <tbody>
-                  <% if @quarters_validate[0] == "B" then%>
+                  <% if @configureChgCycleDetEr != nil then%>
                     <tr>
                       <td class="td6" width="30%">变更实现人</td>
                       <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetEr.CHG_PRSN01%></td>
-                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Er%></td>
-                    </tr>
-                    <tr>
-                      <td class="td6" width="30%">对申请变更的详尽描述</td>
-                      <td class="td7" colspan="3"><input type="text" name="REMARK" style="width:100%" value="<%=@configureChgCycleDetEr.REMARK%>"></td>
-                    </tr>
-                    <tr>
-                      <td class="td6" width="30%">实际的变更工作量</td>
-                      <td class="td7" colspan="2"><input type="text" name="WORK_DAYS" style="width:100%" value="<%=@configureChgCycleDetEr.WORK_DAYS%>"></td>
-                      <td class="td7" width="15%"><input type="button" value="变更描述" onclick="biangeng()" class="btn3_mouseout"></td>
-                    </tr>
-                    <tr>
-                      <td class="td6" width="30%">实现人签字</td>
-                      <td class="td7" width="40%"><input type="text" name="CHG_PRSN02" style="width:100%" value="<%=@configureChgCycleDetEr.CHG_PRSN02%>"></td>
-                      <td class="td7" colspan="2">日期和时间：
-                      <%= calendar_box 'DATA', 'data2',{ :class => 'date',:value =>@chg_date02_Er,:field_title => 'data2',:button_title => 'Show calendar' },{ :firstDay => 1,:step => 1,:showOthers => true,:cache => true } %>
-                      </td>
-                    </tr>
-                  <% else %>
-                    <tr>
-                      <td class="td6" width="30%">变更实现人</td>
-                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetEr.CHG_PRSN01%></td>
-                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Er%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=util.formatDatatimeToSting(@configureChgCycleDetEr.CHG_DATE01)%></td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%">对申请变更的详尽描述</td>
@@ -189,12 +106,32 @@
                     <tr>
                       <td class="td6" width="30%">实际的变更工作量</td>
                       <td class="td7" colspan="2">&nbsp;<%=@configureChgCycleDetEr.WORK_DAYS%></td>
+                      <td class="td7" width="15%"><input type="button" value="变更描述" onclick="biangeng()" class="btn3_mouseout"></td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">实现人签字</td>
+                      <td class="td7" width="40%"><%=@configureChgCycleDetEr.CHG_PRSN02%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=util.formatDatatimeToSting(@configureChgCycleDetEr.CHG_DATE02)%></td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td class="td6" width="30%">变更实现人</td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" colspan="2">日期和时间：</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">对申请变更的详尽描述</td>
+                      <td class="td7" colspan="3">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="td6" width="30%">实际的变更工作量</td>
+                      <td class="td7" colspan="2">&nbsp;</td>
                       <td class="td7" width="15%">&nbsp;</td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%">实现人签字</td>
-                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetEr.CHG_PRSN02%></td>
-                      <td class="td7" colspan="2">日期和时间：<%=@chg_date02_Er%></td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" colspan="2">日期和时间：</td>
                     </tr>
                   <% end %>
                </tbody>
@@ -213,29 +150,27 @@
                   </tr>
                </thead>
                <tbody>
-                  <% if @quarters_validate[0] == "C" then%>
+                  <% if @configureChgCycleDetSa != nil then%>
                     <tr>
                       <td class="td6" width="30%">评语</td>
-                      <td class="td7" colspan="2"><input type="text" name="REMARK" style="width:100%" value="<%=@configureChgCycleDetSa.REMARK%>"></td>
+                      <td class="td7" colspan="2"><%=@configureChgCycleDetSa.REMARK%></td>
                       <td class="td7" width="15%"><input type="button" value="升级描述" onclick="upgrade()" class="btn3_mouseout"></td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%">批准人签字</td>
-                      <td class="td7" width="40%"><input type="text" name="CHG_PRSN01" style="width:100%" value="<%=@configureChgCycleDetSa.CHG_PRSN01%>"></td>
-                      <td class="td7" colspan="2">日期和时间：
-                        <%= calendar_box 'DATA', 'data1',{ :class => 'date',:value =>@chg_date01_Sa,:field_title => 'data1',:button_title => 'Show calendar' },{ :firstDay => 1,:step => 1,:showOthers => true,:cache => true } %>
-                      </td>
+                      <td class="td7" width="40%"><%=@configureChgCycleDetSa.CHG_PRSN01%></td>
+                      <td class="td7" colspan="2">日期和时间：<%=util.formatDatatimeToSting(@configureChgCycleDetSa.CHG_DATE01)%></td>
                     </tr>
                   <% else%>
                     <tr>
                       <td class="td6" width="30%">评语</td>
-                      <td class="td7" colspan="2">&nbsp;<%=@configureChgCycleDetSa.REMARK%></td>
+                      <td class="td7" colspan="2">&nbsp;</td>
                       <td class="td7" width="15%">&nbsp;</td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%">批准人签字</td>
-                      <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetSa.CHG_PRSN01%></td>
-                      <td class="td7" colspan="2">日期和时间：<%=@chg_date01_Sa%></td>
+                      <td class="td7" width="40%">&nbsp;</td>
+                      <td class="td7" colspan="2">日期和时间：</td>
                     </tr>
                   <% end %>
                </tbody>
@@ -254,7 +189,7 @@
                   </tr>
                </thead>
                <tbody>
-                  <% if @quarters_validate[0] == "D" then%>
+                  <% if @configureChgCycleDetSi == nil then%>
                     <tr>
                       <td class="td6" width="30%">执行人</td>
                       <td class="td7" width="40%">&nbsp;<%=@configureChgCycleDetSi.CHG_PRSN01%></td>
@@ -266,7 +201,7 @@
                     </tr>
                     <tr>
                       <td class="td6" width="30%">立即更新</td>
-                      <td class="td7" colspan="3"><input type="button" value="执行" onclick="execute_info()" class="btn3_mouseout"></td>
+                      <td class="td7" colspan="3">&nbsp;</td>
                     </tr>
                   <% else %>
                     <tr>
@@ -284,21 +219,6 @@
                     </tr>
                   <% end %>
                </tbody>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <table align="center">
-              <tr>
-                <td align="center">
-                  <input type="button" onclick="save()" class="btn3_mouseout" name="queding_button" value="确定">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input type="button" onclick="tijiao()" class="btn3_mouseout" name="tijiao_button" value="<%=@quarters_validate[1]%>" >
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input type="button" onclick="state()" class="btn3_mouseout" name="stat_button" value="状态回溯" >
-                </td>
-              </tr>
             </table>
           </td>
         </tr>

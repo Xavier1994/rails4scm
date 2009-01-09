@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+    <base   target=_self>
+
+  </head>
+  <body bgcolor="#F6F6F6">
+  <% form_tag :action =>'index' do %>
+    <input type="hidden" name="click_hidden">
+    <input type="hidden" name="configure_chg_no" value="<%=@configure_chg_no%>">
+    <table width="1000px">
+      <tr>
+        <td align="center" colspan="2"><font color="#FF0000">配置项名称：<%=@configitem.CONFIGURE_NAME%>&nbsp;&nbsp;&nbsp;版本：<%=@configurechg.PRE_VERSION%>&nbsp;&nbsp;&nbsp;同步升级描述</font></td>
+      </tr>
+      <tr>
+        <td width="570px" height="100%" valign="top">
+          <div >
+            涉及项目：
+            <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+              <thead>
+                <tr>
+                    <td class="td_header_bak2" width="100px">项目名称</td>
+                    <td class="td_header_bak3" width="150px">配置项升级后适用标志</td>
+                    <td class="td_header_bak3" width="80px">项目编号</td>
+                    <td class="td_header_bak3" width="80px">事件编号</td>
+                    <td class="td_header_bak3" width="80px">配置项编号</td>
+                    <td class="td_header_bak3" width="80px">配置项版本</td>
+                </tr>
+              </thead>
+              <tbody id="mytablebody">
+                <% 
+                i = 0
+                for project in @project 
+                %>
+                  <tr>
+                    <td class="td6" >&nbsp;<%=project.PROJECT_NAME%></td>
+                    <td class="td7" >&nbsp;
+                        <% if (project.CAN_USE_FLAG) == "00" %>
+                          <input type="radio" name="project[<%=i%>][CAN_USE_FLAG]" value="00" checked="true">不适用 
+                        <% else %>
+                           <input type="radio" name="project[<%=i%>][CAN_USE_FLAG]" value="00">不适用
+                        <% end %>
+                        <% if (project.CAN_USE_FLAG) == "11" %>
+                          <input type="radio" name="project[<%=i%>][CAN_USE_FLAG]" value="11" checked="true">适用 
+                        <% else %>
+                           <input type="radio" name="project[<%=i%>][CAN_USE_FLAG]" value="11">适用
+                        <% end %>
+                        <input type="hidden" name="project[<%=i%>][ID]" value="<%=project.ID%>">
+                    </td>
+                    <td class="td7" >&nbsp;<%=project.PROJECT_CODE%></td>
+                    <td class="td7" >&nbsp;<%=project.EVENT_CODE%></td>
+                    <td class="td7" >&nbsp;<%=project.CONFIGURE_CODE%></td>
+                    <td class="td7" >&nbsp;<%=project.CONFIGURE_VERS%></td>
+                  </tr>
+                <% 
+                  i = i + 1
+                end 
+                for j in(i.. @maxRows)
+                %>
+                    <tr>
+                    <td class="td6" >&nbsp;</td>
+                    <td class="td7" >&nbsp;</td>
+                    <td class="td7" >&nbsp;</td>
+                    <td class="td7" >&nbsp;</td>
+                    <td class="td7" >&nbsp;</td>
+                    <td class="td7" >&nbsp;</td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </td>
+        <td width="410px" height="100%" valign="top">
+          <div >
+            涉及产品：
+            <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+              <thead>
+                <tr>
+                    <td class="td_header_bak2" width="100px">产品名称</td>
+                    <td class="td_header_bak3" width="80px">产品版本</td>
+                    <td class="td_header_bak3" width="170px">配置项升级后是否适用产品</td>
+                    <td class="td_header_bak3" width="80px">产品编号</td>
+                </tr>
+              </thead>
+              <tbody id="mytablebody">
+                <% 
+                i = 0
+                for software in @software 
+                %>
+                  <tr>
+                    <td class="td6" >&nbsp;<%=software.PRODUCT_NAME%></td>
+                    <td class="td7" >&nbsp;<%=software.PRODUCT_VERS%></td>
+                    <td class="td7" >&nbsp;
+                        <% if (software.CAN_USE_FLAG) == "00" %>
+                          <input type="radio" name="software[<%=i%>][CAN_USE_FLAG]" value="00" checked="true">不适用 
+                        <% else %>
+                           <input type="radio" name="software[<%=i%>][CAN_USE_FLAG]" value="00">不适用
+                        <% end %>
+                        <% if (software.CAN_USE_FLAG) == "11" %>
+                          <input type="radio" name="software[<%=i%>][CAN_USE_FLAG]" value="11" checked="true">适用 
+                        <% else %>
+                           <input type="radio" name="software[<%=i%>][CAN_USE_FLAG]" value="11">适用
+                        <% end %>
+                        <input type="hidden" name="software[<%=i%>][ID]" value="<%=software.ID%>">
+                    </td>
+                    <td class="td7" >&nbsp;<%=software.PRODUCT_CODE%></td>
+                  </tr>
+                <% 
+                  i = i + 1
+                end 
+                for j in(i..@maxRows)
+                %>
+                  <tr>
+                    <td class="td6" >&nbsp;</td>
+                    <td class="td7" >&nbsp;</td>
+                    <td class="td7" >&nbsp;</td>
+                    <td class="td7" >&nbsp;</td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+  </body>
+</html>

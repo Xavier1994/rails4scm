@@ -1,0 +1,133 @@
+<%
+require 'util/util'
+util = Util.new
+%>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+    <%= javascript_include_tag "common" %>
+
+    <script language="javascript">
+
+        //查询按钮
+        function query(){
+            var me = document.forms[0];
+
+            me.submit();
+        }
+        
+        //文本框回车车
+        function onclickText(){
+            if(event.keyCode == 13) {
+                query();
+            }
+        }
+        
+        //点击生命周期按钮
+        function cycle(configure_chg_no){
+            url = "/scm/item/change/item_cycle?configure_chg_no=" + configure_chg_no;
+            //window.open(url);
+            window.showModalDialog(url, "配置项生命周期", "dialogHeight:700px;dialogWidth:900px;help=no;status=0");
+        }
+    </script>
+  </head>
+  <body bgcolor="#F6F6F6">
+  <% form_tag :action =>'index' do %>
+
+  <input type="hidden" name="configure_chg_no_hidden">
+  <table width="1000px">
+     <tr>
+       <td>
+         <table>
+           <tr>
+             <td>
+               配置项编号：<input type="text"  size="10" name="configure_code" onkeydown="onclickText()" value="<%=@configure_code%>" >
+               配置项名称：<input type="text" size="10" name="configure_name" onkeydown="onclickText()" value="<%=@configure_name%>">
+               事件名称：  <input type="text" size="10" name="event_name" onkeydown="onclickText()" value="<%=@event_name%>">
+               项目：
+                 <select name="project_code" style="width:100px">
+                    <option value="">--</option>
+                    <% 
+                    for project in @project
+                      if (project.PROJECT_CODE == @project_code) then
+                    %>
+                        <option selected="true" value="<%=project.PROJECT_CODE%>"><%=project.PROJECT_CODE%></option>
+                    <% else %>   
+                        <option value="<%=project.PROJECT_CODE%>"><%=project.PROJECT_CODE%></option>
+                    <%end end%>
+                 </select>
+
+               状态：      <input type="text" size="10" name="current_status" onkeydown="onclickText()" value="<%=@current_status%>">
+               <input type="button" value="查询" onclick="query()" class="btn3_mouseout">
+             </td>
+           </tr>
+         </table>
+       </td>
+     </tr>
+     <tr>
+       <td width="100%" valign="top">
+         <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <thead id="mytablehead">
+              <tr>
+                <td class="td_header_bak2" width="70px">&nbsp;</td>
+                <td class="td_header_bak3" width="70px">变更标识</td>　
+                <td class="td_header_bak3" width="90px">配置项编号</td>
+                <td class="td_header_bak3" width="200px">配置项名称</td>
+                <td class="td_header_bak3" width="70px">事件标识</td>
+                <td class="td_header_bak3" width="200px">事件名称</td>
+                <td class="td_header_bak3" width="50px">前版本</td>
+                <td class="td_header_bak3" width="50px">后版本</td>
+                <td class="td_header_bak3" width="120px">项目</td>
+                <td class="td_header_bak3" width="80px">当前状态</td>
+              </tr>
+            </thead>
+            <tbody id="mytablebody">
+              <% 
+              j = 1
+              for configure in @configure 
+              %>
+                <tr>
+                  <td class="td6" >&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cycle('<%=configure.CONFIGURE_CHG_NO%>')">生命周期</a>&nbsp;
+                  </td>
+                  <td class="td7" >&nbsp;<%=configure.CONFIGURE_CHG_NO%></td>
+                  <td class="td7" >&nbsp;<%=configure.CONFIGURE_CODE%></td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_1_1"> 
+                        <%=util.intercept(configure.CONFIGURE_NAME, 0, 10)%>
+                    </font>
+                    <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                      <%=configure.CONFIGURE_NAME%> 
+                    </div>
+                  </td>
+                  <td class="td7" >&nbsp;<%=configure.EVENT_CODE%></td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">&nbsp;
+                    <font id="DIV<%=j%>_2_1">
+                        <%=util.intercept(configure.EVENT_NAME,0,10)%>
+                    </font>
+                    <div id="DIV<%=j%>_2_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                      <%=configure.EVENT_NAME%> 
+                    </div>
+                    
+                  </td>
+                  <td class="td7" >&nbsp;<%=configure.PRE_VERSION%></td>
+                  <td class="td7" >&nbsp;<%=configure.AFT_VERSION%></td>
+                  <td class="td7" >&nbsp;<%=configure.PROJECT_CODE%></td>
+                  <td class="td7" >&nbsp;<%=configure.CURRENT_STATUS%></td>
+                </tr>
+              <% j=j+1 end %>
+            </tbody>
+          </table>
+       </td>
+     </tr>
+     <tr>
+       <td><%= will_paginate @configure %></td>
+     </tr>
+  </table>
+<% end %>
+  
+  </body>
+</html>
