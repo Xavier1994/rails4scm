@@ -1,0 +1,269 @@
+<%
+require 'util/util'
+util = Util.new
+%>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+    <%= javascript_include_tag "common" %>
+    <script language="javascript">
+        function click_item(config_code){
+           var me = document.forms[0];
+           me.config_code_hidden.value=config_code;
+           me.submit(); 
+        }
+    </script>
+  </head>
+  <body bgcolor="#F6F6F6">
+  <% form_tag :action =>'index' do %>
+    <input type="hidden" name="config_code_hidden">
+    <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:1000px;height:90%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <tr valign="top">
+          <td width="200px" height="100%" valign="top">
+            <div style="width:260px;height:95%;">
+            配置项:<%=@config_code_hidden%>
+            <table align="center" valign="top" cellpadding=0 cellspacing=0 border=0 style="width:240px;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+              <thead>
+                <tr valign="top">
+                  <td class="td_header_bak2" width="140px" valign="top">配置项名称</td>
+                  <td class="td_header_bak3" width="50px" valign="top">前版本</td>
+                  <td class="td_header_bak3" width="50px" valign="top">后版本</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% 
+                j = 1
+                if (@ConfigureItem != nil)
+                for configureItem in @ConfigureItem 
+                %>
+                  <tr>
+                    <td class="td6" valign="top" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">&nbsp;
+                    
+                        <font id="DIV<%=j%>_1_1">
+                          <%=util.intercept(configureItem.CONFIGURE_NAME, 0, 7)%>
+                        </font>
+                        <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                            <a href="#" onclick="click_item('<%=configureItem.CONFIGURE_CODE%>')"><%=configureItem.CONFIGURE_NAME%></a>
+                        </div>
+                    </td>
+                    <td class="td7" valign="top">&nbsp;<a href="#" onclick="click_item('<%=configureItem.CONFIGURE_CODE%>')"><%=configureItem.PRE_VERSION%></a></td>
+                    <td class="td7" valign="top">&nbsp;<a href="#" onclick="click_item('<%=configureItem.CONFIGURE_CODE%>')"><%=configureItem.AFT_VERSION%></a></td>
+                  </tr>
+                <% j += 1 end 
+                else
+                  for cn in (0..5)
+                %>
+                  <tr>
+                    <td class="td6" valign="top">&nbsp;</td>
+                    <td class="td7" valign="top">&nbsp;</td>
+                    <td class="td7" valign="top">&nbsp;</td>
+                  </tr>
+                <%
+                  end
+                end
+                %>
+              </tbody>
+            </table>
+            <%= will_paginate @ConfigureItem %>
+            </div>
+          </td>
+          <td width="800px" heigth="100%" valign="top">
+            <table align="center" cellpadding=0 cellspacing=0 valign="top" border=0 style="width:100%;height:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+              <tr>
+                <td width="400px" height="50%" valign="top">
+                <!--未升级项目-->
+                  <table align="center" valign="top" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                    <thead valign="top">
+                      <tr >
+                        <td colspan="4">未升级项目</td>
+                      </tr>
+                      <tr valign="top">
+                        <td class="td_header_bak2" width="100px" >项目名称</td>
+                        <td class="td_header_bak3" width="100px" >配置项编号</td>
+                        <td class="td_header_bak3" width="100px" >事件标识</td>
+                        <td class="td_header_bak3" width="100px" >项目编号</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <%
+                      i=0
+                      if(@projectNon != nil) then
+                      for projectNon in @projectNon %>
+                        <tr>
+                          <td class="td6">&nbsp;<%=projectNon.PROJECT_NAME%></td>
+                          <td class="td7">&nbsp;<%=projectNon.CONFIGURE_CODE%></td>
+                          <td class="td7">&nbsp;<%=projectNon.EVENT_CODE%></td>
+                          <td class="td7">&nbsp;<%=projectNon.PROJECT_CODE%></td>
+                        </tr>
+                      <% 
+                        i = i + 1
+                       end
+                       end
+                       if @projectNon == nil or @projectNon.size<1 or i<3 then
+                         for i in (i..3)
+                     
+                      %>
+                        <tr>
+                          <td class="td6">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                        </tr>
+                      <% 
+                      end 
+                      end 
+                      %>
+                    </tbody>
+                  </table>
+                </td>
+                <td width="400px" height="50%" valign="top">
+                <!--已升级项目--> 
+                   <table align="center" valign="top" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                    <thead valign="top">
+                      <tr >
+                        <td colspan="4">已升级项目</td>
+                      </tr>
+                      <tr valign="top">
+                        <td class="td_header_bak2" width="100px" >项目名称</td>
+                        <td class="td_header_bak3" width="100px" >配置项编号</td>
+                        <td class="td_header_bak3" width="100px" >事件标识</td>
+                        <td class="td_header_bak3" width="100px" >项目编号</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% 
+                      i = 0
+                      if(@projectBlock != nil) then
+                      for projectBlock in @projectBlock %>
+                        <tr>
+                          <td class="td6">&nbsp;<%=projectBlock.PROJECT_NAME%></td>
+                          <td class="td7">&nbsp;<%=projectBlock.CONFIGURE_CODE%></td>
+                          <td class="td7">&nbsp;<%=projectBlock.EVENT_CODE%></td>
+                          <td class="td7">&nbsp;<%=projectBlock.PROJECT_CODE%></td>
+                        </tr>
+                      <% 
+                        i = i + 1
+                       end
+                       end
+                       if @projectBlock == nil or @projectBlock.size<1 or i<3 then
+                         for i in (i..3)
+                     
+                      %>
+                        <tr>
+                          <td class="td6">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                        </tr>
+                      <% 
+                      end 
+                      end 
+                      %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td width="400px" height="50%" valign="top">
+                <!--未升级产品-->
+                   <table align="center" valign="top" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                    <thead valign="top">
+                      <tr >
+                        <td colspan="4">未升级产品</td>
+                      </tr>
+                      <tr valign="top">
+                        <td class="td_header_bak2" width="100px" >产品名称</td>
+                        <td class="td_header_bak3" width="100px" >产品版本</td>
+                        <td class="td_header_bak3" width="100px" >配置项编号</td>
+                        <td class="td_header_bak3" width="100px" >事件编号</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% 
+                      i = 0
+                      if(@itemNon != nil) then
+                      for itemNon in @itemNon %>
+                        <tr>
+                          <td class="td6">&nbsp;<%=itemNon.PRODUCT_NAME%></td>
+                          <td class="td7">&nbsp;<%=itemNon.PRODUCT_VERS%></td>
+                          <td class="td7">&nbsp;<%=itemNon.CONFIGURE_CODE%></td>
+                          <td class="td7">&nbsp;<%=itemNon.EVENT_CODE%></td>
+                        </tr>
+                      <% 
+                        i = i + 1
+                       end 
+                       end
+                       if @itemNon == nil or @itemNon.size<1 or i<3 then
+                         for i in (i..3)
+                     
+                      %>
+                        <tr>
+                          <td class="td6">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                        </tr>
+                      <% 
+                      end 
+                      end 
+                      %>
+                    </tbody>
+                  </table>
+                </td>
+                <td width="400px" height="50%" valign="top">
+                <!--已升级产品-->
+                   <table align="center" valign="top" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                    <thead valign="top">
+                      <tr >
+                        <td colspan="4">已升级产品</td>
+                      </tr>
+                      <tr valign="top">
+                        <td class="td_header_bak2" width="100px" >产品名称</td>
+                        <td class="td_header_bak3" width="100px" >产品版本</td>
+                        <td class="td_header_bak3" width="100px" >配置项编号</td>
+                        <td class="td_header_bak3" width="100px" >事件编号</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% 
+                      i = 0
+                      if(@itemblock != nil) then
+                      for itemblock in @itemblock %>
+                        <tr>
+                          <td class="td6">&nbsp;<%=itemblock.PRODUCT_NAME%></td>
+                          <td class="td7">&nbsp;<%=itemblock.PRODUCT_VERS%></td>
+                          <td class="td7">&nbsp;<%=itemblock.CONFIGURE_CODE%></td>
+                          <td class="td7">&nbsp;<%=itemblock.EVENT_CODE%></td>
+                        </tr>
+                      <% 
+                        i = i + 1
+                       end
+                       end
+                       if @itemNon == nil or @itemNon.size<1 or i<3 then
+                         for i in (i..3)
+                     
+                      %>
+                        <tr>
+                          <td class="td6">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                          <td class="td7">&nbsp;</td>
+                        </tr>
+                      <% 
+                      end 
+                      end 
+                      %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>
+  <% end %>
+  </body>
+</html>

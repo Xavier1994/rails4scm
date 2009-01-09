@@ -1,0 +1,250 @@
+<%
+require 'util/util'
+util = Util.new
+%>
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+    <%= javascript_include_tag "common" %>
+    <%= javascript_include_tag "prototype" %>
+    <%= dhtml_calendar_includes %>
+    <script language="javascript">
+        //下拉选择框改变
+        function clickchange() {
+            var me = document.forms[0];
+            vlu = me.xuanze.value;
+            url = '/scm/event/query/note_query/change?vlu=' + vlu;
+            new Ajax.Updater('ajax_xuan_1',url , {asynchronous:true, evalScripts:true});
+            
+        }
+        
+        //选中某个产品/项目
+        function clickPpje(code){
+            var me = document.forms[0];
+            me.guanlian_code.value = code;
+        }
+        
+        //点击查询按钮
+        function query(){
+            var me = document.forms[0];
+            radio = document.getElementsByName("danxuan");
+            if(radio[0].checked == true){ //按时间段
+                if(me.DATA1_data1.value == ""){
+                    alert("请输入' 按时间段查询 '条件中' 开始时间");
+                    return false;
+                }
+                if(me.DATA2_data2.value == ""){
+                    alert("请输入' 按时间段查询 '条件中' 截止时间");
+                    return false;
+                }
+            }
+            if(radio[1].checked == true){//按固定时间
+                if(me.tianshu.value == ""){
+                    alert("请输入' 按固定天数查询 '条件中' 天数 '");
+                    return false
+                }
+            }
+            me.click_hidden.value="1";
+            me.submit();
+        }
+        
+        //点击选中的产品或者项目
+        function clickPpje(code){
+            var me = document.forms[0];
+            me.guanlian_code.value=code;
+            me.click_hidden.value="2";
+            me.submit();
+        }
+
+        //点击生命周期按钮
+        function cycle(event_code){
+            url = "/scm/event/query/event_cycle?event_code=" + event_code;
+            window.showModalDialog(url, "事件生命周期", "dialogHeight:700px;dialogWidth:900px;help=no;status=0");
+        }
+        
+        function shuliang() {
+            var me = document.forms[0];
+            var tianshu = me.tianshu.value;
+            if(tianshu != "") {
+                if(isInteger(tianshu) > 0 ) {
+                  alert("天数必须是正整数,请重新输入");   
+                  me.tianshu.value = "";
+                  me.tianshu.focus();
+                  return false;
+                } 
+            }
+        }
+
+        function init(){
+            var me = document.forms[0];
+            me.xuanze.value = "<%=@xuanze%>";
+            checkvalue="<%=@checkpp%>";
+            if(checkvalue == "1"){
+                me.checkpp.checked = true;
+            }else {
+                me.checkpp.checked = false;
+            }
+            danxuan = "<%=@danxuan%>";
+            if(danxuan == "1"){
+                me.danxuan[0].checked=true;
+            }
+            if(danxuan == "2"){
+                me.danxuan[1].checked=true;
+            }
+        }
+    </script>
+  </head>
+  <body bgcolor="#F6F6F6" onload="init()">
+  <% form_tag :action =>'index' do %>
+  <input type="hidden" name="guanlian_code" value="<%=@code%>" >
+  <input type="hidden" name="click_hidden">
+  <table width="1100px" height="90%">
+     <tr>
+       <td width="150px">
+         <select name="xuanze" style="width:140px" onchange="clickchange()">
+           <option value="0"></option>
+           <option value="1">按产品查询</option>
+           <option value="2">按项目查询</option>
+         </select>
+       </td>
+       <td width="900px" valign="top">
+         <table>
+           <tr>
+             <td><input type="radio" value="1" name="danxuan">按时间段查询:</td>
+             <td>起<%= calendar_box 'DATA1', 'data1',{ :class => 'date',:value =>@qi ,:field_title => 'data1',:button_title => 'Show calendar' }, { :firstDay => 1,:step => 1,:showOthers => true,:cache => true }  %></td>
+             <td>止<%= calendar_box 'DATA2', 'data2',{ :class => 'date',:value =>@jie,:field_title => 'data2',:button_title => 'Show calendar' }, { :firstDay => 1,:step => 1,:showOthers => true,:cache => true }  %></td>
+             <td><input type="radio" value="2" name="danxuan">按固定天数查询</td> 
+             <td><input type="text" size="8" name="tianshu" onkeyup="shuliang()">天</td>
+             <td><input type="checkbox" name="checkpp" value="1">关联产品或项目</td>
+             <td><input type="button" value="查询" onclick="query()" class="btn3_mouseout"></td>
+           </tr>
+         </table>
+       </td>
+     </tr>
+     <tr>
+       <td width="150px" height="100%" valign="top">
+         <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;height:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+           <tr >
+             <td class="td0" id="ajax_xuan_1" height="100%" valign="top">
+               <% if(@msg != nil) %>
+                 <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                 <%
+                   j = 1
+                   for msg in @msg
+                 %> 
+                    <tr>
+                      <td onmouseover="show(this,'msg<%=j%>_1_2','msg<%=j%>_1_1')" onmouseout="hide('msg<%=j%>_1_2','msg<%=j%>_1_1')">
+                        <font id="msg<%=j%>_1_1">
+                            <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="clickPpje('<%=msg.code%>')"><%=util.intercept(msg.name,0,10)%></a>
+                        </font>
+                        <div id="msg<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'msg<%=j%>_1_2','msg<%=j%>_1_1')" onmouseout="hide('msg<%=j%>_1_2','msg<%=j%>_1_1')">
+                            <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="clickPpje('<%=msg.code%>')"><%=msg.name%></a>
+                        </div>
+                      <td>
+                    </tr>                 
+                 <%
+                    j += 1
+                   end
+                 %>
+                 </table>
+               <% else %>
+                 &nbsp;
+               <% end%>
+             </td>
+           </tr>
+         </table>
+       </td>
+       <td width="900px" valign="top" height="100%">
+         <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+              <tr>
+                <td class="td_header_bak2" width="50px">&nbsp;</td>
+                <td class="td_header_bak3" width="80px">事件标识</td>　
+                <td class="td_header_bak3" width="200px">事件名称</td>
+                <td class="td_header_bak3" width="150px">标识事件类型</td>
+                <td class="td_header_bak3" width="100px">(产品)项目名称</td>
+                <td class="td_header_bak3" width="80px">当前阶段</td>
+                <td class="td_header_bak3" width="80px">发起人</td>
+                <td class="td_header_bak3" width="80px">事件发起时间</td>
+              </tr>
+              <% 
+              j = 1
+              if(@eventRecord != nil)
+                for eventRecord in @eventRecord 
+              %>
+              <tr>
+                  <td class="td6" >&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cycle('<%=eventRecord.EVENT_CODE%>')">生命周期</a>&nbsp;
+                  </td>
+                  <td class="td7" >&nbsp;<%=eventRecord.EVENT_CODE%></td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_1_1">
+                        <%=util.intercept(eventRecord.EVENT_NAME, 0, 15)%>
+                    </font>
+                    <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                        <%=eventRecord.EVENT_NAME%>
+                    </div>
+                  </td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_2_1">
+                        <%=util.intercept(eventRecord.M_EVENT_TYPE, 0, 15)%>
+                    </font>
+                    <div id="DIV<%=j%>_2_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
+                        <%=eventRecord.M_EVENT_TYPE%>
+                    </div>
+                  </td>
+                  <td class="td7" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                    &nbsp;
+                    
+                    <font id="DIV<%=j%>_3_1">
+                        <%=util.intercept(eventRecord.PROJECT_CODE, 0, 9)%>
+                    </font>
+                    <div id="DIV<%=j%>_3_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                        <%=eventRecord.PROJECT_CODE%>
+                    </div>
+                  </td>
+                  <td class="td7" >&nbsp;<%=eventRecord.CURRENT_STATUS%></td>
+                  <td class="td7" >&nbsp;<%=eventRecord.EVENT_SPONSOR%></td>
+                  <td class="td7" >&nbsp;<%=util.formatDatatimeToSting(eventRecord.EVENT_TIME)%></td>
+                </tr>
+              <% j=j+1 end 
+              else
+              %>
+                <tr>
+                  <td class="td6" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>　
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                </tr>
+                <tr>
+                  <td class="td6" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>　
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                  <td class="td7" >&nbsp;</td>
+                </tr>
+              <%
+              end
+              %>
+          </table>
+          <%if(@eventRecord != nil)%>
+            <%= will_paginate @eventRecord %>
+          <% end %>
+       </td>
+     </tr>
+  </table>
+<% end %>
+  
+  </body>
+</html>
