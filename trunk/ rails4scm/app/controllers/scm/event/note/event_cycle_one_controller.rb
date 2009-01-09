@@ -48,11 +48,8 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
            begin
              event_prsn01  = @oper.NAME
              date_01       = Time.now
-             k=1
-             for date_0102 in params[:DATA]
-                  dt = date_0102[k.to_i]
-                  date_02 = dt[:data2]
-             end
+             dt = params[:DATA]
+             date_02 = dt[:data2]
              @configureMsgCycleDetYi.EVENT_PRSN01=event_prsn01
              @configureMsgCycleDetYi.DATE_01     =date_01
              @configureMsgCycleDetYi.EVENT_PRSN02=event_prsn02
@@ -76,11 +73,8 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
            begin
              event_prsn02  = @oper.NAME
              date_02       = Time.now
-             k=1
-             for date_0102 in params[:DATA]
-                  dt = date_0102[k.to_i]
-                  date_01 = dt[:data1]
-             end
+             dt = params[:DATA]
+             date_01 = dt[:data1]
              @configureMsgCycleDetEr.EVENT_PRSN01=event_prsn01
              @configureMsgCycleDetEr.DATE_01     =date_01
              @configureMsgCycleDetEr.EVENT_PRSN02=event_prsn02
@@ -124,11 +118,8 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
            begin
              event_prsn01  = @oper.NAME
              date_01       = Time.now
-             k=1
-             for date_0102 in params[:DATA]
-                  dt = date_0102[k.to_i]
-                  date_02 = dt[:data2]
-             end
+             dt = params[:DATA]
+             date_02 = dt[:data2]
              @configureMsgCycleDetYi.EVENT_PRSN01=event_prsn01
              @configureMsgCycleDetYi.DATE_01     =date_01
              @configureMsgCycleDetYi.EVENT_PRSN02=event_prsn02
@@ -155,11 +146,8 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
            begin
              event_prsn02  = @oper.NAME
              date_02       = Time.now
-             k=1
-             for date_0102 in params[:DATA]
-                  dt = date_0102[k.to_i]
-                  date_01 = dt[:data1]
-             end
+             dt = params[:DATA]
+             date_01 = dt[:data1]
              @configureMsgCycleDetEr.EVENT_PRSN01=event_prsn01
              @configureMsgCycleDetEr.DATE_01     =date_01
              @configureMsgCycleDetEr.EVENT_PRSN02=event_prsn02
