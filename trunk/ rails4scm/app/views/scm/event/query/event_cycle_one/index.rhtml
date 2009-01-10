@@ -8,6 +8,13 @@ util = Util.new
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %> 
+    <script language="javascript">
+        //需求变更的配置项
+        function config(){
+            url = "/scm/event/query/need_changed_items?event_code=<%=@event_code%>";
+            window.showModalDialog(url, "更改配置项", "dialogHeight:600px;dialogWidth:950px;");
+        }
+    </script>
   </head>
   <body bgcolor="#F6F6F6">
     <% form_tag :action =>'index' do %>
@@ -119,9 +126,7 @@ util = Util.new
                     <tr>
                       <td class="td6" width="30%" >其他受影响的配置项-说明影响</td>
                       <td class="td7" colspan="">&nbsp;<%=@configureMsgCycleDetEr.REMARK_01%></td>
-                      <td class="td7" colspan="">
-                          &nbsp;
-                      </td>
+                      <td class="td7" colspan=""><input type="button" value="需变更的配置项" onclick="config()" class="btn3_mouseout"></td>
                     </tr>
                     <tr>
                       <td class="td6" width="30%" >估计的纠错工作量</td>
