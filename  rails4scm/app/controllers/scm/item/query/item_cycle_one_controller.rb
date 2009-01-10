@@ -236,9 +236,9 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
       @chg_date01_Yi = util.formatDatatimeToSting(@configureChgCycleDetYi.CHG_DATE01)
     end
     if(@configureChgCycleDetYi.CHG_DATE02 == nil) then
-      @chg_date01_Yi = util.formatDatatimeToSting(Time.now)
+      @chg_date02_Yi = util.formatDatatimeToSting(Time.now)
     else
-      @chg_date01_Yi = util.formatDatatimeToSting(@configureChgCycleDetYi.CHG_DATE02)
+      @chg_date02_Yi = util.formatDatatimeToSting(@configureChgCycleDetYi.CHG_DATE02)
     end
     if(@configureChgCycleDetEr.CHG_DATE01 == nil) then
       @chg_date01_Er = util.formatDatatimeToSting(Time.now)
@@ -246,9 +246,9 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
       @chg_date01_Er = util.formatDatatimeToSting(@configureChgCycleDetEr.CHG_DATE01)
     end
     if(@configureChgCycleDetEr.CHG_DATE02 == nil) then
-      @chg_date01_Er = util.formatDatatimeToSting(Time.now)
+      @chg_date02_Er = util.formatDatatimeToSting(Time.now)
     else
-      @chg_date01_Er = util.formatDatatimeToSting(@configureChgCycleDetEr.CHG_DATE02)
+      @chg_date02_Er = util.formatDatatimeToSting(@configureChgCycleDetEr.CHG_DATE02)
     end
     if(@configureChgCycleDetSa.CHG_DATE01 == nil) then
       @chg_date01_Sa = util.formatDatatimeToSting(Time.now)
@@ -256,9 +256,9 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
       @chg_date01_Sa = util.formatDatatimeToSting(@configureChgCycleDetSa.CHG_DATE01)
     end
     if(@configureChgCycleDetSa.CHG_DATE02 == nil) then
-      @chg_date01_Sa = util.formatDatatimeToSting(Time.now)
+      @chg_date02_Sa = util.formatDatatimeToSting(Time.now)
     else
-      @chg_date01_Sa = util.formatDatatimeToSting(@configureChgCycleDetSa.CHG_DATE02)
+      @chg_date02_Sa = util.formatDatatimeToSting(@configureChgCycleDetSa.CHG_DATE02)
     end
     if(@configureChgCycleDetSi.CHG_DATE01 == nil) then
       @chg_date01_Si = util.formatDatatimeToSting(Time.now)
@@ -266,9 +266,9 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
       @chg_date01_Si = util.formatDatatimeToSting(@configureChgCycleDetSi.CHG_DATE01)
     end
     if(@configureChgCycleDetSi.CHG_DATE02 == nil) then
-      @chg_date01_Si = util.formatDatatimeToSting(Time.now)
+      @chg_date02_Si = util.formatDatatimeToSting(Time.now)
     else
-      @chg_date01_Si = util.formatDatatimeToSting(@configureChgCycleDetSi.CHG_DATE02)
+      @chg_date02_Si = util.formatDatatimeToSting(@configureChgCycleDetSi.CHG_DATE02)
     end
   end
  
