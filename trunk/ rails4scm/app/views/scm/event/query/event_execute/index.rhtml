@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <title></title>
+    <BASE tager="_self">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %> 
+    <base   target=_self>
+  </head>
+  <body bgcolor="#F6F6F6">
+    <% form_tag :action =>'index' do %>
+    <input type="hidden" name="queding_hidden">
+    <input type="hidden" name="event_code" value="<%=@event_code%>">
+    <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <tr>
+          <td height="20px">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="center"><b>项目通知情况</b></td>
+        </tr>
+        <tr>
+          <td >
+            <table align="center" cellpadding=0 cellspacing=0 border=0 style=" width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+               <thead id="mytablehead">
+                  <tr>
+                     <td class="td_header_bak2">项目名称</td>
+                     <td class="td_header_bak3">新配置项存储状态</td>
+                     <td class="td_header_bak3">新配置项存储状态</td>
+                     <td class="td_header_bak3">项目变更通知状态</td>
+                     <td class="td_header_bak3">项目通知描述</td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% 
+                  i = 0
+                  for confChgReprojectProjects in @confChgReprojectProjects 
+                  %>
+                    <tr>
+                      <td class="td6">&nbsp;<%=confChgReprojectProjects.PROJECT_NAME%></td>
+                      <td class="td7">
+                        <% if confChgReprojectProjects.NEW_IDENTIFY_STATUS==@statue[0] then %>
+                          <input type="radio" name="conf[<%=i+1%>][NEW_IDENTIFY_STATUS]" value="已标识" checked="true">已标识
+                        <% else %>
+                          <input type="radio" name="conf[<%=i+1%>][NEW_IDENTIFY_STATUS]" value="已标识">已标识
+                        <% end%>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+			<% if confChgReprojectProjects.NEW_IDENTIFY_STATUS==@statue[1] then %>
+                          <input type="radio" name="conf[<%=i+1%>][NEW_IDENTIFY_STATUS]" value="未标识" checked="true">未标识
+                        <% else %>
+                          <input type="radio" name="conf[<%=i+1%>][NEW_IDENTIFY_STATUS]" value="未标识">未标识
+                        <% end%>
+                      </td>
+                      <td class="td7">
+                        <% if confChgReprojectProjects.NEW_STORE_STATUS==@statue[0] then %>
+                          <input type="radio" name="conf[<%=i+1%>][NEW_STORE_STATUS]" value="已标识" checked="true">已标识
+                        <% else %>
+                          <input type="radio" name="conf[<%=i+1%>][NEW_STORE_STATUS]" value="已标识">已标识
+                        <% end%>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+			<% if confChgReprojectProjects.NEW_STORE_STATUS==@statue[1] then %>
+                          <input type="radio" name="conf[<%=i+1%>][NEW_STORE_STATUS]" value="未标识" checked="true">未标识
+                        <% else %>
+                          <input type="radio" name="conf[<%=i+1%>][NEW_STORE_STATUS]" value="未标识">未标识
+                        <% end%>
+                      </td>
+                      <td class="td7">
+                        <% if confChgReprojectProjects.CHG_CIRC_STATUS==@statue[0] then %>
+                          <input type="radio" name="conf[<%=i+1%>][CHG_CIRC_STATUS]" value="已标识" checked="true">已标识
+                        <% else %>
+                          <input type="radio" name="conf[<%=i+1%>][CHG_CIRC_STATUS]" value="已标识">已标识
+                        <% end%>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+			<% if confChgReprojectProjects.CHG_CIRC_STATUS==@statue[1] then %>
+                          <input type="radio" name="conf[<%=i+1%>][CHG_CIRC_STATUS]" value="未标识" checked="true">未标识
+                        <% else %>
+                          <input type="radio" name="conf[<%=i+1%>][CHG_CIRC_STATUS]" value="未标识">未标识
+                        <% end%>
+                      </td>
+                      <td class="td7">
+                           <input type="text" name="conf[<%=i+1%>][CHG_CIRC_DETAIL]" style="width:100%" value="<%=confChgReprojectProjects.CHG_CIRC_DETAIL%>">  
+                           <input type="hidden" name="conf[<%=i+1%>][ID]" value="<%=confChgReprojectProjects.ID%>">
+                      </td>
+                    </tr>
+                  <% 
+                    i = i + 1
+                  end 
+                  if i<5 then
+                  for j in (i..5)
+                  %>
+                    <tr>
+                      <td class="td6">&nbsp;</td>
+                      <td class="td7">&nbsp;</td>
+                      <td class="td7">&nbsp;</td>
+                      <td class="td7">&nbsp;</td>
+                      <td class="td7">&nbsp;</td>
+                    </tr>
+                  <% end end%>
+               </tbody>
+            </table>
+          </td>
+        </tr>
+    </table>
+    <% end %>
+  </body>
+</html>
