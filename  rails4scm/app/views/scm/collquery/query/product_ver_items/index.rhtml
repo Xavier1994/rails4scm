@@ -13,10 +13,11 @@ util = Util.new
     <%= javascript_include_tag "prototype" %>
     
     <script language="JavaScript">
-      function queryHistory(configueCode){
+      function queryHistory(configueCode,configueName){
                   produtcode=document.getElementById("productCode").value;
                   productvers=document.getElementById("productVers").value;
                   if (produtcode!=null&&produtcode!=""){
+                      document.getElementById("configueName").innerHTML=configueName+"历史版本";
                       url = "/scm/collquery/query/product_ver_items/history?configure_code="+configueCode+"&product_code="+produtcode+"&product_vers="+productvers;
                       var xmlHttp;
                       if(window.ActiveXObject){
@@ -95,7 +96,7 @@ util = Util.new
                         </td>
                         <td class="td7">&nbsp;<%=productItem.H_CONFIG_VERS%></td>
                         <td class="td7">&nbsp;<%=productItem.CUR_STATE%></td>
-                        <td class="td7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="queryHistory('<%=productItem.CONFIGURE_CODE%>')">↓↓↓</a></td>
+                        <td class="td7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="queryHistory('<%=productItem.CONFIGURE_CODE%>','<%=productItem.CONFIGURE_NAME%>')">↓↓↓</a></td>
                         <td class="td7" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
                           &nbsp;
                           <font id="DIV<%=j%>_2_1">
@@ -171,21 +172,16 @@ util = Util.new
       </tr>
       <tr>
         <td valign="top">
-          <div style="overflow-x:auto;overflow-y:auto">
-            <table cellpadding=0 cellspacing=0 border=0 style="width:150px;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+          <div style="overflow-x:auto;overflow-y:auto;width:310px;">
+            <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <hr/>
                   <thead class="td_header_bak2">
                     <tr>
-                        <td  class="td_header_bak2" ><div align="left">配置项历史版本:</div></td>
+                        <td  class="td_header_bak2" width="240px"><div align="center"  id="configueName">配置项历史版本</div></td>
+                        <td  class="td_header_bak3" width="70px"><div align="center"  id="list">&nbsp;</div></td>
                     </tr>
                 </thead>
-                <tbody>
-
-                        <tr>
-                            <td class="td6" id="list">&nbsp;</td>
-                        </tr>
-
-                </tbody>
+                
             </table>
           </div>
         </td>
