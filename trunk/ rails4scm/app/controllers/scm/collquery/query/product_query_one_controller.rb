@@ -32,6 +32,11 @@ class Scm::Collquery::Query::ProductQueryOneController < ApplicationController
     @items =nil
     if @product!=nil&&@product!="" then
        @items = list(pageSize,curPageSize,@product,@productVer)
+       softwareProduct=SoftwareProduct.new
+       softproducts=softwareProduct.getProductByCode(@product)
+       for softproduct in softproducts
+         @productName=softproduct.PRODUCT_NAME
+       end
        @productVers=productVerList(@product)
        @verHtml="<select style=\"width:100px\" name=\"productVer\">"
        if @productVers!=nil then 
@@ -45,6 +50,7 @@ class Scm::Collquery::Query::ProductQueryOneController < ApplicationController
        end
        @verHtml+="</select>"
     end
+    
     @products=productList()
     
   end

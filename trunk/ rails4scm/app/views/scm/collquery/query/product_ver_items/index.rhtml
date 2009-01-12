@@ -17,7 +17,6 @@ util = Util.new
                   produtcode=document.getElementById("productCode").value;
                   productvers=document.getElementById("productVers").value;
                   if (produtcode!=null&&produtcode!=""){
-                      document.getElementById("configueName").innerHTML=configueName+"历史版本";
                       url = "/scm/collquery/query/product_ver_items/history?configure_code="+configueCode+"&product_code="+produtcode+"&product_vers="+productvers;
                       var xmlHttp;
                       if(window.ActiveXObject){
@@ -25,9 +24,9 @@ util = Util.new
                       }else if(window.XMLHttpRequest){
                           xmlHttp=new XMLHttpRequest();
                       }else {return;}
-                      var content="";//构造要携带的数据  
+                      var content="&configueName="+configueName;//构造要携带的数据  
                       xmlHttp.open("GET",url,false);//使用POST方法打开一个到服务器的连接，以异步方式通信  
-                      xmlHttp.send(null);//发送数据 
+                      xmlHttp.send(content);//发送数据 
 
                       if(xmlHttp.readystate==4) //请求状态为4表示成功
                           {
@@ -63,12 +62,12 @@ util = Util.new
                 </tr>
                 <tr>
                   <td class="td_header_bak2" width="150px">配置项名称</td>
+                  <td class="td_header_bak3" width="80px">配置项编号</td>
                   <td class="td_header_bak3" width="70px">配置项版本</td>
                   <td class="td_header_bak3" width="70px">当前状态</td>
                   <td class="td_header_bak3" width="90px">查看历史版本</td>
                   <td class="td_header_bak3" width="100px">配置项说明</td>
                   <td class="td_header_bak3" width="80px">责任人</td>
-                  <td class="td_header_bak3" width="80px">配置项编号</td>
                   <td class="td_header_bak3" width="80px">配置项类别</td>
                   <td class="td_header_bak3" width="80px">状态日期</td>
                   <td class="td_header_bak3" width="200px">存放位置</td>
@@ -94,6 +93,8 @@ util = Util.new
                               <%=productItem.CONFIGURE_NAME%>
                           </div>
                         </td>
+                        
+                        <td class="td7">&nbsp;<%=productItem.CONFIGURE_CODE%></td>
                         <td class="td7">&nbsp;<%=productItem.H_CONFIG_VERS%></td>
                         <td class="td7">&nbsp;<%=productItem.CUR_STATE%></td>
                         <td class="td7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="queryHistory('<%=productItem.CONFIGURE_CODE%>','<%=productItem.CONFIGURE_NAME%>')">↓↓↓</a></td>
@@ -107,7 +108,7 @@ util = Util.new
                           </div>
                         </td>
                         <td class="td7">&nbsp;<%=productItem.CONF_DUTY_PERSON%></td>
-                        <td class="td7">&nbsp;<%=productItem.CONFIGURE_CODE%></td>
+                        
                         <td class="td7" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
                           &nbsp;
                           <font id="DIV<%=j%>_3_1">
@@ -172,16 +173,15 @@ util = Util.new
       </tr>
       <tr>
         <td valign="top">
-          <div style="overflow-x:auto;overflow-y:auto;width:310px;">
+          <div style="overflow-x:auto;overflow-y:auto;width:320px;"  id="list">
             <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <hr/>
                   <thead class="td_header_bak2">
                     <tr>
-                        <td  class="td_header_bak2" width="240px"><div align="center"  id="configueName">配置项历史版本</div></td>
-                        <td  class="td_header_bak3" width="70px"><div align="center"  id="list">&nbsp;</div></td>
+                        <td  class="td_header_bak2" width="240px"><div align="center">配置项名称</div></td>
+                        <td  class="td_header_bak3" width="80px"><div align="center">历史版本</div></td>
                     </tr>
                 </thead>
-                
             </table>
           </div>
         </td>
