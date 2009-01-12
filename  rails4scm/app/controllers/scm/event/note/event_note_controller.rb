@@ -63,7 +63,16 @@ class Scm::Event::Note::EventNoteController < ApplicationController
           for param in hash
            reco=param[1]
            i =param[0].to_i
-           if(i<=rows)
+           au = 0
+           begin
+             reco[:ID]
+             au = 1
+           rescue Exception => e
+             au = 2
+           end
+           puts "Au" + au.to_s + "\r\n"
+           
+           if(au == 1)
              begin
                if (reco.key?(:EVENT_NAME))
                  eventRe = EventRecord.find(reco[:ID])
@@ -89,7 +98,7 @@ class Scm::Event::Note::EventNoteController < ApplicationController
              end
            end
           end
-          if(errcount == 0)
+          if(errcount > 0)
             @message=@tishi[0] + @tishi[3]
           end
        when 3  #É¾³ý
