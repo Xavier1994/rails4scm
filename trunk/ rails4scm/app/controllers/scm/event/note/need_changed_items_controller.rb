@@ -329,7 +329,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
               outText=tempTextArray[0]
               render_text outText
              puts(e.to_s)
-             print e.backtrace.join("[É¾³ýÅäÖÃÏîÒì³£--(/scm/event/note/need_changed_items_controller)]\n")
+             print e.backtrace.join("[Ìí¼ÓÅäÖÃÏîÒì³£--(/scm/event/note/need_changed_items_controller)]\n")
     end
     render_text outText
   end
