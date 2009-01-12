@@ -51,27 +51,22 @@ class Scm::Event::Note::EventNoteController < ApplicationController
     @message = ""
     case click_hidden.to_i
        when 1  #Ìí¼Ó
-          i =0
-          rows = params[:rows_hidden]
-          if(rows == nil || rows == "")
-            rows = 0
-          end
-          rows = rows.to_i
-          
           hash = params[:eventRecord].to_a
           errcount = 0
           for param in hash
            reco=param[1]
-           i =param[0].to_i
            au = 0
            begin
-             reco[:ID]
-             au = 1
+             cnid = reco[:ID]
+             if(cnid == nil || cnid == "")
+               au = 2
+             else
+               au = 1
+             end
            rescue Exception => e
              au = 2
            end
-           puts "Au" + au.to_s + "\r\n"
-           
+ 
            if(au == 1)
              begin
                if (reco.key?(:EVENT_NAME))
