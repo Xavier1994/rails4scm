@@ -48,7 +48,6 @@ util = Util.new
         //点击生命周期按钮
         function cycle(event_code){
             url = "/scm/event/note/event_cycle?event_code=" + event_code;
-
             var redata = window.showModalDialog(url, "事件生命周期", "dialogHeight:700px;dialogWidth:900px;help=no;status=0");
             if(redata == undefined) {
                 var me = document.forms[0];
