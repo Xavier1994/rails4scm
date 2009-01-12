@@ -133,9 +133,43 @@ util = Util.new
                 if(cells_6 == "已关闭"){
                     continue;
                 }
-                cells_3 = detail.rows[i].cells[2].innerText
-                cells_4 = detail.rows[i].cells[3].innerText
-                cells_5 = detail.rows[i].cells[4].innerText
+                
+                kid1   = "eventRecord_" + (i+1) + "_EVENT_NAME";
+                kid2   = "eventRecord_" + (i+1) + "_M_EVENT_TYPE";
+                kid3   = "eventRecord_" + (i+1) + "_PROJECT_CODE";
+                
+                divid1 = "DIV" + (i+1) + "_1_2";
+                divid2 = "DIV" + (i+1) + "_2_2";
+                divid3 = "DIV" + (i+1) + "_3_2";
+                
+                try{
+                    cells_3 = document.getElementById(divid1).innerText 
+                }catch(e){
+                    try{
+                        cells_3 = document.getElementById(kid1).value
+                    }catch(e){
+                        cells_3 = "";
+                    }
+                }
+                try{
+                    cells_4 = document.getElementById(divid2).innerText 
+                }catch(e){
+                    try{
+                        cells_4 = document.getElementById(kid2).value
+                    }catch(e){
+                        cells_4 = "";
+                    }
+                }
+                try{
+                    cells_5 = document.getElementById(divid3).innerText 
+                }catch(e){
+                    try{
+                        cells_5 = document.getElementById(kid3).value
+                    }catch(e){
+                        cells_5 = "";
+                    }
+                }
+                
  
                 cells_3 = jsTrim(cells_3); 
                 cells_4 = jsTrim(cells_4); 
@@ -147,21 +181,18 @@ util = Util.new
 
                 //事件名称
                 kname1 = "eventRecord[" + (i+1) + "][EVENT_NAME]";
-                kid1   = "eventRecord_" + (i+1) + "_EVENT_NAME";
                 text_name2 = kongjian_text(cells_3,kname1,kid1);
                 detail.rows[i].cells[2].setAttribute("align","left"); 
                 detail.rows[i].cells[2].appendChild(text_name2);
                 
                 //标识事件类型
                 kname2 = "eventRecord[" + (i+1) + "][M_EVENT_TYPE]";
-                kid2   = "eventRecord_" + (i+1) + "_M_EVENT_TYPE";
                 text_name3 = kongjian_evetype_select(cells_4,kname2,kid2);
                 detail.rows[i].cells[3].setAttribute("align","left"); 
                 detail.rows[i].cells[3].appendChild(text_name3);
 
                 //项目
-                kname3 = "eventRecord[" + (i+1) + "][PROJECT_CODE]";
-                kid3   = "eventRecord_" + (i+1) + "_PROJECT_CODE";
+                kname3 = "eventRecord[" + (i+1) + "][PROJECT_CODE]";   
                 text_name4 = kongjian_project_select(cells_5,kname3,kid3);
                 detail.rows[i].cells[4].setAttribute("align","left"); 
                 detail.rows[i].cells[4].appendChild(text_name4);
