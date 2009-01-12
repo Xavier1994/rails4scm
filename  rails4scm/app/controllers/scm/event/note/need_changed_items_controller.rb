@@ -198,19 +198,18 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
           flagArray=flagText.split("@")
           if projectList!=nil && projectList.size>0 then
             for project in projectList
-              projectattributenames+=project.CID.to_s+"@"
+              projectattributenames+=project.ID.to_s+"@"
               outText+="<tr>"
               outText+="<td class='td6' width='150px'>&nbsp;"+project.PROJECT_NAME+"</td>"
               if project.CAN_USE_FLAG.strip.to_s=="11" then
-                outText+="<td class='td7' width='100px'><input type='radio' name='project"+project.CID.to_s+"' checked value='"+project.CID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='product"+project.CID.to_s+"'  value='"+project.CID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
+                outText+="<td class='td7' width='100px'><input type='radio' name='project"+project.ID.to_s+"' checked value='"+project.ID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='project"+project.ID.to_s+"'  value='"+project.ID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
               elsif project.CAN_USE_FLAG.strip.to_s=="00" then
-                outText+="<td class='td7' width='100px'><input type='radio' name='project"+project.CID.to_s+"' value='"+project.CID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='product"+project.CID.to_s+"' checked value='"+project.CID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
+                outText+="<td class='td7' width='100px'><input type='radio' name='project"+project.ID.to_s+"' value='"+project.ID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='project"+project.ID.to_s+"' checked value='"+project.ID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
               else 
-                outText+="<td class='td7' width='100px'><input type='radio' name='project"+project.CID.to_s+"' value='"+project.CID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='product"+project.CID.to_s+"' value='"+project.CID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
+                outText+="<td class='td7' width='100px'><input type='radio' name='project"+project.ID.to_s+"' value='"+project.ID.to_s+"@11'>"+flagArray[0].to_s+"</br><input type='radio' name='project"+project.ID.to_s+"' value='"+project.ID.to_s+"@00'>"+flagArray[1].to_s+"</td>"
               end
               outText+="<td class='td7' width='80px'>&nbsp;"+project.PROJECT_CODE+"<input type=\"hidden\" name=\"project_event_code\" value=\""+project.EVENT_CODE+"\">"+"<input type=\"hidden\" name=\"project_configure_code\" value=\""+project.CONFIGURE_CODE+"\">"+"<input type=\"hidden\" name=\"project_configure_vers\" value=\""+project.CONFIGURE_VERS+"\">"+"<input type=\"hidden\" name=\"project_id\" value=\""+project.ID.to_s+"\"></td>"
               outText+="</tr>"
-              outText+="<input type='hidden' name='projectattribute'  value='"+projectattributenames.to_s+"'>"
             end
           else
              outText+="<tr><td class=\"td6\" width=\"150px\">&nbsp;</td><td class=\"td7\" width=\"100px\">&nbsp;</td><td class=\"td7\" width=\"80px\">&nbsp;</td></tr>"
@@ -245,7 +244,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
              outText=textreturnArray[0]
              render_text outText            
              puts(e.to_s)
-             print e.backtrace.join("[删除配置项异常--(/scm/event/note/need_changed_items_controller)]\n")
+             print e.backtrace.join("[查看相关项目和产品异常--(/scm/event/note/need_changed_items_controller)]\n")
           end
           outText+="<input type='hidden' name='productattribute'  value='"+productattributenames.to_s+"'>"
           outText+="</form></tbody></table></div></td></tr></table>"
