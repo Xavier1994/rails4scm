@@ -49,7 +49,7 @@ util = Util.new
     </script>
 <body>
 <% form_tag :action =>'index' do %>
-    <table cellpadding=0 cellspacing=0 border=0 width="1100px" height="100%" align="center">
+    <table cellpadding=0 cellspacing=0 border=0 width="1000px" height="100%" align="center">
       <tr height="20px">
        <td>
          <table>
@@ -99,34 +99,40 @@ util = Util.new
      <tr>
        <td valign="top">
          <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <thead class="td_header_bak2">
             <tr>
-                <td class="td_header_bak2" width="70px">产品代码</td>
-                <td class="td_header_bak3" width="150px">产品名称</td>
-                <td class="td_header_bak3" width="80px">责任人</td>
-                <td class="td_header_bak3" width="80px">配置项代码</td>
-                <td class="td_header_bak3" width="180px">配置项名称</td>
-                <td class="td_header_bak3" width="50px">版本号</td>
-                <td class="td_header_bak3" width="80px">配置项分类</td>
-                <td class="td_header_bak3" width="200px">存放位置</td>
-                <td class="td_header_bak3" width="80px">状态日期</td>
-                <td class="td_header_bak3" width="80px">状态</td>
+                <td colspan="8"><font color="green">华电方胜软件产品（系统）组成配置项清单</font></td>
             </tr>
+            <tr>
+                <td colspan="4" align="left"><font color="green">&nbsp;产品名称：<% if @productName!=nil then %><%=@productName%><% end %>&nbsp;</font></td>
+                <td colspan="4" align="right"><font color="green">&nbsp;产品版本：<% if @productVer!=nil then %><%=@productVer%><% end %>&nbsp;</font></td>
+            </tr>
+            <tr>
+                <td class="td_header_bak2" width="80px">配置项分类</td>
+                <td class="td_header_bak3" width="80px">配置项标识</td>
+                <td class="td_header_bak3" width="150px">配置项名称</td>
+                <td class="td_header_bak3" width="50px">版本号</td>
+                <td class="td_header_bak3" width="80px">状态</td>
+                <td class="td_header_bak3" width="80px">责任人</td>
+                <td class="td_header_bak3" width="80px">状态日期</td>
+                <td class="td_header_bak3" width="200px">存放位置</td>
+                
+            </tr>
+          </thead>
 <% 
 if @items!=nil&&@items.size>0 then
     j = 1
     for item in @items%>
             <tr>
-                <td class="td6">&nbsp;<%=item.PRODUCT_CODE%></td>
-                <td class="td7" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
-                  &nbsp;
-                  <font id="DIV<%=j%>_1_1">
-                    <%=util.intercept(item.PRODUCT_NAME, 0, 15)%>
-                  </font>
-                  <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
-                      <%=item.PRODUCT_NAME%>
-                  </div>
+                <td class="td6" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_3_1">
+                      <%=util.intercept(item.CONFIGURE_TYPE, 0, 5)%>
+                    </font>
+                    <div id="DIV<%=j%>_3_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
+                        <%=item.CONFIGURE_TYPE%>
+                    </div>
                 </td>
-                <td class="td7">&nbsp;<%=item.PRODUCT_CONF_PERSON%></td>
                 <td class="td7">&nbsp;<%=item.CONFIGURE_CODE%></td>
                 <td class="td7" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
                     &nbsp;
@@ -138,15 +144,9 @@ if @items!=nil&&@items.size>0 then
                     </div>
                 </td>
                 <td class="td7">&nbsp;<%=item.CONFIGURE_VERS%></td>
-                <td class="td7" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
-                    &nbsp;
-                    <font id="DIV<%=j%>_3_1">
-                      <%=util.intercept(item.CONFIGURE_TYPE, 0, 5)%>
-                    </font>
-                    <div id="DIV<%=j%>_3_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
-                        <%=item.CONFIGURE_TYPE%>
-                    </div>
-                </td>
+                <td class="td7">&nbsp;<%=item.CUR_STATE%></td>
+                <td class="td7">&nbsp;<%=item.PRODUCT_CONF_PERSON%></td>
+                <td class="td7">&nbsp;<%=util.formatDatatimeToSting(item.STATE_DATE)%></td>
                 <td class="td7" onmouseover="show(this,'DIV<%=j%>_4_2','DIV<%=j%>_4_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
                     &nbsp;
                     <font id="DIV<%=j%>_4_1">
@@ -156,8 +156,6 @@ if @items!=nil&&@items.size>0 then
                         <%=item.CONFIGURE_STORE_ADDR%>
                     </div>
                 </td>
-                <td class="td7">&nbsp;<%=util.formatDatatimeToSting(item.STATE_DATE)%></td>
-                <td class="td7">&nbsp;<%=item.CUR_STATE%></td>
             </tr>
 <%
         j += 1
@@ -172,8 +170,6 @@ else
   %>
             <tr>
                 <td class="td6">&nbsp;</td>
-                <td class="td7">&nbsp;</td>
-                <td class="td7">&nbsp;</td>
                 <td class="td7">&nbsp;</td>
                 <td class="td7">&nbsp;</td>
                 <td class="td7">&nbsp;</td>
