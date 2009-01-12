@@ -52,16 +52,20 @@ class Scm::Collquery::Query::ProductQueryOneController < ApplicationController
   def getvers
     product_code=params[:product_code]
     verHtml=""
-    verHtml+="<select style=\"width:100px\" name=\"productVer\">"
+    
     if product_code!=nil&&product_code!="" then
+      verHtml+="<select style=\"width:100px\" name=\"productVer\">"
       @productVers=productVerList(product_code)
                  if @productVers!=nil then 
                     for productVer in @productVers 
                     verHtml+="<option value=\""+productVer.PRODUCT_VERS+"\">"+productVer.PRODUCT_VERS+"</option>"
                     end 
                 end
+      verHtml+="</select>"
+    else
+      verHtml+="<select></select>"
     end
-    verHtml+="</select>"
+    
     render_text verHtml 
   end
   

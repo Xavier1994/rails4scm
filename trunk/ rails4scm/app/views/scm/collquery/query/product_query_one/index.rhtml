@@ -18,7 +18,7 @@ util = Util.new
         }
         function queryItems(){
             produtcode=document.getElementById("product").value
-            if (produtcode!=null&&produtcode!=""){
+            if (produtcode!=null){
                 url = "/scm/collquery/query/product_query_one/getvers?product_code=" + produtcode;
                 var xmlHttp;
                 if(window.ActiveXObject){
@@ -59,7 +59,7 @@ util = Util.new
 </td>
 <td>
                <select style="width:100px" name="product" id="product" onchange="queryItems()">
-                <option value=""></option>
+                <option value="">ÇëÑ¡Ôñ²úÆ·</option>
                  <% for product in @products%>
                    <% if product.PRODUCT_CODE == @product%>
                      <option value="<%=product.PRODUCT_CODE%>" selected="true"><%=product.PRODUCT_NAME%></option>
