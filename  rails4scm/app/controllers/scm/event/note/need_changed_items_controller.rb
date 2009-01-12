@@ -84,14 +84,14 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
             maxid = argument.max_id(num,"PRJ_CON_RELA")
             k=0
             for i in maxid
-              prjConRela=PrjConRela.new
-              prjConRela.ID=i[0]
-              prjConRela.EVENT_CODE=event_code
-              prjConRela.CONFIGURE_CODE=configureParamsArray[0]
-              prjConRela.CONFIGURE_VERS=configureParamsArray[2]
-              prjConRela.PROJECT_CODE=prjconrelacodeArray[k]
-              prjConRela.CAN_USE_FLAG="0"
-              prjConRela.save
+              confChgReprojectProjects=ConfChgReprojectProjects.new
+              confChgReprojectProjects.ID=i[0]
+              confChgReprojectProjects.EVENT_CODE=event_code
+              confChgReprojectProjects.CONFIGURE_CODE=configureParamsArray[0]
+              confChgReprojectProjects.CONFIGURE_VERS=configureParamsArray[2]
+              confChgReprojectProjects.PROJECT_CODE=prjconrelacodeArray[k]
+              confChgReprojectProjects.CAN_USE_FLAG="0"
+              confChgReprojectProjects.save
               k+=1
             end
           else
