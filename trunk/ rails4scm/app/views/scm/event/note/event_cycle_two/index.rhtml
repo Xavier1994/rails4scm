@@ -2,17 +2,23 @@
   <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= javascript_include_tag "prototype" %>
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %>
     <%= dhtml_calendar_includes %>
     <script language="javascript">
+        //触发变更申请
         function chg(){
           var msg = window.confirm("触发申请将加到变更表，您是否要触发变更申请");
           if(msg) {
               var me = document.forms[0];
-              me.event_chg_hidden.value="4";
-              me.submit();
+              event_code = me.event_code.value;
+              url =  '/scm/event/note/event_cycle_two/chang?event_code=' + event_code;
+              var myAjax = new Ajax.Request(url,{method:"get",parameters:"pars",onComplete: showResponse});
           }
+        }
+        function showResponse(originalRequest){
+            alert(originalRequest.responseText);
         }
 
         function init(){
