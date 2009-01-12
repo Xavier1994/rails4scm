@@ -242,49 +242,6 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
       end
     end
     
-    #触发变更申请
-    if(queding_hidden == "4")
-      eventRecord = EventRecord.new
-      @eventRecordOne = eventRecord.findEventRecor(@event_code)
-      if @eventRecordOne != nil then
-        text = "决策中A@W"
-        textArray = text.split("A@W")
-        if(@eventRecordOne.CURRENT_STATUS == textArray[0]) then
-          re = RelaChgConfigure.new
-          @re = re.findRelaChgConfigure(@event_code)
-          if(@re.size >0) then
-
-            configureChgApp = ConfigureChgApp.new
-            argument = Argument.new
-            configureVersion = ConfigureVersion.new
-            configureChgCycleDet = ConfigureChgCycleDet.new
-            text = "已创建@W已实现@W已批准@W执行@W检出-变更@W"
-            textArray = text.split("@W")
-            max_id = argument.max_id(@re.size, "CONFIGURE_CHG_APP")
-            i = 0
-            for re in (@re)
-              @configureChgApp=configureChgApp.findCount(@event_code, re.CONFIGURE_CODE,re.CONFIGURE_VERS)
-              if(@configureChgApp.size == 0)
-                configureChgApp.inserinto(max_id[i],max_id[i],re.CONFIGURE_CODE,@event_code,@eventRecord.EVENT_NAME,re.CONFIGURE_VERS,@eventRecord.PROJECT_CODE,textArray[0])
-                configureVersion.updateConfigureVersion(re.CONFIGURE_CODE,re.CONFIGURE_VERS,textArray[4], Time.now,@eventRecord.PROJECT_CODE)
-                
-                #生成变更生命周期
-                max_id_cn = argument.max_id(4, "CONFIGURE_CHG_CYCLE_DET")
-                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[0],max_id[i],textArray[0],"0")
-                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[1],max_id[i],textArray[1],"0")
-                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[2],max_id[i],textArray[2],"0")
-                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[3],max_id[i],textArray[3],"0")
-              end
-              i = i + 1
-            end
-            @message = "变更申请触发完成!"
-          end
-        else
-          @message = "事件不在决策中状态,不能触发变更申请,请提交到决策中状态!"
-        end
-      end
-    end
-    
     @eventRecord = eventRecord.findEventRecor(@event_code)
     @quarters_validate = validate_two(@eventRecord.CURRENT_STATUS,@oper.OPER_ID)
     
@@ -327,6 +284,51 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
     else
       @date_02_Sa = util.formatDatatimeToSting(@configureMsgCycleDetSa.DATE_02)
     end
+  end
+  
+  def chang
+    eventRecord = EventRecord.new
+    @event_code = params[:event_code]
+    
+    @eventRecordOne = eventRecord.findEventRecor(@event_code)
+    if @eventRecordOne != nil then
+        text = "决策中A@W"
+        textArray = text.split("A@W")
+        if(@eventRecordOne.CURRENT_STATUS == textArray[0]) then
+          re = RelaChgConfigure.new
+          @re = re.findRelaChgConfigure(@event_code)
+          if(@re.size >0) then
+
+            configureChgApp = ConfigureChgApp.new
+            argument = Argument.new
+            configureVersion = ConfigureVersion.new
+            configureChgCycleDet = ConfigureChgCycleDet.new
+            text = "已创建@W已实现@W已批准@W执行@W检出-变更@W"
+            textArray = text.split("@W")
+            max_id = argument.max_id(@re.size, "CONFIGURE_CHG_APP")
+            i = 0
+            for re in (@re)
+              @configureChgApp=configureChgApp.findCount(@event_code, re.CONFIGURE_CODE,re.CONFIGURE_VERS)
+              if(@configureChgApp.size == 0)
+                configureChgApp.inserinto(max_id[i],max_id[i],re.CONFIGURE_CODE,@event_code,@eventRecord.EVENT_NAME,re.CONFIGURE_VERS,@eventRecord.PROJECT_CODE,textArray[0])
+                configureVersion.updateConfigureVersion(re.CONFIGURE_CODE,re.CONFIGURE_VERS,textArray[4], Time.now,@eventRecord.PROJECT_CODE)
+                
+                #生成变更生命周期
+                max_id_cn = argument.max_id(4, "CONFIGURE_CHG_CYCLE_DET")
+                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[0],max_id[i],textArray[0],"0")
+                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[1],max_id[i],textArray[1],"0")
+                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[2],max_id[i],textArray[2],"0")
+                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[3],max_id[i],textArray[3],"0")
+              end
+              i = i + 1
+            end
+            @message = "变更申请触发完成!"
+          end
+        else
+          @message = "事件不在决策中状态,不能触发变更申请,请提交到决策中状态!"
+        end
+    end
+    render_text @message
   end
   
 private
