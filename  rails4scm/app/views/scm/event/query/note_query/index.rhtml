@@ -116,10 +116,12 @@ util = Util.new
              <td><input type="radio" value="1" name="danxuan">按时间段查询:</td>
              <td>起<%= calendar_box 'DATA1', 'data1',{ :class => 'date',:value =>@qi ,:field_title => 'data1',:button_title => 'Show calendar' }, { :firstDay => 1,:step => 1,:showOthers => true,:cache => true }  %></td>
              <td>止<%= calendar_box 'DATA2', 'data2',{ :class => 'date',:value =>@jie,:field_title => 'data2',:button_title => 'Show calendar' }, { :firstDay => 1,:step => 1,:showOthers => true,:cache => true }  %></td>
+             <td rowspan="2" ><input type="button" value="查询" onclick="query()" class="btn3_mouseout"></td>
+           </tr>
+           <tr>
              <td><input type="radio" value="2" name="danxuan">按固定天数查询</td> 
              <td><input type="text" size="8" name="tianshu" onkeyup="shuliang()">天</td>
              <td><input type="checkbox" name="checkpp" value="1">关联产品或项目</td>
-             <td><input type="button" value="查询" onclick="query()" class="btn3_mouseout"></td>
            </tr>
          </table>
        </td>
