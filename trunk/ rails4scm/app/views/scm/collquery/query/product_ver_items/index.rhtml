@@ -56,9 +56,9 @@ util = Util.new
             <table cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
               <thead class="td_header_bak2">
                 <tr>
-                  <td colspan="3"><div align="left">产品名称:<% if @product_name!=nil then %><%=@product_name%><%end%></div></td>
-                  <td colspan="2"><div align="left">产品版本:<% if @product_vers!=nil then %><%=@product_vers%><%end%></div></td>
-                  <td colspan="8"><div align="left">对应的配置项如下:</div></td>
+                  <td colspan="3"><div align="left"><font color="green">产品名称:<% if @product_name!=nil then %><%=@product_name%><%end%></font></div></td>
+                  <td colspan="2"><div align="left"><font color="green">产品版本:<% if @product_vers!=nil then %><%=@product_vers%><%end%></font></div></td>
+                  <td colspan="8"><div align="left"><font color="green">对应的配置项如下:</font></div></td>
                 </tr>
                 <tr>
                   <td class="td_header_bak2" width="150px">配置项名称</td>
@@ -173,9 +173,10 @@ util = Util.new
         <td valign="top">
           <div style="overflow-x:auto;overflow-y:auto">
             <table cellpadding=0 cellspacing=0 border=0 style="width:150px;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
-                <thead class="td_header_bak2">
+                <hr/>
+                  <thead class="td_header_bak2">
                     <tr>
-                        <td ><div align="left">配置项历史版本:</div></td>
+                        <td  class="td_header_bak2" ><div align="left">配置项历史版本:</div></td>
                     </tr>
                 </thead>
                 <tbody>
