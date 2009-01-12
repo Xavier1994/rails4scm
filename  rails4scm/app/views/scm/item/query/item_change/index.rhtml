@@ -90,7 +90,17 @@ util = Util.new
                 if(cells_9 == "¹Ø±Õ" || cells_9 == "ÒÑ·Ï³ý"){
                     continue;
                 }
-                cells_7 = detail.rows[i].cells[7].innerText
+                kid = "configure_" + j + "_AFT_VERSION";
+                 try{
+                    cells_7 = document.getElementById(kid).value
+                }catch(e){
+                    try{
+                        cells_7 = detail.rows[i].cells[7].innerText
+                    }catch(e){
+                        cells_7 = "";
+                    }
+                }
+                
                 hid = "configure" + (i+1) + "ID";
                 hvalue = document.getElementById(hid).value;
                 
