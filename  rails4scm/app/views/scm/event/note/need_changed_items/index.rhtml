@@ -391,120 +391,35 @@ function projectproducesubmit(){
   <body onload="load();">
     <table cellpadding=0 cellspacing=0 border=0 width=“1000px” height="400px">
       <tr>
-        <td height="10px" colspan="1"><font style="font-weight:bold" color="green">&nbsp;当前事件：<%=@event_name%></font></td>
-        <td >&nbsp;</td>
+        <td width="450px"  height="10px" colspan="1"><font style="font-weight:bold" color="green">&nbsp;当前事件：<%=@event_name%></font></td>
         <td ><font style="font-weight:bold" color="green">&nbsp;项目：<%=@project_name%></font></td>
       </tr>
       <tr>
-        <td valign="top" width="400px" height="390px">
-          <div style="overflow-x:auto;overflow-y:auto;width:400px;height:650px">
-            <iframe name="source" id="source" width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" src="/scm/event/note/need_source_items?<%=@event_code%>"> </iframe>  
-          </div>
-        </td>
-        <td align="center" valign="middle" width="20px" height="390px">
-          <div style="overflow-x:auto;overflow-y:auto">
-            <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
-                <tr >
-                    <td valign="middle" align="center">
-                        <input type="button" value=">>" onclick="add()" class="btn3_mouseout">
+        <td valign="top" width="450px" height="390px">
+          <table align="center" cellpadding=0 cellspacing=0 border=1 style="width:100%;height:390px;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+            <tr>
+              <td height="380px">
+                <div style="overflow-x:auto;overflow-y:auto;width:450px;height:605px">
+                    <iframe name="source" id="source" width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" src="/scm/event/note/need_source_items?<%=@event_code%>"> </iframe>  
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td valign=top align=center style="height:37px">
+                 <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height:37px;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+                   <tr>
+                     <td  align="center">
                         <input type="hidden" name="event_code" id="event_code" value="<%=@event_code%>">
+                        <input type="button" value="添加" onclick="add()" class="btn3_mouseout">&nbsp;<input type="button" value="删除" onclick="deleteItem()" class="btn3_mouseout">
                     </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" align="center">
-                        <input type="button" value="<<" onclick="deleteItem()" class="btn3_mouseout">
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-<tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="middle" align="center">
-                        &nbsp;
-                    </td>
-                </tr>
-            </table>
-          </div>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
         </td>
-        <td valign="top"  width="570px" height="390px">
-            <table valign="top" cellpadding=0 cellspacing=0 border=1 style="height=390px;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <td valign="top"  width="570px" height="370px">
+            <table valign="top" cellpadding=0 cellspacing=0 border=1 style="height:390px;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                 <tr>
                   <td valign="top" height="180px">
                     <div style="overflow-x:auto;overflow-y:auto;height:300px;">
@@ -589,26 +504,25 @@ function projectproducesubmit(){
                   </td>
                 </tr>
                 <tr>
-                    <td  valign="top" height="15px">
+                    <td  valign="top" height="10px">
                         <table valign="top" cellpadding=0 cellspacing=0 border=0 style="height:10px;width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
                             
                             <tr>
                                 <td >
                                   &nbsp;&nbsp;
                                   <input align="center" type="button" onclick="projectsubmit()" name="projectbutton" class="btn3_mouseout" value="项目升级确认">
-                                  &nbsp;&nbsp;
                                 </td>
                                 <td >
                                   <input align="center" type="button" onclick="projectproducesubmit()" name="bothbutton" class="btn3_mouseout" value="项目升级和产品升级一并确认">
                                 </td>
                                 <td >
-                                  &nbsp;&nbsp;
                                   <input align="center" type="button" onclick="productsubmit()" name="productbutton" class="btn3_mouseout" value="产品升级确认">
                                   &nbsp;&nbsp;
                                 </td>
                             </tr>
- <tr><td colspan="3">&nbsp;
-                            </td>
+                            <tr>
+                              <td colspan="3">&nbsp;
+                              </td>
                             </tr>
                         </table>
                     </td>
