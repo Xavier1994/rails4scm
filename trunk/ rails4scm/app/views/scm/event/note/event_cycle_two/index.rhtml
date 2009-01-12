@@ -53,6 +53,9 @@
           if(message != ""){
               alert(message);
               window.parent.frames["cycle_iframe_one"].location.href="/scm/event/note/event_cycle_one?event_code=<%=@event_code%>";
+              if(vlw == "B"){
+                    window.parent.selectTab('EVENT_CYCLE_DIV');
+                }
           }
         }
       
