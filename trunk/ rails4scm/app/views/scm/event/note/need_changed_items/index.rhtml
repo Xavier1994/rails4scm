@@ -264,6 +264,7 @@ function projectsubmit(){
             for(i=0;i<projecttempArray.length;i++){//逐行取参数
                 if(projecttempArray[i]!=null&&projecttempArray[i]!=""){
                     if(document.getElementsByName("project"+projecttempArray[i])!=null){
+                        
                         if(document.getElementsByName("project"+projecttempArray[i])[0].checked){
                             projectparams+=document.getElementsByName("project"+projecttempArray[i])[0].value+"|@";
                         }
