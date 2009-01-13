@@ -9,7 +9,7 @@ util = Util.new
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %>
     <%= javascript_include_tag "common" %>
-    
+    <%= javascript_include_tag "prototype" %>
     <style>
             .textback {
                     background-color:#73A5E7;
@@ -46,20 +46,27 @@ util = Util.new
         }
         
         //点击生命周期按钮
-        function cycle(event_code){
+        function cycle(event_code,cn){
             url = "/scm/event/note/event_cycle?event_code=" + event_code;
             var redata = window.showModalDialog(url, "事件生命周期", "dialogHeight:700px;dialogWidth:900px;help=no;status=0");
             if(redata == undefined) {
-                var me = document.forms[0];
-                clickobject = me.click_hidden;
-                clickobject.value = "";
-                me.submit();
+                 url =  '/scm/event/note/event_note/chang?event_code=' + event_code + "&cn=" + cn;
+                 new Ajax.Request(url,{method:"get",parameters:"",onComplete: showResponse});
            } 
+        }
+        function showResponse(originalRequest){
+            if(originalRequest.responseText != "") {
+                var detail = document.getElementById("mytablebody");
+                text = originalRequest.responseText;
+                textArray = text.split("@W");
+                cn = textArray[0];
+                detail.rows[cn-1].cells[5].innerText=textArray[1];
+            }
         }
         
         //点击添加按钮
         function add(){   
-            var quarters_validate = "<%=@quarters_validate%>"
+            var quarters_validate = "<%=@quarters_validate%>";
             if(quarters_validate =="-1" || quarters_validate == "") {
                 alert("对不起，你没有这个权限!");
                 return false;
@@ -317,17 +324,30 @@ util = Util.new
         }
         
         //状态回溯
-        function state(event_code,id){
+        function state(event_code,id,cn){
             url = "/scm/event/note/event_stat?event_code=" + event_code;
             var redata = window.showModalDialog(url, "状态回溯", "dialogHeight:200px;dialogWidth:500px;");
             if(redata != null){
-                var me = document.forms[0];
-                me.click_hidden.value="4";
-                me.current_stat.value  = redata.current_stat;
-                me.delete_ID_hidden.value = id;
-                me.submit();
+                cur = redata.current_stat;
+                url = "/scm/event/note/event_note/statute?cn=" + cn + "&id=" + id + "&current_stat=" + cur;
+                new Ajax.Request(url,{method:"post",parameters:"",onComplete: showState});
             }
         }
+        function showState(originalRequest){
+            if(originalRequest.responseText != "") {
+                var detail = document.getElementById("mytablebody");
+                text = originalRequest.responseText;
+                textArray = text.split("@W");
+                if(textArray[0] == ""){
+                    alert(textArray[2]);
+                }else {
+                    cn = textArray[0];
+                    detail.rows[cn-1].cells[5].innerText=" " + textArray[1];
+                    alert(textArray[2]);
+                }
+            }
+        }
+  
     </script>
   </head>
   <body bgcolor="#F6F6F6" onload="init()">
@@ -377,8 +397,8 @@ util = Util.new
                 <tr>
                   <td class="td6" >&nbsp;
                      <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="delet('<%=eventRecord.ID%>','<%=eventRecord.EVENT_SPONSOR%>','<%=eventRecord.CURRENT_STATUS%>')">删除</a>&nbsp;
-                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cycle('<%=eventRecord.EVENT_CODE%>')">生命周期</a>&nbsp;
-                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="state('<%=eventRecord.EVENT_CODE%>','<%=eventRecord.ID%>')">状态回溯</a>&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cycle('<%=eventRecord.EVENT_CODE%>','<%=j%>')">生命周期</a>&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="state('<%=eventRecord.EVENT_CODE%>','<%=eventRecord.ID%>','<%=j%>')">状态回溯</a>&nbsp;
                      <input type="hidden" name="eventRecord[<%=j%>][ID]" id="record<%=j%>ID" value="<%=eventRecord.ID%>">
                   </td>
                   <td class="td7" >&nbsp;<%=eventRecord.EVENT_CODE%></td>
