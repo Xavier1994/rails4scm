@@ -272,7 +272,48 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
       @chg_date02_Si = util.formatDatatimeToSting(@configureChgCycleDetSi.CHG_DATE02)
     end
   end
- 
+  
+  def chang
+    @configure_chg_no = params[:configure_chg_no]
+    @configurechg = ConfigureChgApp.find(@configure_chg_no)
+    aft_version = @configurechg.AFT_VERSION
+    tijiao = "提交@W状态数据成功!@W状态数据失败!@W保存@W更改状态成功!@W您还没有确定后版本号，请先确定后版本号@W此版本已生成,您的后版本号可能不是最新@W执行成功@W"
+    tijiaoArr = tijiao.split("@W")
+    @message = ""
+    if(aft_version == nil || aft_version == "")
+      @message = tijiaoArr[5]
+    else
+
+      #configure = ConfigureVers.findConfigureVers(@configurechg.CONFIGURE_CODE,@configurechg.AFT_VERSION)
+      configure = ConfigureVers.find(:all,:conditions =>["configure_code=? and configure_vers=?",@configurechg.CONFIGURE_CODE,@configurechg.AFT_VERSION])
+      if(configure.size>0)
+        @message = tijiaoArr[6]
+      else
+        argument = Argument.new
+        num = 1
+        maxid = argument.max_id(num,"CONFIGURE_VERSION")
+        for j in (maxid)
+          st = "受控@W"
+          str = st.split("@W")
+          conf = ConfigureVers.new
+          conf.ID=j[0]
+          conf.id=j[0]
+          conf.CONFIGURE_CODE=@configurechg.CONFIGURE_CODE
+          conf.CONFIGURE_VERS=@configurechg.AFT_VERSION
+          conf.CUR_STATE=str[0]
+          conf.STATE_DATE=Time.now
+          conf.VER_RELEASE=nil
+          conf.COMMENT=@configurechg.CONFIGURE_CHG_NO
+          conf.save
+
+          @message = tijiaoArr[7]
+        end
+      end
+    end
+      
+    render :text=> @message
+  end
+  
  private
    def validate(cur_state,oper_id)
      tijiao = "提交到@W关闭事件@W"
