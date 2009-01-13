@@ -147,9 +147,9 @@ class Scm::Event::Note::EventNoteController < ApplicationController
     event = EventRecord.find(:first,:conditions =>["event_code =?",event_code])
     if(event != nil)
       text = cn + "@W" + event.CURRENT_STATUS
-      render_text text
+      render :text=> text
     else
-      render_text ""
+      render :text=> ""
     end
   end
   
@@ -170,7 +170,7 @@ class Scm::Event::Note::EventNoteController < ApplicationController
     rescue Exception => e
        text = "@W@W" + textArray[1]
     end
-    render_text text
+    render :text=> text
   end
   
   private
