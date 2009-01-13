@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %>
+    <%= javascript_include_tag "prototype" %>
     <%= dhtml_calendar_includes %>
     <script language="javascript">
         function chg(){
@@ -68,9 +69,13 @@
         
         //执行按钮
         function execute_info(){
-           var me = document.forms[0];
-           me.click_hidden.value="4";
-           me.submit();
+           url =  "/scm/item/query/item_cycle_one/chang?configure_chg_no=<%=@configure_chg_no%>";
+           new Ajax.Request(url,{method:"get",parameters:"",onComplete: showResponse});
+        }
+        function showResponse(originalRequest){
+            if(originalRequest.responseText != "") {
+                alert(originalRequest.responseText);
+            }
         }
 
         //变更描述
