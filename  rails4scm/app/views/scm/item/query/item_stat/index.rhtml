@@ -52,9 +52,9 @@
                            for param in @param
                              if @configure.CURRENT_STATUS == param.PARAM_NAME
                            %> 
-                              <option selected="true" value="<%=param.PARAM_NAME%>"><%=param.PARAM_NAME%></option>
+                              <option selected="true" value="<%=param.PARAM_CODE%>"><%=param.PARAM_NAME%></option>
                            <% else%>
-                              <option value="<%=param.PARAM_NAME%>"><%=param.PARAM_NAME%></option>
+                              <option value="<%=param.PARAM_CODE%>"><%=param.PARAM_NAME%></option>
                            <% end end %>
                         </select>
                       </td>
