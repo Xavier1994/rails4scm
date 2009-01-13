@@ -23,7 +23,7 @@ util = Util.new
   </head>
   <body bgcolor="#F6F6F6" >
   <% form_tag :action =>'index' do %>
-  <table width="1000px" cellpadding=0 cellspacing=0 border=0 >
+  <table width="1170px" cellpadding=0 cellspacing=0 border=0 >
      <tr valign="top">
        <td height="10px">
          <table cellpadding=0 cellspacing=0 border=0>
@@ -43,15 +43,15 @@ util = Util.new
          <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
             <thead >
               <tr>
-                <td class="td_header_bak2" width="">配置项编号</td>　
-                <td class="td_header_bak3" width="">配置项名称</td>
-                <td class="td_header_bak3" width="">配置项类别</td>
-                <td class="td_header_bak3" width="">发布日期</td>
-                <td class="td_header_bak3" width="">发布人</td>
-                <td class="td_header_bak3" width="">配置项说明</td>
-                <td class="td_header_bak3" width="">存放位置</td>
-                <td class="td_header_bak3" width="">开发库目录</td>
-                <td class="td_header_bak3" width="">配置责任人</td>
+                <td class="td_header_bak2" width="80px">配置项编号</td>　
+                <td class="td_header_bak3" width="175px">配置项名称</td>
+                <td class="td_header_bak3" width="150px">配置项类别</td>
+                <td class="td_header_bak3" width="80px">发布日期</td>
+                <td class="td_header_bak3" width="80px">发布人</td>
+                <td class="td_header_bak3" width="175px">配置项说明</td>
+                <td class="td_header_bak3" width="175px">存放位置</td>
+                <td class="td_header_bak3" width="175px">开发库目录</td>
+                <td class="td_header_bak3" width="80px">配置责任人</td>
               </tr>
             </thead>
             <tbody >
@@ -65,16 +65,16 @@ util = Util.new
                   <td class="td7" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
                     &nbsp;
                     <font id="DIV<%=j%>_1_1">
-                      <%=util.intercept(configureItem.CONFIGURE_NAME, 0, 15)%>
+                      <%=util.intercept(configureItem.CONFIGURE_NAME, 0, 10)%>
                     </font>
-                    <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                    <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:175px;POSITION:absolute;word-wrap:break-word;word-break:break-all" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
                         <%=configureItem.CONFIGURE_NAME%>
                     </div>
                   </td>
                   <td class="td7" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
                     &nbsp;
                     <font id="DIV<%=j%>_2_1">
-                      <%=util.intercept(configureItem.CONFIGURE_TYPE, 0, 15)%>
+                      <%=util.intercept(configureItem.CONFIGURE_TYPE, 0, 8)%>
                     </font>
                     <div id="DIV<%=j%>_2_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_2_2','DIV<%=j%>_2_1')" onmouseout="hide('DIV<%=j%>_2_2','DIV<%=j%>_2_1')">
                         <%=configureItem.CONFIGURE_TYPE%>
@@ -85,7 +85,7 @@ util = Util.new
                   <td class="td7" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
                     &nbsp;
                     <font id="DIV<%=j%>_3_1">
-                      <%=util.intercept(configureItem.CONFIGURE_REMARK, 0, 15)%>
+                      <%=util.intercept(configureItem.CONFIGURE_REMARK, 0, 10)%>
                     </font>
                     <div id="DIV<%=j%>_3_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_3_2','DIV<%=j%>_3_1')" onmouseout="hide('DIV<%=j%>_3_2','DIV<%=j%>_3_1')">
                         <%=configureItem.CONFIGURE_REMARK%>
@@ -94,16 +94,16 @@ util = Util.new
                   <td class="td7" onmouseover="show(this,'DIV<%=j%>_4_2','DIV<%=j%>_4_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
                     &nbsp;
                     <font id="DIV<%=j%>_4_1">
-                      <%=util.intercept(configureItem.CONFIGURE_STORE_ADDR, 0, 15)%>
+                      <%=util.intercept(configureItem.CONFIGURE_STORE_ADDR, 0, 10)%>
                     </font>
-                    <div id="DIV<%=j%>_4_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_4_2','DIV<%=j%>_4_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
+                    <div id="DIV<%=j%>_4_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:175;POSITION:absolute;word-wrap:break-word;word-break:break-all" onmouseover="show(this,'DIV<%=j%>_4_2','DIV<%=j%>_4_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
                         <%=configureItem.CONFIGURE_STORE_ADDR%>
                     </div>
                   </td>
                   <td class="td7" onmouseover="show(this,'DIV<%=j%>_5_2','DIV<%=j%>_5_1')" onmouseout="hide('DIV<%=j%>_5_2','DIV<%=j%>_5_1')">
                     &nbsp;
                     <font id="DIV<%=j%>_5_1">
-                      <%=util.intercept(configureItem.DEVELOP_PATH, 0, 15)%>
+                      <%=util.intercept(configureItem.DEVELOP_PATH, 0, 10)%>
                     </font>
                     <div id="DIV<%=j%>_5_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_5_2','DIV<%=j%>_5_1')" onmouseout="hide('DIV<%=j%>_4_2','DIV<%=j%>_4_1')">
                         <%=configureItem.DEVELOP_PATH%>
