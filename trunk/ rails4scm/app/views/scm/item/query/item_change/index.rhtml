@@ -8,6 +8,7 @@ util = Util.new
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %>
     <%= javascript_include_tag "common" %>
+    <%= javascript_include_tag "prototype" %>
     <style>
             .textback {
                     background-color:#73A5E7;
@@ -37,43 +38,74 @@ util = Util.new
         }
         
         //点击生命周期按钮
-        function cycle(configure_chg_no){
+        function cycle(configure_chg_no,cn){
             url = "/scm/item/query/item_cycle?configure_chg_no=" + configure_chg_no;
             //window.open(url);
             var redata = window.showModalDialog(url, "配置项生命周期", "dialogHeight:700px;dialogWidth:900px;help=no;status=0");
             if(redata == undefined) {
-                var me = document.forms[0];
-                //clickobject = me.click_hidden;
-                //clickobject.value = "";
-                me.submit();
+                url =  "/scm/item/query/item_change/chang?configure_code=" + configure_chg_no + "&cn=" + cn;
+                 new Ajax.Request(url,{method:"get",parameters:"",onComplete: showResponse});
             }
         }
-        
+        function showResponse(originalRequest){
+            if(originalRequest.responseText != "") {
+                var detail = document.getElementById("mytablebody");
+                text = originalRequest.responseText;
+                textArray = text.split("@W");
+                cn = textArray[0];
+                detail.rows[cn-1].cells[9].innerText=" " + textArray[1];
+            }
+        }
+
         //状态回溯
-        function state(configure_chg_no){
+        function state(configure_chg_no,id,cn){
             url = "/scm/item/query/item_stat?configure_chg_no=" + configure_chg_no;
             var redata = window.showModalDialog(url, "状态回溯", "dialogHeight:200px;dialogWidth:500px;");
             if(redata != null){
-                var me = document.forms[0];
-                me.click_hidden.value="2";
-                me.current_stat.value  = redata.current_stat;
-                me.configure_chg_no_hidden.value = configure_chg_no;
-                me.submit();
+                cur = redata.current_stat;
+                url = "/scm/item/query/item_change/statute?cn=" + cn + "&id=" + id + "&current_stat=" + cur;
+                new Ajax.Request(url,{method:"post",parameters:"",onComplete: showState});
+            }
+        }
+        function showState(originalRequest){
+            if(originalRequest.responseText != "") {
+                var detail = document.getElementById("mytablebody");
+                text = originalRequest.responseText;
+                textArray = text.split("@W");
+                if(textArray[0] == ""){
+                    alert(textArray[2]);
+                }else {
+                    cn = textArray[0];
+                    detail.rows[cn-1].cells[9].innerText=" " + textArray[1];
+                    alert(textArray[2]);
+                }
             }
         }
         
         //作废
-        function cancel(configure_chg_no) {
+        function cancel(id,cn) {
             var msg = window.confirm("确认要作废");
             window.status = (msg)?"true":"false";
             if(msg) {
-              var me = document.forms[0];
-              me.click_hidden.value="3";
-              me.current_stat.value  = "已废除";
-              me.configure_chg_no_hidden.value = configure_chg_no;
-              me.submit();
+              url = "/scm/item/query/item_change/cancle?cn=" + cn + "&id=" + id ;
+              new Ajax.Request(url,{method:"post",parameters:"",onComplete: showCancle});
             }
         }
+        function showCancle(originalRequest){
+            if(originalRequest.responseText != "") {
+                var detail = document.getElementById("mytablebody");
+                text = originalRequest.responseText;
+                textArray = text.split("-");
+                if(textArray[0] == ""){
+                    alert(textArray[1]);
+                }else {
+                    cn = textArray[0];
+                    detail.rows[cn-1].cells[9].innerText=" 已废除";
+                    alert(textArray[1]);
+                }
+            }
+        }
+
         //点击修改按钮
         function update(){
             var me = document.forms[0];
@@ -223,9 +255,9 @@ util = Util.new
               %>
                 <tr>
                   <td class="td6" >&nbsp;
-                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cycle('<%=configure.CONFIGURE_CHG_NO%>')">生命周期</a>&nbsp;
-                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="state('<%=configure.CONFIGURE_CHG_NO%>')">状态回溯</a>&nbsp;
-                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cancel('<%=configure.CONFIGURE_CHG_NO%>')">作废</a>&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cycle('<%=configure.CONFIGURE_CHG_NO%>','<%=j%>')">生命周期</a>&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="state('<%=configure.CONFIGURE_CHG_NO%>','<%=configure.ID%>','<%=j%>')">状态回溯</a>&nbsp;
+                     <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="cancel('<%=configure.ID%>','<%=j%>')">作废</a>&nbsp;
                      <input type="hidden" id="configure<%=j%>ID" value="<%=configure.ID%>">
                   </td>
                   <td class="td7" >&nbsp;<%=configure.CONFIGURE_CHG_NO%></td>
