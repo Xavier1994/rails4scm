@@ -34,8 +34,9 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
     #¸ü¸Ä×´Ì¬
     if(queding_hidden.to_s == "3")
       current_stat = params[:current_stat]
+      param = Param.find(:first,:conditions =>["PARAM_CLASS='con_stat2' and PARAM_CODE =?",current_stat])
       @configurechg.id = @configurechg.ID
-      @configurechg.CURRENT_STATUS = current_stat
+      @configurechg.CURRENT_STATUS = param.PARAM_NAME
       @configurechg.save
       @message = tijiaoArr[4]
     end
