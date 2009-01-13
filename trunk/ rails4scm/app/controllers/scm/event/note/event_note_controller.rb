@@ -140,7 +140,39 @@ class Scm::Event::Note::EventNoteController < ApplicationController
     
     @quarters_validate = OperatorWorks.new.quarters_validate(@oper.OPER_ID,"E1")
   end
-   
+  
+  def chang
+    event_code = params[:event_code]
+    cn = params[:cn]
+    event = EventRecord.find(:first,:conditions =>["event_code =?",event_code])
+    if(event != nil)
+      text = cn + "@W" + event.CURRENT_STATUS
+      render_text text
+    else
+      render_text ""
+    end
+  end
+  
+  def statute
+    text = "事件状态修改成功@W事件状态修改失败@W"
+    textArray = text.split("@W")
+    text = ""
+    begin
+       event_no     = params[:id]
+       current_stat = params[:current_stat]
+       cn = params[:cn]
+       param = Param.find(:first,:conditions =>["PARAM_CLASS='eve_stat' and PARAM_CODE =?",current_stat])
+       eventRecord = EventRecord.find(event_no)
+       eventRecord.id = event_no
+       eventRecord.CURRENT_STATUS = param.PARAM_NAME
+       eventRecord.save
+       text = cn + "@W" + param.PARAM_NAME + "@W" + textArray[0]
+    rescue Exception => e
+       text = "@W@W" + textArray[0]
+    end
+    render_text text
+  end
+  
   private
      #查询
      def getData(pageSize,curPageSize,event_name,m_event_type,project_code,event_sponsor,current_status)
