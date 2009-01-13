@@ -168,7 +168,7 @@ class Scm::Event::Note::EventNoteController < ApplicationController
        eventRecord.save
        text = cn + "@W" + param.PARAM_NAME + "@W" + textArray[0]
     rescue Exception => e
-       text = "@W@W" + textArray[0]
+       text = "@W@W" + textArray[1]
     end
     render_text text
   end
