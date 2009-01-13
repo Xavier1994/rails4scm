@@ -23,8 +23,9 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
     #更改状态
     if(queding_hidden.to_s == "3")
       current_stat = params[:current_stat]
+      param = Param.find(:first,:conditions =>["PARAM_CLASS='eve_stat' and PARAM_CODE =?",current_stat])
       @eventRecord.id = @eventRecord.ID
-      @eventRecord.CURRENT_STATUS = current_stat
+      @eventRecord.CURRENT_STATUS = param.PARAM_NAME 
       @eventRecord.save
       @message = tijiaoArr[6]
       @eventRecord = eventRecord.findEventRecor(@event_code)
@@ -289,12 +290,15 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
   def chang
     eventRecord = EventRecord.new
     @event_code = params[:event_code]
-    
-    @eventRecordOne = eventRecord.findEventRecor(@event_code)
-    if @eventRecordOne != nil then
+    msg = "变更申请触发完成!@W事件不在决策中状态,不能触发变更申请,请提交到决策中状态!@W变更申请触发失败!@W"
+    @msg = msg.split("@W")
+    begin
+
+    @eventRecord = eventRecord.findEventRecor(@event_code)
+    if @eventRecord != nil then 
         text = "决策中A@W"
         textArray = text.split("A@W")
-        if(@eventRecordOne.CURRENT_STATUS == textArray[0]) then
+        if(@eventRecord.CURRENT_STATUS == textArray[0]) then
           re = RelaChgConfigure.new
           @re = re.findRelaChgConfigure(@event_code)
           if(@re.size >0) then
@@ -322,11 +326,15 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
               end
               i = i + 1
             end
-            @message = "变更申请触发完成!"
+            @message = @msg[0]
           end
         else
-          @message = "事件不在决策中状态,不能触发变更申请,请提交到决策中状态!"
+          @message = @msg[1]
         end
+        
+    end
+    rescue Exception => e
+       @message = @msg[2]
     end
     render_text @message
   end

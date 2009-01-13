@@ -21,8 +21,9 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
     #¸ü¸Ä×´Ì¬
     if(queding_hidden.to_s == "3")
       current_stat = params[:current_stat]
+      param = Param.find(:first,:conditions =>["PARAM_CLASS='eve_stat' and PARAM_CODE =?",current_stat])
       @eventRecord.id = @eventRecord.ID
-      @eventRecord.CURRENT_STATUS = current_stat
+      @eventRecord.CURRENT_STATUS = param.PARAM_NAME
       @eventRecord.save
       @message = tijiaoArr[4]
       @eventRecord = eventRecord.findEventRecor(@event_code)
