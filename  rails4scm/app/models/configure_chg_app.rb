@@ -34,7 +34,7 @@ class ConfigureChgApp < ActiveRecord::Base
   end
   
   def findConfigureChgAppStaute(event_code,current_status)
-    ConfigureChgApp.find(:all,:conditions =>["event_code =? and current_status =?",event_code,current_status])
+    ConfigureChgApp.find(:all,:conditions =>["event_code =? and current_status <>?",event_code,current_status])
   end
   
   def findConfigureChgApp(event_code)
