@@ -44,7 +44,7 @@ util = Util.new
             var redata = window.showModalDialog(url, "配置项生命周期", "dialogHeight:700px;dialogWidth:900px;help=no;status=0");
             if(redata == undefined) {
                 url =  "/scm/item/query/item_change/chang?configure_code=" + configure_chg_no + "&cn=" + cn;
-                 new Ajax.Request(url,{method:"get",parameters:"",onComplete: showResponse});
+                new Ajax.Request(url,{method:"get",parameters:"",onComplete: showResponse});
             }
         }
         function showResponse(originalRequest){
