@@ -5,8 +5,8 @@ class ConfigureChgCycleDet < ActiveRecord::Base
   
   def insertConfigureChgCycleDet(id,configure_chg_no,chg_state,active_status)
     configureChgCycleDet = ConfigureChgCycleDet.new
-    configureChgCycleDet.ID=id[0]
-    configureChgCycleDet.CONFIGURE_CHG_NO=configure_chg_no[0]
+    configureChgCycleDet.ID=id
+    configureChgCycleDet.CONFIGURE_CHG_NO=configure_chg_no
     configureChgCycleDet.CHG_STATE=chg_state
     configureChgCycleDet.ACTIVE_STATUS=active_status
     

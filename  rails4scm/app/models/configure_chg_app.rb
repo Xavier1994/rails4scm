@@ -13,8 +13,8 @@ class ConfigureChgApp < ActiveRecord::Base
   
   def inserinto(id,configure_chg_no,configure_code,event_code,event_name,pre_version,project_code,current_status)
     configureChgApp = ConfigureChgApp.new
-    configureChgApp.ID=id[0]
-    configureChgApp.CONFIGURE_CHG_NO=configure_chg_no[0]
+    configureChgApp.ID=id
+    configureChgApp.CONFIGURE_CHG_NO=configure_chg_no
     configureChgApp.CONFIGURE_CODE=configure_code
     configureChgApp.EVENT_CODE=event_code
     configureChgApp.EVENT_NAME=event_name
