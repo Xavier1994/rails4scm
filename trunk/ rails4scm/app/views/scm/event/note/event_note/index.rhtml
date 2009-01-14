@@ -248,7 +248,7 @@ util = Util.new
         //生成下拉框控件 kname:控件名字  kid:控件Id,style:选择框大小[项目]
         function kongjian_project_select(selectValue,kname,kid,stylet) {
             var selProject = document.createElement("select");
-            selProject.options[0] = new Option("－－", "－－");
+            selProject.options[0] = new Option("--", "");
             <% 
             i = 1
             if (@project != nil)
@@ -273,7 +273,7 @@ util = Util.new
         //生成下拉框控件 kname:控件名字  kid:控件Id,style:选择框大小[标识事件类型]
         function kongjian_evetype_select(event_type_value,kname,kid,stylet) {
             var selEveType = document.createElement("select");
-            selEveType.options[0] = new Option(" ", "");
+            selEveType.options[0] = new Option("--", "");
             <% 
             i = 1
             if(@eveType != nil)
