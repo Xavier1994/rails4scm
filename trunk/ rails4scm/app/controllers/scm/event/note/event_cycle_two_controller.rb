@@ -148,25 +148,26 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
            begin
              event_prsn02  = @oper.NAME
              date_02       = Time.now
-             
-             @configureMsgCycleDetYi.EVENT_PRSN01=event_prsn01
-             @configureMsgCycleDetYi.DATE_01     =date_01
-             @configureMsgCycleDetYi.EVENT_PRSN02=event_prsn02
-             @configureMsgCycleDetYi.DATE_02     =date_02
-             @configureMsgCycleDetYi.REMARK_01   =remark_01
-             @configureMsgCycleDetYi.REMARK_02   =remark_02
-             @configureMsgCycleDetYi.REMARK_03   =remark_03
-             @configureMsgCycleDetYi.CONCLUSION_01=conclusion_01
-             @configureMsgCycleDetYi.CONCLUSION_02=conclusion_02
-             @configureMsgCycleDetYi.WORK_DAYS01=work_days01
-             @configureMsgCycleDetYi.WORK_DAYS02=work_days02
+             EventRecord.transaction do
+               @configureMsgCycleDetYi.EVENT_PRSN01=event_prsn01
+               @configureMsgCycleDetYi.DATE_01     =date_01
+               @configureMsgCycleDetYi.EVENT_PRSN02=event_prsn02
+               @configureMsgCycleDetYi.DATE_02     =date_02
+               @configureMsgCycleDetYi.REMARK_01   =remark_01
+               @configureMsgCycleDetYi.REMARK_02   =remark_02
+               @configureMsgCycleDetYi.REMARK_03   =remark_03
+               @configureMsgCycleDetYi.CONCLUSION_01=conclusion_01
+               @configureMsgCycleDetYi.CONCLUSION_02=conclusion_02
+               @configureMsgCycleDetYi.WORK_DAYS01=work_days01
+               @configureMsgCycleDetYi.WORK_DAYS02=work_days02
 
-             @configureMsgCycleDetYi.id = @configureMsgCycleDetYi.ID
-             @configureMsgCycleDetYi.save
-             
-             @eventRecord.CURRENT_STATUS = @eventArr[3]
-             @eventRecord.save
-             @message = tijiaoArr[0] + @eventArr[3] + tijiaoArr[1]
+               @configureMsgCycleDetYi.id = @configureMsgCycleDetYi.ID
+               @configureMsgCycleDetYi.save
+
+               @eventRecord.CURRENT_STATUS = @eventArr[3]
+               @eventRecord.save
+               @message = tijiaoArr[0] + @eventArr[3] + tijiaoArr[1]
+             end
            rescue Exception => e
              @message = tijiaoArr[0] + @eventArr[3] + tijiaoArr[2]
            end
@@ -175,25 +176,26 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
            begin
              event_prsn02  = @oper.NAME
              date_02       = Time.now
+             EventRecord.transaction do
+               @configureMsgCycleDetEr.EVENT_PRSN01=event_prsn01
+               @configureMsgCycleDetEr.DATE_01     =date_01
+               @configureMsgCycleDetEr.EVENT_PRSN02=event_prsn02
+               @configureMsgCycleDetEr.DATE_02     =date_02
+               @configureMsgCycleDetEr.REMARK_01   =remark_01
+               @configureMsgCycleDetEr.REMARK_02   =remark_02
+               @configureMsgCycleDetEr.REMARK_03   =remark_03
+               @configureMsgCycleDetEr.CONCLUSION_01=conclusion_01
+               @configureMsgCycleDetEr.CONCLUSION_02=conclusion_02
+               @configureMsgCycleDetEr.WORK_DAYS01=work_days01
+               @configureMsgCycleDetEr.WORK_DAYS02=work_days02
 
-             @configureMsgCycleDetEr.EVENT_PRSN01=event_prsn01
-             @configureMsgCycleDetEr.DATE_01     =date_01
-             @configureMsgCycleDetEr.EVENT_PRSN02=event_prsn02
-             @configureMsgCycleDetEr.DATE_02     =date_02
-             @configureMsgCycleDetEr.REMARK_01   =remark_01
-             @configureMsgCycleDetEr.REMARK_02   =remark_02
-             @configureMsgCycleDetEr.REMARK_03   =remark_03
-             @configureMsgCycleDetEr.CONCLUSION_01=conclusion_01
-             @configureMsgCycleDetEr.CONCLUSION_02=conclusion_02
-             @configureMsgCycleDetEr.WORK_DAYS01=work_days01
-             @configureMsgCycleDetEr.WORK_DAYS02=work_days02
+               @configureMsgCycleDetEr.id = @configureMsgCycleDetEr.ID
+               @configureMsgCycleDetEr.save
 
-             @configureMsgCycleDetEr.id = @configureMsgCycleDetEr.ID
-             @configureMsgCycleDetEr.save
-             
-             @eventRecord.CURRENT_STATUS = @eventArr[4]
-             @eventRecord.save
-             @message = tijiaoArr[0] + @eventArr[4] + tijiaoArr[1]
+               @eventRecord.CURRENT_STATUS = @eventArr[4]
+               @eventRecord.save
+               @message = tijiaoArr[0] + @eventArr[4] + tijiaoArr[1]
+             end
            rescue Exception => e
              @message = tijiaoArr[0] + @eventArr[4] + tijiaoArr[2]
            end
@@ -202,41 +204,42 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
            begin
              event_prsn02  = @oper.NAME
              date_02       = Time.now
+             EventRecord.transaction do
+               @configureMsgCycleDetSa.EVENT_PRSN01=event_prsn01
+               @configureMsgCycleDetSa.DATE_01     =date_01
+               @configureMsgCycleDetSa.EVENT_PRSN02=event_prsn02
+               @configureMsgCycleDetSa.DATE_02     =date_02
+               @configureMsgCycleDetSa.REMARK_01   =remark_01
+               @configureMsgCycleDetSa.REMARK_02   =remark_02
+               @configureMsgCycleDetSa.REMARK_03   =remark_03
+               @configureMsgCycleDetSa.CONCLUSION_01=conclusion_01
+               @configureMsgCycleDetSa.CONCLUSION_02=conclusion_02
+               @configureMsgCycleDetSa.WORK_DAYS01=work_days01
+               @configureMsgCycleDetSa.WORK_DAYS02=work_days02
 
-             @configureMsgCycleDetSa.EVENT_PRSN01=event_prsn01
-             @configureMsgCycleDetSa.DATE_01     =date_01
-             @configureMsgCycleDetSa.EVENT_PRSN02=event_prsn02
-             @configureMsgCycleDetSa.DATE_02     =date_02
-             @configureMsgCycleDetSa.REMARK_01   =remark_01
-             @configureMsgCycleDetSa.REMARK_02   =remark_02
-             @configureMsgCycleDetSa.REMARK_03   =remark_03
-             @configureMsgCycleDetSa.CONCLUSION_01=conclusion_01
-             @configureMsgCycleDetSa.CONCLUSION_02=conclusion_02
-             @configureMsgCycleDetSa.WORK_DAYS01=work_days01
-             @configureMsgCycleDetSa.WORK_DAYS02=work_days02
+               @configureMsgCycleDetSa.id = @configureMsgCycleDetSa.ID
+               @configureMsgCycleDetSa.save
 
-             @configureMsgCycleDetSa.id = @configureMsgCycleDetSa.ID
-             @configureMsgCycleDetSa.save
-             
-             #所有的项目已经结束
-             confChgReprojectProjects = ConfChgReprojectProjects.new
-             cProject = confChgReprojectProjects.findConfChgReprojectProjects(@event_code)
-             if(cProject.size>0)
-               @message = tijiaoArr[4]
-               return ""
+               #所有的项目已经结束
+               confChgReprojectProjects = ConfChgReprojectProjects.new
+               cProject = confChgReprojectProjects.findConfChgReprojectProjects(@event_code)
+               if(cProject.size>0)
+                 @message = tijiaoArr[4]
+                 return ""
+               end
+               #判断所有的变更是否完成
+               cus = "关闭@W"
+               cusArra = cus.split("@W")
+               configureChgApp = ConfigureChgApp.new
+               cChg = configureChgApp.findConfigureChgAppStaute(@event_code,cusArra[0])
+               if(cChg.size>0) then
+                 @message = tijiaoArr[5]
+                 return ""
+               end
+               @eventRecord.CURRENT_STATUS = @eventArr[5]
+               @eventRecord.save
+               @message = tijiaoArr[0] + @eventArr[4] + tijiaoArr[1]
              end
-             #判断所有的变更是否完成
-             cus = "关闭@W"
-             cusArra = cus.split("@W")
-             configureChgApp = ConfigureChgApp.new
-             cChg = configureChgApp.findConfigureChgAppStaute(@event_code,cusArra[0])
-             if(cChg.size>0) then
-               @message = tijiaoArr[5]
-               return ""
-             end
-             @eventRecord.CURRENT_STATUS = @eventArr[5]
-             @eventRecord.save
-             @message = tijiaoArr[0] + @eventArr[4] + tijiaoArr[1]
            rescue Exception => e
              @message = tijiaoArr[0] + @eventArr[4] + tijiaoArr[2]
            end
@@ -290,7 +293,7 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
   def chang
     eventRecord = EventRecord.new
     @event_code = params[:event_code]
-    msg = "变更申请触发完成!@W事件不在决策中状态,不能触发变更申请,请提交到决策中状态!@W变更申请触发失败!@W"
+    msg = "变更申请触发完成!@W事件不在决策中状态,不能触发变更申请,请提交到决策中状态!@W变更申请触发失败!@W没有变更申请需求@W"
     @msg = msg.split("@W")
     begin
 
@@ -302,7 +305,6 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
           re = RelaChgConfigure.new
           @re = re.findRelaChgConfigure(@event_code)
           if(@re.size >0) then
-
             configureChgApp = ConfigureChgApp.new
             argument = Argument.new
             configureVersion = ConfigureVersion.new
@@ -311,22 +313,26 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
             textArray = text.split("@W")
             max_id = argument.max_id(@re.size, "CONFIGURE_CHG_APP")
             i = 0
-            for re in (@re)
-              @configureChgApp=configureChgApp.findCount(@event_code, re.CONFIGURE_CODE,re.CONFIGURE_VERS)
-              if(@configureChgApp.size == 0)
-                configureChgApp.inserinto(max_id[i],max_id[i],re.CONFIGURE_CODE,@event_code,@eventRecord.EVENT_NAME,re.CONFIGURE_VERS,@eventRecord.PROJECT_CODE,textArray[0])
-                configureVersion.updateConfigureVersion(re.CONFIGURE_CODE,re.CONFIGURE_VERS,textArray[4], Time.now,@eventRecord.PROJECT_CODE)
-                
-                #生成变更生命周期
-                max_id_cn = argument.max_id(4, "CONFIGURE_CHG_CYCLE_DET")
-                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[0],max_id[i],textArray[0],"0")
-                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[1],max_id[i],textArray[1],"0")
-                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[2],max_id[i],textArray[2],"0")
-                configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[3],max_id[i],textArray[3],"0")
+            ConfigureChgApp.transaction do
+              for re in (@re)
+                @configureChgApp=configureChgApp.findCount(@event_code, re.CONFIGURE_CODE,re.CONFIGURE_VERS)
+                if(@configureChgApp.size == 0)
+                  configureChgApp.inserinto(max_id[i],max_id[i],re.CONFIGURE_CODE,@event_code,@eventRecord.EVENT_NAME,re.CONFIGURE_VERS,@eventRecord.PROJECT_CODE,textArray[0])
+                  configureVersion.updateConfigureVersion(re.CONFIGURE_CODE,re.CONFIGURE_VERS,textArray[4], Time.now,@eventRecord.PROJECT_CODE)
+
+                  #生成变更生命周期
+                  max_id_cn = argument.max_id(4, "CONFIGURE_CHG_CYCLE_DET")
+                  configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[0],max_id[i],textArray[0],"0")
+                  configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[1],max_id[i],textArray[1],"0")
+                  configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[2],max_id[i],textArray[2],"0")
+                  configureChgCycleDet.insertConfigureChgCycleDet(max_id_cn[3],max_id[i],textArray[3],"0")
+                end
+                i = i + 1
               end
-              i = i + 1
             end
             @message = @msg[0]
+          else
+            @message = @msg[3]
           end
         else
           @message = @msg[1]
@@ -334,7 +340,11 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
         
     end
     rescue Exception => e
+       print e.backtrace.join("\n")
        @message = @msg[2]
+    end
+    if(@message == nil)
+      @message = ""
     end
     render_text @message
   end

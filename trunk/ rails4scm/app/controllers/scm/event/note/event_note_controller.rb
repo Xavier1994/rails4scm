@@ -94,30 +94,34 @@ class Scm::Event::Note::EventNoteController < ApplicationController
            end
           end
           if(errcount > 0)
+            @message=@tishi[0] + @tishi[4]
+          else
             @message=@tishi[0] + @tishi[3]
           end
        when 3  #删除
-         begin
-           delete_ID_hidden = params[:delete_ID_hidden]
-           eventRe = EventRecord.find(delete_ID_hidden)
-           if(eventRe.EVENT_SPONSOR == @oper.NAME)
-             configCount = ConfigureChgApp.find(:all,:conditions =>["event_code =? ",eventRe.EVENT_CODE])
-             if(configCount.size>0)
-               @message=@tishi[6]
-             else
-               msg_cycle=ConfigureMsgCycleDet.find(:all,:conditions =>["event_code =? ",eventRe.EVENT_CODE])
-               for msg in msg_cycle
-                 ConfigureMsgCycleDet.delete(msg.ID)
+         EventRecord.transaction do 
+           begin           
+             delete_ID_hidden = params[:delete_ID_hidden]
+             eventRe = EventRecord.find(delete_ID_hidden)
+             if(eventRe.EVENT_SPONSOR == @oper.NAME)
+               configCount = ConfigureChgApp.find(:all,:conditions =>["event_code =? ",eventRe.EVENT_CODE])
+               if(configCount.size>0)
+                 @message=@tishi[6]
+               else
+                 msg_cycle=ConfigureMsgCycleDet.find(:all,:conditions =>["event_code =? ",eventRe.EVENT_CODE])
+                 for msg in msg_cycle
+                   ConfigureMsgCycleDet.delete(msg.ID)
+                 end
+                 EventRecord.delete(delete_ID_hidden)
+                 @message=@tishi[2] + @tishi[3]
                end
-               EventRecord.delete(delete_ID_hidden)
-               @message=@tishi[2] + @tishi[3]
+
+             else
+                @message=@tishi[5] + eventRe.EVENT_SPONSOR + "---" + @oper.NAME
              end
-             
-           else
-              @message=@tishi[5] + eventRe.EVENT_SPONSOR + "---" + @oper.NAME
+           rescue Exception => e
+             @message=@tishi[2] + @tishi[4]
            end
-         rescue Exception => e
-           @message=@tishi[2] + @tishi[4]
          end
      when 4  #状态回溯
          begin
@@ -202,29 +206,29 @@ class Scm::Event::Note::EventNoteController < ApplicationController
        num = 5
        configuremaxid = argument.max_id(num,"CONFIGURE_MSG_CYCLE_DET")
        
-       eventRecord = EventRecord.new
-       eventRecord.ID=eventmaxid[1]
-       eventRecord.EVENT_CODE=eventmaxid[0]
-       eventRecord.EVENT_NAME=event_name_t
-       eventRecord.M_EVENT_TYPE=m_event_type_t
-       eventRecord.PROJECT_CODE=project_code_t
-       eventRecord.CURRENT_STATUS="已创建"
-       eventRecord.EVENT_SPONSOR=person
-       eventRecord.EVENT_TIME=Time.now
-       eventRecord.save
-       
-       for i in (0..4)
-            configureMsgCycleDetCon = ConfigureMsgCycleDet.new
-            j = configuremaxid[i]
-            configureMsgCycleDetCon.id            = j[0]
-            configureMsgCycleDetCon.ID            = j[0]
-            configureMsgCycleDetCon.EVENT_CODE    = eventmaxid[0]
-            configureMsgCycleDetCon.EVENT_STATE   = eventArr[i.to_i]
-            configureMsgCycleDetCon.ACTIVE_STATUS = '0'
-            
-            configureMsgCycleDetCon.save
-       end
+       EventRecord.transaction do
+         eventRecord = EventRecord.new
+         eventRecord.ID=eventmaxid[1]
+         eventRecord.EVENT_CODE=eventmaxid[0]
+         eventRecord.EVENT_NAME=event_name_t
+         eventRecord.M_EVENT_TYPE=m_event_type_t
+         eventRecord.PROJECT_CODE=project_code_t
+         eventRecord.CURRENT_STATUS="已创建"
+         eventRecord.EVENT_SPONSOR=person
+         eventRecord.EVENT_TIME=Time.now
+         eventRecord.save
+         
+         for i in (0..4)
+              configureMsgCycleDetCon = ConfigureMsgCycleDet.new
+              j = configuremaxid[i]
+              configureMsgCycleDetCon.ID            = j
+              configureMsgCycleDetCon.EVENT_CODE    = eventmaxid[0]
+              configureMsgCycleDetCon.EVENT_STATE   = eventArr[i.to_i]
+              configureMsgCycleDetCon.ACTIVE_STATUS = '0'
 
+              configureMsgCycleDetCon.save
+         end
+       end
      end
 
      #删除
