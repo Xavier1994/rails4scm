@@ -68,7 +68,7 @@ protected
       
       tree_html += "<script type='text/javascript'>\r\n"
       tree_html += "var root = new WebFXTree('#{tree.label}','#{tree.url}',"\
-                       +"'classic', \'#{tree.icon}\',  \'#{tree.openIcon}\' );\r\n"
+                       +"'_self', \'#{tree.icon}\',  \'#{tree.openIcon}\' );\r\n"
       tree.each do |subtree|
         tree_html += gen_item(subtree,'root',1)
       end
