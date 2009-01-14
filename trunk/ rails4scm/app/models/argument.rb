@@ -65,7 +65,7 @@ class Argument < ActiveRecord::Base
        resourArray = Array.new(num)
        j = 0
        for i in (idYq..idYj)
-         resourArray[j] = i.to_a
+         resourArray[j] = i
          j = j + 1
        end
        return resourArray
