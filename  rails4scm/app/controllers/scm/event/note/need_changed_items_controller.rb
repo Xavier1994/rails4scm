@@ -31,9 +31,8 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
             argument = Argument.new
             num = 1
             maxid = argument.max_id(num,"rela_chg_configure")
-            j = maxid[0]
             relaChgConfigure=RelaChgConfigure.new
-            relaChgConfigure.ID=j[0]
+            relaChgConfigure.ID=maxid[0]
             relaChgConfigure.EVENT_CODE=event_code
             relaChgConfigure.CONFIGURE_CODE=configureParamsArray[0]
             relaChgConfigure.CONFIGURE_VERS=configureParamsArray[2]
@@ -58,7 +57,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
             k=0
             for i in maxid
               confChgReproductProducts=ConfChgReproductProducts.new
-              confChgReproductProducts.ID=i[0]
+              confChgReproductProducts.ID=i
               confChgReproductProducts.EVENT_CODE=event_code
               confChgReproductProducts.CONFIGURE_CODE=configureParamsArray[0]
               confChgReproductProducts.CONFIGURE_VERS=configureParamsArray[2]
@@ -85,7 +84,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
             k=0
             for i in maxid
               confChgReprojectProjects=ConfChgReprojectProjects.new
-              confChgReprojectProjects.ID=i[0]
+              confChgReprojectProjects.ID=i
               confChgReprojectProjects.EVENT_CODE=event_code
               confChgReprojectProjects.CONFIGURE_CODE=configureParamsArray[0]
               confChgReprojectProjects.CONFIGURE_VERS=configureParamsArray[2]
