@@ -12,6 +12,7 @@ util = Util.new
         //需求变更的配置项
         function config(){
             url = "/scm/event/query/need_changed_items?event_code=<%=@event_code%>";
+            //window.open(url);
             window.showModalDialog(url, "更改配置项", "dialogHeight:600px;dialogWidth:950px;");
         }
     </script>

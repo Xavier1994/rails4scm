@@ -6,33 +6,49 @@ util = Util.new
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <BASE TARGET="_self">
     <%= stylesheet_link_tag "style_table" %> 
     <%= stylesheet_link_tag "common_style" %>
     <%= javascript_include_tag "common" %>
     <%= javascript_include_tag "prototype" %>
     <%= dhtml_calendar_includes %>
     <script language="javascript">
-        function clickchange(id) {
+        function clickchange(id,sn) {
             url = '/scm/event/query/need_source_items?id=' + id;
             cycle_iframe_change.location.href=url
+            
+            //表体的行数
+            divid = "DIV" + sn + "_1_2";
+	    var div = document.getElementById(divid);
+
+	    var detail = document.getElementById("mytablebody");
+            mc = div.innerText;
+            bb = detail.rows[sn-1].cells[1].innerText;
+            obj = document.getElementById("pzmcbb");
+            obj.innerText = "配置项名称：" + mc + "    版本：" + bb;
         }
     </script>
   </head>
   <body bgcolor="#F6F6F6">
   <% form_tag :action =>'index' do %>
-  <table width="800px" height="90%">
+  <table width="900px" height="90%" align="center">
      <tr>
-       <td width="400px" valign="top">
-         <div style="width:400px;">
-           事件名称：<%=@event.EVENT_NAME%>&nbsp;&nbsp;&nbsp;&nbsp;产品/项目名称:<%=@event.PROJECT_CODE%>
-           <br><br>
-           <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;height:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+       <td width="450px" valign="top" height="10px">事件名称：<%=@event.EVENT_NAME%>&nbsp;&nbsp;&nbsp;&nbsp;产品/项目名称:<%=@event.PROJECT_CODE%></td>
+       <td width="450px" valign="top" height="10px">
+          <font color="#FF0000" id="pzmcbb">配置项名称：&nbsp;&nbsp;&nbsp;版本：</font>
+       </td>
+     </tr>
+     <tr>
+       <td width="450px" valign="top">
+           <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:100%;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+             <tr><td colspan="4">&nbsp;</td></tr>
              <tr>
                <td class="td_header_bak2" width="160px">配置项名称</td>
                <td class="td_header_bak3" width="80px">配置项版本</td>
                <td class="td_header_bak3" width="80px">配置项编号</td>
                <td class="td_header_bak3" width="80px">事件编号</td>
              </tr>
+             <tbody id="mytablebody">
              <%
              if (@relachg != nil) 
                j = 1
@@ -41,10 +57,10 @@ util = Util.new
                 <tr>
                  <td class="td6" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">&nbsp;
                     <font id="DIV<%=j%>_1_1">
-                        <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="clickchange('<%=rela.ID%>')"><%=util.intercept(rela.CONFIGURE_NAME, 0, 10)%></a>
+                        <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="clickchange('<%=rela.ID%>','<%=j%>')"><%=util.intercept(rela.CONFIGURE_NAME, 0, 8)%></a>
                     </font>
                     <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
-                        <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="clickchange('<%=rela.ID%>')"><%=rela.CONFIGURE_NAME%></a>
+                        <a style="cursor:hand;text-decoration:underline; color:#0066ff" onclick="clickchange('<%=rela.ID%>','<%=j%>')"><%=rela.CONFIGURE_NAME%></a>
                     </div>
                  </td>
                  <td class="td7" >&nbsp;<%=rela.CONFIGURE_VERS%></td>
@@ -63,10 +79,12 @@ util = Util.new
                  <td class="td7" >&nbsp;</td>
                </tr>
              <%end%>
+             
+             </tbody>
            </table>
-         </div>
+           <%= will_paginate @relachg %>
        </td>
-       <td width="400px" valign="top">
+       <td width="450px" valign="top">
          <iframe width="500px" height="100%" frameborder="0" id="cycle_iframe_change" name="cycle_iframe_change" marginwidth="0" marginheight="0" scrolling="auto" src="/scm/event/query/need_source_items?id="> </iframe>
        </td>
      </tr>

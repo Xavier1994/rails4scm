@@ -12,15 +12,7 @@ util = Util.new
   <body bgcolor="#F6F6F6">
   <% form_tag :action =>'index' do %>
     <table width="500px">
-      <tr>
-        <td valign="top">
-          <%if(@configitem != nil)%>
-            <font color="#FF0000">配置项名称：<%=@configitem.CONFIGURE_NAME%>&nbsp;&nbsp;&nbsp;版本：<%=@relachg.CONFIGURE_VERS%></font>
-          <% else %>
-            <font color="#FF0000">配置项名称：&nbsp;&nbsp;&nbsp;版本：</font>
-          <% end %>
-        </td>
-      </tr>
+      
       <tr>
         <td width="100%" height="100%" valign="top">
           <div >
