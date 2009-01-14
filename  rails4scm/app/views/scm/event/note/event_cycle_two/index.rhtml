@@ -18,7 +18,9 @@
           }
         }
         function showResponse(originalRequest){
-            alert(originalRequest.responseText);
+            if(originalRequest.responseText != ""){
+                alert(originalRequest.responseText);
+            }
         }
 
         function init(){
