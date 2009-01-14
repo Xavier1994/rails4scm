@@ -1,8 +1,8 @@
 class EventRecord < ActiveRecord::Base
   self.table_name = "event_record"
   self.primary_key = "id"
-  
   attr_accessor :id
+  
   def findEventRecordAll(pageSize,curPageSize,event_name,m_event_type,project_code,event_sponsor,current_status)
     sql = "select * from event_record "
     if(event_name != nil or m_event_type != nil or project_code != nil or event_sponsor != nil or current_status != nil) then
