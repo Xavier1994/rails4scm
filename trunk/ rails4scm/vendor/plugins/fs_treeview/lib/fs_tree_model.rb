@@ -6,9 +6,19 @@ module FsTreeModel
           
           def initialize(lbl,url="",id=nil,value=nil,target='main',icon=nil,openIcon=nil)
             @id=id
-            @label = lbl ;            @value = value;            @url = url 
-            @target=target;       @icon=icon;                  @openIcon=openIcon
-            @parent=nil;            @children =[]    #约定根结点的parent＝nil
+            @label = lbl
+            @value = value
+            @url = url 
+            @icon=icon
+            @openIcon=openIcon
+            @parent=nil
+            @children =[]    #约定根结点的parent＝nil
+            if(url == "#")
+              @target="_self"
+            else
+              @target=target
+            end
+            
           end  
           
           def parent=(parent)
