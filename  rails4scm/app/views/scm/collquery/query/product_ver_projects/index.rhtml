@@ -22,7 +22,7 @@ util = Util.new
                 <tr>
                   <td colspan="2"><div align="left"><font color="green">产品名称:<% if @product_name!=nil then %><%=@product_name%><%end%></font></div></td>
                   <td colspan="2"><div align="left"><font color="green">产品版本:<% if @product_vers!=nil then %><%=@product_vers%><%end%></font></div></td>
-                  <td colspan="2"><div align="left"><font color="green">对应的项目如下:</font></div></td>
+                  <td colspan="1"><div align="left"><font color="green">对应的项目如下:</font></div></td>
                 </tr>
                 <tr>
                   <td class="td_header_bak2" width="80px">项目编号</td>
@@ -30,7 +30,6 @@ util = Util.new
                   <td class="td_header_bak3" width="80px">项目经理</td>
                   <td class="td_header_bak3" width="100px">产品编号</td>
                   <td class="td_header_bak3" width="100px">产品版本</td>
-                  <td class="td_header_bak3" width="120px">项目配置负责人</td>
                 </tr>
               </thead>
               <tbody>
@@ -52,7 +51,6 @@ util = Util.new
                         <td class="td7">&nbsp;<%=productProject.PROJECT_MANAGER%></td>
                         <td class="td7">&nbsp;<%=productProject.PRODUCT_CODE%></td>
                         <td class="td7">&nbsp;<%=productProject.PRODUCT_VERS%></td>
-                        <td class="td7">&nbsp;<%=productProject.PROJECT_CONF_PERSON%></td>
                       </tr>
                 <%
                   j += 1
@@ -66,7 +64,6 @@ util = Util.new
                 %>
                   <tr>
                     <td class="td6">&nbsp;</td>
-                    <td class="td7">&nbsp;</td>
                     <td class="td7">&nbsp;</td>
                     <td class="td7">&nbsp;</td>
                     <td class="td7">&nbsp;</td>
