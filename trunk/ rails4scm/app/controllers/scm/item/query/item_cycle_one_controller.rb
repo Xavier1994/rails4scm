@@ -132,13 +132,28 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
     #提交
     if(queding_hidden == "2")
       @configurechg.id = @configurechg.ID
+      chg_prsn01  = @oper.NAME
+      chg_date01  = Time.now
+      chg_prsn02  = params[:CHG_PRSN02]
+      chg_date02  = nil
+      work_days = params[:WORK_DAYS]
+      remark = params[:REMARK]
       
       case @quarters_validate[0]
          when "A"
            #已创建
            begin
-             @configurechg.CURRENT_STATUS = @configure_state[1]
+             @configureChgCycleDetYi.CHG_PRSN01=chg_prsn01
+             @configureChgCycleDetYi.CHG_DATE01=chg_date01
+             @configureChgCycleDetYi.CHG_PRSN02=chg_prsn02
+             @configureChgCycleDetYi.CHG_DATE02=chg_date02
+             @configureChgCycleDetYi.WORK_DAYS =work_days
+             @configureChgCycleDetYi.REMARK    =remark
+
+             @configureChgCycleDetYi.id = @configureChgCycleDetYi.ID
+             @configureChgCycleDetYi.save
              
+             @configurechg.CURRENT_STATUS = @configure_state[1]
              @configurechg.save
              @message = tijiaoArr[0] + @configure_state[1] + tijiaoArr[1]
            rescue Exception => e
@@ -147,8 +162,19 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
          when "B"
            #已实现
            begin
-             @configurechg.CURRENT_STATUS = @configure_state[2]
+             dt = params[:DATA]
+             chg_date02 = dt[:data2]
+             @configureChgCycleDetEr.CHG_PRSN01=chg_prsn01
+             @configureChgCycleDetEr.CHG_DATE01=chg_date01
+             @configureChgCycleDetEr.CHG_PRSN02=chg_prsn02
+             @configureChgCycleDetEr.CHG_DATE02=chg_date02
+             @configureChgCycleDetEr.WORK_DAYS =work_days
+             @configureChgCycleDetEr.REMARK    =remark
+
+             @configureChgCycleDetEr.id = @configureChgCycleDetEr.ID
+             @configureChgCycleDetEr.save
              
+             @configurechg.CURRENT_STATUS = @configure_state[2]
              @configurechg.save
              @message = tijiaoArr[0] + @configure_state[2] + tijiaoArr[1]
            rescue Exception => e
@@ -157,8 +183,19 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
          when "C"
            #已批准
            begin
-             @configurechg.CURRENT_STATUS = @configure_state[3]
+             dt = params[:DATA]
+             chg_date01 = dt[:data1]
+             @configureChgCycleDetSa.CHG_PRSN01=chg_prsn01
+             @configureChgCycleDetSa.CHG_DATE01=chg_date01
+             @configureChgCycleDetSa.CHG_PRSN02=chg_prsn02
+             @configureChgCycleDetSa.CHG_DATE02=chg_date02
+             @configureChgCycleDetSa.WORK_DAYS =work_days
+             @configureChgCycleDetSa.REMARK    =remark
+
+             @configureChgCycleDetSa.id = @configureChgCycleDetSa.ID
+             @configureChgCycleDetSa.save
              
+             @configurechg.CURRENT_STATUS = @configure_state[3]
              @configurechg.save
              @message = tijiaoArr[0] + @configure_state[3] + tijiaoArr[1]
            rescue Exception => e
@@ -168,6 +205,16 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
         when "D"
            #执行
            begin
+             @configureChgCycleDetSi.CHG_PRSN01=chg_prsn01
+             @configureChgCycleDetSi.CHG_DATE01=chg_date01
+             @configureChgCycleDetSi.CHG_PRSN02=chg_prsn02
+             @configureChgCycleDetSi.CHG_DATE02=chg_date02
+             @configureChgCycleDetSi.WORK_DAYS =work_days
+             @configureChgCycleDetSi.REMARK    =remark
+
+             @configureChgCycleDetSi.id = @configureChgCycleDetSi.ID
+             @configureChgCycleDetSi.save
+             
              @configurechg.CURRENT_STATUS = @configure_state[4]
              @configurechg.save
              
