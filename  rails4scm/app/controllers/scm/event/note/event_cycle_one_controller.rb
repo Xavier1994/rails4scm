@@ -121,24 +121,26 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
              date_01       = Time.now
              dt = params[:DATA]
              date_02 = dt[:data2]
-             @configureMsgCycleDetYi.EVENT_PRSN01=event_prsn01
-             @configureMsgCycleDetYi.DATE_01     =date_01
-             @configureMsgCycleDetYi.EVENT_PRSN02=event_prsn02
-             @configureMsgCycleDetYi.DATE_02     =date_02
-             @configureMsgCycleDetYi.REMARK_01   =remark_01
-             @configureMsgCycleDetYi.REMARK_02   =remark_02
-             @configureMsgCycleDetYi.REMARK_03   =remark_03
-             @configureMsgCycleDetYi.CONCLUSION_01=conclusion_01
-             @configureMsgCycleDetYi.CONCLUSION_02=conclusion_02
-             @configureMsgCycleDetYi.WORK_DAYS01=work_days01
-             @configureMsgCycleDetYi.WORK_DAYS02=work_days02
+             EventRecord.transaction do
+               @configureMsgCycleDetYi.EVENT_PRSN01=event_prsn01
+               @configureMsgCycleDetYi.DATE_01     =date_01
+               @configureMsgCycleDetYi.EVENT_PRSN02=event_prsn02
+               @configureMsgCycleDetYi.DATE_02     =date_02
+               @configureMsgCycleDetYi.REMARK_01   =remark_01
+               @configureMsgCycleDetYi.REMARK_02   =remark_02
+               @configureMsgCycleDetYi.REMARK_03   =remark_03
+               @configureMsgCycleDetYi.CONCLUSION_01=conclusion_01
+               @configureMsgCycleDetYi.CONCLUSION_02=conclusion_02
+               @configureMsgCycleDetYi.WORK_DAYS01=work_days01
+               @configureMsgCycleDetYi.WORK_DAYS02=work_days02
 
-             @configureMsgCycleDetYi.id = @configureMsgCycleDetYi.ID
-             @configureMsgCycleDetYi.save
-             
-             @eventRecord.CURRENT_STATUS = @eventArr[1]
-             @eventRecord.save
-             @message = tijiaoArr[0] + @eventArr[1] + tijiaoArr[1]
+               @configureMsgCycleDetYi.id = @configureMsgCycleDetYi.ID
+               @configureMsgCycleDetYi.save
+
+               @eventRecord.CURRENT_STATUS = @eventArr[1]
+               @eventRecord.save
+               @message = tijiaoArr[0] + @eventArr[1] + tijiaoArr[1]
+             end
            rescue Exception => e
              @message = tijiaoArr[0] + @eventArr[1] + tijiaoArr[2]
            end
@@ -149,24 +151,26 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
              date_02       = Time.now
              dt = params[:DATA]
              date_01 = dt[:data1]
-             @configureMsgCycleDetEr.EVENT_PRSN01=event_prsn01
-             @configureMsgCycleDetEr.DATE_01     =date_01
-             @configureMsgCycleDetEr.EVENT_PRSN02=event_prsn02
-             @configureMsgCycleDetEr.DATE_02     =date_02
-             @configureMsgCycleDetEr.REMARK_01   =remark_01
-             @configureMsgCycleDetEr.REMARK_02   =remark_02
-             @configureMsgCycleDetEr.REMARK_03   =remark_03
-             @configureMsgCycleDetEr.CONCLUSION_01=conclusion_01
-             @configureMsgCycleDetEr.CONCLUSION_02=conclusion_02
-             @configureMsgCycleDetEr.WORK_DAYS01=work_days01
-             @configureMsgCycleDetEr.WORK_DAYS02=work_days02
+             EventRecord.transaction do
+               @configureMsgCycleDetEr.EVENT_PRSN01=event_prsn01
+               @configureMsgCycleDetEr.DATE_01     =date_01
+               @configureMsgCycleDetEr.EVENT_PRSN02=event_prsn02
+               @configureMsgCycleDetEr.DATE_02     =date_02
+               @configureMsgCycleDetEr.REMARK_01   =remark_01
+               @configureMsgCycleDetEr.REMARK_02   =remark_02
+               @configureMsgCycleDetEr.REMARK_03   =remark_03
+               @configureMsgCycleDetEr.CONCLUSION_01=conclusion_01
+               @configureMsgCycleDetEr.CONCLUSION_02=conclusion_02
+               @configureMsgCycleDetEr.WORK_DAYS01=work_days01
+               @configureMsgCycleDetEr.WORK_DAYS02=work_days02
 
-             @configureMsgCycleDetEr.id = @configureMsgCycleDetEr.ID
-             @configureMsgCycleDetEr.save
-             
-             @eventRecord.CURRENT_STATUS = @eventArr[2]
-             @eventRecord.save
-             @message = tijiaoArr[0] + @eventArr[2] + tijiaoArr[1]
+               @configureMsgCycleDetEr.id = @configureMsgCycleDetEr.ID
+               @configureMsgCycleDetEr.save
+
+               @eventRecord.CURRENT_STATUS = @eventArr[2]
+               @eventRecord.save
+               @message = tijiaoArr[0] + @eventArr[2] + tijiaoArr[1]
+             end
            rescue Exception => e
              @message = tijiaoArr[0] + @eventArr[2] + tijiaoArr[2]
            end
@@ -180,6 +184,7 @@ class Scm::Event::Note::EventCycleOneController < ApplicationController
     @date_01_Er = ""
     @date_02_Er = ""
     util = Util.new
+    
     if(@configureMsgCycleDetYi.DATE_01 == nil) then
       #@date_01_Yi = (Time.now).strftime('%Y-%m-%d')
       @date_01_Yi = util.formatDatatimeToSting(Time.now)
