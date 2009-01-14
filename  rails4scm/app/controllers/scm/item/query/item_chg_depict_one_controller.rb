@@ -44,8 +44,8 @@ class Scm::Item::Query::ItemChgDepictOneController < ApplicationController
            maxid = argument.max_id(num,"chg_database_record")
            chgdata = ChgDatabaseRecord.new
            j = maxid[0]
-           chgdata.id=j[0]
-           chgdata.ID=j[0]
+           chgdata.id=j
+           chgdata.ID=j
            chgdata.CHG_NO=@configure_chg_no
            chgdata.MODIFY_DATE=chg[:MODIFY_DATE]
            chgdata.TABLE_NAME=chg[:TABLE_NAME]

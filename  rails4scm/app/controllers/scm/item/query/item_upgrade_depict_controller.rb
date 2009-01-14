@@ -55,26 +55,28 @@ class Scm::Item::Query::ItemUpgradeDepictController < ApplicationController
         @message=message[1] + message[5] + message[2]+message[6]
       else
         begin
-          if(params[:project] != nil)
-            for param in params[:project]
-              reco=param[1]
-              pro = ProjectMsg.find(reco[:ID])
-              pro.id=pro.ID
-              pro.CAN_USE_FLAG=reco[:CAN_USE_FLAG]
-              pro.save
+          ProjectMsg.transaction do
+            if(params[:project] != nil)
+              for param in params[:project]
+                reco=param[1]
+                pro = ProjectMsg.find(reco[:ID])
+                pro.id=pro.ID
+                pro.CAN_USE_FLAG=reco[:CAN_USE_FLAG]
+                pro.save
+              end
             end
-          end
-          
-          if(params[:software] != nil)
-            for param in params[:software]
-              reco=param[1]
-              conf = ConfChgReproductProducts.find(reco[:ID])
-              conf.id=conf.ID
-              conf.CAN_USE_FLAG=reco[:CAN_USE_FLAG]
-              conf.save
+
+            if(params[:software] != nil)
+              for param in params[:software]
+                reco=param[1]
+                conf = ConfChgReproductProducts.find(reco[:ID])
+                conf.id=conf.ID
+                conf.CAN_USE_FLAG=reco[:CAN_USE_FLAG]
+                conf.save
+              end
             end
+            @message=message[0] + message[1] + message[5] + message[2] + message[3]
           end
-          @message=message[0] + message[1] + message[5] + message[2] + message[3]
         rescue Exception => e
           @message=message[0] + message[1] + message[5] + message[2] + message[4]
         end

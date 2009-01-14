@@ -45,8 +45,8 @@ class Scm::Item::Query::ItemChgDepictThreeController < ApplicationController
            maxid = argument.max_id(num,"chg_database_record")
            chgdata = ChgDocumentRecord.new
            j = maxid[0]
-           chgdata.id=j[0]
-           chgdata.ID=j[0]
+           chgdata.id=j
+           chgdata.ID=j
            chgdata.CHG_NO=@configure_chg_no
            chgdata.MODIFY_TIME=chg[:MODIFY_TIME]
            chgdata.SUB_SYSTEM=chg[:SUB_SYSTEM]
