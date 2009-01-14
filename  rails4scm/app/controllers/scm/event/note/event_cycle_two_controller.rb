@@ -17,7 +17,8 @@ class Scm::Event::Note::EventCycleTwoController < ApplicationController
     @configureMsgCycleDetSa = configureMsgCycleDet.findConfigureMsgCycleDet(@event_code,@eventArr[4])
     @quarters_validate = validate_two(@eventRecord.CURRENT_STATUS,@oper.OPER_ID)
     @message = ""
-    tijiao = "提交@W状态数据成功!@W状态数据失败!@W保存@W可能还有项目没有通知到，事件还不能关闭@W可能还有变更没有完成，事件还不能关闭@W更改状态成功!@W"
+    #tijiao = "提交@W状态数据成功!@W状态数据失败!@W保存@W可能还有项目没有通知到，事件还不能关闭@W可能还有变更没有完成，事件还不能关闭@W更改状态成功!@W"
+    tijiao = "提交@W状态数据成功!@W状态数据失败!@W保存@W可能还有变更没有完成，事件还不能关闭@W可能还有变更没有完成，事件还不能关闭@W更改状态成功!@W"
     tijiaoArr = tijiao.split("@W")
     
     #更改状态
