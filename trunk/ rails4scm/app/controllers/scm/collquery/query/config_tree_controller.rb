@@ -29,7 +29,7 @@ class Scm::Collquery::Query::ConfigTreeController < ApplicationController
           i=1
           for param1 in @param
             param_code = param1.con_type
-            sub1=FsTreeModel::Treeview.new(param_code,url,i,'value' + i.to_s,"collquery_query_main")
+            sub1=FsTreeModel::Treeview.new(param_code,"#",i,'value' + i.to_s,"collquery_query_main")
             j=1
             
             for param2 in @param2
@@ -37,7 +37,7 @@ class Scm::Collquery::Query::ConfigTreeController < ApplicationController
               if param_code == param_code2 then
                  param_name2 = param2.param_name
                  cn = i.to_s + j.to_s 
-                 sub2=FsTreeModel::Treeview.new(param_name2,url,cn,'value' + cn,"collquery_query_main")
+                 sub2=FsTreeModel::Treeview.new(param_name2,"#",cn,'value' + cn,"collquery_query_main")
                  k = 1
                  for configitem1 in @configitem
                    configure_type = configitem1.configure_type
