@@ -13,7 +13,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
     textreturnArray=textreturn.split("@|")
     configure_params=params[:configure_params]
     event_code=params[:event_code]
-    textTemp="@@@@@@已存在变更申请,配置项:@W版本为:@W"
+    textTemp="@@@@@@现已存在版本为'@W'名称为'@W'配置项的变更申请。@W请您先删除该版本的配置项@W"
     textArray=textTemp.split("@W")
     outText="<table cellpadding=0 cellspacing=0 border=0 style=\"width:100%;bordercolo:#878787 ;border-left-style: solid; border-left-width: 0px; border-right-style: solid; border-right-width: 0px\"><thead class=\"td_header_bak2\"><tr><td class=\"td_header_bak2\" width=\"50px\">选择<input type=\"hidden\" name=\"param_configure_code\" id=\"param_configure_code\"></td><td class=\"td_header_bak3\" width=\"160px\">配置项名称</td><td class=\"td_header_bak3\" width=\"70px\">配置项版本</td><td class=\"td_header_bak3\" width=\"80px\">配置项编号</td><td class=\"td_header_bak3\" width=\"80px\">事件编号</td><td class=\"td_header_bak3\" width=\"120px\">操作</td></tr></thead><tbody>"
     @selectedItems=nil
@@ -25,7 +25,7 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
         configureParamsArray=configure_params.split("@")
         relaChgConfigure0=RelaChgConfigure.new
         if configureParamsArray[0]!=nil && configureParamsArray[2]!=nil then
-          itemNum=relaChgConfigure0.findEventConfigItemNum(event_code, configureParamsArray[0], configureParamsArray[2])
+          itemNum=relaChgConfigure0.findEventConfigItemNum(event_code, configureParamsArray[0])
           if itemNum[0].cn<=0 then
             #向rela_chg_configure表插入一条记录
             argument = Argument.new
@@ -94,7 +94,16 @@ class Scm::Event::Note::NeedChangedItemsController < ApplicationController
               k+=1
             end
           else
-            outText=textArray[0]+configureParamsArray[1].to_s+textArray[1]+configureParamsArray[2].to_s
+            relaChgConfigureItems=relaChgConfigure0.findEventConfigItem(event_code, configureParamsArray[0])
+            ver=""
+            for relaChgConfigureItem in relaChgConfigureItems
+              ver=relaChgConfigureItem.CONFIGURE_VERS
+            end
+            if configureParamsArray[2].to_s==ver.to_s then
+              outText=textArray[0].to_s+configureParamsArray[2].to_s+textArray[1].to_s+configureParamsArray[1].to_s+textArray[2].to_s
+            else
+              outText=textArray[0].to_s+ver.to_s+textArray[1].to_s+configureParamsArray[1].to_s+textArray[2].to_s+textArray[3].to_s
+            end
             b=false
           end
         end
