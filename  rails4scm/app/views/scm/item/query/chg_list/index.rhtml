@@ -1,0 +1,87 @@
+<%
+require 'util/util'
+util = Util.new
+%>
+<html>
+  <head>
+    <title>变更记录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <%= stylesheet_link_tag "style_table" %> 
+    <%= stylesheet_link_tag "common_style" %>
+    <%= javascript_include_tag "common" %>
+  </head>
+  <body bgcolor="#F6F6F6">
+  <% form_tag :action =>'index' do %>
+    <div align="center"><font color="red">配置项<>变更记录</font></div>
+    <table align="center" cellpadding=0 cellspacing=0 border=0 style="width:1300px;bordercolor:#878787 ;border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px">
+        <tr valign="top">
+          <td class="td_header_bak2" width="80px" >配置项编号</td>
+          <td class="td_header_bak3" width="100px" >配置项名称</td>
+          <td class="td_header_bak3" width="100px" >配置项类型</td>
+          <td class="td_header_bak3" width="50px" >前版本</td>
+          <td class="td_header_bak3" width="50px" >后版本</td>
+          <td class="td_header_bak3" width="100px" >变更发起项目</td>
+          <td class="td_header_bak3" width="80px" >变更号</td>
+          <td class="td_header_bak3" width="80px" >变更发起人</td>
+          <td class="td_header_bak3" width="100px" >变更发起事件</td>
+          <td class="td_header_bak3" width="80px" >事件时间</td>
+          <td class="td_header_bak3" width="80px" >项目经理</td>
+          <td class="td_header_bak3" width="100px" >项目配置管理员</td>
+          <td class="td_header_bak3" width="100px" >配置总责任人</td>
+        </tr>
+        <%if @config != nil then
+          j = 0
+          for config in @config
+        %>
+            <tr>
+              <td class="td6">&nbsp;<%=config.CONFIGURE_CODE%></td>
+              <td class="td7" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                    &nbsp;
+                    <font id="DIV<%=j%>_1_1"> 
+                        <%=util.intercept(config.CONFIGURE_NAME, 0, 10)%>
+                    </font>
+                    <div id="DIV<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'DIV<%=j%>_1_2','DIV<%=j%>_1_1')" onmouseout="hide('DIV<%=j%>_1_2','DIV<%=j%>_1_1')">
+                      <%=config.CONFIGURE_NAME%> 
+                    </div>
+              </td>
+              <td class="td7" onmouseover="show(this,'type<%=j%>_1_2','type<%=j%>_1_1')" onmouseout="hide('type<%=j%>_1_2','type<%=j%>_1_1')">
+                    &nbsp;
+                    <font id="type<%=j%>_1_1"> 
+                        <%=util.intercept(config.CONFIGURE_TYPE, 0, 10)%>
+                    </font>
+                    <div id="type<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'type<%=j%>_1_2','type<%=j%>_1_1')" onmouseout="hide('type<%=j%>_1_2','type<%=j%>_1_1')">
+                      <%=config.CONFIGURE_TYPE%> 
+                    </div>
+              </td>
+              <td class="td7">&nbsp;<%=config.PRE_VERSION%></td>
+              <td class="td7">&nbsp;<%=config.AFT_VERSION%></td>
+              <td class="td7" onmouseover="show(this,'pro<%=j%>_1_2','pro<%=j%>_1_1')" onmouseout="hide('pro<%=j%>_1_2','pro<%=j%>_1_1')">
+                    &nbsp;
+                    <font id="pro<%=j%>_1_1"> 
+                        <%=util.intercept(config.PROJECT_NAME, 0, 10)%>
+                    </font>
+                    <div id="pro<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'pro<%=j%>_1_2','pro<%=j%>_1_1')" onmouseout="hide('pro<%=j%>_1_2','pro<%=j%>_1_1')">
+                      <%=config.PROJECT_NAME%> 
+                    </div>
+              </td>
+              <td class="td7">&nbsp;<%=config.CONFIGURE_CHG_NO%></td>
+              <td class="td7">&nbsp;<%=config.EVENT_SPONSOR%></td>
+              <td class="td7" onmouseover="show(this,'event<%=j%>_1_2','event<%=j%>_1_1')" onmouseout="hide('event<%=j%>_1_2','event<%=j%>_1_1')">
+                    &nbsp;
+                    <font id="event<%=j%>_1_1"> 
+                        <%=util.intercept(config.EVENT_NAME, 0, 10)%>
+                    </font>
+                    <div id="event<%=j%>_1_2" style="background-color:#EFEFEF;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute" onmouseover="show(this,'event<%=j%>_1_2','event<%=j%>_1_1')" onmouseout="hide('event<%=j%>_1_2','event<%=j%>_1_1')">
+                      <%=config.EVENT_NAME%> 
+                    </div>
+              </td>
+              <td class="td7">&nbsp;<%=util.formatDatatimeToSting(config.EVENT_TIME)%></td>
+              <td class="td7">&nbsp;<%=config.PROJECT_MANAGER%></td>
+              <td class="td7">&nbsp;<%=config.PROJECT_CONF_PERSON%></td>
+              <td class="td7">&nbsp;<%=config.DUTY_PERSON%></td>
+            </tr>
+        <% j +=1 end end%>
+    </table>
+  <% end %>
+  </body>
+</html>
