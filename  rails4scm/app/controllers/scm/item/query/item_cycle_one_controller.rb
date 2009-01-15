@@ -343,8 +343,8 @@ class Scm::Item::Query::ItemCycleOneController < ApplicationController
           st = "ÊÜ¿Ø@W"
           str = st.split("@W")
           conf = ConfigureVers.new
-          conf.ID=j[0]
-          conf.id=j[0]
+          conf.ID=j
+          conf.id=j
           conf.CONFIGURE_CODE=@configurechg.CONFIGURE_CODE
           conf.CONFIGURE_VERS=@configurechg.AFT_VERSION
           conf.CUR_STATE=str[0]
