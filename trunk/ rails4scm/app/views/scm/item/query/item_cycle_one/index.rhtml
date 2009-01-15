@@ -91,6 +91,13 @@
             //window.open(url);
             window.showModalDialog(url, "", "dialogHeight:400px;dialogWidth:1000px;");
         }
+
+        //变更记录
+        function chglist(){
+            url = "/scm/item/query/chg_list?configure_chg_no=<%=@configure_chg_no%>";
+            //window.open(url);
+            window.showModalDialog(url, "", "dialogHeight:400px;dialogWidth:1000px;");
+        }
     </script>
   </head>
   <body bgcolor="#F6F6F6" onload="init()">
@@ -302,6 +309,8 @@
                   <input type="button" onclick="tijiao()" class="btn3_mouseout" name="tijiao_button" value="<%=@quarters_validate[1]%>" >
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <input type="button" onclick="state()" class="btn3_mouseout" name="stat_button" value="状态回溯" >
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="button" onclick="chglist()" class="btn3_mouseout" name="stat_button" value="变更记录" >
                 </td>
               </tr>
             </table>
